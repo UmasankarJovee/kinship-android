@@ -20,5 +20,6 @@ class Login : AppCompatActivity() {
             val i=Intent(applicationContext,UserRegistration::class.java)
             startActivity(i)
         }
+        //shanmugaraj jovee infotech
     }
 }
