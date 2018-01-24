@@ -15,7 +15,5 @@ class MainActivity : AppCompatActivity() {
             val i= Intent(applicationContext,SplashScreen::class.java)
             startActivity(i)
         }
-        //shanmugaraj
-        //Vigneshkumar
     }
 }
