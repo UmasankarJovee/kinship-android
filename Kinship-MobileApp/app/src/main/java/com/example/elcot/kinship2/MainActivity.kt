@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener{
             val i= Intent(applicationContext,SplashScreen::class.java)
             startActivity(i)
+            //dsgdg
         }
         //shanmugaraj jovee infotech
     }
