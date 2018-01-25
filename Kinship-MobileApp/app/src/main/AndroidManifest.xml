@@ -35,6 +35,7 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".Home"
+            android:label="Kinship"
             android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".UserProfile"
@@ -42,7 +43,7 @@
         <activity
             android:name=".Home1"
             android:label="Kinship"
-            android:theme="@style/AppThemeActionBar"></activity>
+            android:theme="@style/AppThemeActionBar" />
     </application>
 
 </manifest>
