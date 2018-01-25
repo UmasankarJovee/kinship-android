@@ -12,7 +12,7 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         btnlogin.setOnClickListener{
-            val i= Intent(applicationContext,Home1::class.java)
+            val i= Intent(applicationContext,Home::class.java)
             startActivity(i)
         }
 

@@ -59,8 +59,8 @@ class UserRegistration : AppCompatActivity() {
 
         val li=LayoutInflater.from(this)
         val confirmDialog = li.inflate(R.layout.alert_otp_get,null)
-        buttonConfirmOTP = confirmDialog.findViewById(R.id.buttonConfirmOTP) as AppCompatButton
-        editTextotp = confirmDialog.findViewById(R.id.editTextOtp) as EditText
+        buttonConfirmOTP = confirmDialog.findViewById<AppCompatButton>(R.id.buttonConfirmOTP) as AppCompatButton
+        editTextotp = confirmDialog.findViewById<EditText>(R.id.editTextOtp) as EditText
 
         val alert = AlertDialog.Builder(this)
         alert.setView(confirmDialog)
@@ -80,9 +80,9 @@ class UserRegistration : AppCompatActivity() {
 
         val li1=LayoutInflater.from(this)
         val confimDialog1 = li1.inflate(R.layout.alert_password_get,null)
-        buttonConfirmPassword = confimDialog1.findViewById(R.id.buttonConfirmPassword) as AppCompatButton
-        editTextpassword = confimDialog1.findViewById(R.id.editText_password) as EditText
-        editTextConfirmPassword = confimDialog1.findViewById(R.id.editText_confirm_password) as EditText
+        buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(R.id.buttonConfirmPassword) as AppCompatButton
+        editTextpassword = confimDialog1.findViewById<EditText>(R.id.editText_password) as EditText
+        editTextConfirmPassword = confimDialog1.findViewById<EditText>(R.id.editText_confirm_password) as EditText
 
         val alert1 = AlertDialog.Builder(this)
         alert1.setView(confimDialog1)
