@@ -17,41 +17,46 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:background="#D14035"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            tools:layout_constraintRight_creator="1" tools:layout_constraintLeft_creator="1" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_height="166dp" app:srcCompat="@drawable/profile_image"
             android:id="@+id/imageView"
             android:layout_width="166dp"
-            app:layout_constraintLeft_toLeftOf="@+id/toolbar1" app:layout_constraintRight_toRightOf="@+id/toolbar1"
-            app:layout_constraintTop_toTopOf="@+id/toolbar1" android:layout_marginTop="70dp" />
+            android:layout_height="166dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
+            app:layout_constraintRight_toRightOf="@+id/toolbar1"
+            app:layout_constraintTop_toTopOf="@+id/toolbar1"
+            app:srcCompat="@drawable/profile_image" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/firstname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
             android:layout_marginEnd="23dp"
+            android:layout_marginLeft="22dp"
             android:layout_marginRight="23dp"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginStart="22dp"
-            android:layout_marginLeft="22dp">
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/efirst_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName"
                 android:ems="10"
                 android:hint=" First Name"
-                android:id="@+id/efirst_name"
-                android:textSize="20sp"
+                android:inputType="textPersonName"
                 android:textColorHint="#D14035"
-                android:theme="@style/MyEditTextTheme"/>
+                android:textSize="20sp"
+                android:theme="@style/MyEditTextTheme" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -60,25 +65,25 @@
             android:id="@+id/lastname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/firstname"
             android:layout_marginEnd="23dp"
+            android:layout_marginLeft="22dp"
             android:layout_marginRight="23dp"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginStart="22dp"
-            android:layout_marginLeft="22dp">
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/firstname">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/elast_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName"
                 android:ems="10"
                 android:hint=" Last Name"
-                android:id="@+id/elast_name"
-                android:textSize="20sp"
+                android:inputType="textPersonName"
                 android:textColorHint="#D14035"
-                android:theme="@style/MyEditTextTheme"/>
+                android:textSize="20sp"
+                android:theme="@style/MyEditTextTheme" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -86,42 +91,82 @@
             android:id="@+id/dob"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
             android:layout_marginEnd="23dp"
             android:layout_marginLeft="22dp"
-            android:layout_marginTop="16dp"
             android:layout_marginRight="23dp"
-            app:layout_constraintTop_toBottomOf="@id/lastname"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-          >
+            app:layout_constraintTop_toBottomOf="@id/lastname">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/edob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:hint=" Date of Birth"
-                android:id="@+id/edob"
-                android:textSize="20sp"
+                android:inputType="textPersonName"
                 android:textColorHint="#D14035"
-                android:theme="@style/MyEditTextTheme"/>
+                android:textSize="20sp"
+                android:theme="@style/MyEditTextTheme" />
 
         </android.support.design.widget.TextInputLayout>
-        <RelativeLayout
+
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/btn"
+            android:text="REGISTER"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl" />
+
+        <TextView
+            android:id="@+id/nil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="26dp"
+            android:text=""
+            android:textSize="17dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
+            android:text="User Profile"
+            android:textColor="@android:color/white"
+            android:textSize="19dp"
+            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
+            app:layout_constraintTop_toTopOf="@+id/toolbar1" />
+
+        <RelativeLayout
             android:id="@+id/rl"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/dob"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dob">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/radio_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -129,64 +174,29 @@
                 android:text="Male" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/radio_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/radioButton5"
-                android:layout_toEndOf="@+id/radioButton5"
-                android:layout_toRightOf="@+id/radioButton5"
-                android:text="RadioButton" />
+                android:layout_marginStart="31dp"
+                android:layout_marginLeft="31dp"
+                android:layout_alignTop="@+id/radio_male"
+                android:layout_toEndOf="@+id/radio_male"
+                android:layout_toRightOf="@+id/radio_male"
+                android:text="Female" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/radioButton5"
-                android:layout_marginEnd="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_toLeftOf="@+id/radioButton5"
-                android:layout_toStartOf="@+id/radioButton5"
-                android:text="TextView"
-                android:textSize="17dp" />
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="31dp"
+                android:text="Gender"
+                android:textSize="20dp" />
 
         </RelativeLayout>
-
-        <Button
-            android:text="REGISTER"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:id="@+id/loginbtn"
-            android:background="@drawable/btn" android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="22sp"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="35dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" android:layout_marginStart="40dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="40dp"
-
-            android:layout_marginEnd="40dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="40dp"/>
-
-        <TextView
-            android:text=""
-            android:textSize="17dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/nil"
-            android:layout_marginTop="26dp"
-            app:layout_constraintTop_toBottomOf="@+id/loginbtn" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-
-        <TextView
-            android:text="User Profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:textSize="19dp"
-            android:textColor="@android:color/white"
-            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
-            app:layout_constraintTop_toTopOf="@+id/toolbar1" android:layout_marginTop="13dp"
-            android:layout_marginStart="15dp" android:layout_marginLeft="15dp"/>
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
