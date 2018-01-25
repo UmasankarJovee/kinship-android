@@ -10,8 +10,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_user_registration"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar1"
@@ -21,167 +20,133 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            tools:layout_constraintRight_creator="1" tools:layout_constraintLeft_creator="1"
-            />
+            tools:layout_constraintRight_creator="1" tools:layout_constraintLeft_creator="1" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-
             android:layout_height="166dp" app:srcCompat="@drawable/profile_image"
             android:id="@+id/imageView"
             android:layout_width="166dp"
             app:layout_constraintLeft_toLeftOf="@+id/toolbar1" app:layout_constraintRight_toRightOf="@+id/toolbar1"
-            app:layout_constraintTop_toTopOf="@+id/toolbar1" android:layout_marginTop="70dp"
-            />
+            app:layout_constraintTop_toTopOf="@+id/toolbar1" android:layout_marginTop="70dp" />
 
-        <TextView
-            android:text="FIRST NAME"
-            android:textSize="17dp"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/firstname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/first_name"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/efirst_name"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@+id/first_name"
-            android:layout_marginEnd="23dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="23dp" android:layout_marginStart="22dp" android:layout_marginLeft="22dp"
-            android:hint="Vignesh"/>
-
-
-        <TextView
-            android:text="LAST NAME"
-            android:textSize="17dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/last_name"
-            android:layout_marginTop="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/efirst_name" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/elast_name"
-            android:hint="kumar" android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@+id/last_name" android:layout_marginStart="22dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="22dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginEnd="22dp" android:layout_marginRight="22dp"/>
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp">
 
-        <TextView
-            android:text="EMAIL"
-            android:textSize="17dp"
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:hint=" First Name"
+                android:id="@+id/efirst_name"
+                android:textSize="20sp"
+                android:textColorHint="#D14035"
+                android:theme="@style/MyEditTextTheme"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/lastname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/email"
-            android:layout_marginTop="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/elast_name" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/eemail"
-            android:hint="example@gmail.com" android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@+id/email" android:layout_marginStart="22dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="22dp"
-            android:layout_marginEnd="22dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="22dp"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/firstname"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp">
 
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:hint=" Last Name"
+                android:id="@+id/elast_name"
+                android:textSize="20sp"
+                android:textColorHint="#D14035"
+                android:theme="@style/MyEditTextTheme"/>
 
-        <TextView
-            android:text="ADDRESS"
-            android:textSize="17dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/address"
-            android:layout_marginTop="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/eemail" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/eaddress"
-            android:hint="" android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@+id/address" android:layout_marginStart="22dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="22dp"
-            android:layout_marginEnd="22dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="22dp"/>
+        </android.support.design.widget.TextInputLayout>
 
-
-        <TextView
-            android:text="DATE OF BIRTH"
-            android:textSize="17dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/dob"
-            android:layout_marginTop="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/eaddress" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/edob"
-            android:hint="click to select" android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@+id/dob" android:layout_marginStart="22dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="22dp"
-            android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="16dp"/>
-
-
-        <TextView
-            android:text="GENDER"
-            android:textSize="17dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/gender"
-            android:layout_marginTop="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/edob" android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="24dp"
-            />
-        <RadioGroup
-            android:layout_width="296dp"
-            android:layout_height="55dp"
-            android:id="@+id/radioGroup"
-            android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@+id/gender" android:layout_marginStart="22dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="22dp"
-            android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="16dp">
-            <RadioButton
-                android:text="Male"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content" tools:layout_editor_absoluteY="380dp"
-                tools:layout_editor_absoluteX="218dp" android:id="@+id/radioButton"/>
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="23dp"
+            app:layout_constraintTop_toBottomOf="@id/lastname"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+          >
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint=" Date of Birth"
+                android:id="@+id/edob"
+                android:textSize="20sp"
+                android:textColorHint="#D14035"
+                android:theme="@style/MyEditTextTheme"/>
+
+        </android.support.design.widget.TextInputLayout>
+        <RelativeLayout
+            android:id="@+id/rl"
+            app:layout_constraintTop_toBottomOf="@id/dob"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
 
             <RadioButton
-                android:text="Female"
+                android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton2"
-                app:layout_constraintBottom_toTopOf="@+id/radioGroup" app:layout_constraintRight_toRightOf="@+id/button5"
-                app:layout_constraintTop_toTopOf="@+id/radioGroup"/>
-        </RadioGroup>
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Male" />
 
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/radioButton5"
+                android:layout_toEndOf="@+id/radioButton5"
+                android:layout_toRightOf="@+id/radioButton5"
+                android:text="RadioButton" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/radioButton5"
+                android:layout_marginEnd="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_toLeftOf="@+id/radioButton5"
+                android:layout_toStartOf="@+id/radioButton5"
+                android:text="TextView"
+                android:textSize="17dp" />
+
+        </RelativeLayout>
 
         <Button
             android:text="REGISTER"
