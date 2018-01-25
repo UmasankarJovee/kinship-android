@@ -43,8 +43,15 @@ class UserProfile : AppCompatActivity() {
             month=c.get(Calendar.MONTH)
             day=c.get(Calendar.DAY_OF_MONTH)
             //call()
-
         }
+
+        user_profile_submit.setOnClickListener{
+            sendUserProfile()
+        }
+    }
+
+    private fun sendUserProfile() {
+
     }
 
     /*private fun call() {

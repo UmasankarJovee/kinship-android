@@ -14,18 +14,27 @@ interface ApiInterface {
                 @Field("password") password : String): Observable<Record>*/
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("api/login")
     fun userLogin(@Field("phone_number") phone_number : String,
                   @Field("password") password : String) : Observable<LoginResult>
 
     @FormUrlEncoded
-    @POST("register")
+    @POST("api/v1/register")
     fun UserRegister(@Field("phone_number") phone_number: String,
                      @Field("blood_group") blood_group : String) : Observable<RegisterResult>
 
     @FormUrlEncoded
-    @POST("verify_otp")
-    fun verify_otp(@Field("otp") otp : Long) : Observable<OtpResponse>
+    @POST("password")
+    fun sendPassword(@Field("user_id") user_id : Int,
+                     @Field("password") otp : String) : Observable<PasswordResult>
+
+    @FormUrlEncoded
+    @POST("api/v2/persons")
+    fun sendUserProfile(@Field("user_id") user_id : Int,
+                        @Field("first_name") first_name : String,
+                        @Field("last_name") last_name : String,
+                        @Field("date_of_birth") date_of_birth : String,
+                        @Field("gender") gender : String): Observable<PasswordResult>
 
 
 }

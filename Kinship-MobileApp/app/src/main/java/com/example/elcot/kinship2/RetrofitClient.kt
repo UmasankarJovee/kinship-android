@@ -6,9 +6,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
 
-    fun getClient(): Retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.10/")
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    companion object {
+        fun getClient(): ApiInterface? = Retrofit.Builder()
+                .baseUrl("http://192.168.1.23/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ApiInterface::class.java)
+    }
 }
