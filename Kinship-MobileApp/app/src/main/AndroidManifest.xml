@@ -26,7 +26,11 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Login"
@@ -38,11 +42,7 @@
             android:name=".Home"
             android:icon="@drawable/logo"
             android:theme="@style/AppThemeActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity
             android:name=".UserProfile"
