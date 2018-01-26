@@ -29,8 +29,6 @@ class Login : AppCompatActivity() {
 
 
         btnlogin.setOnClickListener{
-            //val i= Intent(applicationContext,Home::class.java)
-            //startActivity(i)
             if(editText_login_phone_number.text.toString() != null && editText_login_password.text.toString() != null)
             {
                 userLogin()
@@ -45,7 +43,6 @@ class Login : AppCompatActivity() {
             val i=Intent(applicationContext,UserRegistration::class.java)
             startActivity(i)
         }
-        //shanmugaraj jovee infotech
     }
 
     private fun userLogin() {
@@ -57,24 +54,21 @@ class Login : AppCompatActivity() {
                 .subscribe(
                         { result ->
                             progressDialog?.dismiss()
-                            if(result.status_Login == true)
+                            if(result.status == true)
                             {
+                                Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
                                 val i= Intent(applicationContext,Home::class.java)
                                 startActivity(i)
                             }
                             else
                             {
-                                //Toast.makeText(this,, Toast.LENGTH_LONG).show()
-                                showDialog(0)
+                                showDialog(0) // Given phone number and password is incorrect
                             }
-                            //displayLog("response")
                         },
                         { error ->
                             progressDialog?.dismiss()
-                            //progressBar.visibility=View.GONE
                             Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
                             Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
-                            //displayLog("error")
                         }
                 )
     }
@@ -87,16 +81,6 @@ class Login : AppCompatActivity() {
                     .setTitle("Given Phone number and Password is Incorrect")
                     .setPositiveButton("OK",
                             DialogInterface.OnClickListener { dialog, whichButton ->
-                                //System.exit(0);
-                                //finish();
-                                //int pid = android.os.Process.myPid();
-                                //android.os.Process.killProcess(pid);
-                                //System.exit(0);
-                                //Intent.FLAG_ACTIVITY_NEW_TASK;
-                                //finishAffinity();
-
-                                //System.exit(0);
-                                //Toast.makeText(getBaseContext(),"OK clicked!", Toast.LENGTH_SHORT).show();
                             }
                     ).create()
             1 -> return AlertDialog.Builder(this)
@@ -104,16 +88,6 @@ class Login : AppCompatActivity() {
                     .setTitle("Given Phone number is not correct format")
                     .setPositiveButton("OK",
                             DialogInterface.OnClickListener { dialog, whichButton ->
-                                //System.exit(0);
-                                //finish();
-                                //int pid = android.os.Process.myPid();
-                                //android.os.Process.killProcess(pid);
-                                //System.exit(0);
-                                //Intent.FLAG_ACTIVITY_NEW_TASK;
-                                //finishAffinity();
-
-                                //System.exit(0);
-                                //Toast.makeText(getBaseContext(),"OK clicked!", Toast.LENGTH_SHORT).show();
                             }
                     ).create()
             2 -> return AlertDialog.Builder(this)
@@ -121,20 +95,9 @@ class Login : AppCompatActivity() {
                     .setTitle("Please fill two fields")
                     .setPositiveButton("OK",
                             DialogInterface.OnClickListener { dialog, whichButton ->
-                                //System.exit(0);
-                                //finish();
-                                //int pid = android.os.Process.myPid();
-                                //android.os.Process.killProcess(pid);
-                                //System.exit(0);
-                                //Intent.FLAG_ACTIVITY_NEW_TASK;
-                                //finishAffinity();
-
-                                //System.exit(0);
-                                //Toast.makeText(getBaseContext(),"OK clicked!", Toast.LENGTH_SHORT).show();
                             }
                     ).create()
         }
         return null
     }
-
 }

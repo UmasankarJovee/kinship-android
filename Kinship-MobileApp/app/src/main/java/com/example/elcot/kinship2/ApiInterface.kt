@@ -14,7 +14,7 @@ interface ApiInterface {
                 @Field("password") password : String): Observable<Record>*/
 
     @FormUrlEncoded
-    @POST("api/login")
+    @POST("api/v6/log")
     fun userLogin(@Field("phone_number") phone_number : String,
                   @Field("password") password : String) : Observable<LoginResult>
 
@@ -24,7 +24,7 @@ interface ApiInterface {
                      @Field("blood_group") blood_group : String) : Observable<RegisterResult>
 
     @FormUrlEncoded
-    @POST("password")
+    @POST("api/v5/otp")
     fun sendPassword(@Field("user_id") user_id : Int,
                      @Field("password") otp : String) : Observable<PasswordResult>
 
@@ -34,7 +34,7 @@ interface ApiInterface {
                         @Field("first_name") first_name : String,
                         @Field("last_name") last_name : String,
                         @Field("date_of_birth") date_of_birth : String,
-                        @Field("gender") gender : String): Observable<PasswordResult>
+                        @Field("gender") gender : Int): Observable<UserProfileResult>
 
 
 }

@@ -8,7 +8,7 @@ class RetrofitClient {
 
     companion object {
         fun getClient(): ApiInterface? = Retrofit.Builder()
-                .baseUrl("http://192.168.1.23/")
+                .baseUrl("http://192.168.1.20/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

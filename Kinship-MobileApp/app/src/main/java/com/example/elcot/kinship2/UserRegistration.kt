@@ -1,6 +1,8 @@
 package com.example.elcot.kinship2
 
+import android.app.Dialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -40,6 +42,8 @@ class UserRegistration : AppCompatActivity() {
     var progressDialog: ProgressDialog? = null
     var alertDialog1 : AlertDialog? = null
 
+    //var mValidation : Validation? =null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_registration)
@@ -55,6 +59,7 @@ class UserRegistration : AppCompatActivity() {
         categories.add("Blood Group (O+)")
         categories.add("Blood Group (O-)")*/
 
+        categories.add("Select Blood Group")
         categories.add("AB+")
         categories.add("AB-")
         categories.add("A+")
@@ -82,20 +87,18 @@ class UserRegistration : AppCompatActivity() {
         mApiInterface=RetrofitClient.getClient()
 
         button_register.setOnClickListener{
-            //val i= Intent(applicationContext,UserProfile::class.java)
-            //startActivity(i)
-            //confirmotp()
-            userRegister()
+
+            if(Validation.isValidPhoneNumber(editText_phone_number.text.toString()) && blood_group != "Select Blood Group")
+            {
+                //val i=Intent(applicationContext,UserProfile::class.java)
+                //startActivity(i)
+                userRegister()
+            }
+            else
+            {
+                showDialog(0) // Please fill the correct phone number and blood group
+            }
         }
-
-
-
-
-
-
-
-
-
     }
 
     private fun userRegister() {
@@ -140,7 +143,6 @@ class UserRegistration : AppCompatActivity() {
         val alertDialog = alert.create()
         alertDialog.show()
 
-        //buttonConfirmOTP?.text="$otp"
         buttonConfirmOTP!!.setOnClickListener{
             if(editTextotp?.text.toString().toLong() == otp)
             {
@@ -152,8 +154,6 @@ class UserRegistration : AppCompatActivity() {
             {
                 Toast.makeText(applicationContext,"in correct", Toast.LENGTH_LONG).show()
             }
-            //val i= Intent(applicationContext,UserProfile::class.java)
-            //startActivity(i)
         }
     }
 
@@ -188,22 +188,51 @@ class UserRegistration : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         { result ->
-                            if(result.status_password == true)
+                            progressDialog?.dismiss()
+                            if(result.status == true)
                             {
                                 alertDialog1?.dismiss()
+                                Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
                                 val i=Intent(applicationContext,UserProfile::class.java)
                                 startActivity(i)
                             }
                         },
                         { error ->
                             progressDialog?.dismiss()
-                            //progressBar.visibility=View.GONE
                             Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
                             Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
-                            //displayLog("error")
                         }
                 )
     }
 
 
+    override fun onCreateDialog(id: Int): Dialog? {
+        when (id) {
+            0 -> return AlertDialog.Builder(this)
+                    .setIcon(R.drawable.logo)
+                    .setTitle("Please fill the correct Phone number and Blood Group")
+                    .setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, whichButton ->
+                            }
+                    ).create()
+            1 -> return AlertDialog.Builder(this)
+                    .setIcon(R.drawable.logo)
+                    .setTitle("Given Phone number is not correct format")
+                    .setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, whichButton ->
+                            }
+                    ).create()
+            2 -> return AlertDialog.Builder(this)
+                    .setIcon(R.drawable.logo)
+                    .setTitle("Please fill two fields")
+                    .setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, whichButton ->
+                            }
+                    ).create()
+        }
+        return null
+    }
+
+
 }
+
