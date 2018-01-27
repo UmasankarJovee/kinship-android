@@ -4,4 +4,13 @@
     <string name="title_blood_request">Blood Request</string>
     <string name="title_settings">Settings</string>
     <string name="title_activity_home">Home</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="blood_donator_instructions_heading">BLOOD DONATOR INSTRUCTIONS</string>
+    <string name="blood_donator_instructions_textview">
+        <![CDATA[
+        Give Blood Save Life
+        ]]>
+    </string>
+    <string name="hello"></string>
 </resources>
