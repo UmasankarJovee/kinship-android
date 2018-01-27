@@ -20,18 +20,38 @@ class Login : AppCompatActivity() {
     private var mCompositeDisposable: Disposable? = null
 
     var progressDialog: ProgressDialog? = null
+    var session: SharedData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        mApiInterface=RetrofitClient.getClient()
+        session = SharedData(this)
+        if (session?.isFirstInstall()!!) {
+            session?.createFirstInstall()
+            val i = Intent(this@Login,UserRegistration::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(i)
+            this@Login.finish()
+        }
 
+        if (session?.isLoggedIn()!!) {
+            val i = Intent(this@Login,Home::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(i)
+            this@Login.finish()
+        }
+        mApiInterface=RetrofitClient.getClient()
 
         btnlogin.setOnClickListener{
             if(editText_login_phone_number.text.toString() != null && editText_login_password.text.toString() != null)
             {
-                userLogin()
+                //userLogin()
+                session?.createLoginSession(editText_login_phone_number.text.toString(), editText_login_password.text.toString())
+                val i= Intent(applicationContext,Home::class.java)
+                startActivity(i)
             }
             else
             {

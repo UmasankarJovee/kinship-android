@@ -9,11 +9,11 @@
     <item
         android:id="@+id/navigation_request"
         android:icon="@drawable/request"
-        android:title="Blood Request" />
+        android:title="@string/title_blood_request" />
 
     <item
         android:id="@+id/navigation_setting"
         android:icon="@drawable/settings"
-        android:title="Settings" />
+        android:title="@string/title_settings"/>
 
 </menu>

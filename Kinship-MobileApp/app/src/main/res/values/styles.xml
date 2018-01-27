@@ -37,15 +37,14 @@
         <!--colorControlActivated & colorControlHighlight use the colorAccent color by default -->
     </style>
 
-
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">#D14035</item>
     </style>
 
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:background">#D14035</item>
-        <item name="colorAccent">#ffffff</item>
+        <item name="android:textColor">#D14035</item>
+        <item name="android:background">#ffffff</item>
+        <item name="colorAccent">#D14035</item>
     </style>
 
 </resources>

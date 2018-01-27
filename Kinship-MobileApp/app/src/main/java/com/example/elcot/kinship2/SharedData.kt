@@ -11,7 +11,6 @@ import java.util.HashMap
  */
 class SharedData {
 
-
     var pref: SharedPreferences? = null
 
     // Editor for Shared preferences
@@ -28,36 +27,35 @@ class SharedData {
 
     // All Shared Preferences Keys
     private val IS_LOGIN = "IsLoggedIn"
-    private val IS_FILL_REGISTER = "IsLoggedIn"
-    private val IS_FILL_ = "IsLoggedIn"
+    private val IS_FIRST_INSTALL = "IsFirstInstall"
 
-    val KEY_NAME = "name"
+    val KEY_USER_NAME = "user_name"
 
-    val KEY_ROLLNO = "rollno"
+    val KEY_USER_ID = "user_id"
 
+    @SuppressLint("CommitPrefEdits")
 
-@SuppressLint("CommitPrefEdits")
-
-    fun SessionManager(context: Context) {
+    constructor(context: Context) {
         this._context = context
         pref = _context!!.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
         editor = pref?.edit()
     }
 
-
-    fun createLoginSession(name: String, rollno: String) {
+    fun createLoginSession(user_id: String, user_name: String) {
 
         editor?.putBoolean(IS_LOGIN, true)
 
+        editor?.putString(KEY_USER_ID, user_id)
 
-        editor?.putString(KEY_NAME, name)
-
-
-        editor?.putString(KEY_ROLLNO, rollno)
+        editor?.putString(KEY_USER_NAME, user_name)
 
         editor?.commit()
     }
 
+    fun createFirstInstall() {
+        editor?.putBoolean(IS_FIRST_INSTALL, false)
+        editor?.commit()
+    }
 
     fun checkLogin() {
         // Check login status
@@ -76,19 +74,15 @@ class SharedData {
 
     }
 
-
-
     fun getUserDetails(): HashMap<String, String> {
         val user = HashMap<String, String>()
         // user name
-        user.put(KEY_NAME, pref!!.getString(KEY_NAME, null))
-
+        user.put(KEY_USER_NAME, pref!!.getString(KEY_USER_NAME, null))
         // user email id
-        user.put(KEY_ROLLNO, pref!!.getString(KEY_ROLLNO, null))
+        user.put(KEY_USER_ID, pref!!.getString(KEY_USER_ID, null))
 
         return user
     }
-
 
     fun logoutUser() {
         // Clearing all data from Shared Preferences
@@ -99,7 +93,6 @@ class SharedData {
         val i = Intent(_context, Login::class.java)
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-
         // Add new Flag to start new Activity
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
@@ -109,6 +102,10 @@ class SharedData {
 
     fun isLoggedIn(): Boolean {
         return pref!!.getBoolean(IS_LOGIN, false)
+    }
+
+    fun isFirstInstall(): Boolean {
+        return pref!!.getBoolean(IS_FIRST_INSTALL,true)
     }
 
 

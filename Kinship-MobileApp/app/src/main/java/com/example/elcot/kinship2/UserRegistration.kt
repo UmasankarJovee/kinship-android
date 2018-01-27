@@ -41,12 +41,13 @@ class UserRegistration : AppCompatActivity() {
 
     var progressDialog: ProgressDialog? = null
     var alertDialog1 : AlertDialog? = null
-
+    var session: SharedData? = null
     //var mValidation : Validation? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_registration)
+
 
         var categories=ArrayList<String>()
         /*categories.add("Select Blood Group")

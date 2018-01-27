@@ -19,10 +19,12 @@ class SplashScreen : AppCompatActivity() {
         val window= window
         window.setFormat(PixelFormat.RGBA_8888)
     }
-
+    var session: SharedData? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+
+        session = SharedData(this)
 
         var anim= loadAnimation(this,R.anim.alpha)
         anim.reset()
@@ -43,6 +45,7 @@ class SplashScreen : AppCompatActivity() {
                         Thread.sleep(100)
                         waited += 100
                     }
+
                     val intent = Intent(applicationContext,Login::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
                     startActivity(intent)

@@ -18,6 +18,7 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
+import com.example.elcot.kinship2.R.id.editText_date_of_birth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

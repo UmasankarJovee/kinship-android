@@ -9,12 +9,13 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="Kinship"
+        android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true">
         <activity
             android:name=".MainActivity"
             android:icon="@drawable/logo"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,12 +40,14 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".Home"
-            android:label="Kinship"
-            android:theme="@style/AppThemeActionBar" />
+            android:icon="@drawable/logo"
+            android:theme="@style/AppThemeActionBar"></activity>
         <activity
             android:name=".UserProfile"
             android:theme="@style/AppThemeNoActionBar" />
-
+        <activity
+            android:name=".UserProfileEdit"
+            android:theme="@style/AppThemeNoActionBar"/>
     </application>
 
 </manifest>
