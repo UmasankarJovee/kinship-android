@@ -26,11 +26,7 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Login"
@@ -41,6 +37,7 @@
         <activity
             android:name=".Home"
             android:icon="@drawable/logo"
+<<<<<<< HEAD
             android:theme="@style/AppThemeActionBar"/>
         <activity
             android:name=".UserProfile"
@@ -48,6 +45,19 @@
         <activity
             android:name=".UserProfileEdit"
             android:theme="@style/AppThemeNoActionBar"/>
+=======
+            android:theme="@style/AppThemeActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserProfile"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity android:name=".BloodDonatorInstructions"></activity>
+>>>>>>> 416cfd045180401cdbb4f4a738a8a5207f318eb6
     </application>
 
 </manifest>

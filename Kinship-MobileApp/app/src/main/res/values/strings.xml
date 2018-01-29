@@ -4,4 +4,30 @@
     <string name="title_blood_request">Blood Request</string>
     <string name="title_settings">Settings</string>
     <string name="title_activity_home">Home</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="blood_donator_instructions_heading">BLOOD DONATOR INSTRUCTIONS</string>
+    <string name="blood_donator_instructions_textview">
+        <b><font color='#D14035'>Instructions to Blood Donors Before Blood Donation</font></b>\n\n
+        1. Take light refreshment/food before 2 hours of blood donation. \n
+        2. Women should avoid blood donation during their menstrual bleeding. \n
+        3. Person who has consumed alchocol should avoid giving blood for next 24 hours. \n
+        4. Person who had recent attack of infection like Jaundice, Typhoid, Malaria, Rubella, etc., should not give blood. \n
+        5. Person who had undergone major surgery should avoid blood donation for 6 months. \n
+        6. Pregnancy, lactating women should avoid blood donation.\n\n
+        <b><font color='#D14035'>Instructions to Blood Donors After Blood Donation</font></b>\n\n
+        1. Drink plenty of liquids for the whole day. \n
+        2. Eat well and do not remain hungry. \n
+        3. Do not smoke for half an hour. \n
+        4. Do not do any heavy exercises on that day. \n
+        5. Do not do any vehicle for 1-2 hours. \n
+        6. Do not participate in sports and games on the day of blood donation. \n
+        7. If there is any bleeding from the place from where blood is collected, apply pressure and raise the arm for a few minutes.\n\n
+        <b><font color='#D14035'>Instructions to Blood Donors How much blood can be taken in your Body</font></b>\n\n
+        1. Our body has 5.5 litre of blood of which only 350 ml - 450 ml of blood is taken depending upon weight of donor. \n
+        2. Majority of healthy adults can tolerate withdrawal of one unit of blood. \n
+        3. The withdrawan blood volume is restored within 24 hours and the haemoglobin and cell components are restored in 2 months. \n
+        4. Therefore it is safe to donate blood every three months.
+    </string>
+    <string name="hello"></string>
 </resources>

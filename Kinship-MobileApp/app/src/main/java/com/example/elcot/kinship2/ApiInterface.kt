@@ -3,6 +3,7 @@ package com.example.elcot.kinship2
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiInterface {
@@ -35,6 +36,10 @@ interface ApiInterface {
                         @Field("last_name") last_name : String,
                         @Field("date_of_birth") date_of_birth : String,
                         @Field("gender") gender : Int): Observable<UserProfileResult>
+
+    @FormUrlEncoded
+    @GET("api/v7/updated_details_of_home")
+    fun update_details() : Observable<UpdateDetailsResult>
 
 
 }
