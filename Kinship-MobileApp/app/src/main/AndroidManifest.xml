@@ -41,7 +41,7 @@
         <activity
             android:name=".Home"
             android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar"></activity>
+            android:theme="@style/AppThemeActionBar"/>
         <activity
             android:name=".UserProfile"
             android:theme="@style/AppThemeNoActionBar" />

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -18,6 +19,7 @@ import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_user_profile_edit.*
 import kotlinx.android.synthetic.main.activity_user_registration.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -72,9 +74,9 @@ class UserRegistration : AppCompatActivity() {
 
         val dataAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_blood_group.adapter=dataAdapter
+        spinner_blood_group_edit.adapter=dataAdapter
 
-        spinner_blood_group.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinner_blood_group_edit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -84,6 +86,7 @@ class UserRegistration : AppCompatActivity() {
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
         }
+
 
         mApiInterface=RetrofitClient.getClient()
 
@@ -143,6 +146,7 @@ class UserRegistration : AppCompatActivity() {
 
         val alertDialog = alert.create()
         alertDialog.show()
+        alertDialog.setCancelable(false)
 
         buttonConfirmOTP!!.setOnClickListener{
             if(editTextotp?.text.toString().toLong() == otp)
@@ -171,6 +175,7 @@ class UserRegistration : AppCompatActivity() {
 
         alertDialog1 = alert1.create()
         alertDialog1?.show()
+        alertDialog1?.setCancelable(false)
 
         buttonConfirmPassword!!.setOnClickListener{
             if(editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString())
