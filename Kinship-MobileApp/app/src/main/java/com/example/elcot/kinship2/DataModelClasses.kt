@@ -7,3 +7,5 @@ data class RegisterResult(var status : Boolean,var status_value: Int, var otp : 
 data class PasswordResult(var status : Boolean, var status_value: Int, var message: String)
 
 data class UserProfileResult(var status : Boolean, var status_value: Int, var message: String)
+
+data class UpdateDetailsResult(var number_of_hospitals : Int, var number_of_users : Int, var number_of_donated_persons : Int)

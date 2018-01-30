@@ -33,6 +33,7 @@ class HomeFragment : Fragment() {
     var activity_home_fragment_users_count_TextView : TextView? = null
     var activity_home_fragment_donator_count_TextView : TextView? = null
     var alert_blood_donator_instructions_exit: ImageView? = null
+    var alert_blood_requestor_instructions_exit: ImageView? = null
     val alert_blood_donator_instructions_ScrollView_instructions_TextView : TextView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -75,16 +76,16 @@ class HomeFragment : Fragment() {
 
     private fun bloodRequestorInstructions(){
         val layoutinflater=LayoutInflater.from(activity)
-        val conformDialog=layoutinflater.inflate(R.layout.alert_blood_donator_instructions,null)
+        val conformDialog=layoutinflater.inflate(R.layout.alert_blood_requestor_instructions,null)
         val alert=AlertDialog.Builder(activity)
         //val text : String=activity!!.getString(R.string.blood_donator_instructions_textview)
         //alert_blood_donator_instructions_ScrollView_instructions_TextView!!.setText(text)
-        alert_blood_donator_instructions_exit=conformDialog.findViewById(R.id.alert_blood_donator_instructions_exit_ImageView)
+        alert_blood_requestor_instructions_exit=conformDialog.findViewById(R.id.alert_blood_requestor_instructions_exit_ImageView)
         alert.setView(conformDialog)
         val alertDialog=alert.create()
         alertDialog.show()
 
-        alert_blood_donator_instructions_exit!!.setOnClickListener{
+        alert_blood_requestor_instructions_exit!!.setOnClickListener{
             alertDialog.dismiss()
         }
     }

@@ -47,7 +47,10 @@
         <activity
             android:name=".UserProfile"
             android:theme="@style/AppThemeNoActionBar" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb2821c50178089b2321eafc297f75ef2c8c321a
     </application>
 
 </manifest>
