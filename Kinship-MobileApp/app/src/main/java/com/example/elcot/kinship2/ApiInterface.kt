@@ -38,8 +38,8 @@ interface ApiInterface {
                         @Field("gender") gender : Int): Observable<UserProfileResult>
 
     @FormUrlEncoded
-    @GET("api/v7/updated_details_of_home")
-    fun update_details() : Observable<UpdateDetailsResult>
+    @POST("api/v7/updated_detail_of_home")
+    fun update_details(@Field("nothing") nothing:String) : Observable<UpdateDetailsResult>
 
 
 }

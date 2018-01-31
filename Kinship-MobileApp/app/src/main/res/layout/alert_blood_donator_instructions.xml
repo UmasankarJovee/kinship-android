@@ -35,7 +35,7 @@
         android:id="@+id/alert_blood_donator_instructions_exit_ImageView"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/rotate_ic_add_circle_black_24dp"
+        android:src="@mipmap/ic_exit_icons"
         android:layout_gravity="right|top"
         />
 </FrameLayout>

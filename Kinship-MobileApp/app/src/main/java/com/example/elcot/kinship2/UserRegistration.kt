@@ -74,9 +74,9 @@ class UserRegistration : AppCompatActivity() {
 
         val dataAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_blood_group_edit.adapter=dataAdapter
+        spinner_blood_group.adapter=dataAdapter
 
-        spinner_blood_group_edit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinner_blood_group.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
