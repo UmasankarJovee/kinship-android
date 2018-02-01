@@ -56,6 +56,10 @@ class SharedData {
         editor?.putBoolean(IS_FIRST_INSTALL, false)
         editor?.commit()
     }
+    fun createFirstInstallSetFalse() {
+        editor?.putBoolean(IS_FIRST_INSTALL, false)
+        editor?.commit()
+    }
 
     fun checkLogin() {
         // Check login status

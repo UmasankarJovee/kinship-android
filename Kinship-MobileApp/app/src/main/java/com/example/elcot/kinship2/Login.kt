@@ -1,12 +1,16 @@
 package com.example.elcot.kinship2
 
+import android.app.AlarmManager
 import android.app.Dialog
+import android.app.PendingIntent
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -25,9 +29,11 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        Log.e("qqqqqqqqqqqqqqqq","call inside login")
         session = SharedData(this)
+
         if (session?.isFirstInstall()!!) {
+            Log.e("qqqqqqqqqqqqqqqq","call inside if condition in isFirstinstall")
             session?.createFirstInstall()
             val i = Intent(this@Login,UserRegistration::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -37,14 +43,16 @@ class Login : AppCompatActivity() {
         }
 
         if (session?.isLoggedIn()!!) {
+            Log.e("qqqqqqqqqqqqqqqq","call inside if condition islogin")
             val i = Intent(this@Login,Home::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(i)
             this@Login.finish()
         }
-        mApiInterface=RetrofitClient.getClient()
 
+        mApiInterface=RetrofitClient.getClient()
+        Log.e("qqqqqqqqqqqqqqqq","call inside again login")
         btnlogin.setOnClickListener{
             if(editText_login_phone_number.text.toString() != null && editText_login_password.text.toString() != null)
             {
@@ -52,6 +60,7 @@ class Login : AppCompatActivity() {
                 session?.createLoginSession(editText_login_phone_number.text.toString(), editText_login_password.text.toString())
                 val i= Intent(applicationContext,Home::class.java)
                 startActivity(i)
+                finish()
             }
             else
             {
@@ -63,6 +72,14 @@ class Login : AppCompatActivity() {
             val i=Intent(applicationContext,UserRegistration::class.java)
             startActivity(i)
         }
+    }
+
+    private fun setAlarm() {
+        val intent = Intent(this, LocationService::class.java)
+        val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 1000 ,pendingIntent)
+        //Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
 
     private fun userLogin() {
@@ -93,7 +110,6 @@ class Login : AppCompatActivity() {
                 )
     }
 
-
     override fun onCreateDialog(id: Int): Dialog? {
         when (id) {
             0 -> return AlertDialog.Builder(this)
@@ -120,4 +136,6 @@ class Login : AppCompatActivity() {
         }
         return null
     }
+
+
 }

@@ -1,5 +1,8 @@
 package com.example.elcot.kinship2
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -45,13 +48,15 @@ class Home : AppCompatActivity() {
        // supportActionBar?.setDisplayUseLogoEnabled(true)
        // supportActionBar?.title="Hello"
 
+        startAlert()
+
         session = SharedData(this)
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
         trans.replace(R.id.frame_layout,HomeFragment.newInstance())
         trans.commit()
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -88,6 +93,7 @@ class Home : AppCompatActivity() {
             1 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
                 session?.logoutUser()
+                session?.createFirstInstallSetFalse()
                 finish()
                 return true
             }
@@ -102,4 +108,13 @@ class Home : AppCompatActivity() {
         //System.runFinalizersOnExit(true);
     }
 
+    fun startAlert() {
+        //val text = findViewById(R.id.time) as EditText
+        //val i = Integer.parseInt(text.text.toString())
+        val intent = Intent(this, LocationService::class.java)
+        val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 5000 ,pendingIntent)
+        Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
+    }
 }

@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +28,11 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Login"
@@ -38,19 +44,18 @@
             android:name=".Home"
             android:icon="@drawable/logo"
             android:theme="@style/AppThemeActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".UserProfile"
             android:theme="@style/AppThemeNoActionBar" />
-<<<<<<< HEAD
+        <activity
+            android:name=".UserProfileEdit"
+            android:theme="@style/AppThemeNoActionBar" />
 
-=======
->>>>>>> cb2821c50178089b2321eafc297f75ef2c8c321a
+        <service
+            android:name=".LocationService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

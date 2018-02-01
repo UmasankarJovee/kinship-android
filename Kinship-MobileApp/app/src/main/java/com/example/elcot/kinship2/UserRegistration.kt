@@ -1,7 +1,10 @@
 package com.example.elcot.kinship2
 
+import android.app.AlarmManager
 import android.app.Dialog
+import android.app.PendingIntent
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.location.Location
@@ -74,9 +77,9 @@ class UserRegistration : AppCompatActivity() {
 
         val dataAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_blood_group_edit.adapter=dataAdapter
+        spinner_blood_group.adapter=dataAdapter
 
-        spinner_blood_group_edit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinner_blood_group.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -86,7 +89,6 @@ class UserRegistration : AppCompatActivity() {
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
         }
-
 
         mApiInterface=RetrofitClient.getClient()
 
@@ -114,14 +116,13 @@ class UserRegistration : AppCompatActivity() {
                 .subscribe(
                         { result ->
                             progressDialog?.dismiss()
-                            //progressBar.visibility=View.GONE
-                            //Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
-                            Toast.makeText(this,result.message,Toast.LENGTH_LONG).show()
                             Toast.makeText(applicationContext,"$result.otp",Toast.LENGTH_LONG).show()
-                            otp = result.otp
-                            user_id = result.user_id
-                            confirmotp()
-                            //displayLog("response")
+                            //otp = result.otp
+                            //user_id = result.user_id
+                            if(result.status == true)
+                            {
+                                confirmotp()
+                            }
                         },
                         { error ->
                             progressDialog?.dismiss()
@@ -149,7 +150,9 @@ class UserRegistration : AppCompatActivity() {
         alertDialog.setCancelable(false)
 
         buttonConfirmOTP!!.setOnClickListener{
-            if(editTextotp?.text.toString().toLong() == otp)
+
+            sendOTP()
+            /*if(editTextotp?.text.toString().toLong() == otp)
             {
                 Toast.makeText(applicationContext,"Given OTP is Correct",Toast.LENGTH_LONG).show()
                 alertDialog.dismiss()
@@ -158,8 +161,38 @@ class UserRegistration : AppCompatActivity() {
             else
             {
                 Toast.makeText(applicationContext,"in correct", Toast.LENGTH_LONG).show()
-            }
+            }*/
         }
+    }
+
+    private fun sendOTP() {
+        progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
+        progressDialog?.setMessage("Sending Your OTP...")
+        progressDialog?.show()
+        mCompositeDisposable=mApiInterface?.sendOTP(editTextotp?.text.toString())!!.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        { result ->
+                            progressDialog?.dismiss()
+                            if(result.status == true)
+                            {
+                                alertDialog1?.dismiss()
+                                //Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
+                                confirmPassword()
+                                //val i=Intent(applicationContext,UserProfile::class.java)
+                                //startActivity(i)
+                            }
+                            else
+                            {
+                                Toast.makeText(applicationContext,"Retry",Toast.LENGTH_LONG).show()
+                            }
+                        },
+                        { error ->
+                            progressDialog?.dismiss()
+                            Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
+                        }
+                )
     }
 
     private fun confirmPassword() {
@@ -190,7 +223,7 @@ class UserRegistration : AppCompatActivity() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Setting Password...")
         progressDialog?.show()
-        mCompositeDisposable=mApiInterface?.sendPassword(this!!.user_id!!,editTextpassword?.text.toString())!!.observeOn(AndroidSchedulers.mainThread())
+        mCompositeDisposable=mApiInterface?.sendPassword(editTextpassword?.text.toString())!!.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         { result ->
@@ -199,7 +232,8 @@ class UserRegistration : AppCompatActivity() {
                             {
                                 alertDialog1?.dismiss()
                                 Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
-                                val i=Intent(applicationContext,UserProfile::class.java)
+                                val i=Intent(applicationContext,Login::class.java)
+                                //startAlert()
                                 startActivity(i)
                             }
                         },
@@ -238,6 +272,8 @@ class UserRegistration : AppCompatActivity() {
         }
         return null
     }
+
+
 
 
 }

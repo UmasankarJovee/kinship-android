@@ -24,10 +24,19 @@ interface ApiInterface {
     fun UserRegister(@Field("phone_number") phone_number: String,
                      @Field("blood_group") blood_group : String) : Observable<RegisterResult>
 
-    @FormUrlEncoded
+    /*@FormUrlEncoded
     @POST("api/v5/otp")
     fun sendPassword(@Field("user_id") user_id : Int,
-                     @Field("password") otp : String) : Observable<PasswordResult>
+                     @Field("password") otp : String) : Observable<PasswordResult>*/
+
+    @FormUrlEncoded
+    @POST("api/v5/password")
+    fun sendPassword(@Field("password") password : String) : Observable<PasswordResult>
+
+    @FormUrlEncoded
+    @POST("api/v5/otp")
+    fun sendOTP(@Field("otp") otp : String) : Observable<OTPResult>
+
 
     @FormUrlEncoded
     @POST("api/v2/persons")
@@ -41,5 +50,10 @@ interface ApiInterface {
     @GET("api/v7/updated_details_of_home")
     fun update_details() : Observable<UpdateDetailsResult>
 
+
+    @FormUrlEncoded
+    @POST("api/v3/address")
+    fun sendLocation(@Field("latitude") latitude : String,
+                     @Field("longitude") longitude : String) : Observable<LocationResult>
 
 }
