@@ -54,13 +54,18 @@ class Login : AppCompatActivity() {
         mApiInterface=RetrofitClient.getClient()
         Log.e("qqqqqqqqqqqqqqqq","call inside again login")
         btnlogin.setOnClickListener{
-            if(editText_login_phone_number.text.toString() != null && editText_login_password.text.toString() != null)
+            if(!editText_login_phone_number.text.toString().isEmpty() && !editText_login_password.text.toString().isEmpty())
             {
-                //userLogin()
-                session?.createLoginSession(editText_login_phone_number.text.toString(), editText_login_password.text.toString())
-                val i= Intent(applicationContext,Home::class.java)
-                startActivity(i)
-                finish()
+                if(Validation.isValidPhoneNumber(editText_login_phone_number.text.toString())) {
+                    userLogin()
+                }
+                else
+                {
+                    showDialog(1) // Invalid Phone number
+                }
+                //val i= Intent(applicationContext,Home::class.java)
+                //startActivity(i)
+                //finish()
             }
             else
             {
@@ -93,9 +98,11 @@ class Login : AppCompatActivity() {
                             progressDialog?.dismiss()
                             if(result.status == true)
                             {
+                                session?.createLoginSession(editText_login_phone_number.text.toString(), editText_login_password.text.toString())
                                 Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
                                 val i= Intent(applicationContext,Home::class.java)
                                 startActivity(i)
+                                finish()
                             }
                             else
                             {

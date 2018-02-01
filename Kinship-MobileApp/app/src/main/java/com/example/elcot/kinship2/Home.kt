@@ -3,18 +3,26 @@ package com.example.elcot.kinship2
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
+import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_user_profile.*
 
 class Home : AppCompatActivity() {
-
     var session: SharedData? = null
     var select : Fragment? = null
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -47,8 +55,6 @@ class Home : AppCompatActivity() {
         //supportActionBar?.setDisplayShowTitleEnabled(true)
        // supportActionBar?.setDisplayUseLogoEnabled(true)
        // supportActionBar?.title="Hello"
-
-        startAlert()
 
         session = SharedData(this)
 

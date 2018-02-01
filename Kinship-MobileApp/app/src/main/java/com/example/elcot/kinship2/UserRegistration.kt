@@ -116,7 +116,7 @@ class UserRegistration : AppCompatActivity() {
                 .subscribe(
                         { result ->
                             progressDialog?.dismiss()
-                            Toast.makeText(applicationContext,"$result.otp",Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext,"${result.otp}",Toast.LENGTH_LONG).show()
                             //otp = result.otp
                             //user_id = result.user_id
                             if(result.status == true)
@@ -232,7 +232,7 @@ class UserRegistration : AppCompatActivity() {
                             {
                                 alertDialog1?.dismiss()
                                 Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
-                                val i=Intent(applicationContext,Login::class.java)
+                                val i=Intent(applicationContext,UserProfile::class.java)
                                 //startAlert()
                                 startActivity(i)
                             }

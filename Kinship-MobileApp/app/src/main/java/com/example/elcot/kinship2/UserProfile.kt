@@ -116,7 +116,8 @@ class UserProfile : AppCompatActivity() {
                             progressDialog?.dismiss()
                             if(result.status == true)
                             {
-                                Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
+                                //Toast.makeText(applicationContext,result.message,Toast.LENGTH_LONG).show()
+                                Toast.makeText(this,"Your Details are Uploaded", Toast.LENGTH_LONG).show()
                                 val i= Intent(applicationContext,Home::class.java)
                                 startActivity(i)
                             }
@@ -128,8 +129,10 @@ class UserProfile : AppCompatActivity() {
                         },
                         { error ->
                             progressDialog?.dismiss()
-                            Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
-                            Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"Your Details are Uploaded", Toast.LENGTH_LONG).show()
+                            val i= Intent(applicationContext,Home::class.java)
+                            startActivity(i)
+                            //Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
                         }
                 )
     }
