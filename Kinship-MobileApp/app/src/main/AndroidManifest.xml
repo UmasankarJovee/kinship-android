@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.elcot.kinship2">
+    package="com.joveeinfotech.kinship">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -12,7 +12,6 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
         android:supportsRtl="true">
         <activity
             android:name=".MainActivity"
@@ -31,7 +30,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -43,8 +42,7 @@
         <activity
             android:name=".Home"
             android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar">
-        </activity>
+            android:theme="@style/AppThemeActionBar"></activity>
         <activity
             android:name=".UserProfile"
             android:theme="@style/AppThemeNoActionBar" />
@@ -55,7 +53,17 @@
         <service
             android:name=".LocationService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity
+            android:name=".UserAddress"
+            android:theme="@style/AppThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
