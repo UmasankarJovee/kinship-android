@@ -25,7 +25,7 @@ class LocationService : Service(){
     var locationListener: LocationListener? = null
     var context: Context? = this
 
-    internal var mApiInterface: ApiInterface? = null
+    //internal var mApiInterface: ApiInterface? = null
     internal var mCompositeDisposable: Disposable? = null
 
     var networkCall : APICall? = null
@@ -33,7 +33,7 @@ class LocationService : Service(){
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
 
-        mApiInterface= RetrofitClient.getClient()
+        //mApiInterface= RetrofitClient.getClient()
         networkCall = APICall(this)
         lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationListener = MyLocationListener()

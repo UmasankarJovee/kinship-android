@@ -38,7 +38,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
     var otp : Long? = null
     var user_id : Int? = null
 
-    var mApiInterface : ApiInterface? = null
+    //var mApiInterface : ApiInterface? = null
     private var mCompositeDisposable: Disposable? = null
 
     var progressDialog: ProgressDialog? = null
@@ -90,7 +90,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
             }
         }
 
-        mApiInterface=RetrofitClient.getClient()
+        //mApiInterface=RetrofitClient.getClient()
 
         button_register.setOnClickListener{
 
@@ -170,7 +170,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
 
     }
 
-    private fun userRegister1() {
+    /*private fun userRegister1() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Registering...")
         progressDialog?.show()
@@ -196,6 +196,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                         }
                 )
     }
+*/
 
     private fun confirmotp() {
 
@@ -220,7 +221,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
         }
     }
 
-    private fun sendOTP() {
+   /* private fun sendOTP() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Sending Your OTP...")
         progressDialog?.show()
@@ -248,7 +249,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                             Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
                         }
                 )
-    }
+    }*/
 
     private fun confirmPassword() {
 
@@ -277,7 +278,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
         }
     }
 
-    private fun sendPassword() {
+   /* private fun sendPassword() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Setting Password...")
         progressDialog?.show()
@@ -301,8 +302,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                             Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
                         }
                 )
-    }
-
+    }*/
 
     override fun onCreateDialog(id: Int): Dialog? {
         when (id) {

@@ -27,7 +27,6 @@ import java.util.HashMap
 
 class HomeFragment : Fragment(), APIListener{
 
-    var mApiInterface : ApiInterface? = null
     private var mCompositeDisposable : Disposable? = null
     val progressBar : ProgressBar? = null
     var progressDialog: ProgressDialog? = null
@@ -94,7 +93,7 @@ class HomeFragment : Fragment(), APIListener{
         }
     }
 
-    private fun updatedDetails1() {
+    /*private fun updatedDetails1() {
         Log.d("Message", "invoke by method first")
         progressDialog = ProgressDialog(activity, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Please wait...")
@@ -123,7 +122,7 @@ class HomeFragment : Fragment(), APIListener{
                         }
                 )
 
-    }
+    }*/
 
     inner class ImageSliderAdapterClass : PagerAdapter(){
         override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -156,7 +155,6 @@ class HomeFragment : Fragment(), APIListener{
 
         networkCall = APICall(mContext)
 
-        mApiInterface=RetrofitClient.getClient()
         updatedDetails()
     }
 

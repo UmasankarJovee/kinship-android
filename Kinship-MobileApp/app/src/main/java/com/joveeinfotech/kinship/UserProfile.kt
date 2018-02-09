@@ -38,7 +38,7 @@ class UserProfile : AppCompatActivity(), APIListener {
     var cal = Calendar.getInstance()
     var gender : Int? = null
 
-    var mApiInterface : ApiInterface? = null
+    //var mApiInterface : ApiInterface? = null
     private var mCompositeDisposable: Disposable? = null
 
     var progressDialog: ProgressDialog? = null
@@ -51,7 +51,7 @@ class UserProfile : AppCompatActivity(), APIListener {
 
         networkCall = APICall(this)
 
-        mApiInterface=RetrofitClient.getClient()
+        //mApiInterface=RetrofitClient.getClient()
 
         imageView.setImageResource(R.drawable.profile_image)
         imageView.setOnClickListener{
@@ -117,7 +117,7 @@ class UserProfile : AppCompatActivity(), APIListener {
         editText_date_of_birth.setText(sdf.format(cal.time))
     }
 
-    private fun sendUserProfile1() {
+   /* private fun sendUserProfile1() {
         progressDialog = ProgressDialog(this@UserProfile, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Your Details are Storing...")
         progressDialog?.show()
@@ -147,7 +147,7 @@ class UserProfile : AppCompatActivity(), APIListener {
                             Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
                         }
                 )
-    }
+    }*/
 
     override fun onActivityResult(RC: Int, RQC: Int, I: Intent?) {
         super.onActivityResult(RC,RQC,I)
