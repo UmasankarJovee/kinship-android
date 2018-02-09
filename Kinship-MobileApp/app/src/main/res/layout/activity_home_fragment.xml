@@ -9,7 +9,7 @@
     android:fillViewport="true"
     android:scrollbars="none"
     android:background="#f5f5f5"
-    tools:context=".Home">
+    tools:context="kinship.joveeinfotech.kinship.Home">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_home_fragment_constraintlayout"
