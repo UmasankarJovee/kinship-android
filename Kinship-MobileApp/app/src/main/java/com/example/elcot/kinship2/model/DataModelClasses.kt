@@ -1,4 +1,4 @@
-package com.example.elcot.kinship2
+package com.example.elcot.kinship2.model
 
 data class LoginResult(var status: Boolean,
                        var status_value : Int,

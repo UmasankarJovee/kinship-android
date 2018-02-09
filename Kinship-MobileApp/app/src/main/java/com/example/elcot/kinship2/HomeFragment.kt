@@ -18,6 +18,8 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import com.example.elcot.kinship2.contract.KinshipContract.HomeFragmentView
+import com.example.elcot.kinship2.contract.KinshipContract.HomeFragmentPresenter
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -27,8 +29,9 @@ import kotlinx.android.synthetic.main.activity_home_fragment.*
 import kotlinx.android.synthetic.main.activity_home_fragment.view.*
 import kotlinx.android.synthetic.main.alert_blood_donator_instructions.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomeFragmentView {
 
+    private lateinit var homeFragmentPresenter:HomeFragmentPresenter
     var mApiInterface : ApiInterface? = null
     private var mCompositeDisposable : Disposable? = null
     val progressBar : ProgressBar? = null
@@ -54,6 +57,7 @@ class HomeFragment : Fragment() {
         val blooddonatorinstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
         val bloodRequestorInstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
 
+        homeFragmentPresenter=HomeFragmentPresenter(this)
         view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
         blooddonatorinstructionsTextView.setOnClickListener{
             bloodDonatorInstructions()
@@ -65,7 +69,7 @@ class HomeFragment : Fragment() {
         }
         return view
     }
-    private fun bloodDonatorInstructions(){
+    override fun bloodDonatorInstructions(){
         val layoutinflater=LayoutInflater.from(mContext)
         val conformDialog=layoutinflater.inflate(R.layout.alert_blood_donator_instructions,null)
         val alert=AlertDialog.Builder(mContext)
@@ -79,7 +83,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun bloodRequestorInstructions(){
+    override fun bloodRequestorInstructions(){
         val layoutinflater=LayoutInflater.from(mContext)
         val conformDialog=layoutinflater.inflate(R.layout.alert_blood_requestor_instructions,null)
         val alert=AlertDialog.Builder(mContext)
@@ -97,6 +101,7 @@ class HomeFragment : Fragment() {
         progressDialog = ProgressDialog(activity, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Please wait...")
         progressDialog?.show()
+
         Log.d("Message", "invoke by method last")
         mCompositeDisposable=mApiInterface?.update_details("hello")!!.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
