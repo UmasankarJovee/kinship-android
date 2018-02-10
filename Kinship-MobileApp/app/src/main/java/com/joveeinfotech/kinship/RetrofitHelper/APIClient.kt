@@ -1,4 +1,4 @@
-package com.example.prandex_and_05.userregistration
+package com.joveeinfotech.kinship
 
 import android.content.Context
 import retrofit2.Retrofit
@@ -13,7 +13,7 @@ class APIClient {
 
     companion object {
         fun getClient(): APIInterface? = Retrofit.Builder()
-                .baseUrl("http://192.168.0.56/")
+                .baseUrl("http://192.168.1.25/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

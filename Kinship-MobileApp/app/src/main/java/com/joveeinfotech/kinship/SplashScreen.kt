@@ -1,4 +1,4 @@
-package kinship.joveeinfotech.kinship
+package com.joveeinfotech.kinship
 
 import android.content.Intent
 import android.graphics.PixelFormat

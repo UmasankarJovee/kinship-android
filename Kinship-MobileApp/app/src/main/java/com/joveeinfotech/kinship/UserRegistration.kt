@@ -1,4 +1,4 @@
-package kinship.joveeinfotech.kinship
+package com.joveeinfotech.kinship
 
 import android.app.Dialog
 import android.app.ProgressDialog
@@ -15,8 +15,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
+import com.joveeinfotech.kinship.model.OTPResult
+import com.joveeinfotech.kinship.model.PasswordResult
+import com.joveeinfotech.kinship.model.RegisterResult
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -37,7 +38,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
     var otp : Long? = null
     var user_id : Int? = null
 
-    var mApiInterface : ApiInterface? = null
+    //var mApiInterface : ApiInterface? = null
     private var mCompositeDisposable: Disposable? = null
 
     var progressDialog: ProgressDialog? = null
@@ -88,8 +89,6 @@ class UserRegistration : AppCompatActivity(), APIListener {
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
         }
-
-        mApiInterface= RetrofitClient.getClient()
 
         button_register.setOnClickListener{
 
@@ -169,7 +168,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
 
     }
 
-    private fun userRegister1() {
+    /*private fun userRegister1() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Registering...")
         progressDialog?.show()
@@ -195,6 +194,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                         }
                 )
     }
+*/
 
     private fun confirmotp() {
 
@@ -219,7 +219,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
         }
     }
 
-    private fun sendOTP() {
+   /* private fun sendOTP() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Sending Your OTP...")
         progressDialog?.show()
@@ -247,7 +247,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                             Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
                         }
                 )
-    }
+    }*/
 
     private fun confirmPassword() {
 
@@ -276,7 +276,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
         }
     }
 
-    private fun sendPassword() {
+   /* private fun sendPassword() {
         progressDialog = ProgressDialog(this@UserRegistration, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Setting Password...")
         progressDialog?.show()
@@ -300,8 +300,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                             Toast.makeText(this, error.message, Toast.LENGTH_LONG).show()
                         }
                 )
-    }
-
+    }*/
 
     override fun onCreateDialog(id: Int): Dialog? {
         when (id) {

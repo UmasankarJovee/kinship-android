@@ -12,23 +12,16 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.widget.Toast
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
 import com.joveeinfotech.kinship.model.LoginResult
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kinship.joveeinfotech.kinship.RetrofitClient
-import kinship.joveeinfotech.kinship.SharedData
-import kinship.joveeinfotech.kinship.UserRegistration
-import kinship.joveeinfotech.kinship.Validation
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 
 class Login : AppCompatActivity(), APIListener {
 
-    var mApiInterface : APIInterface? = null
     private var mCompositeDisposable: Disposable? = null
 
     var progressDialog: ProgressDialog? = null
@@ -63,7 +56,7 @@ class Login : AppCompatActivity(), APIListener {
             this@Login.finish()
         }
 
-        mApiInterface= RetrofitClient.getClient()
+
         Log.e("qqqqqqqqqqqqqqqq","call inside again login")
         btnlogin.setOnClickListener{
             if(!editText_login_phone_number.text.toString().isEmpty() && !editText_login_password.text.toString().isEmpty())
@@ -109,7 +102,7 @@ class Login : AppCompatActivity(), APIListener {
         //Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
 
-    private fun userLogin1() {
+    /*private fun userLogin1() {
         progressDialog = ProgressDialog(this@Login, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Authenticating...")
         progressDialog?.show()
@@ -138,6 +131,7 @@ class Login : AppCompatActivity(), APIListener {
                         }
                 )
     }
+*/
 
     override fun onCreateDialog(id: Int): Dialog? {
         when (id) {

@@ -1,4 +1,4 @@
-package com.example.prandex_and_05.userregistration
+package com.joveeinfotech.kinship
 
 import okhttp3.ResponseBody
 import retrofit2.Call

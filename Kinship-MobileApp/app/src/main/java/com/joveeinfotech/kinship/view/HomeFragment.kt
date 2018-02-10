@@ -13,10 +13,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIInterface
-import com.example.prandex_and_05.userregistration.APIListener
+import com.joveeinfotech.kinship.APICall
+import com.joveeinfotech.kinship.APIListener
+import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.HomeFragmentView
+import com.joveeinfotech.kinship.model.UpdateDetailsResult
 import com.joveeinfotech.kinship.presenter.HomeFragmentPresenter
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,14 +29,9 @@ import kotlinx.android.synthetic.main.activity_user_registration.*
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 
-class HomeFragment : Fragment(), APIListener,HomeFragmentView {
+class HomeFragment : Fragment(), HomeFragmentView {
 
     private lateinit var homeFragmentPresenter: HomeFragmentPresenter
-    var mApiInterface : APIInterface? = null
-    private var mCompositeDisposable : Disposable? = null
-    val progressBar : ProgressBar? = null
-    var progressDialog: ProgressDialog? = null
-
     var imageArray : Array<String> = arrayOf(
     "https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
             "https://cdn.arstechnica.net/wp-content/uploads/2013/05/donate_blood_rotator.jpg",
@@ -44,7 +40,6 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
     var alert_blood_donator_instructions_exit: ImageView? = null
     var alert_blood_requestor_instructions_exit: ImageView? = null
     lateinit var mContext:Context
-    var networkCall : APICall? = null
 
 
     override fun onAttach(context: Context) {
@@ -58,7 +53,7 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
         val blooddonatorinstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
         val bloodRequestorInstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
 
-        homeFragmentPresenter=HomeFragmentPresenter(this)
+        homeFragmentPresenter=HomeFragmentPresenter(this,mContext)
         view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
         blooddonatorinstructionsTextView.setOnClickListener{
             bloodDonatorInstructions()
@@ -98,7 +93,7 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
         }
     }
 
-    private fun updatedDetails1() {
+    /*private fun updatedDetails1() {
         Log.d("Message", "invoke by method first")
         progressDialog = ProgressDialog(activity, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Please wait...")
@@ -128,7 +123,7 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
                         }
                 )
 
-    }
+    }*/
 
     inner class ImageSliderAdapterClass : PagerAdapter(){
         override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -159,17 +154,21 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_home)
 
-        networkCall = APICall(mContext)
-
-        mApiInterface= RetrofitClient.getClient()
-        updatedDetails()
+        //networkCall = APICall(mContext)
     }
 
-    private fun updatedDetails() {
-        val queryParams = HashMap<String, String>()
+    /*override fun updatedDetails(){
+        homeFragmentPresenter.Click()
+        *//*val queryParams = HashMap<String, String>()
         queryParams.put("nothing", "hello")
         Log.e("MAIN ACTIVITY : ","inside button" )
-        networkCall?.APIRequest("api/v0/updated_detail_of_home",queryParams, UpdateDetailsResult::class.java,this, 1, "Fetching...")
+        networkCall?.APIRequest("api/v0/updated_detail_of_home",queryParams, UpdateDetailsResult::class.java,this, 1, "Fetching...")*//*
+    }*/
+
+    override fun setViewData(count_of_hospitals: String, count_of_donors: String, count_of_users: String) {
+        activity_home_fragment_hospitals_count_TextView?.text=count_of_hospitals
+        activity_home_fragment_donator_count_TextView?.text=count_of_donors
+        activity_home_fragment_users_count_TextView?.text=count_of_users
     }
     companion object {
         fun newInstance() : HomeFragment {
@@ -177,7 +176,7 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
         }
     }
 
-    override fun onSuccess(from: Int, response: Any) {
+    /*override fun onSuccess(from: Int, response: Any) {
         when(from) {
             1 -> { // Home Page Contents
                 val result = response as UpdateDetailsResult
@@ -196,10 +195,5 @@ class HomeFragment : Fragment(), APIListener,HomeFragmentView {
                 }
             }
         }
-    }
-
-    override fun onFailure(from: Int, t: Throwable) {}
-    override fun onNetworkFailure(from: Int) {}
-
-
+    }*/
 }

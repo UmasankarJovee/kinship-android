@@ -12,10 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import kinship.joveeinfotech.kinship.HomeFragment
-import kinship.joveeinfotech.kinship.RequestFragment
-import kinship.joveeinfotech.kinship.SettingsFragment
-import kinship.joveeinfotech.kinship.SharedData
+import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
 

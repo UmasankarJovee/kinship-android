@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
-            android:name="kinship.joveeinfotech.kinship.MainActivity"
+            android:name="com.joveeinfotech.kinship.MainActivity"
             android:icon="@drawable/logo"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
@@ -25,43 +25,49 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="kinship.joveeinfotech.kinship.SplashScreen"
+            android:name="com.joveeinfotech.kinship.SplashScreen"
             android:theme="@style/Splash">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
-            android:name="kinship.joveeinfotech.kinship.Login"
+            android:name="com.joveeinfotech.kinship.Login"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="kinship.joveeinfotech.kinship.UserRegistration"
+            android:name="com.joveeinfotech.kinship.UserRegistration"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="kinship.joveeinfotech.kinship.Home"
+            android:name="com.joveeinfotech.kinship.Home"
             android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar"></activity>
-        <activity
-            android:name="kinship.joveeinfotech.kinship.UserProfile"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="kinship.joveeinfotech.kinship.UserProfileEdit"
-            android:theme="@style/AppThemeNoActionBar" />
-
-        <service
-            android:name="kinship.joveeinfotech.kinship.LocationService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity
-            android:name="kinship.joveeinfotech.kinship.UserAddress"
-            android:theme="@style/AppThemeNoActionBar">
+            android:theme="@style/AppThemeActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.joveeinfotech.kinship.UserProfile"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name="com.joveeinfotech.kinship.UserProfileEdit"
+            android:theme="@style/AppThemeNoActionBar" />
+
+        <service
+            android:name="com.joveeinfotech.kinship.LocationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name="com.joveeinfotech.kinship.UserAddress"
+            android:theme="@style/AppThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

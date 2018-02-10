@@ -1,11 +1,10 @@
-package kinship.joveeinfotech.kinship
+package com.joveeinfotech.kinship
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
+import com.joveeinfotech.kinship.model.CountryResult
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 

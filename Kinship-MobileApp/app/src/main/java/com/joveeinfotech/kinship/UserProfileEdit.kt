@@ -1,4 +1,4 @@
-package kinship.joveeinfotech.kinship
+package com.joveeinfotech.kinship
 
 import android.app.DatePickerDialog
 import android.support.v7.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package kinship.joveeinfotech.kinship
+package com.joveeinfotech.kinship
 
 import android.annotation.SuppressLint
 import android.content.Context

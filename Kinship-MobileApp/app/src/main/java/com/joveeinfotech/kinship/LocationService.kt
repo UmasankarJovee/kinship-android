@@ -11,12 +11,8 @@ import android.os.Bundle
 import android.os.IBinder
 import android.support.v4.app.ActivityCompat
 import android.util.Log
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIInterface
-import com.example.prandex_and_05.userregistration.APIListener
 import com.joveeinfotech.kinship.model.LocationResult
 import io.reactivex.disposables.Disposable
-import kinship.joveeinfotech.kinship.RetrofitClient
 import java.util.HashMap
 
 class LocationService : Service(){
@@ -24,8 +20,6 @@ class LocationService : Service(){
     var lm: LocationManager? = null
     var locationListener: LocationListener? = null
     var context: Context? = this
-
-    internal var mApiInterface: APIInterface? = null
     internal var mCompositeDisposable: Disposable? = null
 
     var networkCall : APICall? = null
@@ -33,7 +27,7 @@ class LocationService : Service(){
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
 
-        mApiInterface= RetrofitClient.getClient()
+        //mApiInterface= RetrofitClient.getClient()
         networkCall = APICall(this)
         lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationListener = MyLocationListener()

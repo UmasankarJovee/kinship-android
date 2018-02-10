@@ -1,4 +1,4 @@
-package kinship.joveeinfotech.kinship
+package com.joveeinfotech.kinship
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -14,8 +14,9 @@ import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.widget.Toast
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
+import com.joveeinfotech.kinship.Home
+import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.model.UserProfileResult
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -37,7 +38,7 @@ class UserProfile : AppCompatActivity(), APIListener {
     var cal = Calendar.getInstance()
     var gender : Int? = null
 
-    var mApiInterface : ApiInterface? = null
+    //var mApiInterface : ApiInterface? = null
     private var mCompositeDisposable: Disposable? = null
 
     var progressDialog: ProgressDialog? = null
@@ -49,9 +50,6 @@ class UserProfile : AppCompatActivity(), APIListener {
         setContentView(R.layout.activity_user_profile)
 
         networkCall = APICall(this)
-
-        mApiInterface= RetrofitClient.getClient()
-
         imageView.setImageResource(R.drawable.profile_image)
         imageView.setOnClickListener{
             val i= Intent()
@@ -116,7 +114,7 @@ class UserProfile : AppCompatActivity(), APIListener {
         editText_date_of_birth.setText(sdf.format(cal.time))
     }
 
-    private fun sendUserProfile1() {
+   /* private fun sendUserProfile1() {
         progressDialog = ProgressDialog(this@UserProfile, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Your Details are Storing...")
         progressDialog?.show()
@@ -146,7 +144,7 @@ class UserProfile : AppCompatActivity(), APIListener {
                             Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
                         }
                 )
-    }
+    }*/
 
     override fun onActivityResult(RC: Int, RQC: Int, I: Intent?) {
         super.onActivityResult(RC,RQC,I)
