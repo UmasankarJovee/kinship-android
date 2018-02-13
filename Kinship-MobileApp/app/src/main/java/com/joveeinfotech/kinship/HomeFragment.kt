@@ -13,19 +13,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
 import com.squareup.picasso.Picasso
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_home_fragment.*
-import kotlinx.android.synthetic.main.activity_home_fragment.view.*
-import kotlinx.android.synthetic.main.activity_user_registration.*
-import org.jetbrains.anko.design.snackbar
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.HashMap
 
-class HomeFragment : Fragment(), APIListener{
+class HomeFragment : Fragment(), APIListener {
 
     private var mCompositeDisposable : Disposable? = null
     val progressBar : ProgressBar? = null
@@ -49,7 +43,7 @@ class HomeFragment : Fragment(), APIListener{
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        var view:View=inflater.inflate(R.layout.activity_home_fragment,container,false)
+        var view:View=inflater.inflate(R.layout.fragment_home,container,false)
         val blooddonatorinstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
         val bloodRequestorInstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
 

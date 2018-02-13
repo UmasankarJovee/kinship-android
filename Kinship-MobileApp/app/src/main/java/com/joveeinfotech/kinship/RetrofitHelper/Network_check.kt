@@ -1,4 +1,4 @@
-package com.example.prandex_and_05.userregistration
+package com.joveeinfotech.kinship
 
 import android.app.Activity
 import android.content.Context

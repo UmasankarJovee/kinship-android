@@ -22,8 +22,12 @@ data class UserProfileResult(var status : Boolean, var status_value: Int, var me
 
 data class UpdateDetailsResult(var count_of_hospitals : String,var count_of_users : String,var count_of_donors : String,var message: String,var status : Boolean)
 
-data class CountryResult(var country : String)
+data class CountryResult(var country : ArrayList<String>)
 
-data class StateResult(var stateNames : String)
+data class StateResult(var state : ArrayList<String>)
 
-data class DistrictResult(var districtNames : String)
+data class SendAddressResult(var status :Boolean)
+
+data class DistrictResult(var district : ArrayList<String>)
+
+data class UserAdditionalDetailsResult(var status: Boolean)

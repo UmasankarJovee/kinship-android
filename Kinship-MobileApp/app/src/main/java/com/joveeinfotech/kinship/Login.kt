@@ -12,8 +12,6 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.widget.Toast
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

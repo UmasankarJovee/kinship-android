@@ -1,6 +1,5 @@
 package com.joveeinfotech.kinship
 
-import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.DialogInterface
@@ -15,12 +14,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.Toast
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_user_registration.*
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
@@ -92,7 +86,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
 
         //mApiInterface=RetrofitClient.getClient()
 
-        button_register.setOnClickListener{
+        button_send_address.setOnClickListener{
 
             if(Validation.isValidPhoneNumber(editText_phone_number.text.toString()) && blood_group != "Select Blood Group")
             {
@@ -149,7 +143,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                 val registerResult = response as PasswordResult
                 Log.e("API CALL : ","inside Main activity and onSuccess")
                 if (registerResult.status) {
-                    val i=Intent(applicationContext,UserProfile::class.java)
+                    val i=Intent(applicationContext,UserDetails::class.java)
                     //startAlert()
                     startActivity(i)
                     Log.e("API CALL : ","inside Main activity and onSucces and if condition")

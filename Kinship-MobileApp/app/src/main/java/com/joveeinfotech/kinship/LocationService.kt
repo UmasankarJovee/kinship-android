@@ -11,8 +11,6 @@ import android.os.Bundle
 import android.os.IBinder
 import android.support.v4.app.ActivityCompat
 import android.util.Log
-import com.example.prandex_and_05.userregistration.APICall
-import com.example.prandex_and_05.userregistration.APIListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

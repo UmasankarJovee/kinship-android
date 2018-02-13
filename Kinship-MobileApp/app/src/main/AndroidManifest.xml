@@ -14,23 +14,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
-            android:name=".MainActivity"
-            android:icon="@drawable/logo"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -42,7 +31,7 @@
         <activity
             android:name=".Home"
             android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar"></activity>
+            android:theme="@style/AppThemeActionBar" />
         <activity
             android:name=".UserProfile"
             android:theme="@style/AppThemeNoActionBar" />
@@ -57,11 +46,16 @@
 
         <activity
             android:name=".UserAddress"
+            android:theme="@style/HomeActionBar">
+        </activity>
+        <activity
+            android:name=".UserDetails"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

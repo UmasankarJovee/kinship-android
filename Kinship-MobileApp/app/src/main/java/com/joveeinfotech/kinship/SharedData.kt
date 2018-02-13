@@ -65,7 +65,7 @@ class SharedData {
         // Check login status
         if (this.isLoggedIn()) {
             // user is not logged in redirect him to Login Activity
-            val i = Intent(_context, UserProfile::class.java)
+            val i = Intent(_context, UserDetails::class.java)
             // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
