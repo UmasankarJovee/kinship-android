@@ -89,6 +89,10 @@ class UserAdditionalDetailsFragment : Fragment(), APIListener {
                 sendAdditionalDetails()
             }
         }
+        view.floatingActionButton_skip.setOnClickListener{
+            val i = Intent(mContext,Home::class.java)
+            startActivity(i)
+        }
         return view
     }
 
@@ -165,6 +169,4 @@ class UserAdditionalDetailsFragment : Fragment(), APIListener {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
-
-
 }

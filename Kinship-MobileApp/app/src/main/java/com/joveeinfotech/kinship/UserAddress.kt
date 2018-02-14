@@ -179,6 +179,8 @@ class UserAddress : AppCompatActivity(), APIListener {
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val addressResult = response as SendAddressResult
                 if (addressResult.status) {
+
+
                     Toast.makeText(applicationContext, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)

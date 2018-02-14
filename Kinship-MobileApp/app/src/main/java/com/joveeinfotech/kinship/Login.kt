@@ -169,7 +169,7 @@ class Login : AppCompatActivity(), APIListener {
                 if (loginResult.status) {
                     session?.createLoginSession(editText_login_phone_number.text.toString(), editText_login_password.text.toString())
                     Toast.makeText(applicationContext,loginResult.message,Toast.LENGTH_LONG).show()
-                    val i= Intent(applicationContext,Home::class.java)
+                    val i= Intent(applicationContext,UserDetails::class.java)
                     startActivity(i)
                     finish()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")

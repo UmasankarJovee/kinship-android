@@ -77,15 +77,20 @@ class UserAddressFragment : Fragment(), APIListener {
         val context = this
         collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(mContext, R.color.toolBarColor))
 
-        getCountryDetails()
+        //getCountryDetails()
 
         view.button_send_address.setOnClickListener {
-            if (country != null && state != null && district != null && editText_city.text.toString() != null && editText_street.text.toString() != null) {
+            var trans = fragmentManager?.beginTransaction()
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.replace(R.id.user_details_frame_layout,UserAdditionalDetailsFragment.newInstance())
+            trans?.commit()
+
+            /*if (country != null && state != null && district != null && editText_city.text.toString() != null && editText_street.text.toString() != null) {
                 sendAddress()
             } else {
                 //showDialog(0) // Please fill the all the fields
                 Toast.makeText(mContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
-            }
+            }*/
         }
         return view
     }
@@ -220,6 +225,12 @@ class UserAddressFragment : Fragment(), APIListener {
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val addressResult = response as SendAddressResult
                 if (addressResult.status) {
+                    if(!UserDetails().isCompleteAdditionalDetails!!){
+                        val trans = fragmentManager?.beginTransaction()
+                        trans?.replace(R.id.user_details_frame_layout,UserAdditionalDetailsFragment.newInstance())
+                        trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+                        trans?.commit()
+                    }
                     Toast.makeText(mContext, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)

@@ -41,8 +41,7 @@ class UserProfileFragment : Fragment(), APIListener {
     var networkCall: APICall? = null
 
     var resolver: ContentResolver? = null
-
-    //var view1 : View? = null
+   //var view1 : View? = null
 
     override fun onAttach(context: Context) {
         this.mContext = context
@@ -107,12 +106,12 @@ class UserProfileFragment : Fragment(), APIListener {
                 Log.e("inside create view an: " ,ba.toString())
             }
         }*/
+
         return view
     }
 
     private fun sendUserProfile() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", "27")
         queryParams.put("first_name", editText_first_name.text.toString())
         queryParams.put("last_name", editText_last_name.text.toString())
         queryParams.put("date_of_birth", editText_date_of_birth.text.toString())
@@ -165,10 +164,12 @@ class UserProfileFragment : Fragment(), APIListener {
                 val result = response as UserProfileResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
-                    val trans = fragmentManager?.beginTransaction()
-                    trans?.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
-                    trans?.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    trans?.commit()
+                    if(!UserDetails().isCompleteAddress!!){
+                        val trans = fragmentManager?.beginTransaction()
+                        trans?.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
+                        trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+                        trans?.commit()
+                    }
                     /*val i = Intent(mContext, Home::class.java)
                     startActivity(i)*/
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")

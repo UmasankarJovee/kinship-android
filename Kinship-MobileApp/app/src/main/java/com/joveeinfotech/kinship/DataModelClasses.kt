@@ -1,13 +1,12 @@
 package com.joveeinfotech.kinship
 
 data class LoginResult(var status: Boolean,
-                       var status_value : Int,
-                       var message: String,
-                       var user_id : Int,
-                       var isRegisterUserProfile : Boolean,
-                       var isRegisterHomeAddress : Boolean,
-                       var isRegisterHealthDetails: Boolean,
-                       var isRegisterAdditionalDetails : Boolean)
+                       var message: String)
+
+data class UserDetailResult(var isRegisterUserProfile : Boolean,
+                            var isRegisterHomeAddress : Boolean,
+                            var isRegisterHealthDetails: Boolean,
+                            var isRegisterAdditionalDetails : Boolean)
 
 data class LocationResult(var message: String)
 

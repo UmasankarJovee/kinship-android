@@ -143,7 +143,7 @@ class UserRegistration : AppCompatActivity(), APIListener {
                 val registerResult = response as PasswordResult
                 Log.e("API CALL : ","inside Main activity and onSuccess")
                 if (registerResult.status) {
-                    val i=Intent(applicationContext,UserDetails::class.java)
+                    val i=Intent(applicationContext,Login::class.java)
                     //startAlert()
                     startActivity(i)
                     Log.e("API CALL : ","inside Main activity and onSucces and if condition")
