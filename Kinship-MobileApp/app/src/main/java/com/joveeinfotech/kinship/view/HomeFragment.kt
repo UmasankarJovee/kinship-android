@@ -29,6 +29,8 @@ import kotlinx.android.synthetic.main.activity_user_registration.*
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 
+/*
+* HomeFragment It is the Home */
 class HomeFragment : Fragment(), HomeFragmentView {
 
     private lateinit var homeFragmentPresenter: HomeFragmentPresenter
