@@ -51,7 +51,10 @@ class CustomAdapter(val list:List<Album>, val listener: Listener):RecyclerView.A
             }
             Log.e("Message","Before setOnClickListener" )
             val card = itemView.findViewById<CardView>(R.id.cards_layout_CardView)
-            card.setOnClickListener{listener.onItemClick(data)}
+            card.setOnClickListener{
+                if(data.text == "Language") listener.languageSettings()
+                else listener.onItemClick(data)
+            }
         }
     }
 }

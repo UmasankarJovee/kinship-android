@@ -20,5 +20,6 @@ interface KinshipContract {
     interface Listener {
         fun onItemClick(data: Album)
         fun displayResult(result:Boolean)
+        fun languageSettings()
     }
 }

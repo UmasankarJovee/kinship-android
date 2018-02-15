@@ -52,4 +52,8 @@
         <item name="colorAccent">#a6342c</item>
     </style>
 
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

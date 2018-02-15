@@ -35,4 +35,7 @@
     <string name="settingsfragment_cardview1_textview">Edit Profile</string>
     <string name="settingsfragment_cardview2_textview">Notifications</string>
     <string name="settingsfragment_cardview3_textview">Language</string>
+    <string name="alert_language_settings_cardView_textView">Language Settings</string>
+    <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
+    <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>
 </resources>

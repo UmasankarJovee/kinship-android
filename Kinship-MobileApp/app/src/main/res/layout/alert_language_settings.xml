@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none">
+
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@null">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/alert_language_settings_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/alert_language_settings_cardView_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/alert_language_settings_cardView_constraintLayout_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:text="@string/alert_language_settings_cardView_textView"
+                android:textSize="25dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ScrollView
+                android:id="@+id/alert_language_settings_cardView_constraintLayout_scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="126dp"
+                app:layout_constraintBottom_toTopOf="@+id/alert_language_settings_cardView_constraintLayout_textViewBorder"
+                app:layout_constraintTop_toBottomOf="@+id/alert_language_settings_cardView_constraintLayout_textView">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"></android.support.v7.widget.RecyclerView>
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/alert_language_settings_cardView_constraintLayout_textViewBorder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="55dp"
+                android:background="@drawable/textview_border_top"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <Button
+                android:id="@+id/alert_language_settings_cardView_constraintLayout_cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:background="@color/white"
+                android:text="@string/alert_language_settings_cardView_constraintLayout_cancelButton"
+                android:textColor="@color/lightgreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alert_language_settings_cardView_constraintLayout_textViewBorder" />
+
+            <Button
+                android:id="@+id/alert_language_settings_cardView_constraintLayout_okButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/white"
+                android:text="@string/alert_language_settings_cardView_constraintLayout_okButton"
+                android:textColor="@color/lightgreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alert_language_settings_cardView_constraintLayout_textViewBorder" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/alert_language_settings_circleImageView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="252dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:elevation="8dp"
+        android:src="@mipmap/language_settings"
+        app:layout_constraintBottom_toBottomOf="@+id/alert_language_settings_cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</RelativeLayout>
+    </ScrollView>
