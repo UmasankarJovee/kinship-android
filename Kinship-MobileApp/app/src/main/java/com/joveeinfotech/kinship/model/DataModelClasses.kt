@@ -1,5 +1,7 @@
 package com.joveeinfotech.kinship.model
 
+import android.graphics.Bitmap
+
 data class LoginResult(var status: Boolean,
                        var message: String)
 
@@ -30,3 +32,6 @@ data class SendAddressResult(var status :Boolean)
 data class DistrictResult(var district : ArrayList<String>)
 
 data class UserAdditionalDetailsResult(var status: Boolean)
+
+data class Album(val image:Bitmap, val text: String)
+

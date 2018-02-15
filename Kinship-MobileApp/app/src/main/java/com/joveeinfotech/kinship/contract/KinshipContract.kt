@@ -1,6 +1,6 @@
 package com.joveeinfotech.kinship.contract
 
-import android.app.Dialog
+import com.joveeinfotech.kinship.model.Album
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
@@ -33,10 +33,15 @@ interface KinshipContract {
     interface RegisterView{
         fun closeActivity()
     }
-    interface RegisterPresenterPresenter{
+    interface RegisterPresenterPresenter {
         fun initPresenter()
-        fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group : String)
+        fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String)
         fun confirmOTP()
         fun confirmPassword()
     }
+    interface Listener {
+        fun onItemClick(data: Album)
+        fun displayResult(result:Boolean)
+    }
+
 }

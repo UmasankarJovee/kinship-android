@@ -25,8 +25,8 @@ import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.HashMap
-
-
+/*
+* HomeFragment It is the Home */
 class HomeFragment : Fragment(), HomeFragmentView {
 
     private lateinit var homeFragmentPresenter: HomeFragmentPresenter
