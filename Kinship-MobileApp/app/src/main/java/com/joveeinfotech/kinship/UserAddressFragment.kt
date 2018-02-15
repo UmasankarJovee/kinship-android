@@ -26,8 +26,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.joveeinfotech.kinship.model.CountryResult
+import com.joveeinfotech.kinship.model.*
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_user_address.*
+import kotlinx.android.synthetic.main.fragment_user_address.*
 import kotlinx.android.synthetic.main.fragment_user_address.view.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -80,10 +82,11 @@ class UserAddressFragment : Fragment(), APIListener {
         //getCountryDetails()
 
         view.button_send_address.setOnClickListener {
-            var trans = fragmentManager?.beginTransaction()
+            sendAddress1()
+            /*var trans = fragmentManager?.beginTransaction()
             trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
             trans?.replace(R.id.user_details_frame_layout,UserAdditionalDetailsFragment.newInstance())
-            trans?.commit()
+            trans?.commit()*/
 
             /*if (country != null && state != null && district != null && editText_city.text.toString() != null && editText_street.text.toString() != null) {
                 sendAddress()
@@ -128,7 +131,17 @@ class UserAddressFragment : Fragment(), APIListener {
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
     }
-
+    private fun sendAddress1() {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("country", "India")
+        queryParams.put("state", "TAmilnadu")
+        queryParams.put("district","Madurai")
+        queryParams.put("city","Madurai")
+        queryParams.put("locality", "KK Nagar")
+        queryParams.put("street_name", "Vinayagar")
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -225,7 +238,7 @@ class UserAddressFragment : Fragment(), APIListener {
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val addressResult = response as SendAddressResult
                 if (addressResult.status) {
-                    if(!UserDetails().isCompleteAdditionalDetails!!){
+                    if(true){
                         val trans = fragmentManager?.beginTransaction()
                         trans?.replace(R.id.user_details_frame_layout,UserAdditionalDetailsFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)

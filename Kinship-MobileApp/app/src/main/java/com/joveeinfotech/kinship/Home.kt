@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
 
@@ -21,15 +22,15 @@ class Home : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                select=HomeFragment.newInstance()
+                select= HomeFragment.newInstance()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_request -> {
-                select=RequestFragment.newInstance()
+                select= RequestFragment.newInstance()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_setting -> {
-                select=SettingsFragment.newInstance()
+                select= SettingsFragment.newInstance()
                 //return@OnNavigationItemSelectedListener true
             }
         }
@@ -60,7 +61,7 @@ class Home : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
-        trans.replace(R.id.frame_layout,HomeFragment.newInstance())
+        trans.replace(R.id.frame_layout, HomeFragment.newInstance())
         trans.commit()
     }
 
@@ -92,7 +93,7 @@ class Home : AppCompatActivity() {
         when (item.itemId) {
             0 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                val i=Intent(applicationContext,UserProfileEdit::class.java)
+                val i=Intent(applicationContext, UserProfileEdit::class.java)
                 startActivity(i)
                 return true
             }

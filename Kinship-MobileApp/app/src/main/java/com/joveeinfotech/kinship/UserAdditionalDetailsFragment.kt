@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.joveeinfotech.kinship.model.UserAdditionalDetailsResult
 import kotlinx.android.synthetic.main.fragment_user_additional_details.*
 import kotlinx.android.synthetic.main.fragment_user_additional_details.view.*
 import java.util.ArrayList
@@ -98,10 +99,9 @@ class UserAdditionalDetailsFragment : Fragment(), APIListener {
 
     private fun sendAdditionalDetails() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", "27")
-        queryParams.put("status_of_person", category_of_person!!)
+        queryParams.put("occupation", category_of_person!!)
         queryParams.put("phone_number", additionalPhoneNumber!!)
-        queryParams.put("email", additionalEmail!!)
+        queryParams.put("address", additionalEmail!!)
         queryParams.put("social_profile",socialProfile!!)
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v9/optional", queryParams, UserAdditionalDetailsResult::class.java, this, 1, "Sending your other details...")

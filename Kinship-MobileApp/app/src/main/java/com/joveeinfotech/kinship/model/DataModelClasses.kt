@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.model
 
 data class LoginResult(var status: Boolean,
                        var message: String)

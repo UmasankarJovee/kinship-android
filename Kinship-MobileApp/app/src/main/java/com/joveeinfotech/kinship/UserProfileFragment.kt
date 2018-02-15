@@ -13,6 +13,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.kinship.R.id.radio_female
+import com.joveeinfotech.kinship.model.UserProfileResult
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 import kotlinx.android.synthetic.main.fragment_user_profile.view.*
@@ -112,6 +114,7 @@ class UserProfileFragment : Fragment(), APIListener {
 
     private fun sendUserProfile() {
         val queryParams = HashMap<String, String>()
+        queryParams.put("user_id", "81")
         queryParams.put("first_name", editText_first_name.text.toString())
         queryParams.put("last_name", editText_last_name.text.toString())
         queryParams.put("date_of_birth", editText_date_of_birth.text.toString())
@@ -164,7 +167,12 @@ class UserProfileFragment : Fragment(), APIListener {
                 val result = response as UserProfileResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
-                    if(!UserDetails().isCompleteAddress!!){
+                   /* val trans = fragmentManager?.beginTransaction()
+                    trans?.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
+                    trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+                    trans?.commit()*/
+                    if(true){
+
                         val trans = fragmentManager?.beginTransaction()
                         trans?.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)

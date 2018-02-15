@@ -18,7 +18,7 @@ class RequestFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() : RequestFragment{
+        fun newInstance() : RequestFragment {
             return RequestFragment()
         }
     }

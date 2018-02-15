@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.joveeinfotech.kinship.model.UserDetailResult
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap

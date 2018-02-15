@@ -5,6 +5,7 @@ import android.graphics.PixelFormat
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils.*
+import com.joveeinfotech.kinship.view.Login
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreen : AppCompatActivity() {
@@ -42,7 +43,7 @@ class SplashScreen : AppCompatActivity() {
                         waited += 100
                     }
 
-                    val intent = Intent(applicationContext,Login::class.java)
+                    val intent = Intent(applicationContext, Login::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
                     startActivity(intent)
                     //overridePendingTransition(android.R.anim.,android.R.anim.slide_in_left)

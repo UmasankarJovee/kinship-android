@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.kinship.R
 
 class SettingsFragment : Fragment() {
 
@@ -17,7 +18,7 @@ class SettingsFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() : SettingsFragment{
+        fun newInstance() : SettingsFragment {
             return SettingsFragment()
         }
     }

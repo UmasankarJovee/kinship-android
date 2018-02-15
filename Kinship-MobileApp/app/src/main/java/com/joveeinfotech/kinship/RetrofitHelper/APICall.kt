@@ -102,7 +102,7 @@ class APICall(val mcontext: Context) {
                             dismissDialog()
                         }
                         responseListener?.onFailure(from!!, error)
-                        Log.e("response error", error.message.toString())
+                        Log.e("response error", "${error.message.toString()}${error.localizedMessage}")
                     })
         } else {
             showNetworkError()

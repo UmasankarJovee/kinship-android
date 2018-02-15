@@ -12,9 +12,9 @@ import android.os.IBinder
 import android.support.v4.app.ActivityCompat
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
+import com.joveeinfotech.kinship.model.LocationResult
+
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_login.*
 import java.util.HashMap
 
 class LocationService : Service(){
@@ -22,8 +22,6 @@ class LocationService : Service(){
     var lm: LocationManager? = null
     var locationListener: LocationListener? = null
     var context: Context? = this
-
-    //internal var mApiInterface: ApiInterface? = null
     internal var mCompositeDisposable: Disposable? = null
 
     var networkCall : APICall? = null
