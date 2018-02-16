@@ -9,9 +9,15 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.AppCompatButton
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.RadioButton
 import android.widget.Toast
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
@@ -20,28 +26,99 @@ import kinship.joveeinfotech.kinship.*
 //import javax.swing.text.StyleConstants.setIcon
 
 class Home : AppCompatActivity() {
+
+    var button_next : AppCompatButton? = null
+    var radio_your : RadioButton? = null
+    var radio_some_one : RadioButton? = null
+    var search_option : String? = null
+
     var session: SharedData? = null
     var select : Fragment? = null
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
                 select= HomeFragment.newInstance()
+                goToSelectFragment()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_request -> {
-                select= RequestFragment.newInstance()
+                getSearchOption()
+
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_setting -> {
                 select= SettingsFragment.newInstance()
+                goToSelectFragment()
                 //return@OnNavigationItemSelectedListener true
             }
         }
+        true
+    }
+
+    private fun goToSelectFragment() {
         val trans = supportFragmentManager.beginTransaction()
         trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
         trans.replace(R.id.frame_layout,select)
         trans.commit()
-        true
+    }
+
+    private fun goToPreviousSelectFragment() {
+
+    }
+
+    private fun getSearchOption() {
+        session = SharedData(this)
+        if(session?.isEnterIntoSearch()!!){
+            var option = session?.getSearchOption()
+            if(option.equals("your")){
+                //goToPreviousSelectFragment()
+                val trans = supportFragmentManager.beginTransaction()
+                trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
+                trans.replace(R.id.frame_layout,UserRequestFragment.newInstance())
+                trans.commit()
+            } else {
+                val trans = supportFragmentManager.beginTransaction()
+                trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
+                trans.replace(R.id.frame_layout,SomeOneRequestFragment.newInstance())
+                trans.commit()
+            }
+        }
+        if(!session?.isEnterIntoSearch()!!){
+            val li = LayoutInflater.from(this)
+            val confirmDialog = li.inflate(com.joveeinfotech.kinship.R.layout.alert_search_option_get, null)
+            button_next = confirmDialog.findViewById<AppCompatButton>(R.id.button_search_next) as AppCompatButton
+            radio_your = confirmDialog.findViewById<RadioButton>(R.id.radio_your_need) as RadioButton
+            radio_some_one = confirmDialog.findViewById<RadioButton>(R.id.radio_some_one_need) as RadioButton
+
+            val alert = AlertDialog.Builder(this)
+            alert.setView(confirmDialog)
+
+            val alertDialog = alert.create()
+            alertDialog.show()
+            alertDialog.setCancelable(false)
+
+            radio_your?.setOnClickListener{
+                radio_some_one?.isChecked = false
+                search_option = "your"
+            }
+            radio_some_one?.setOnClickListener{
+                radio_your?.isChecked = false
+                search_option = "some_one"
+            }
+
+            button_next?.setOnClickListener {
+
+                if(search_option.equals("your")){
+                    select = UserRequestFragment.newInstance()
+                } else {
+                    select = SomeOneRequestFragment.newInstance()
+                }
+                alertDialog.dismiss()
+                session?.createFirstSearch(this!!.search_option!!)
+                goToSelectFragment()
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,10 +130,8 @@ class Home : AppCompatActivity() {
         supportActionBar!!.setDisplayUseLogoEnabled(true)
         supportActionBar!!.setTitle("Kinship")
 
-        session = SharedData(this)
 
         //startAlert()
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
         trans.replace(R.id.frame_layout, HomeFragment.newInstance())
@@ -107,7 +182,8 @@ class Home : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-         finishAffinity()
+        session?.createFirstSearchSetFalse()
+        finishAffinity()
     }
 
     fun startAlert() {
@@ -123,4 +199,6 @@ class Home : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
+
+
 }
