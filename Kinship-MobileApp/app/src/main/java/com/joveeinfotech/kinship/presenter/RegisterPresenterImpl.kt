@@ -5,7 +5,6 @@ import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
 import android.util.Log
-import android.view.LayoutInflater
 import android.widget.EditText
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
@@ -22,14 +21,6 @@ import java.util.HashMap
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
 class RegisterPresenterImpl : APIListener, RegisterPresenter {
-
-    var buttonConfirmOTP: AppCompatButton? = null
-    var buttonConfirmPassword: AppCompatButton? = null
-
-    var editTextotp: EditText? = null
-    var editTextpassword: EditText? = null
-    var editTextConfirmPassword: EditText? = null
-    var alertDialog1: AlertDialog? = null
 
     override fun onFailure(from: Int, t: Throwable) {}
     override fun onNetworkFailure(from: Int) {}
@@ -53,51 +44,19 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
     override fun initPresenter() {
         networkCall = APICall(mContext)
     }
-    override fun confirmOTP() {
-        val li = LayoutInflater.from(mContext)
-        val confirmDialog = li.inflate(com.joveeinfotech.kinship.R.layout.alert_otp_get, null)
-        buttonConfirmOTP = confirmDialog.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.buttonConfirmOTP) as AppCompatButton
-        editTextotp = confirmDialog.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editTextOtp) as EditText
 
-        val alert = AlertDialog.Builder(mContext)
-        alert.setView(confirmDialog)
-
-        val alertDialog = alert.create()
-        alertDialog.show()
-        alertDialog.setCancelable(false)
-
-        buttonConfirmOTP!!.setOnClickListener {
-
-            //sendOTP()
-            val queryParams = HashMap<String, String>()
-            queryParams.put("otp", editTextotp?.getText().toString())
-            networkCall?.APIRequest("api/v2/otp", queryParams, OTPResult::class.java, this, 2, "Verifying Your OTP")
-        }
+    override fun OtpContent(otp: String) {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("otp", otp)
+        networkCall?.APIRequest("api/v2/otp", queryParams, OTPResult::class.java, this, 2, "Verifying Your OTP")
     }
 
-    override fun confirmPassword() {
-        val li1 = LayoutInflater.from(mContext)
-        val confimDialog1 = li1.inflate(com.joveeinfotech.kinship.R.layout.alert_password_get, null)
-        buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.buttonConfirmPassword) as AppCompatButton
-        editTextpassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editText_password) as EditText
-        editTextConfirmPassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editText_confirm_password) as EditText
+    override fun passwordContent(password: String, phone_number: String) {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("password", password)
+        queryParams.put("phone_number", phone_number)
+        networkCall?.APIRequest("api/v3/password", queryParams, PasswordResult::class.java, this, 3, "Setting your Password...")
 
-        val alert1 = AlertDialog.Builder(mContext)
-        alert1.setView(confimDialog1)
-
-        alertDialog1 = alert1.create()
-        alertDialog1?.show()
-        alertDialog1?.setCancelable(false)
-
-        buttonConfirmPassword!!.setOnClickListener {
-            if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
-                //sendPassword
-                val queryParams = HashMap<String, String>()
-                queryParams.put("password", editTextpassword?.getText().toString())
-                queryParams.put("phone_number", phone_number!!)
-                networkCall?.APIRequest("api/v3/password", queryParams, PasswordResult::class.java, this, 3, "Setting your Password...")
-            }
-        }
     }
     override fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String) {
         this.phone_number = phone_number
@@ -128,7 +87,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
                 val registerResult = response as RegisterResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (registerResult.status) {
-                    confirmOTP()
+                    registerView.confirmOTP()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                     //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
                 } else {
@@ -139,7 +98,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
                 val registerResult = response as OTPResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (registerResult.status) {
-                    confirmPassword()
+                    registerView.confirmPassword()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     CustomToast().alertToast(mContext,"Click Resend")

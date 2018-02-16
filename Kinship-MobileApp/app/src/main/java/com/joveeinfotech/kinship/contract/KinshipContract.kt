@@ -44,13 +44,15 @@ interface KinshipContract {
     // Register Activity
     interface RegisterView{
         fun closeActivity()
+        fun confirmOTP()
+        fun confirmPassword()
     }
     interface RegisterPresenter {
 
         fun initPresenter()
         fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String)
-        fun confirmOTP()
-        fun confirmPassword()
+        fun OtpContent(otp: String)
+        fun passwordContent(password: String, phone_number: String)
     }
 
 

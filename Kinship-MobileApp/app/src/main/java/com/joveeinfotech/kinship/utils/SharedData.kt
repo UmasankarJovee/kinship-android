@@ -31,6 +31,9 @@ class SharedData {
     private val IS_LOGIN = "IsLoggedIn"
     private val IS_FIRST_INSTALL = "IsFirstInstall"
 
+    private val IS_SEARCH = "IsSearch"
+    private val SEARCH_OPTION = "SearchOption"
+
     val KEY_USER_NAME = "user_name"
 
     val KEY_USER_ID = "user_id"
@@ -62,6 +65,15 @@ class SharedData {
         editor?.putBoolean(IS_FIRST_INSTALL, false)
         editor?.commit()
     }
+    fun createFirstSearch(option : String) {
+        editor?.putBoolean(IS_SEARCH, true)
+        editor?.putString(SEARCH_OPTION,option)
+        editor?.commit()
+    }
+    fun createFirstSearchSetFalse() {
+        editor?.putBoolean(IS_SEARCH, false)
+        editor?.commit()
+    }
 
     fun checkLogin() {
         // Check login status
@@ -90,6 +102,10 @@ class SharedData {
         return user
     }
 
+    fun getSearchOption() : String{
+        return pref!!.getString(SEARCH_OPTION,null)
+    }
+
     fun logoutUser() {
         // Clearing all data from Shared Preferences
         editor?.clear()
@@ -112,6 +128,10 @@ class SharedData {
 
     fun isFirstInstall(): Boolean {
         return pref!!.getBoolean(IS_FIRST_INSTALL,true)
+    }
+
+    fun isEnterIntoSearch(): Boolean {
+        return pref!!.getBoolean(IS_SEARCH,false)
     }
 
 

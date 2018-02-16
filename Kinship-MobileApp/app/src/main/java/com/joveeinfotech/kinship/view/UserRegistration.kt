@@ -2,13 +2,18 @@ package com.joveeinfotech.kinship.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
+import android.support.v7.widget.AppCompatButton
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.RegisterPresenterImpl
 import kotlinx.android.synthetic.main.activity_user_registration.*
+import kotlinx.android.synthetic.main.alert_otp_get.*
 
 
 class UserRegistration : AppCompatActivity(), RegisterView {
@@ -17,6 +22,16 @@ class UserRegistration : AppCompatActivity(), RegisterView {
 
     var registerPresenter : RegisterPresenterImpl? = null
 
+<<<<<<< HEAD
+=======
+    var buttonConfirmOTP: AppCompatButton? = null
+    var buttonConfirmPassword: AppCompatButton? = null
+
+    var editTextotp: EditText? = null
+    var editTextpassword: EditText? = null
+    var editTextConfirmPassword: EditText? = null
+    var alertDialog1: AlertDialog? = null
+>>>>>>> 7254323e07aeaf179f3466d36a74a262858c47aa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +66,45 @@ class UserRegistration : AppCompatActivity(), RegisterView {
 
         button_register.setOnClickListener {
             registerPresenter?.userPhoneNumberAndBloodGroup(editText_phone_number.text.toString(), blood_group!!)
+        }
+    }
+
+    override fun confirmOTP() {
+        val li = LayoutInflater.from(this)
+        val confirmDialog = li.inflate(com.joveeinfotech.kinship.R.layout.alert_otp_get, null)
+        buttonConfirmOTP = confirmDialog.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.buttonConfirmOTP) as AppCompatButton
+        editTextotp = confirmDialog.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editTextOtp) as EditText
+
+        val alert = AlertDialog.Builder(this)
+        alert.setView(confirmDialog)
+
+        val alertDialog = alert.create()
+        alertDialog.show()
+        alertDialog.setCancelable(false)
+
+        buttonConfirmOTP!!.setOnClickListener {
+            registerPresenter?.OtpContent(editTextotp?.text.toString())
+        }
+    }
+
+    override fun confirmPassword() {
+        val li1 = LayoutInflater.from(this)
+        val confimDialog1 = li1.inflate(com.joveeinfotech.kinship.R.layout.alert_password_get, null)
+        buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.buttonConfirmPassword) as AppCompatButton
+        editTextpassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editText_password) as EditText
+        editTextConfirmPassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editText_confirm_password) as EditText
+
+        val alert1 = AlertDialog.Builder(this)
+        alert1.setView(confimDialog1)
+
+        alertDialog1 = alert1.create()
+        alertDialog1?.show()
+        alertDialog1?.setCancelable(false)
+
+        buttonConfirmPassword!!.setOnClickListener {
+            if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
+                registerPresenter?.passwordContent(editTextpassword?.text.toString(),editText_phone_number.text.toString())
+            }
         }
     }
 

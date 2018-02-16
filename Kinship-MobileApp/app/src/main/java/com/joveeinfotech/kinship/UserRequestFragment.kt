@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class RequestFragment : Fragment() {
+class UserRequestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,12 +14,12 @@ class RequestFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_request,container,false)
+        return inflater.inflate(R.layout.fragment_user_request,container,false)
     }
 
     companion object {
-        fun newInstance() : RequestFragment {
-            return RequestFragment()
+        fun newInstance() : UserRequestFragment {
+            return UserRequestFragment()
         }
     }
 
