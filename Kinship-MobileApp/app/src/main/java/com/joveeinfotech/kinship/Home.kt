@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -124,4 +125,9 @@ class Home : AppCompatActivity() {
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000 ,pendingIntent)
         Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+    }
+
 }

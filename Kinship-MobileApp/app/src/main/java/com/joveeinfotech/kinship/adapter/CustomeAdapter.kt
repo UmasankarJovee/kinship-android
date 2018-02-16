@@ -1,6 +1,5 @@
 package com.joveeinfotech.kinship.adapter
 
-import android.content.Context
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -10,23 +9,22 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
-import android.widget.Toast
 import com.joveeinfotech.kinship.R
-import com.joveeinfotech.kinship.contract.KinshipContract.Listener
+import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.Album
 
 /**
  * Created by shanmugarajjoveeinfo on 12/2/18.
  */
-class CustomAdapter(val list:List<Album>, val listener: Listener):RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomeAdapter(val list:List<Album>, val listener: Listener):RecyclerView.Adapter<com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cards_layouts, parent, false)
         Log.e("Message","Before call Before ViewHolder(view)" )
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CustomAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder, position: Int) {
         Log.e("Message","onBindViewHolder function" )
         holder.bindItems(list[position], listener)
     }
@@ -52,7 +50,10 @@ class CustomAdapter(val list:List<Album>, val listener: Listener):RecyclerView.A
             Log.e("Message","Before setOnClickListener" )
             val card = itemView.findViewById<CardView>(R.id.cards_layout_CardView)
             card.setOnClickListener{
-                if(data.text == "Language") listener.languageSettings()
+                if(data.text == "Language"){
+                    Log.e("Message","Before listener.languageSettings()" )
+                    listener.languageSetting()
+                }
                 else listener.onItemClick(data)
             }
         }

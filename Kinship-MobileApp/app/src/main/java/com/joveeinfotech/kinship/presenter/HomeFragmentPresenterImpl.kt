@@ -1,32 +1,24 @@
 package com.joveeinfotech.kinship.presenter
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.util.Log
-import android.widget.ProgressBar
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
-import com.joveeinfotech.kinship.contract.KinshipContract.HomeFragmentView
-import com.joveeinfotech.kinship.contract.KinshipContract.HomeFragmentPresenterPresenter
+import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.UpdateDetailsResult
-import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_home_fragment.*
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class HomeFragmentPresenter: APIListener,HomeFragmentPresenterPresenter {
+class HomeFragmentPresenterImpl : APIListener, HomeFragmentPresenter {
+
     override fun onFailure(from: Int, t: Throwable) {}
 
     override fun onNetworkFailure(from: Int) {}
 
+    private var homeFragmentView: HomeFragmentView
 
-    private lateinit var homeFragmentView: HomeFragmentView
-    //private lateinit var model:
-    private var mCompositeDisposable : Disposable? = null
-    val progressBar : ProgressBar? = null
-    var progressDialog: ProgressDialog? = null
-    lateinit var mContext:Context
+    var mContext:Context
     var networkCall : APICall? = null
 
     constructor(view: HomeFragmentView,context: Context){

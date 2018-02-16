@@ -78,10 +78,10 @@ class APICall(val mcontext: Context) {
                             apiListener.onSuccess(from, Gson().fromJson(response.body()!!.string(), responseModel))
 
                         } else {
-                            Log.e("API CALL : ","inside Apirequest and response error" )
-                            val errorMessage = JSONObject(response.code().toString())
+                            Log.e("API CALL : ","inside Apirequest and response else error ${response.code()}" )
+                            //val errorMessage = JSONObject(response.code().toString())
                             //HelperClass.SOT(mContext, errorMessage.getString("error_message").toString())
-                            mcontext.toast(errorMessage.getString("error_message").toString())
+                            //mcontext.toast(errorMessage.getString("error_message").toString())
                             when (response.code()) {
                                 401 -> {
                                     //un authorized
@@ -102,7 +102,7 @@ class APICall(val mcontext: Context) {
                             dismissDialog()
                         }
                         responseListener?.onFailure(from!!, error)
-                        Log.e("response error", error.message.toString())
+                        Log.e("response error", "${error.message.toString()}${error.localizedMessage}")
                     })
         } else {
             showNetworkError()

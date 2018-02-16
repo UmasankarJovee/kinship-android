@@ -3,13 +3,12 @@ package com.joveeinfotech.kinship.model
 import android.graphics.Bitmap
 
 data class LoginResult(var status: Boolean,
-                       var status_value : Int,
-                       var message: String,
-                       var user_id : Int,
-                       var isRegisterUserProfile : Boolean,
-                       var isRegisterHomeAddress : Boolean,
-                       var isRegisterHealthDetails: Boolean,
-                       var isRegisterAdditionalDetails : Boolean)
+                       var message: String)
+
+data class UserDetailResult(var isRegisterUserProfile : Boolean,
+                            var isRegisterHomeAddress : Boolean,
+                            var isRegisterHealthDetails: Boolean,
+                            var isRegisterAdditionalDetails : Boolean)
 
 data class LocationResult(var message: String)
 
@@ -24,9 +23,17 @@ data class UserProfileResult(var status : Boolean, var status_value: Int, var me
 
 data class UpdateDetailsResult(var count_of_hospitals : String,var count_of_users : String,var count_of_donors : String,var message: String,var status : Boolean)
 
-data class CountryResult(var country : String)
+data class CountryResult(var country : ArrayList<String>)
 
-data class StateResult(var stateNames : String)
+data class StateResult(var state : ArrayList<String>)
 
-data class DistrictResult(var districtNames : String)
+data class SendAddressResult(var status :Boolean)
+
+data class DistrictResult(var district : ArrayList<String>)
+
+data class UserAdditionalDetailsResult(var status: Boolean)
+
 data class Album(val image:Bitmap, val text: String)
+
+data class Languages(val tamil_language:String,val english_language:String,val hindi_language:String)
+

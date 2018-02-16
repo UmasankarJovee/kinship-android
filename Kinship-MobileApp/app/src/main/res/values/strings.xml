@@ -32,6 +32,9 @@
     <string name="blood_requestor_instructions_textview">
         <b><font color='#D14035'>Instructions to Blood Donors Before Blood Donation</font></b>\n\n</string>
     <string name="hello"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="settingsfragment_cardview1_textview">Edit Profile</string>
     <string name="settingsfragment_cardview2_textview">Notifications</string>
     <string name="settingsfragment_cardview3_textview">Language</string>

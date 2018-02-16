@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    tools:context="com.joveeinfotech.kinship.Login">
+    tools:context="com.joveeinfotech.kinship.view.Login">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_user_registration"

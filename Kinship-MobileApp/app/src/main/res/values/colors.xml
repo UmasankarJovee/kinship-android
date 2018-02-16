@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="homeFragmentBackgroundColor">#f4f3f3</color>
+    <color name="toolBarColor">#D14035</color>
     <color name="white">#FFFFFF</color>
     <color name="lightgreen">#71C241</color>
 </resources>

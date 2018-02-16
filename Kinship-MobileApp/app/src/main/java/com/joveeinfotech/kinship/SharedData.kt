@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import com.joveeinfotech.kinship.view.Login
 import java.util.HashMap
 
 /**
@@ -65,7 +66,7 @@ class SharedData {
         // Check login status
         if (this.isLoggedIn()) {
             // user is not logged in redirect him to Login Activity
-            val i = Intent(_context, UserProfile::class.java)
+            val i = Intent(_context, UserDetails::class.java)
             // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
