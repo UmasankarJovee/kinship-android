@@ -13,31 +13,33 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.joveeinfotech.kinship.utils.LocationService
+import com.joveeinfotech.kinship.utils.SharedData
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
 
 class Home : AppCompatActivity() {
     var session: SharedData? = null
-    var select : Fragment? = null
+    var select: Fragment? = null
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                select= HomeFragment.newInstance()
+                select = HomeFragment.newInstance()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_request -> {
-                select= RequestFragment.newInstance()
+                select = RequestFragment.newInstance()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_setting -> {
-                select= SettingsFragment.newInstance()
+                select = SettingsFragment.newInstance()
                 //return@OnNavigationItemSelectedListener true
             }
         }
         val trans = supportFragmentManager.beginTransaction()
-        trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-        trans.replace(R.id.frame_layout,select)
+        trans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+        trans.replace(R.id.frame_layout, select)
         trans.commit()
         true
     }
@@ -45,11 +47,6 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        /*setSupportActionBar(home_toolbar)
-        supportActionBar?.setLogo(R.mipmap.home_logo)
-        supportActionBar?.setTitle("Kinship")
-        supportActionBar?.()*/
 
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setLogo(R.mipmap.home_logo)
@@ -94,7 +91,7 @@ class Home : AppCompatActivity() {
         when (item.itemId) {
             0 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                val i=Intent(applicationContext, UserProfileEdit::class.java)
+                val i = Intent(applicationContext, UserProfileEdit::class.java)
                 startActivity(i)
                 return true
             }
@@ -110,10 +107,7 @@ class Home : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-         finishAffinity()
-        //showDialog(0)
-        // android.os.Process.killProcess(android.os.Process.myPid());
-        //System.runFinalizersOnExit(true);
+        finishAffinity()
     }
 
     fun startAlert() {
@@ -122,12 +116,11 @@ class Home : AppCompatActivity() {
         val intent = Intent(this, LocationService::class.java)
         val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000 ,pendingIntent)
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000, pendingIntent)
         Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
-
 }

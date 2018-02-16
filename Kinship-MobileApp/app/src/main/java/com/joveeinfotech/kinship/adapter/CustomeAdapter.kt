@@ -52,7 +52,7 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener):RecyclerView.
             card.setOnClickListener{
                 if(data.text == "Language"){
                     Log.e("Message","Before listener.languageSettings()" )
-                    listener.languageSetting()
+                    listener.languageSettings()
                 }
                 else listener.onItemClick(data)
             }

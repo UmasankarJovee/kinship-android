@@ -13,7 +13,6 @@ import android.widget.TextView
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.*
-
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*

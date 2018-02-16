@@ -10,6 +10,7 @@ import android.util.Log
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.LoginPresenterImpl
+import com.joveeinfotech.kinship.utils.LocationService
 import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : AppCompatActivity(), LoginView {

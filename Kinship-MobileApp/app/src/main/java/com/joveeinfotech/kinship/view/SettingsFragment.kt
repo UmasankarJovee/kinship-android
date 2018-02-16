@@ -1,7 +1,6 @@
 package com.joveeinfotech.kinship
 
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -12,16 +11,12 @@ import android.view.*
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
-import com.joveeinfotech.kinship.R.string.settingsfragment_cardview1_textview
-import com.joveeinfotech.kinship.R.string.settingsfragment_cardview2_textview
-import com.joveeinfotech.kinship.R.string.settingsfragment_cardview3_textview
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.model.Languages
-import kotlinx.android.synthetic.main.languages_list.*
-import android.util.DisplayMetrics
+
 import com.joveeinfotech.kinship.presenter.*
 
 
@@ -67,7 +62,7 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    override fun languageSetting(){
+    override fun languageSettings(){
         Log.e("Message","Before LanguageInflater" )
         val li=LayoutInflater.from(mContext)
         val confirmDialog = li.inflate(R.layout.alert_language_settings,null)
@@ -82,8 +77,6 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
         languageRecyclerView=confirmDialog.findViewById<RecyclerView>(R.id.alert_language_settings_cardView_constraintLayout_scrollView_recyclerView)
         languageRecyclerView?.layoutManager=LinearLayoutManager(mContext,LinearLayout.VERTICAL,false)
         settingsFragmentPresenterImpl.getLanguagesData()
-
-
     }
 
     override fun ReceiveLanguageListAdapter(adapter: LanguageListAdapter) {

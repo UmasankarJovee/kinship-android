@@ -10,6 +10,9 @@ import com.joveeinfotech.kinship.model.LoginResult
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.SharedData
+import com.joveeinfotech.kinship.utils.Validation
+import com.joveeinfotech.kinship.view.UserDetails
 import com.joveeinfotech.kinship.view.UserRegistration
 
 

@@ -1,20 +1,14 @@
 package com.joveeinfotech.kinship.adapter
 
-import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RadioButton
-import android.widget.Switch
-import android.widget.TextView
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.model.Languages
-import org.w3c.dom.Text
 
 /**
  * Created by shanmugarajjoveeinfo on 15/2/18.

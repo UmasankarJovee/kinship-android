@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.utils
 
 import android.Manifest
 import android.app.Service
@@ -11,7 +11,8 @@ import android.os.Bundle
 import android.os.IBinder
 import android.support.v4.app.ActivityCompat
 import android.util.Log
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.joveeinfotech.kinship.APICall
+import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.model.LocationResult
 
 import io.reactivex.disposables.Disposable

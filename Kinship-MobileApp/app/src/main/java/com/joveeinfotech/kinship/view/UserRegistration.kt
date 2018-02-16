@@ -7,20 +7,22 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.presenter.RegisterPresentermpl
+import com.joveeinfotech.kinship.presenter.RegisterPresenterImpl
 import kotlinx.android.synthetic.main.activity_user_registration.*
+
 
 class UserRegistration : AppCompatActivity(), RegisterView {
 
     var blood_group: String? = null
 
-    var registerPresenter : RegisterPresentermpl? = null
+    var registerPresenter : RegisterPresenterImpl? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_registration)
+        registerPresenter = RegisterPresenterImpl(this, this)
 
-        registerPresenter = RegisterPresentermpl(this, this)
 
         var categories = ArrayList<String>()
         categories.add("Select Blood Group")

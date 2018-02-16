@@ -1,7 +1,5 @@
 package com.joveeinfotech.kinship.presenter
 
-import android.R
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AlertDialog
@@ -11,7 +9,6 @@ import android.view.LayoutInflater
 import android.widget.EditText
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.model.LoginResult
 import com.joveeinfotech.kinship.model.OTPResult
 import com.joveeinfotech.kinship.model.PasswordResult
 import com.joveeinfotech.kinship.model.RegisterResult
@@ -19,14 +16,12 @@ import com.joveeinfotech.kinship.utils.CustomToast
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.utils.Validation
 import com.joveeinfotech.kinship.view.Login
-import kotlinx.android.synthetic.main.activity_user_registration.*
-import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class RegisterPresentermpl : APIListener, RegisterPresenter{
+class RegisterPresenterImpl : APIListener, RegisterPresenter {
 
     var buttonConfirmOTP: AppCompatButton? = null
     var buttonConfirmPassword: AppCompatButton? = null

@@ -7,9 +7,6 @@ import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.UpdateDetailsResult
 
-/**
- * Created by shanmugarajjoveeinfo on 8/2/18.
- */
 class HomeFragmentPresenterImpl : APIListener, HomeFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
