@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.view
 
 import android.app.*
 import android.content.ContentResolver
@@ -13,9 +13,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.joveeinfotech.kinship.R.id.radio_female
-import com.joveeinfotech.kinship.model.UserProfileResult
-import io.reactivex.disposables.Disposable
+import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.presenter.UserProfileFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 import kotlinx.android.synthetic.main.fragment_user_profile.view.*
 import java.io.ByteArrayOutputStream
@@ -23,27 +23,18 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class UserProfileFragment : Fragment(), APIListener {
-
-    var year: Int = 0
-    var month: Int = 0
-    var day: Int = 0
+class UserProfileFragment : Fragment(), UserProfileFragmentView {
 
     var bitmap: Bitmap? = null
     var ba: ByteArray? = null
     var cal = Calendar.getInstance()
     var gender: Int? = null
 
-    //var mApiInterface : ApiInterface? = null
-    private var mCompositeDisposable: Disposable? = null
-
-    var progressDialog: ProgressDialog? = null
-
     lateinit var mContext: Context
-    var networkCall: APICall? = null
 
     var resolver: ContentResolver? = null
-   //var view1 : View? = null
+
+    var userProfileFragmentPresenter : UserProfileFragmentPresenter? = null
 
     override fun onAttach(context: Context) {
         this.mContext = context
@@ -53,6 +44,8 @@ class UserProfileFragment : Fragment(), APIListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         resolver = activity?.contentResolver
+        val trans = fragmentManager?.beginTransaction()
+        userProfileFragmentPresenter = UserProfileFragmentPresenter(trans,this,mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_profile, container, false)
         view.imageView.setImageResource(R.drawable.profile_image)
         view.imageView.setOnClickListener {
@@ -89,12 +82,7 @@ class UserProfileFragment : Fragment(), APIListener {
         }
 
         view.user_profile_submit.setOnClickListener {
-            if (editText_first_name.text.toString() != null && editText_last_name.text.toString() != null && editText_date_of_birth.text.toString() != null && gender != null) {
-                sendUserProfile()
-            } else {
-                //showDialog(2) // Please fill the all details
-            }
-
+            userProfileFragmentPresenter?.userProfileDetails(editText_first_name.text.toString(),editText_last_name.text.toString(), editText_date_of_birth.text.toString(),gender!!)
         }
 
         Log.e("inside create view : " ,ba.toString())
@@ -112,17 +100,6 @@ class UserProfileFragment : Fragment(), APIListener {
         return view
     }
 
-    private fun sendUserProfile() {
-        val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", "81")
-        queryParams.put("first_name", editText_first_name.text.toString())
-        queryParams.put("last_name", editText_last_name.text.toString())
-        queryParams.put("date_of_birth", editText_date_of_birth.text.toString())
-        queryParams.put("gender", gender.toString())
-        Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v5/persons", queryParams, UserProfileResult::class.java, this, 1, "Your Details are storing...")
-    }
-
     private fun updateDateInView() {
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
@@ -133,7 +110,6 @@ class UserProfileFragment : Fragment(), APIListener {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_home)
         //retainInstance = true;
-        networkCall = APICall(mContext)
     }
 
     override fun onActivityResult(RC: Int, RQC: Int, I: Intent?) {
@@ -161,41 +137,7 @@ class UserProfileFragment : Fragment(), APIListener {
         }
     }
 
-    override fun onSuccess(from: Int, response: Any) {
-        when (from) {
-            1 -> { // User profile
-                val result = response as UserProfileResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
-                if (result.status) {
-                   /* val trans = fragmentManager?.beginTransaction()
-                    trans?.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
-                    trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
-                    trans?.commit()*/
-                    if(true){
-
-                        val trans = fragmentManager?.beginTransaction()
-                        trans?.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
-                        trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
-                        trans?.commit()
-                    }
-                    /*val i = Intent(mContext, Home::class.java)
-                    startActivity(i)*/
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
-                    //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
-                } else {
-                    //snackbar(this,)
-                    //snackbar(this.findViewById(android.R.id.content), "Please wait some minutes")
-                    //Log.e("API CALL : ","inside Main activity and onSuccess else condition")
-                    //Log.d(TAG, "Something missing")
-                }
-            }
-        }
-    }
-
-    override fun onFailure(from: Int, t: Throwable) {}
-    override fun onNetworkFailure(from: Int) {}
-
-  /*  override fun onSaveInstanceState(outState: Bundle) {
+    /*  override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.e("checking image array",ba.toString())
 

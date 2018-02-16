@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.utils
 
 /**
  * Created by prandex-and-05 on 26/1/18.

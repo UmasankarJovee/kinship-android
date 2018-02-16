@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -44,11 +45,6 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        /*setSupportActionBar(home_toolbar)
-        supportActionBar?.setLogo(R.mipmap.home_logo)
-        supportActionBar?.setTitle("Kinship")
-        supportActionBar?.()*/
 
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setLogo(R.mipmap.home_logo)
@@ -110,9 +106,6 @@ class Home : AppCompatActivity() {
 
     override fun onBackPressed() {
          finishAffinity()
-        //showDialog(0)
-        // android.os.Process.killProcess(android.os.Process.myPid());
-        //System.runFinalizersOnExit(true);
     }
 
     fun startAlert() {
@@ -123,5 +116,9 @@ class Home : AppCompatActivity() {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000 ,pendingIntent)
         Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
     }
 }

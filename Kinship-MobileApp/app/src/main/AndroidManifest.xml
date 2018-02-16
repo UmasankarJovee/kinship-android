@@ -30,6 +30,7 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.joveeinfotech.kinship.Home"
+            android:configChanges="orientation|keyboardHidden"
             android:icon="@drawable/logo"
             android:theme="@style/AppThemeActionBar" />
         <activity

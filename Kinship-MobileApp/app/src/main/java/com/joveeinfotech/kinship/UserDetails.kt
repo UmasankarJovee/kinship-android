@@ -1,13 +1,11 @@
 package com.joveeinfotech.kinship
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.joveeinfotech.kinship.model.UserDetailResult
-import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.design.snackbar
+import com.joveeinfotech.kinship.view.UserAddressFragment
+import com.joveeinfotech.kinship.view.UserProfileFragment
 import java.util.HashMap
 
 class UserDetails : AppCompatActivity(), APIListener {
@@ -43,11 +41,11 @@ class UserDetails : AppCompatActivity(), APIListener {
 
                 if(!userDetailResult.isRegisterUserProfile){
                     val trans = supportFragmentManager.beginTransaction()
-                    trans.replace(R.id.user_details_frame_layout,UserProfileFragment.newInstance())
+                    trans.replace(R.id.user_details_frame_layout, UserProfileFragment.newInstance())
                     trans.commit()
                 }else if(!userDetailResult.isRegisterHomeAddress){
                     val trans = supportFragmentManager.beginTransaction()
-                    trans.replace(R.id.user_details_frame_layout,UserAddressFragment.newInstance())
+                    trans.replace(R.id.user_details_frame_layout, UserAddressFragment.newInstance())
                     trans.commit()
                 }else if(!userDetailResult.isRegisterAdditionalDetails){
                     val trans = supportFragmentManager.beginTransaction()
