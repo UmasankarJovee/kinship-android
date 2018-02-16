@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,10 +19,9 @@ import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.CountryResult
 import com.joveeinfotech.kinship.model.*
-import com.joveeinfotech.kinship.presenter.UserAddrssFragmentPresenter
+import com.joveeinfotech.kinship.presenter.UserAddrssFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_user_address.*
 import kotlinx.android.synthetic.main.fragment_user_address.view.*
-import java.util.*
 
 class UserAddressFragment : Fragment(), UserAddrssFragmentView {
 
@@ -36,7 +34,7 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
     var resolver: ContentResolver? = null
     lateinit var mContext: Context
 
-    var userAddressFragmentPresenter : UserAddrssFragmentPresenter? = null
+    var userAddressFragmentPresenter : UserAddrssFragmentPresenterImpl? = null
 
     override fun onAttach(context: Context) {
         this.mContext = context
@@ -47,7 +45,7 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
 
         resolver = activity?.contentResolver
         val trans = fragmentManager?.beginTransaction()
-        userAddressFragmentPresenter = UserAddrssFragmentPresenter(trans,this,mContext)
+        userAddressFragmentPresenter = UserAddrssFragmentPresenterImpl(trans,this,mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_address, container, false)
 
         val collapsingToolbarLayout = view.findViewById<CollapsingToolbarLayout>(R.id.collapse_toolbar) as CollapsingToolbarLayout
@@ -60,7 +58,15 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(mContext, R.color.toolBarColor))
 
         view.button_send_address.setOnClickListener {
-              userAddressFragmentPresenter?.userAddressDetails(country!!,state!!,district!!,editText_city.text.toString(),"gdgdg",editText_street.text.toString())
+            userAddressFragmentPresenter?.sendAddress1()
+           /* if (country?.trim()?.length == 0 && state?.trim()?.length == 0 && district?.trim()?.length == 0
+                    && editText_city.text.trim().isNotEmpty() && editText_locality.text.trim().isNotEmpty()
+                    && editText_street.text.trim().isNotEmpty()){
+                userAddressFragmentPresenter?.userAddressDetails(country!!,state!!,district!!,editText_city.text.toString(),"gdgdg",editText_street.text.toString())
+            } else {
+                //showDialog(0) // Please fill the all the fields
+                Toast.makeText(mContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
+            }*/
         }
         return view
     }

@@ -38,11 +38,11 @@
             android:theme="@style/AppThemeNoActionBar" />
 
         <service
-            android:name="com.joveeinfotech.kinship.LocationService"
+            android:name="com.joveeinfotech.kinship.utils.LocationService"
             android:enabled="true"
             android:exported="true" />
         <activity
-            android:name="com.joveeinfotech.kinship.UserDetails"
+            android:name="com.joveeinfotech.kinship.view.UserDetails"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar">
 

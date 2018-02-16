@@ -15,7 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.presenter.UserProfileFragmentPresenter
+import com.joveeinfotech.kinship.presenter.UserProfileFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 import kotlinx.android.synthetic.main.fragment_user_profile.view.*
 import java.io.ByteArrayOutputStream
@@ -34,7 +34,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
 
     var resolver: ContentResolver? = null
 
-    var userProfileFragmentPresenter : UserProfileFragmentPresenter? = null
+    var userProfileFragmentPresenter : UserProfileFragmentPresenterImpl? = null
 
     override fun onAttach(context: Context) {
         this.mContext = context
@@ -45,7 +45,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
 
         resolver = activity?.contentResolver
         val trans = fragmentManager?.beginTransaction()
-        userProfileFragmentPresenter = UserProfileFragmentPresenter(trans,this,mContext)
+        userProfileFragmentPresenter = UserProfileFragmentPresenterImpl(trans,this,mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_profile, container, false)
         view.imageView.setImageResource(R.drawable.profile_image)
         view.imageView.setOnClickListener {

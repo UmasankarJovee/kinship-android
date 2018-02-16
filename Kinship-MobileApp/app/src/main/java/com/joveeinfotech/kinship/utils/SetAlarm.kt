@@ -1,12 +1,5 @@
 package com.joveeinfotech.kinship.utils
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.widget.Toast
-import com.joveeinfotech.kinship.LocationService
-
 /**
  * Created by prandex-and-05 on 26/1/18.
  */

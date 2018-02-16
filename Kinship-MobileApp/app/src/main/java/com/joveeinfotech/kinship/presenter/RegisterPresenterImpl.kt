@@ -13,6 +13,7 @@ import com.joveeinfotech.kinship.model.OTPResult
 import com.joveeinfotech.kinship.model.PasswordResult
 import com.joveeinfotech.kinship.model.RegisterResult
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.utils.Validation
 import com.joveeinfotech.kinship.view.Login
 import java.util.HashMap
@@ -20,7 +21,7 @@ import java.util.HashMap
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class RegisterPresenter : APIListener, RegisterPresenterPresenter {
+class RegisterPresenterImpl : APIListener, RegisterPresenter {
 
     var buttonConfirmOTP: AppCompatButton? = null
     var buttonConfirmPassword: AppCompatButton? = null

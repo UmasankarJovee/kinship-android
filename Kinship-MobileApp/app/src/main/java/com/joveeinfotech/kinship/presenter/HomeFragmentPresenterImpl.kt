@@ -7,14 +7,14 @@ import android.widget.ProgressBar
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.contract.KinshipContract.HomeFragmentView
-import com.joveeinfotech.kinship.contract.KinshipContract.HomeFragmentPresenterPresenter
+import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.UpdateDetailsResult
 import io.reactivex.disposables.Disposable
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class HomeFragmentPresenter: APIListener,HomeFragmentPresenterPresenter {
+class HomeFragmentPresenterImpl : APIListener,HomeFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 

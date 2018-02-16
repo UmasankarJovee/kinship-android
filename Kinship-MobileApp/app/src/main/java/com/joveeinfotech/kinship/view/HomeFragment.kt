@@ -1,35 +1,28 @@
 package kinship.joveeinfotech.kinship
 
 import android.app.AlertDialog
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.PagerAdapter
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
-import com.joveeinfotech.kinship.APICall
-import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.HomeFragmentView
-import com.joveeinfotech.kinship.model.UpdateDetailsResult
-import com.joveeinfotech.kinship.presenter.HomeFragmentPresenter
+import com.joveeinfotech.kinship.presenter.HomeFragmentPresenterImpl
 
 import com.squareup.picasso.Picasso
-import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.util.HashMap
+
 /*
 * HomeFragment It is the Home */
 class HomeFragment : Fragment(), HomeFragmentView {
 
-    private lateinit var homeFragmentPresenter: HomeFragmentPresenter
+    private lateinit var homeFragmentPresenter: HomeFragmentPresenterImpl
     var imageArray : Array<String> = arrayOf(
     "https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
             "https://cdn.arstechnica.net/wp-content/uploads/2013/05/donate_blood_rotator.jpg",
@@ -50,7 +43,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         val blooddonatorinstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
         val bloodRequestorInstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
 
-        homeFragmentPresenter=HomeFragmentPresenter(this,mContext)
+        homeFragmentPresenter= HomeFragmentPresenterImpl(this,mContext)
         view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
         blooddonatorinstructionsTextView.setOnClickListener{
             bloodDonatorInstructions()

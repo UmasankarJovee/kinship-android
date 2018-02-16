@@ -10,14 +10,16 @@ import com.joveeinfotech.kinship.model.LoginResult
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.utils.Validation
+import com.joveeinfotech.kinship.view.UserDetails
 import com.joveeinfotech.kinship.view.UserRegistration
 
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class LoginPresenter : APIListener, LoginPresenterPresenter {
+class LoginPresenterImpl : APIListener, LoginPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
     override fun onNetworkFailure(from: Int) {}

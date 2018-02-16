@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.joveeinfotech.kinship.utils.LocationService
+import com.joveeinfotech.kinship.utils.SharedData
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon

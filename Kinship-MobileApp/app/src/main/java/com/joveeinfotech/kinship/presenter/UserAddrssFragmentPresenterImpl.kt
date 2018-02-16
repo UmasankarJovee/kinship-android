@@ -3,23 +3,19 @@ package com.joveeinfotech.kinship.presenter
 import android.content.Context
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.R
-import com.joveeinfotech.kinship.R.id.spinner_district
-import com.joveeinfotech.kinship.UserAdditionalDetailsFragment
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.*
+import com.joveeinfotech.kinship.view.UserAdditionalDetailsFragment
 import java.util.HashMap
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class UserAddrssFragmentPresenter : APIListener, UserAddressFragmentPresenterPresenter {
+class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 
@@ -65,7 +61,7 @@ class UserAddrssFragmentPresenter : APIListener, UserAddressFragmentPresenterPre
         networkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
     }
     override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
-        if (country.trim().isNotEmpty() && state.trim().isNotEmpty() && city.trim().isNotEmpty() && locality.trim().isNotEmpty() && street.trim().isNotEmpty()){
+        if (country.trim().isNotEmpty() && state.trim().isNotEmpty() && district.trim().isNotEmpty() && city.trim().isNotEmpty() && locality.trim().isNotEmpty() && street.trim().isNotEmpty()){
             sendAddress(country, state, district, city, locality, street)
         } else {
             //showDialog(0) // Please fill the all the fields
@@ -84,7 +80,7 @@ class UserAddrssFragmentPresenter : APIListener, UserAddressFragmentPresenterPre
         networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
     }
 
-    private fun sendAddress1() {
+    fun sendAddress1() {
         val queryParams = HashMap<String, String>()
         queryParams.put("country", "India")
         queryParams.put("state", "TAmilnadu")
@@ -93,7 +89,7 @@ class UserAddrssFragmentPresenter : APIListener, UserAddressFragmentPresenterPre
         queryParams.put("locality", "KK Nagar")
         queryParams.put("street_name", "Vinayagar")
         Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
+        networkCall?.APIRequest("api/v1/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
     }
 
     override fun onSuccess(from: Int, response: Any) {

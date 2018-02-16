@@ -14,7 +14,7 @@ import java.util.HashMap
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
  */
-class UserProfileFragmentPresenter : APIListener, UserProfileFragmentPresenterPresenter {
+class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 
@@ -36,6 +36,7 @@ class UserProfileFragmentPresenter : APIListener, UserProfileFragmentPresenterPr
     override fun initPresenter() {
         networkCall = APICall(mContext)
     }
+
     override fun userProfileDetails(first_name: String, last_name: String, date_of_birth: String, gender: Int) {
         if (first_name.trim().isNotEmpty() && last_name.trim().isNotEmpty() && date_of_birth.trim().isNotEmpty() && (gender == 1 || gender == 2)) {
             sendUserProfile(first_name, last_name, date_of_birth, gender)
