@@ -1,9 +1,6 @@
 package com.joveeinfotech.kinship.contract
 
-import com.joveeinfotech.kinship.model.Album
-import com.joveeinfotech.kinship.model.CountryResult
-import com.joveeinfotech.kinship.model.DistrictResult
-import com.joveeinfotech.kinship.model.StateResult
+import com.joveeinfotech.kinship.model.*
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
@@ -83,7 +80,31 @@ interface KinshipContract {
         fun userAdditionalDetails(category_of_person: String, additionalPhoneNumber : String, additionalEmail: String, socialProfile: String)
     }
 
+    // User Request Fragment
+    interface UserRequestFragmentView{
+        fun setDistricts(hospitalsList: DistrictResult)
+        fun setHospitals(hospitalsList: SearchHospitalResult)
+    }
+    interface UserRequestFragmentPresenter{
+        fun initPresenter()
+        fun loadDistricts()
+        fun sendDistrictsReceiveHospitals(district: String)
+        fun sendUserRequestDetails(search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+        fun sendUserRequestToServer(search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+    }
 
+    // Some One Request Fragment
+    interface SomeOneRequestFragmentView{
+        fun setDistricts(hospitalsList: DistrictResult)
+        fun setHospitals(hospitalsList: SearchHospitalResult)
+    }
+    interface SomeOneRequestFragmentPresenter{
+        fun initPresenter()
+        fun loadDistricts()
+        fun sendDistrictsReceiveHospitals(district: String)
+        fun sendUserRequestDetails(name : String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+        fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+    }
 
     interface Listener {
         fun onItemClick(data: Album)

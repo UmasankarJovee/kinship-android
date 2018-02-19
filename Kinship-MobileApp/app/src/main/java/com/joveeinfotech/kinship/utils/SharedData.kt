@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.util.Log
 import com.joveeinfotech.kinship.view.UserDetails
 import com.joveeinfotech.kinship.view.Login
 import java.util.HashMap
@@ -37,6 +38,8 @@ class SharedData {
     val KEY_USER_NAME = "user_name"
 
     val KEY_USER_ID = "user_id"
+
+    val KEY_UNITS = "units"
 
     @SuppressLint("CommitPrefEdits")
 
@@ -74,6 +77,20 @@ class SharedData {
         editor?.putBoolean(IS_SEARCH, false)
         editor?.commit()
     }
+
+    /*fun storeDetails(units : Int){
+        editor?.putInt(KEY_UNITS,units)
+        editor?.commit()
+    }
+    fun retrieveDetails() : Int{
+        return pref!!.getInt(KEY_UNITS,0)
+    }
+    fun clearSearchDetails(i :Int) {
+        Log.e("SharedData : ","${retrieveDetails()}")
+        editor?.putInt(KEY_UNITS,i)
+        editor?.commit()
+        Log.e("SharedData : ","${retrieveDetails()}")
+    }*/
 
     fun checkLogin() {
         // Check login status
@@ -133,6 +150,8 @@ class SharedData {
     fun isEnterIntoSearch(): Boolean {
         return pref!!.getBoolean(IS_SEARCH,false)
     }
+
+
 
 
 }

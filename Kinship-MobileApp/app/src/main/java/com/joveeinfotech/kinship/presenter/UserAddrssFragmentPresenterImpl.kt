@@ -83,7 +83,7 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
     fun sendAddress1() {
         val queryParams = HashMap<String, String>()
         queryParams.put("country", "India")
-        queryParams.put("state", "TAmilnadu")
+        queryParams.put("state", "Tamilnadu")
         queryParams.put("district","Madurai")
         queryParams.put("city","Madurai")
         queryParams.put("locality", "KK Nagar")

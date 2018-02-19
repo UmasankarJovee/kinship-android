@@ -123,7 +123,7 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_home)
         //retainInstance = true;
-        networkCall = APICall(mContext)
+        //networkCall = APICall(mContext)
     }
 
     companion object {

@@ -12,15 +12,14 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.AppCompatButton
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
+import com.joveeinfotech.kinship.view.SomeOneRequestFragment
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
@@ -80,7 +79,7 @@ class Home : AppCompatActivity() {
             } else {
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.frame_layout,SomeOneRequestFragment.newInstance())
+                trans.replace(R.id.frame_layout, SomeOneRequestFragment.newInstance())
                 trans.commit()
             }
         }
@@ -183,6 +182,7 @@ class Home : AppCompatActivity() {
 
     override fun onBackPressed() {
         session?.createFirstSearchSetFalse()
+        //session?.clearSearchDetails(0)
         finishAffinity()
     }
 
