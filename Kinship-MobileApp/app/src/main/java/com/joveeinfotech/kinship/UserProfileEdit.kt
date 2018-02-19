@@ -20,17 +20,17 @@ class UserProfileEdit : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile_edit)
 
-        ephone_number.setLines(1)
-        ephone_number.setHorizontallyScrolling(true);
-        ephone_number.setSingleLine();
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setLines(1)
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setHorizontallyScrolling(true);
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setSingleLine();
 
-        tmail.setLines(1)
-        tmail.setHorizontallyScrolling(true);
-        tmail.setSingleLine();
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setLines(1)
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setHorizontallyScrolling(true);
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setSingleLine();
 
-        email.setLines(1)
-        email.setHorizontallyScrolling(true);
-        email.setSingleLine();
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.setLines(1)
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.setHorizontallyScrolling(true);
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.setSingleLine();
         //ephone_number.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
 
@@ -57,9 +57,9 @@ class UserProfileEdit : AppCompatActivity() {
 
         val blood_dataAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,categories_blood)
         blood_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_blood_group_edit.adapter=blood_dataAdapter
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner.adapter=blood_dataAdapter
 
-        spinner_blood_group_edit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -87,9 +87,9 @@ class UserProfileEdit : AppCompatActivity() {
 
         val gender_dataAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,categories_gender)
         gender_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_gender_edit.adapter=gender_dataAdapter
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner.adapter=gender_dataAdapter
 
-        spinner_gender_edit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -129,40 +129,40 @@ class UserProfileEdit : AppCompatActivity() {
             updateDateInView()
         }
 
-        edit.setOnClickListener{
-            tphone_number.visibility = View.GONE
-            edit.visibility=View.GONE
-            ephone_number.visibility = View.VISIBLE
-            check1.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView.visibility = View.VISIBLE
         }
-        check1.setOnClickListener{
-            tphone_number.setText(ephone_number.text.toString())
-            ephone_number.visibility = View.GONE
-            check1.visibility = View.GONE
-            tphone_number.visibility = View.VISIBLE
-            edit.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView.visibility=View.VISIBLE
         }
-        edit2.setOnClickListener{
-            tmail.visibility = View.GONE
-            edit2.visibility=View.GONE
-            email.visibility = View.VISIBLE
-            check2.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.visibility = View.VISIBLE
         }
-        edit3.setOnClickListener{
-            tblood_group.visibility = View.GONE
-            edit3.visibility=View.GONE
-            spinner_blood_group_edit.visibility = View.VISIBLE
-            check3.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView.visibility = View.VISIBLE
         }
-        edit4.setOnClickListener{
-            tgender.visibility = View.GONE
-            edit4.visibility=View.GONE
-            spinner_gender_edit.visibility = View.VISIBLE
-            check4.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.visibility = View.VISIBLE
         }
-        edit5.setOnClickListener{
-            edit5.visibility=View.GONE
-            check5.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility = View.VISIBLE
 
             DatePickerDialog(this@UserProfileEdit,
                     dateSetListener,
@@ -172,37 +172,37 @@ class UserProfileEdit : AppCompatActivity() {
                     cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-        check2.setOnClickListener{
-            tmail.setText(email.text.toString())
-            email.visibility = View.GONE
-            check2.visibility = View.GONE
-            tmail.visibility = View.VISIBLE
-            edit2.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.visibility=View.VISIBLE
         }
-        check3.setOnClickListener{
-            tblood_group.setText(blood_group)
-            spinner_blood_group_edit.visibility = View.GONE
-            check3.visibility = View.GONE
-            tblood_group.visibility = View.VISIBLE
-            edit3.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView.setText(blood_group)
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView.visibility=View.VISIBLE
         }
-        check4.setOnClickListener{
-            tgender.setText(gender)
-            spinner_gender_edit.visibility = View.GONE
-            check4.visibility = View.GONE
-            tgender.visibility = View.VISIBLE
-            edit4.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView.setText(gender)
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.visibility=View.VISIBLE
         }
-        check5.setOnClickListener{
-            check5.visibility = View.GONE
-            tdate_of_birth.visibility = View.VISIBLE
-            edit5.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.VISIBLE
         }
     }
 
     private fun updateDateInView() {
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        tdate_of_birth.setText(sdf.format(cal.time))
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
     }
 }

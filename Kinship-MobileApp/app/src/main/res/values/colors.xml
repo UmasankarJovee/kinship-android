@@ -6,4 +6,9 @@
     <color name="homeFragmentBackgroundColor">#f4f3f3</color>
     <color name="toolBarColor">#D14035</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="orange">#FE8A03</color>
+    <color name="lightgreen">#71C241</color>
+    <color name="transparent">#00000000</color>
+    <color name="lightWhite">#fcfcfd</color>
 </resources>

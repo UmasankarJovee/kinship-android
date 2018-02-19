@@ -25,11 +25,11 @@ class Login : AppCompatActivity(), LoginView {
         Log.e("qqqqqqqqqqqqqqqq","call inside login")
 
         loginPresenter?.navigateActivity()
-        btnlogin.setOnClickListener{
-            loginPresenter?.userPhoneNumberAndPassword(editText_login_phone_number.text.toString(),editText_login_password.text.toString())
+        activity_login_loginButton.setOnClickListener{
+            loginPresenter?.userPhoneNumberAndPassword(activity_login_phone_number_editText.text.toString(),activity_login_password_editText.text.toString())
         }
 
-        register.setOnClickListener{
+        activity_login_register_textView.setOnClickListener{
            loginPresenter?.callRegisterActivity()
         }
     }

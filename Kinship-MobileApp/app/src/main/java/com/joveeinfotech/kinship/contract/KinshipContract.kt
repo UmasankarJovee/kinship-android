@@ -1,5 +1,7 @@
 package com.joveeinfotech.kinship.contract
 
+import com.joveeinfotech.kinship.adapter.CustomeAdapter
+import com.joveeinfotech.kinship.adapter.LanguageListAdapter
 import com.joveeinfotech.kinship.model.*
 
 /**
@@ -16,6 +18,16 @@ interface KinshipContract {
     interface HomeFragmentPresenter{
         fun initPresenter()
         fun Click()
+    }
+
+    //Settings Fragment
+    interface SettingsFragmentView{
+        fun ReceiveCustomeAdapter(adapter: CustomeAdapter)
+        fun ReceiveLanguageListAdapter(adapter: LanguageListAdapter)
+    }
+    interface SettingsFragmentPresenter{
+        fun initPresenter()
+        fun getLanguagesData()
     }
 
     // Login Activity
@@ -36,11 +48,13 @@ interface KinshipContract {
         fun confirmPassword()
     }
     interface RegisterPresenter {
+
         fun initPresenter()
         fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String)
         fun OtpContent(otp: String)
         fun passwordContent(password: String, phone_number: String)
     }
+
 
     //UserDetails
     interface UserDetailsView{
@@ -107,7 +121,9 @@ interface KinshipContract {
     }
 
     interface Listener {
+        fun languageSettings()
         fun onItemClick(data: Album)
+        fun onItemClicks(data:Languages)
         fun displayResult(result:Boolean)
     }
 

@@ -29,7 +29,7 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
 
     private lateinit var userDetailsView : UserDetailsView
 
-    lateinit var mContext: Context
+    var mContext: Context
     var networkCall : APICall? = null
 
     var phone_number : String? = null
@@ -65,13 +65,13 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
                         userDetailResult.isRegisterHomeAddress,userDetailResult.isRegisterAdditionalDetails)
 
                 if(!userDetailResult.isRegisterUserProfile){
-                    trans?.replace(com.joveeinfotech.kinship.R.id.user_details_frame_layout, UserProfileFragment.newInstance())
+                    trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserProfileFragment.newInstance())
                     trans?.commit()
                 }else if(!userDetailResult.isRegisterHomeAddress){
-                    trans?.replace(com.joveeinfotech.kinship.R.id.user_details_frame_layout, UserAddressFragment.newInstance())
+                    trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
                     trans?.commit()
                 }else if(!userDetailResult.isRegisterAdditionalDetails){
-                    trans?.replace(com.joveeinfotech.kinship.R.id.user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+                    trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
                     trans?.commit()
                 }
             }

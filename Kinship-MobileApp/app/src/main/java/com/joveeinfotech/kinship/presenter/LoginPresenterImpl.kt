@@ -24,10 +24,10 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
     override fun onFailure(from: Int, t: Throwable) {}
     override fun onNetworkFailure(from: Int) {}
 
-    private lateinit var loginView : LoginView
+    private var loginView : LoginView
     var session: SharedData? = null
 
-    lateinit var mContext: Context
+    var mContext: Context
     var networkCall : APICall? = null
 
     var phone_number : String? = null

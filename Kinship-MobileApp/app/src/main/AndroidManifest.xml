@@ -16,11 +16,6 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.Login"
@@ -32,7 +27,13 @@
             android:name="com.joveeinfotech.kinship.Home"
             android:configChanges="orientation|keyboardHidden"
             android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar" />
+            android:theme="@style/AppThemeActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name="com.joveeinfotech.kinship.UserProfileEdit"
             android:theme="@style/AppThemeNoActionBar" />

@@ -90,7 +90,7 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val searchResult = response as SearchBloodInUserRequest
                 if (searchResult.status) {
-                        trans?.replace(R.id.user_details_frame_layout, HomeFragment.newInstance())
+                        trans?.replace(R.id.activity_user_details_frame_layout, HomeFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()
                     CustomToast().normalToast(mContext,"Your Request has been send")

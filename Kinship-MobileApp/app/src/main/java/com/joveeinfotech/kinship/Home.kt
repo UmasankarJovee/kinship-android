@@ -41,12 +41,12 @@ class Home : AppCompatActivity() {
                 goToSelectFragment()
                 //return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_request -> {
+            R.id.navigation_blood_request -> {
                 getSearchOption()
 
                 //return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_setting -> {
+            R.id.navigation_settings -> {
                 select= SettingsFragment.newInstance()
                 goToSelectFragment()
                 //return@OnNavigationItemSelectedListener true
@@ -57,8 +57,8 @@ class Home : AppCompatActivity() {
 
     private fun goToSelectFragment() {
         val trans = supportFragmentManager.beginTransaction()
-        trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-        trans.replace(R.id.frame_layout,select)
+        trans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+        trans.replace(R.id.activity_home_frame_layout, select)
         trans.commit()
     }
 
@@ -74,12 +74,13 @@ class Home : AppCompatActivity() {
                 //goToPreviousSelectFragment()
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.frame_layout,UserRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout,UserRequestFragment.newInstance())
                 trans.commit()
             } else {
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.frame_layout, SomeOneRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout, SomeOneRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout,SomeOneRequestFragment.newInstance())
                 trans.commit()
             }
         }
@@ -114,7 +115,7 @@ class Home : AppCompatActivity() {
                     select = SomeOneRequestFragment.newInstance()
                 }
                 alertDialog.dismiss()
-                session?.createFirstSearch(this!!.search_option!!)
+                session?.createFirstSearch(this.search_option!!)
                 goToSelectFragment()
             }
         }
@@ -131,9 +132,9 @@ class Home : AppCompatActivity() {
 
 
         //startAlert()
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        activity_login_navigation_bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
-        trans.replace(R.id.frame_layout, HomeFragment.newInstance())
+        trans.replace(R.id.activity_home_frame_layout, HomeFragment.newInstance())
         trans.commit()
     }
 
@@ -165,7 +166,7 @@ class Home : AppCompatActivity() {
         when (item.itemId) {
             0 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                val i=Intent(applicationContext, UserProfileEdit::class.java)
+                val i = Intent(applicationContext, UserProfileEdit::class.java)
                 startActivity(i)
                 return true
             }
@@ -192,7 +193,7 @@ class Home : AppCompatActivity() {
         val intent = Intent(this, LocationService::class.java)
         val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000 ,pendingIntent)
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000, pendingIntent)
         Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
 
@@ -200,5 +201,5 @@ class Home : AppCompatActivity() {
         super.onConfigurationChanged(newConfig)
     }
 
-
 }
+

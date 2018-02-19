@@ -40,5 +40,5 @@ data class SearchHospitalResult(var hospitals: ArrayList<String>)
 
 data class SearchBloodInUserRequest(var status: Boolean)
 
-data class SearchBloodInSomeOneRequest(var status: Boolean)
+data class Languages(val tamil_language:String,val english_language:String,val hindi_language:String)
 

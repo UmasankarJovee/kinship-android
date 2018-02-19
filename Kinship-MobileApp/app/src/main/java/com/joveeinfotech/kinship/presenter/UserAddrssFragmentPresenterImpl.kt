@@ -21,9 +21,9 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
 
     override fun onNetworkFailure(from: Int) {}
 
-    private lateinit var userAddressFragmentView : UserAddrssFragmentView
+    private var userAddressFragmentView : UserAddrssFragmentView
 
-    lateinit var mContext: Context
+    var mContext: Context
     var networkCall : APICall? = null
     var trans : FragmentTransaction? = null
 
@@ -133,7 +133,7 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
                 val addressResult = response as SendAddressResult
                 if (addressResult.status) {
                     if(true){
-                        trans?.replace(R.id.user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+                        trans?.replace(R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()
                     }

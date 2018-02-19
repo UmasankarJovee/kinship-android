@@ -31,8 +31,8 @@ class SplashScreen : AppCompatActivity() {
 
         anim = loadAnimation(this,R.anim.translate)
         anim.reset()
-        logo.clearAnimation()
-        logo.startAnimation(anim)
+        activity_splash_screen_logo.clearAnimation()
+        activity_splash_screen_logo.startAnimation(anim)
 
         var splashThread = object : Thread(){
             override fun run() {
