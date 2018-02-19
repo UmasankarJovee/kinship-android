@@ -101,7 +101,7 @@ class APICall(val mcontext: Context) {
                         if(showProgressDialogue){
                             dismissDialog()
                         }
-                        responseListener?.onFailure(from!!, error)
+                        responseListener?.onFailure(from, error)
                         Log.e("response error", "${error.message.toString()}${error.localizedMessage}")
                     })
         } else {

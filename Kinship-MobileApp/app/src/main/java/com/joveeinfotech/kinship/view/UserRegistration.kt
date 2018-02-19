@@ -21,9 +21,6 @@ class UserRegistration : AppCompatActivity(), RegisterView {
     var blood_group: String? = null
 
     var registerPresenter : RegisterPresenterImpl? = null
-
-<<<<<<< HEAD
-=======
     var buttonConfirmOTP: AppCompatButton? = null
     var buttonConfirmPassword: AppCompatButton? = null
 
@@ -31,7 +28,6 @@ class UserRegistration : AppCompatActivity(), RegisterView {
     var editTextpassword: EditText? = null
     var editTextConfirmPassword: EditText? = null
     var alertDialog1: AlertDialog? = null
->>>>>>> 7254323e07aeaf179f3466d36a74a262858c47aa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +48,9 @@ class UserRegistration : AppCompatActivity(), RegisterView {
 
         val dataAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_blood_group.adapter = dataAdapter
+        activity_user_registration_scrollView_constraintLayout_blood_group_spinner.adapter = dataAdapter
 
-        spinner_blood_group.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        activity_user_registration_scrollView_constraintLayout_blood_group_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -64,16 +60,16 @@ class UserRegistration : AppCompatActivity(), RegisterView {
             }
         }
 
-        button_register.setOnClickListener {
-            registerPresenter?.userPhoneNumberAndBloodGroup(editText_phone_number.text.toString(), blood_group!!)
+        activity_user_registration_scrollView_constraintLayout_registerButton.setOnClickListener {
+            registerPresenter?.userPhoneNumberAndBloodGroup(activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString(), blood_group!!)
         }
     }
 
     override fun confirmOTP() {
         val li = LayoutInflater.from(this)
         val confirmDialog = li.inflate(com.joveeinfotech.kinship.R.layout.alert_otp_get, null)
-        buttonConfirmOTP = confirmDialog.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.buttonConfirmOTP) as AppCompatButton
-        editTextotp = confirmDialog.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editTextOtp) as EditText
+        buttonConfirmOTP = confirmDialog.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.alert_otp_get_confirmOTPButton) as AppCompatButton
+        editTextotp = confirmDialog.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_otp_get_otp_EditText) as EditText
 
         val alert = AlertDialog.Builder(this)
         alert.setView(confirmDialog)
@@ -90,9 +86,9 @@ class UserRegistration : AppCompatActivity(), RegisterView {
     override fun confirmPassword() {
         val li1 = LayoutInflater.from(this)
         val confimDialog1 = li1.inflate(com.joveeinfotech.kinship.R.layout.alert_password_get, null)
-        buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.buttonConfirmPassword) as AppCompatButton
-        editTextpassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editText_password) as EditText
-        editTextConfirmPassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.editText_confirm_password) as EditText
+        buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.alert_password_get_confirmPasswordButton) as AppCompatButton
+        editTextpassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_password_get_password_editText) as EditText
+        editTextConfirmPassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_password_get_confirm_password_editText) as EditText
 
         val alert1 = AlertDialog.Builder(this)
         alert1.setView(confimDialog1)
@@ -103,7 +99,7 @@ class UserRegistration : AppCompatActivity(), RegisterView {
 
         buttonConfirmPassword!!.setOnClickListener {
             if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
-                registerPresenter?.passwordContent(editTextpassword?.text.toString(),editText_phone_number.text.toString())
+                registerPresenter?.passwordContent(editTextpassword?.text.toString(),activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString())
             }
         }
     }

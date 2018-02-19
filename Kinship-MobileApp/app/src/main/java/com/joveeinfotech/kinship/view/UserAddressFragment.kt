@@ -53,8 +53,6 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#fcfbfb"))
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#fcfbfb"))
         collapsingToolbarLayout.setStatusBarScrimColor(Color.parseColor("#FF919297"))
-
-        val context = this
         collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(mContext, R.color.toolBarColor))
 
         view.button_send_address.setOnClickListener {

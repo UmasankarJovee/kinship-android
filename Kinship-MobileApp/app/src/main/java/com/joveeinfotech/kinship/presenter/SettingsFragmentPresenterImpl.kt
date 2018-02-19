@@ -21,7 +21,7 @@ import com.joveeinfotech.kinship.model.Languages
 class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
 
     private var settingsFragmentView:SettingsFragmentView
-    lateinit var listeners:Listener
+    var listeners:Listener
     var mContext: Context
     var networkCall : APICall? = null
 

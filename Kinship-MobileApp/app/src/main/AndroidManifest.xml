@@ -16,7 +16,6 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
-
         </activity>
         <activity
             android:name=".view.Login"

@@ -20,9 +20,9 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
 
     override fun onNetworkFailure(from: Int) {}
 
-    private lateinit var userProfileFragmentView : UserProfileFragmentView
+    private var userProfileFragmentView : UserProfileFragmentView
 
-    lateinit var mContext: Context
+    var mContext: Context
     var networkCall : APICall? = null
     var trans : FragmentTransaction? = null
 
@@ -63,7 +63,7 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
                     if(true){
-                        trans?.replace(R.id.user_details_frame_layout, UserAddressFragment.newInstance())
+                        trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()
                     }

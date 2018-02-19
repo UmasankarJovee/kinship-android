@@ -25,10 +25,10 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
     override fun onFailure(from: Int, t: Throwable) {}
     override fun onNetworkFailure(from: Int) {}
 
-    private lateinit var registerView : RegisterView
+    private var registerView : RegisterView
     var session: SharedData? = null
 
-    lateinit var mContext: Context
+    var mContext: Context
     var networkCall : APICall? = null
 
     var phone_number : String? = null

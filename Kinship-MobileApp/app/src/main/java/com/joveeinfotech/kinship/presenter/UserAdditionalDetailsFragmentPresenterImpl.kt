@@ -24,9 +24,9 @@ class UserAdditionalDetailsFragmentPresenterImpl : APIListener, UserAdditionalDe
 
     override fun onNetworkFailure(from: Int) {}
 
-    private lateinit var userAdditionalDetailsFragmentView : UserAdditionalDetailsFragmentView
+    private var userAdditionalDetailsFragmentView : UserAdditionalDetailsFragmentView
 
-    lateinit var mContext: Context
+    var mContext: Context
     var networkCall : APICall? = null
     var trans : FragmentTransaction? = null
 

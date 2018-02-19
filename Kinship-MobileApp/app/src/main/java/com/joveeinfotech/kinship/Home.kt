@@ -33,21 +33,6 @@ class Home : AppCompatActivity() {
     var search_option : String? = null
 
     var session: SharedData? = null
-<<<<<<< HEAD
-    var select: Fragment? = null
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                select = HomeFragment.newInstance()
-                //return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_request -> {
-                select = RequestFragment.newInstance()
-                //return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_setting -> {
-                select = SettingsFragment.newInstance()
-=======
     var select : Fragment? = null
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -57,15 +42,14 @@ class Home : AppCompatActivity() {
                 goToSelectFragment()
                 //return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_request -> {
+            R.id.navigation_blood_request -> {
                 getSearchOption()
 
                 //return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_setting -> {
+            R.id.navigation_settings -> {
                 select= SettingsFragment.newInstance()
                 goToSelectFragment()
->>>>>>> 7254323e07aeaf179f3466d36a74a262858c47aa
                 //return@OnNavigationItemSelectedListener true
             }
         }
@@ -75,7 +59,7 @@ class Home : AppCompatActivity() {
     private fun goToSelectFragment() {
         val trans = supportFragmentManager.beginTransaction()
         trans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-        trans.replace(R.id.frame_layout, select)
+        trans.replace(R.id.activity_home_frame_layout, select)
         trans.commit()
     }
 
@@ -91,12 +75,12 @@ class Home : AppCompatActivity() {
                 //goToPreviousSelectFragment()
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.frame_layout,UserRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout,UserRequestFragment.newInstance())
                 trans.commit()
             } else {
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.frame_layout,SomeOneRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout,SomeOneRequestFragment.newInstance())
                 trans.commit()
             }
         }
@@ -131,7 +115,7 @@ class Home : AppCompatActivity() {
                     select = SomeOneRequestFragment.newInstance()
                 }
                 alertDialog.dismiss()
-                session?.createFirstSearch(this!!.search_option!!)
+                session?.createFirstSearch(this.search_option!!)
                 goToSelectFragment()
             }
         }
@@ -148,9 +132,9 @@ class Home : AppCompatActivity() {
 
 
         //startAlert()
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        activity_login_navigation_bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
-        trans.replace(R.id.frame_layout, HomeFragment.newInstance())
+        trans.replace(R.id.activity_home_frame_layout, HomeFragment.newInstance())
         trans.commit()
     }
 
@@ -198,10 +182,7 @@ class Home : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-<<<<<<< HEAD
-=======
         session?.createFirstSearchSetFalse()
->>>>>>> 7254323e07aeaf179f3466d36a74a262858c47aa
         finishAffinity()
     }
 
@@ -218,10 +199,6 @@ class Home : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
-<<<<<<< HEAD
-}
-=======
-
 
 }
->>>>>>> 7254323e07aeaf179f3466d36a74a262858c47aa
+
