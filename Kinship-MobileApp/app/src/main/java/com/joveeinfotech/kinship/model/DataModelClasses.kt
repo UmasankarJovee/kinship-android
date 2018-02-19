@@ -1,6 +1,7 @@
 package com.joveeinfotech.kinship.model
 
 import android.graphics.Bitmap
+import android.widget.SpinnerAdapter
 
 data class LoginResult(var status: Boolean,
                        var message: String)
@@ -34,6 +35,10 @@ data class DistrictResult(var district : ArrayList<String>)
 data class UserAdditionalDetailsResult(var status: Boolean)
 
 data class Album(val image:Bitmap, val text: String)
+
+data class SearchHospitalResult(var hospitals: ArrayList<String>)
+
+data class SearchBloodInUserRequest(var status: Boolean)
 
 data class Languages(val tamil_language:String,val english_language:String,val hindi_language:String)
 

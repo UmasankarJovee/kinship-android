@@ -94,6 +94,32 @@ interface KinshipContract {
         fun userAdditionalDetails(category_of_person: String, additionalPhoneNumber : String, additionalEmail: String, socialProfile: String)
     }
 
+    // User Request Fragment
+    interface UserRequestFragmentView{
+        fun setDistricts(hospitalsList: DistrictResult)
+        fun setHospitals(hospitalsList: SearchHospitalResult)
+    }
+    interface UserRequestFragmentPresenter{
+        fun initPresenter()
+        fun loadDistricts()
+        fun sendDistrictsReceiveHospitals(district: String)
+        fun sendUserRequestDetails(search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+        fun sendUserRequestToServer(search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+    }
+
+    // Some One Request Fragment
+    interface SomeOneRequestFragmentView{
+        fun setDistricts(hospitalsList: DistrictResult)
+        fun setHospitals(hospitalsList: SearchHospitalResult)
+    }
+    interface SomeOneRequestFragmentPresenter{
+        fun initPresenter()
+        fun loadDistricts()
+        fun sendDistrictsReceiveHospitals(district: String)
+        fun sendUserRequestDetails(name : String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+        fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+    }
+
     interface Listener {
         fun languageSettings()
         fun onItemClick(data: Album)
