@@ -39,7 +39,7 @@ class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
         items.add(Album(BitmapFactory.decodeResource(mContext.resources,R.mipmap.notifications), mContext.getString(settingsfragment_cardview2_textview)))
         items.add(Album(BitmapFactory.decodeResource(mContext.resources,R.mipmap.language), mContext.getString(settingsfragment_cardview3_textview)))
         Log.e("Message","Before call CustomeAdapter class" )
-        val adapter= CustomeAdapter(items,listeners)
+        val adapter= CustomeAdapter(items,listeners,mContext)
         Log.e("Message","After call CustomeAdapter class" )
         settingsFragmentView.ReceiveCustomeAdapter(adapter)
     }
