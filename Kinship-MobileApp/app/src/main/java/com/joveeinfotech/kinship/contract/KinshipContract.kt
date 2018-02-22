@@ -23,11 +23,10 @@ interface KinshipContract {
     //Settings Fragment
     interface SettingsFragmentView{
         fun ReceiveCustomeAdapter(adapter: CustomeAdapter)
-        fun ReceiveLanguageListAdapter(adapter: LanguageListAdapter)
     }
     interface SettingsFragmentPresenter{
         fun initPresenter()
-        fun getLanguagesData()
+        fun getLanguagesData(): LanguageListAdapter
     }
 
     // Login Activity
@@ -123,8 +122,11 @@ interface KinshipContract {
     interface Listener {
         fun languageSettings()
         fun onItemClick(data: Album)
-        fun onItemClicks(data:Languages)
         fun displayResult(result:Boolean)
+    }
+
+    interface LanguageListener{
+        fun onLanguageClick(data:String)
     }
 
 }

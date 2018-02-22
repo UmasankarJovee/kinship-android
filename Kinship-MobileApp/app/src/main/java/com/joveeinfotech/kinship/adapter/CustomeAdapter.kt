@@ -1,6 +1,9 @@
 package com.joveeinfotech.kinship.adapter
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -10,11 +13,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
+import com.joveeinfotech.kinship.LanguageListDialogFragment
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setIntPreference
 import com.joveeinfotech.kinship.model.Album
+import com.joveeinfotech.kinship.presenter.SettingsFragmentPresenterImpl
+import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentTransaction
+
 
 /**
  * Created by shanmugarajjoveeinfo on 12/2/18.
@@ -30,6 +38,7 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext:C
 
     override fun onBindViewHolder(holder: com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder, position: Int) {
         Log.e("Message","onBindViewHolder function" )
+
         holder.bindItems(list[position], listener,mcontext)
     }
     override fun getItemCount(): Int = list.count()
@@ -86,8 +95,6 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext:C
                         listener.displayResult(false)
                         setIntPreference(mcontext,"startingIValue",1)
                     }
-                    //Log.e("Message","i value else ${i}" )
-
                 }
                 else listener.onItemClick(data)
             }

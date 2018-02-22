@@ -13,7 +13,7 @@ import com.joveeinfotech.kinship.model.Languages
 /**
  * Created by shanmugarajjoveeinfo on 15/2/18.
  */
-class LanguageListAdapter(val list:List<Languages>, val listener: Listener): RecyclerView.Adapter<LanguageListAdapter.ViewHolder>() {
+class LanguageListAdapter(val list:List<Languages>, val listener: LanguageListener): RecyclerView.Adapter<LanguageListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LanguageListAdapter.ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.languages_list, parent, false)
@@ -28,7 +28,7 @@ class LanguageListAdapter(val list:List<Languages>, val listener: Listener): Rec
     override fun getItemCount(): Int = list.count()
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bindItems(data: Languages, listener: Listener){
+        fun bindItems(data: Languages, listener: LanguageListener){
 
             Log.e("Message","bindItems" )
             var tamil_language:RadioButton=itemView.findViewById(R.id.languages_list_tamil_radioButton)
@@ -41,17 +41,17 @@ class LanguageListAdapter(val list:List<Languages>, val listener: Listener): Rec
             tamil_language.setOnClickListener {
                 english_language.isChecked=false
                 hindi_language.isChecked=false
-                listener.onItemClicks(data)
+                listener.onLanguageClick("Tamil")
             }
             english_language.setOnClickListener {
                 tamil_language.isChecked=false
                 hindi_language.isChecked=false
-                listener.onItemClicks(data)
+                listener.onLanguageClick("English")
             }
             hindi_language.setOnClickListener {
                 tamil_language.isChecked=false
                 english_language.isChecked=false
-                listener.onItemClicks(data)
+                listener.onLanguageClick("Hindi")
             }
         }
     }

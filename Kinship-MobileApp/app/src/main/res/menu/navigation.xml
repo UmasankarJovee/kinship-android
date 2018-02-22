@@ -16,4 +16,14 @@
         android:icon="@drawable/settings"
         android:title="@string/navigation_settings"/>
 
+    <item
+        android:id="@+id/navigation_donars"
+        android:icon="@mipmap/donars"
+        android:title="Donars"/>
+
+    <item
+        android:id="@+id/navigation_top20"
+        android:icon="@mipmap/top_20"
+        android:title="Top 20"/>
+
 </menu>

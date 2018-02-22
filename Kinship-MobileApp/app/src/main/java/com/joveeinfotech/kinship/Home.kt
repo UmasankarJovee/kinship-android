@@ -51,6 +51,16 @@ class Home : AppCompatActivity() {
                 goToSelectFragment()
                 //return@OnNavigationItemSelectedListener true
             }
+
+            R.id.navigation_donars -> {
+                select= DonarsFragment.newInstance()
+                goToSelectFragment()
+            }
+
+            R.id.navigation_top20 -> {
+                select= UserProfileEditFragment.newInstance()
+                goToSelectFragment()
+            }
         }
         true
     }
