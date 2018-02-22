@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    tools:context=".view.UserDetails">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_user_registration"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:background="#D14035"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="166dp"
+            android:layout_height="166dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
+            app:layout_constraintRight_toRightOf="@+id/toolbar1"
+            app:layout_constraintTop_toTopOf="@+id/toolbar1"
+            app:srcCompat="@drawable/profile_image" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/firstname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="23dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint=" First Name"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#D14035"
+                android:textSize="20sp"
+                android:theme="@style/MyEditTextTheme" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/lastname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="23dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/firstname">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint=" Last Name"
+                android:inputType="textPersonName"
+                android:textColorHint="#D14035"
+                android:textSize="20sp"
+                android:theme="@style/MyEditTextTheme" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="23dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastname">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Date of Birth"
+                android:inputType="textPersonName"
+                android:textColorHint="#D14035"
+                android:textSize="20sp"
+                android:theme="@style/MyEditTextTheme" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/user_profile_submit"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/btn"
+            android:text="SUBMIT"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl" />
+
+        <TextView
+            android:id="@+id/nil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="26dp"
+            android:text=""
+            android:textSize="17dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_profile_submit" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
+            android:text="User Profile"
+            android:textColor="@android:color/white"
+            android:textSize="19dp"
+            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
+            app:layout_constraintTop_toTopOf="@+id/toolbar1" />
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dob">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="31dp"
+                android:layout_marginLeft="31dp"
+                android:layout_alignTop="@+id/radio_male"
+                android:layout_toEndOf="@+id/radio_male"
+                android:layout_toRightOf="@+id/radio_male"
+                android:text="Female" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="31dp"
+                android:text="Gender"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
+
+
+

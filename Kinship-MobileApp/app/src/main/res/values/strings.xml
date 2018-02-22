@@ -1,9 +1,53 @@
 <resources>
     <string name="app_name">Kinship</string>
-    <string name="title_home">Home</string>
-    <string name="title_blood_request">Blood Request</string>
-    <string name="title_settings">Settings</string>
     <string name="title_activity_home">Home</string>
+
+    <!--navigation.xml-->
+    <string name="navigation_home">Home</string>
+    <string name="navigation_blood_request">Blood Request</string>
+    <string name="navigation_settings">Settings</string>
+
+    <!-- activity_login-->
+    <string name="activity_login_phone_number_editText">Phone Number</string>
+    <string name="activity_login_password_editText">Password</string>
+    <string name="activity_login_loginButton">LOGIN</string>
+    <string name="activity_login_register_textView">Forget Password | Register</string>
+
+    <!--fragment_home-->
+    <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">RECENT BLOOD DONATED PERSON</string>
+    <string name="activity_home_fragment_updatedDetails_TextView">UPDATED DETAILS</string>
+    <string name="activity_home_fragment_hospitals_TextView">HOSPITALS</string>
+    <string name="activity_home_fragment_users_TextView">USERS</string>
+    <string name="activity_home_fragment_donator_TextView">DONATOR</string>
+    <string name="activity_home_fragment_bloodDonatorInstructions_textview">BLOOD DONATOR INSTRUCTIONS</string>
+    <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTOR INSTRUCTIONS</string>
+
+    <!--activity_user_profile_edit-->
+    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          Your Profile        </string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView">9876543210</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText">9876543210</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView">AB+</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner">AB+</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView">Male</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner">Male</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView">2000-01-01</string>
+
+    <!--activity_user_registration-->
+    <string name="activity_user_registration_scrollView_constraintLayout_phone_number_editText">Phone Number</string>
+    <string name="activity_user_registration_scrollView_constraintLayout_registerButton">REGISTER</string>
+
+    <!--alert_otp_get-->
+    <string name="alert_otp_get_otp_EditText">Enter the code received</string>
+    <string name="alert_otp_get_confirmOTPButton">CONFIRM</string>
+
+    <!--alert_password_get-->
+    <string name="alert_password_get_password_editText">Password</string>
+    <string name="alert_password_get_confirm_password_editText">Confirm Password</string>
+    <string name="alert_password_get_confirmPasswordButton">SUBMIT</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="blood_donator_instructions_heading">BLOOD DONATOR INSTRUCTIONS</string>
@@ -32,4 +76,13 @@
     <string name="blood_requestor_instructions_textview">
         <b><font color='#D14035'>Instructions to Blood Donors Before Blood Donation</font></b>\n\n</string>
     <string name="hello"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settingsfragment_cardview1_textview">Edit Profile</string>
+    <string name="settingsfragment_cardview2_textview">Notifications</string>
+    <string name="settingsfragment_cardview3_textview">Language</string>
+    <string name="alert_language_settings_cardView_textView">Language Settings</string>
+    <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
+    <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>
 </resources>

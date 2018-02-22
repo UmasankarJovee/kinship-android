@@ -5,59 +5,64 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    tools:context="com.example.elcot.kinship2.UserProfileEdit">
+    android:scrollbars="none"
+    tools:context="com.joveeinfotech.kinship.UserProfileEdit">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/activity_user_registration"
+        android:id="@+id/activity_user_profile_edit_constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar1"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_toolBar"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:background="@drawable/gradient"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            tools:layout_constraintRight_creator="1" tools:layout_constraintLeft_creator="1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_userProfile_imageView"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
-            app:layout_constraintRight_toRightOf="@+id/toolbar1"
-            app:layout_constraintTop_toTopOf="@+id/toolbar1"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
+            app:layout_constraintRight_toRightOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
+            app:layout_constraintTop_toTopOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
             app:srcCompat="@drawable/profile_image" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_userName_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vigneshkumar M"
-            android:textColor="#ffffff"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
-            android:textSize="20dp"
+            android:text="@string/activity_user_profile_edit_constraintLayout_userName_textView"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_userProfile_imageView"
+            android:textSize="20sp"
             android:gravity="center"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_yourProfile_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
             android:background="@drawable/button_profile"
-            android:text="          Your Profile          "
-            android:textColor="#ffffff"
+            android:text="@string/activity_user_profile_edit_constraintLayout_yourProfile_button"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView9" />
+            app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_userName_textView" />
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cardView2"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1"
             android:layout_width="0dp"
             android:layout_height="118dp"
             android:layout_marginEnd="16dp"
@@ -68,14 +73,15 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button8">
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_yourProfile_button">
 
             <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/iphone"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -85,35 +91,35 @@
                     app:layout_constraintLeft_toLeftOf="parent" />
 
                 <TextView
-                    android:id="@+id/tphone_number"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView"
                     android:layout_width="0dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="9876543210"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView"
                     android:textSize="16dp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/iphone"
+                    app:layout_constraintLeft_toRightOf="@id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/ephone_number"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="15dp"
-                    android:background="#00000000"
-                    android:text="9876543210"
-                    android:textSize="16dp"
+                    android:background="@color/transparent"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText"
+                    android:textSize="16sp"
                     android:visibility="gone"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/iphone"
+                    app:layout_constraintLeft_toRightOf="@id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/edit"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
@@ -123,7 +129,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/check1"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
@@ -135,7 +141,7 @@
 
 
                 <ImageView
-                    android:id="@+id/imail"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_emailIcon_imageView"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -143,44 +149,43 @@
                     android:src="@mipmap/mail"
                     app:layout_constraintHorizontal_bias="0.034"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iphone"
-                    tools:layout_editor_absoluteY="48dp" />
+                    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView" />
 
                 <TextView
-                    android:id="@+id/tmail"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="vigneshkumar@gmail.com"
-                    android:textSize="16dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView"
+                    android:textSize="16sp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/imail"
-                    app:layout_constraintTop_toBottomOf="@+id/iphone"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_emailIcon_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
                     app:layout_constraintVertical_bias="0.823" />
 
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText"
                     android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:background="#00000000"
+                    android:background="@color/transparent"
                     android:lines="1"
                     android:layout_marginTop="15dp"
-                    android:text="vigneshkumar@gmail.com"
-                    android:textSize="16dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText"
+                    android:textSize="16sp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/imail"
-                    app:layout_constraintTop_toBottomOf="@id/iphone"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_emailIcon_imageView"
+                    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
                     app:layout_constraintVertical_bias="0.823" />
 
 
                 <ImageView
-                    android:id="@+id/edit2"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
                     android:layout_marginBottom="1dp"
@@ -191,7 +196,7 @@
 
 
                 <ImageView
-                    android:id="@+id/check2"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView"
                     android:visibility="gone"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
@@ -199,14 +204,12 @@
                     android:src="@mipmap/check"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
-
-
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cardView3"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2"
             app:cardElevation="3dp"
             android:layout_width="0dp"
             android:layout_height="170dp"
@@ -217,15 +220,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView1">
 
 
             <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/iblood"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_bloodIcon_imageView"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -235,39 +239,39 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tblood_group"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="72dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="AB+"
-                    android:textSize="16dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView"
+                    android:textSize="16sp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/iblood"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_bloodIcon_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.09" />
 
                 <Spinner
-                    android:id="@+id/spinner_blood_group_edit"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner"
                     android:layout_width="0dp"
                     android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="72dp"
                     android:layout_marginLeft="0dp"
                     android:layout_marginTop="15dp"
-                    android:text="AB+"
-                    android:textSize="16dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner"
+                    android:textSize="16sp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/iblood"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_bloodIcon_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.09" />
 
 
                 <ImageView
-                    android:id="@+id/edit4"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
@@ -279,7 +283,7 @@
 
 
                 <ImageView
-                    android:id="@+id/check4"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView"
                     android:visibility="gone"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
@@ -293,7 +297,7 @@
 
 
                 <ImageView
-                    android:id="@+id/igender"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_genderIcon_imageView"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -301,43 +305,43 @@
                     android:src="@mipmap/gender"
                     app:layout_constraintHorizontal_bias="0.034"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iblood"
+                    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_bloodIcon_imageView"
                     tools:layout_editor_absoluteY="48dp" />
 
                 <TextView
-                    android:id="@+id/tgender"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="17dp"
-                    android:text="Male"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView"
                     android:textSize="16dp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/igender"
-                    app:layout_constraintTop_toBottomOf="@+id/iblood"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_genderIcon_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_bloodIcon_imageView"
                     app:layout_constraintVertical_bias="0.19" />
 
                 <Spinner
-                    android:id="@+id/spinner_gender_edit"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner"
                     android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="0dp"
                     android:layout_marginTop="17dp"
-                    android:text="Male"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner"
                     android:textSize="16dp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/igender"
-                    app:layout_constraintTop_toBottomOf="@+id/iblood"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_genderIcon_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_bloodIcon_imageView"
                     app:layout_constraintVertical_bias="0.19" />
 
 
                 <ImageView
-                    android:id="@+id/edit3"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
                     android:layout_marginEnd="10dp"
@@ -350,7 +354,7 @@
 
 
                 <ImageView
-                    android:id="@+id/check3"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView"
                     android:visibility="gone"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
@@ -364,7 +368,7 @@
 
 
                 <ImageView
-                    android:id="@+id/idob"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirthIcon_imageView"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -372,27 +376,27 @@
                     android:src="@mipmap/date_of_birth"
                     app:layout_constraintHorizontal_bias="0.034"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/igender"
+                    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_genderIcon_imageView"
                     tools:layout_editor_absoluteY="48dp" />
 
 
                 <TextView
-                    android:id="@+id/tdate_of_birth"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="2000-01-01"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView"
                     android:textSize="16dp"
                     android:layout_marginRight="55dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/igender"
-                    app:layout_constraintTop_toBottomOf="@+id/igender"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_genderIcon_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_genderIcon_imageView"
                     app:layout_constraintVertical_bias="0.739" />
 
                 <ImageView
-                    android:id="@+id/edit5"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
                     android:layout_marginBottom="28dp"
@@ -405,7 +409,7 @@
                     app:layout_constraintRight_toRightOf="parent" />
 
                 <ImageView
-                    android:id="@+id/check5"
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView"
                     android:visibility="gone"
                     android:layout_width="40dp"
                     android:layout_height="45dp"
@@ -427,7 +431,7 @@
     android:layout_height="wrap_content"
     android:text=""
     android:layout_marginTop="0dp"
-    app:layout_constraintTop_toBottomOf="@id/cardView3"/>
+    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView2"/>
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

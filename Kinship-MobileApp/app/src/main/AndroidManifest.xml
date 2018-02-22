@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.elcot.kinship2">
+    package="com.joveeinfotech.kinship">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -12,50 +12,42 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
         android:supportsRtl="true">
-        <activity
-            android:name=".MainActivity"
-            android:icon="@drawable/logo"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".view.Login"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".UserRegistration"
+            android:name="com.joveeinfotech.kinship.view.UserRegistration"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".Home"
+            android:name="com.joveeinfotech.kinship.Home"
+            android:configChanges="orientation|keyboardHidden"
             android:icon="@drawable/logo"
             android:theme="@style/AppThemeActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
-            android:name=".UserProfile"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".UserProfileEdit"
+            android:name="com.joveeinfotech.kinship.UserProfileEdit"
             android:theme="@style/AppThemeNoActionBar" />
 
         <service
-            android:name=".LocationService"
+            android:name="com.joveeinfotech.kinship.utils.LocationService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+        <activity
+            android:name="com.joveeinfotech.kinship.view.UserDetails"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/AppThemeNoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

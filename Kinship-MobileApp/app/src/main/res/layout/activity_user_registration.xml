@@ -5,17 +5,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    tools:context=".UserRegistration">
+    tools:context="com.joveeinfotech.kinship.view.UserRegistration">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/activity_user_registration"
+        android:id="@+id/activity_user_registration_scrollView_constraintLayout"
         android:layout_width="match_parent"
         android:background="@drawable/back"
         android:layout_height="match_parent"
         >
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/activity_user_registration_scrollView_constraintLayout_logo_imageView"
             android:layout_width="185dp"
             android:layout_height="156dp"
             android:layout_marginTop="25dp"
@@ -25,15 +25,15 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/activity_user_registration_scrollView_constraintLayout_title_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kinship"
-            android:textSize="35dp"
+            android:text="@string/app_name"
+            android:textSize="35sp"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_logo_imageView" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -45,24 +45,23 @@
             android:layout_marginTop="63dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_logo_imageView"
             app:layout_constraintVertical_bias="0.061">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/activity_user_registration_scrollView_constraintLayout_phone_number_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Phone Number"
+                android:hint="@string/activity_user_registration_scrollView_constraintLayout_phone_number_editText"
                 android:inputType="number"
-                android:textColor="#FE8A03"
-                android:id="@+id/editText_phone_number"
+                android:textColor="@color/orange"
                 android:textSize="20sp"
-                android:textColorHint="#D14035"
-                android:theme="@style/MyEditTextTheme"
-                />
+                android:textColorHint="@color/toolBarColor"
+                android:theme="@style/MyEditTextTheme"/>
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
-            android:id="@+id/spinner_blood_group"
+            android:id="@+id/activity_user_registration_scrollView_constraintLayout_blood_group_spinner"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginLeft="24dp"
@@ -74,19 +73,19 @@
 
 
         <Button
-            android:id="@+id/button_register"
+            android:id="@+id/activity_user_registration_scrollView_constraintLayout_registerButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/btn"
-            android:text="REGISTER"
-            android:textSize="19dp"
-            android:textColor="#ffffff"
+            android:text="@string/activity_user_registration_scrollView_constraintLayout_registerButton"
+            android:textSize="19sp"
+            android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_blood_group" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_blood_group_spinner" />
 
         <TextView
             android:id="@+id/textView4"
@@ -96,7 +95,7 @@
             android:text=""
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_register" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_registerButton" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

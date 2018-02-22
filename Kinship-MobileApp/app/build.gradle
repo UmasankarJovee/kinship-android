@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.elcot.kinship2"
+        applicationId "com.joveeinfotech.kinship"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
@@ -39,6 +39,7 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.1.6'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile "org.jetbrains.anko:anko-design:$anko_version"
 
     testCompile 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
