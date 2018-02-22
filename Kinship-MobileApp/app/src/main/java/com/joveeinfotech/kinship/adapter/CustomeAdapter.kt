@@ -1,36 +1,31 @@
 package com.joveeinfotech.kinship.adapter
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Switch
-import android.widget.TextView
-import com.joveeinfotech.kinship.LanguageListDialogFragment
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setIntPreference
 import com.joveeinfotech.kinship.model.Album
-import com.joveeinfotech.kinship.presenter.SettingsFragmentPresenterImpl
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentTransaction
+import android.widget.ImageView
+import android.widget.Switch
+import android.widget.TextView
+
+
 
 
 /**
  * Created by shanmugarajjoveeinfo on 12/2/18.
  */
-class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext:Context):RecyclerView.Adapter<com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder>() {
+class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: Context):RecyclerView.Adapter<CustomeAdapter.ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cards_layouts, parent, false)
         Log.e("Message","Before call Before ViewHolder(view)" )
         return ViewHolder(view)
