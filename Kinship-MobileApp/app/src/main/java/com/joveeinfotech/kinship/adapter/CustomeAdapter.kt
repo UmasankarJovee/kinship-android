@@ -9,17 +9,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
-import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.Album
+import java.util.zip.Inflater
 
 /**
  * Created by shanmugarajjoveeinfo on 12/2/18.
  */
-class CustomeAdapter(val list:List<Album>, val listener: Listener):RecyclerView.Adapter<com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder>() {
+class CustomeAdapter(val list:List<Album>, val listener: Listener):RecyclerView.Adapter<CustomeAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): com.joveeinfotech.kinship.adapter.CustomeAdapter.ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cards_layouts, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cards_layout, parent, false)
         Log.e("Message","Before call Before ViewHolder(view)" )
         return ViewHolder(view)
     }
