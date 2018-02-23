@@ -42,9 +42,9 @@ class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
         Log.e("Message","Before items" )
         val items=ArrayList<Album>()
 
-        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.edit_profile), mContext!!.getString(settingsfragment_cardview1_textview)))
-        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.notifications), mContext!!.getString(settingsfragment_cardview2_textview)))
-        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.language), mContext!!.getString(settingsfragment_cardview3_textview)))
+        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.edit_profile), mContext!!.getString(settingsFragment_cardView1_textView)))
+        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.notifications), mContext!!.getString(settingsFragment_cardView2_textView)))
+        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.language), mContext!!.getString(settingsFragment_cardView3_textView)))
         Log.e("Message","Before call CustomeAdapter class" )
         val adapter= CustomeAdapter(items,listeners!!,mContext!!)
         Log.e("Message","After call CustomeAdapter class" )

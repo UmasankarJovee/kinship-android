@@ -27,7 +27,6 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_weight="3"
-                android:src="@mipmap/ic_launcher"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +43,6 @@
                 android:layout_marginTop="24dp"
                 android:layout_weight="12"
                 android:gravity="left"
-                android:text="This is sample TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/cards_layout_CardView_LinearLayout_Switch"
                 app:layout_constraintStart_toEndOf="@+id/cards_layout_CardView_LinearLayout_ImageView"

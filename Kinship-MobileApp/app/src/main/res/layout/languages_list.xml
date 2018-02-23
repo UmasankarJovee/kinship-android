@@ -3,41 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RadioButton
         android:id="@+id/languages_list_tamil_radioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layoutDirection="rtl"
-        android:text=""
-        android:textSize="10dp"
-        android:padding="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/textview_border"
-        android:checked="false"/>
+        android:checked="false"
+        android:layoutDirection="rtl"
+        android:padding="10dp"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <RadioButton
         android:id="@+id/languages_list_english_radioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layoutDirection="rtl"
-        android:text=""
-        android:textSize="10dp"
-        android:padding="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/textview_border"
         android:checked="false"
-        app:layout_constraintTop_toBottomOf="@+id/languages_list_tamil_radioButton"/>
+        android:layoutDirection="rtl"
+        android:padding="10dp"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/languages_list_tamil_radioButton" />
+
     <RadioButton
         android:id="@+id/languages_list_hindi_radioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layoutDirection="rtl"
-        android:text=""
-        android:textSize="10dp"
-        android:padding="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/textview_border"
         android:checked="false"
-        app:layout_constraintTop_toBottomOf="@+id/languages_list_english_radioButton"/>
+        android:layoutDirection="rtl"
+        android:padding="10dp"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/languages_list_english_radioButton" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settingsFragment_cardView1_textView">Edit Profile</string>
+    <string name="settingsFragment_cardView2_textView">Notifications</string>
+    <string name="settingsFragment_cardView3_textView">Language</string>
+</resources>

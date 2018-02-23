@@ -41,17 +41,17 @@ class LanguageListAdapter(val list:List<Languages>, val listener: LanguageListen
             tamil_language.setOnClickListener {
                 english_language.isChecked=false
                 hindi_language.isChecked=false
-                listener.onLanguageClick("Tamil")
+                listener.onLanguageClick(data.tamil_language)
             }
             english_language.setOnClickListener {
                 tamil_language.isChecked=false
                 hindi_language.isChecked=false
-                listener.onLanguageClick("English")
+                listener.onLanguageClick(data.english_language)
             }
             hindi_language.setOnClickListener {
                 tamil_language.isChecked=false
                 english_language.isChecked=false
-                listener.onLanguageClick("Hindi")
+                listener.onLanguageClick(data.hindi_language)
             }
         }
     }
