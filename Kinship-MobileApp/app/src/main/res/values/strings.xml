@@ -20,7 +20,7 @@
     <string name="activity_home_fragment_users_TextView">USERS</string>
     <string name="activity_home_fragment_donator_TextView">DONATOR</string>
     <string name="activity_home_fragment_bloodDonatorInstructions_textview">BLOOD DONATOR INSTRUCTIONS</string>
-    <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTOR INSTRUCTIONS</string>
+    <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTER INSTRUCTIONS</string>
 
     <!--activity_user_profile_edit-->
     <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
@@ -74,14 +74,20 @@
         4. Therefore it is safe to donate blood every three months.
     </string>
     <string name="blood_requestor_instructions_textview">
-        <b><font color='#D14035'>Instructions to Blood Donors Before Blood Donation</font></b>\n\n</string>
+       <b><font color='#D14035'>Instructions to Blood Requester Before Blood Request</font></b>\n\n
+        1. You must select correct blood request. \n
+        2. You give correct unit of need of blood .Don't give additional units. \n
+        3. If you play with this application then the action will be taken on you. \n\n
+        <b><font color='#D14035'>Instructions to Blood Requester After Blood Donation</font></b>\n\n
+        1. You must like on social profile previous blood donor of your request.
+    </string>
     <string name="hello"></string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="settingsfragment_cardview1_textview">Edit Profile</string>
-    <string name="settingsfragment_cardview2_textview">Notifications</string>
-    <string name="settingsfragment_cardview3_textview">Language</string>
+    <string name="settingsFragment_cardView1_textView">Edit Profile</string>
+    <string name="settingsFragment_cardView2_textView">Notifications</string>
+    <string name="settingsFragment_cardView3_textView">Language</string>
     <string name="alert_language_settings_cardView_textView">Language Settings</string>
     <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
     <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settingsFragment_cardView1_textView">சுயவிவரத்தைத் திருத்தவும்</string>
+    <string name="settingsFragment_cardView2_textView">அறிவிப்புகள்</string>
+    <string name="settingsFragment_cardView3_textView">மொழி</string>
+</resources>
