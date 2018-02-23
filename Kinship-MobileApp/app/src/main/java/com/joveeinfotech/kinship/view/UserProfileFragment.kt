@@ -13,13 +13,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.kinship.APIClient
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.UserProfileFragmentPresenterImpl
+import com.joveeinfotech.kinship.utils.CustomToast
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 import kotlinx.android.synthetic.main.fragment_user_profile.view.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +37,8 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
     var ba: ByteArray? = null
     var cal = Calendar.getInstance()
     var gender: Int? = null
+
+    var progressDialog : ProgressDialog? = null
 
     lateinit var mContext: Context
 
@@ -124,11 +134,52 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 ba = bStream.toByteArray()
                 Log.e("inside : ",ba.toString())
                 imageView.setImageBitmap(bitmap)
+                val isr = resolver?.openInputStream(I.data!!)
+                uploadImage(getBytes(isr))
 
             } catch (e: IOException) {
 
             }
         }
+    }
+    private fun getBytes(inputStream: InputStream?): ByteArray {
+        val byteBuff = ByteArrayOutputStream()
+
+        val buffSize = 1024
+        val buff = ByteArray(buffSize)
+
+        var len = 0
+        len = inputStream!!.read(buff)
+        while ( len != -1) {
+            byteBuff.write(buff, 0, len)
+            len = inputStream!!.read(buff)
+        }
+        return byteBuff.toByteArray()
+    }
+
+    private fun uploadImage(imageBytes: ByteArray) {
+
+        progressDialog = ProgressDialog(mContext, R.style.MyAlertDialogStyle)
+        progressDialog?.setMessage("Authenticating...")
+        progressDialog?.show()
+
+        val retrofitInterface = APIClient.getClient()
+
+        val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
+
+        val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
+
+        retrofitInterface?.uploadImage(body)?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribeOn(Schedulers.io())
+                ?.subscribe(
+                        { result ->
+                            progressDialog?.dismiss()
+                            CustomToast().normalToast(mContext,"Uploaded Successfully")
+                        },
+                        { error ->
+                            progressDialog?.dismiss()
+                        }
+                )
     }
 
     companion object {

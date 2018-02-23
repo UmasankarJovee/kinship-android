@@ -42,3 +42,7 @@ data class SearchBloodInUserRequest(var status: Boolean)
 
 data class Languages(val tamil_language:String,val english_language:String,val hindi_language:String)
 
+data class ImageUpload(var status: Boolean)
+
+data class SendTokenResult(var status: Boolean)
+

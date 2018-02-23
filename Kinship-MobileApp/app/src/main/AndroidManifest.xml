@@ -15,39 +15,58 @@
         android:supportsRtl="true">
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Splash">
+            android:theme="@style/Splash" >
+
         </activity>
         <activity
             android:name=".view.Login"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.joveeinfotech.kinship.view.UserRegistration"
+            android:name=".view.UserRegistration"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.joveeinfotech.kinship.Home"
+            android:name=".Home"
             android:configChanges="orientation|keyboardHidden"
             android:icon="@drawable/logo"
             android:theme="@style/AppThemeActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity
-            android:name="com.joveeinfotech.kinship.UserProfileEdit"
+            android:name=".UserProfileEdit"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".view.UserDetails"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar" />
 
+        <activity
+            android:name=".AlertActivity"
+            android:theme="@style/AppThemeNoActionBar"/>
+        <activity
+            android:name=".ProfileDisplay"
+            android:theme="@style/AppThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service
-            android:name="com.joveeinfotech.kinship.utils.LocationService"
+            android:name=".utils.LocationService"
             android:enabled="true"
             android:exported="true" />
-        <activity
-            android:name="com.joveeinfotech.kinship.view.UserDetails"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@style/AppThemeNoActionBar">
+        <service android:name=".notification.FcmInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".notification.FcmMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-        </activity>
     </application>
 
 </manifest>
