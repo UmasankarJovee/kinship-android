@@ -58,7 +58,7 @@ class Home : AppCompatActivity() {
             }
 
             R.id.navigation_top20 -> {
-                select= UserProfileEditFragment.newInstance()
+                select= Top20Fragment.newInstance()
                 goToSelectFragment()
             }
         }

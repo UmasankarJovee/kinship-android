@@ -1,10 +1,15 @@
 package com.joveeinfotech.kinship
 
+import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.joveeinfotech.kinship.utils.LocationService
 import kotlinx.android.synthetic.main.activity_user_profile_edit.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -197,7 +202,15 @@ class UserProfileEdit : AppCompatActivity() {
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility = View.GONE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView.visibility = View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.VISIBLE
+            call1()
         }
+    }
+
+    private fun call1() {
+        val intent = Intent(this, LocationService::class.java)
+        intent.putExtra("key1","field")
+        intent.putExtra("key2","value")
+        startService(intent)
     }
 
     private fun updateDateInView() {

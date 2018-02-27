@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.presenter.*
 import kotlinx.android.synthetic.main.fragment_settings.view.*
@@ -44,6 +45,7 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
     }
 
     override fun displayResult(result: Boolean) {
+        setBooleanPreference(mContext,"notification",result)
         if(result == true)Toast.makeText(mContext,"Notifications is On",Toast.LENGTH_SHORT).show()
         else Toast.makeText(mContext,"Notifications is Off",Toast.LENGTH_SHORT).show()
     }

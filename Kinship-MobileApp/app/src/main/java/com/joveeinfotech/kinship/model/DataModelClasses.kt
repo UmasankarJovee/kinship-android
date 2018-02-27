@@ -46,3 +46,17 @@ data class ImageUpload(var status: Boolean)
 
 data class SendTokenResult(var status: Boolean)
 
+/*data class AndroidResponse(val android_lists:List<GetTop20Result>)*/
+data class GetTop20Result(var profileURL : String,
+                          var name : String,
+                          var district: String,
+                          var total_like : Int,
+                          var total_donated : Int,
+                          var last_donated_date : String)
+
+data class SendingUserProfileEditResult(var status: Boolean)
+
+data class ReplyBloodRequestResult(var status: Boolean, var phoneNumber : Long)
+
+data class NotComeForRequestResult(var status: Boolean)
+

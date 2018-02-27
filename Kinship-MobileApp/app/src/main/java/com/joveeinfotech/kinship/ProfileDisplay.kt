@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import kotlinx.android.synthetic.main.activity_profile_display.*
+import kotlinx.android.synthetic.main.top20_donars_list.*
 
 class ProfileDisplay : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class ProfileDisplay : AppCompatActivity() {
 
     private fun setCircle() {
         val paint = Paint()
-        // Get source bitmap width and height
+        // Get source bit map width and height
         val srcBitmapWidth = srcBitmap?.width
         val srcBitmapHeight = srcBitmap?.height
 
@@ -56,7 +57,7 @@ class ProfileDisplay : AppCompatActivity() {
         // Use Paint to draw border
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = (borderWidth * 2).toFloat()
-        paint.color = Color.WHITE
+        paint.color = Color.RED
 
         // Draw the border in destination bitmap
         canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), (canvas.width / 2).toFloat(), paint)
@@ -91,6 +92,7 @@ class ProfileDisplay : AppCompatActivity() {
         roundedBitmapDrawable.setAntiAlias(true)
 
         // Set the ImageView image as drawable object
-        activity_profile_display_profile_image.setImageDrawable(roundedBitmapDrawable)
+        //activity_profile_display_profile_image.setImageDrawable(roundedBitmapDrawable)
+        top20_donars_list_Linear_layout_CardView_ImageView_profile.setImageDrawable(roundedBitmapDrawable)
     }
 }

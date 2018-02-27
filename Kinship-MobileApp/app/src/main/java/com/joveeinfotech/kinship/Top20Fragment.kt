@@ -1,12 +1,19 @@
 package com.joveeinfotech.kinship
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.kinship.adapter.Top20ListAdapter
+import com.joveeinfotech.kinship.model.GetTop20Result
+import com.joveeinfotech.kinship.model.UserAdditionalDetailsResult
+import kotlinx.android.synthetic.main.fragment_top20.*
+import java.util.HashMap
 
 
 /**
@@ -17,7 +24,20 @@ import android.view.ViewGroup
  * Use the [Top20Fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Top20Fragment : Fragment() {
+class Top20Fragment : Fragment(), APIListener {
+
+    var networkCall : APICall? = null
+
+    var mContext : Context? = null
+
+    private var mGetTop20ArrayList: ArrayList<GetTop20Result>? = null
+
+    var top20ListAdapter : Top20ListAdapter? = null
+
+    override fun onAttach(context: Context) {
+        this.mContext = context
+        super.onAttach(context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +47,34 @@ class Top20Fragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_top20, container, false)
+
+        networkCall = APICall(mContext!!)
+        var view1 : View = inflater.inflate(R.layout.fragment_top20, container, false)
+
+        val queryParams = HashMap<String, String>()
+        queryParams.put("getTop20", "getTop20")
+        networkCall?.APIRequest("api/v1/getTop20", queryParams, GetTop20Result::class.java, this, 1, "Sending your other details...")
+
+        return view1
+    }
+
+    override fun onSuccess(from: Int, response: Any) {
+        when (from) {
+            1 -> { // Send Additional Details
+                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                val getTop20Result = response as List<GetTop20Result>
+                mGetTop20ArrayList = ArrayList(getTop20Result)
+                top20ListAdapter = Top20ListAdapter(mGetTop20ArrayList!!, mContext!!)
+                fragment_top20_RecyclerView.adapter = top20ListAdapter
+            }
+        }
+    }
+
+    override fun onFailure(from: Int, t: Throwable) {
+
+    }
+    override fun onNetworkFailure(from: Int) {
+
     }
 
     companion object {
