@@ -3,9 +3,12 @@ package com.joveeinfotech.kinship
 import android.app.DatePickerDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_user_profile_edit.*
+import kotlinx.android.synthetic.main.alert_address_details.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,6 +18,7 @@ class UserProfileEdit : AppCompatActivity() {
     var gender : String? = null
     var date_of_birth :String? = null
     var cal = Calendar.getInstance()
+    var address:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +28,18 @@ class UserProfileEdit : AppCompatActivity() {
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setHorizontallyScrolling(true);
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setSingleLine();
 
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setLines(1)
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setHorizontallyScrolling(true);
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setSingleLine();
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.setLines(1)
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.setHorizontallyScrolling(true);
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.setSingleLine();
 
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.setLines(1)
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.setHorizontallyScrolling(true);
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.setSingleLine();
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.setLines(1)
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.setHorizontallyScrolling(true);
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.setSingleLine();
         //ephone_number.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
 
-        var categories_blood=ArrayList<String>()
-        /*categories.add("Select Blood Group")
+        /*var categories_blood=ArrayList<String>()
+        *//*categories.add("Select Blood Group")
         categories.add("Blood Group (AB+)")
         categories.add("Blood Group (AB-)")
         categories.add("Blood Group (A+)")
@@ -43,7 +47,7 @@ class UserProfileEdit : AppCompatActivity() {
         categories.add("Blood Group (B+)")
         categories.add("Blood Group (B-")
         categories.add("Blood Group (O+)")
-        categories.add("Blood Group (O-)")*/
+        categories.add("Blood Group (O-)")*//*
 
         categories_blood.add("Select Blood Group")
         categories_blood.add("AB+")
@@ -68,10 +72,10 @@ class UserProfileEdit : AppCompatActivity() {
                 blood_group=categories_blood.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
-        var categories_gender=ArrayList<String>()
-        /*categories.add("Select Blood Group")
+        /*var categories_gender=ArrayList<String>()
+        *//*categories.add("Select Blood Group")
         categories.add("Blood Group (AB+)")
         categories.add("Blood Group (AB-)")
         categories.add("Blood Group (A+)")
@@ -79,7 +83,7 @@ class UserProfileEdit : AppCompatActivity() {
         categories.add("Blood Group (B+)")
         categories.add("Blood Group (B-")
         categories.add("Blood Group (O+)")
-        categories.add("Blood Group (O-)")*/
+        categories.add("Blood Group (O-)")*//*
 
         categories_gender.add("Select Gender")
         categories_gender.add("Male")
@@ -98,7 +102,7 @@ class UserProfileEdit : AppCompatActivity() {
                 gender=categories_gender.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
         /*var phone_number : TextView = findViewById<TextView>(R.id.tphone_number) as TextView
         var tmail : TextView = findViewById<TextView>(R.id.tmail) as TextView
@@ -130,39 +134,35 @@ class UserProfileEdit : AppCompatActivity() {
         }
 
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.visibility = View.GONE
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView.visibility=View.GONE
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.visibility = View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView.visibility = View.VISIBLE
         }
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_userName_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.visibility = View.GONE
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.visibility = View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView.visibility=View.VISIBLE
         }
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.visibility = View.GONE
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView.visibility=View.GONE
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.visibility = View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.visibility = View.VISIBLE
         }
-        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView.visibility=View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner.visibility = View.VISIBLE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView.visibility=View.VISIBLE
         }
-        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.visibility=View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner.visibility = View.VISIBLE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.visibility = View.VISIBLE
-        }
-        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility = View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon3_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon3_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView.visibility = View.VISIBLE
 
             DatePickerDialog(this@UserProfileEdit,
                     dateSetListener,
@@ -172,37 +172,73 @@ class UserProfileEdit : AppCompatActivity() {
                     cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.text.toString())
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView.visibility = View.VISIBLE
-            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView.visibility = View.GONE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon3_imageView.visibility=View.VISIBLE
         }
-        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView.setText(blood_group)
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon3_imageView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView.visibility = View.VISIBLE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon3_imageView.visibility=View.VISIBLE
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.visibility = View.VISIBLE
         }
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView.setText(gender)
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView.visibility=View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView.visibility=View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText.visibility =View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView.visibility =View.GONE
+        }
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.setOnClickListener{
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.visibility=View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility=View.VISIBLE
         }
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.setOnClickListener{
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility = View.GONE
-            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView.visibility = View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.visibility=View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility=View.GONE
+        }
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView.setOnClickListener {
+            val dialogbuilder:AlertDialog.Builder=AlertDialog.Builder(this)
+            val inflater:LayoutInflater=this.layoutInflater
+            val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
+            dialogbuilder.setView(dialogView)
+            val alert=dialogbuilder.create()
+            alert.show()
+            val street:EditText=dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_street_editText)
+            val locality:EditText=dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_locality_editText)
+            val city:EditText=dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_city_editText)
+            /*val district:EditText=dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_district_editText)
+            val state:EditText=dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_state_editText)*/
+            dialogView.alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton.setOnClickListener {
+                alert.dismiss()
+            }
+            dialogView.alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3_okButton.setOnClickListener {
+               /* address="${street.text.toString()},${locality.text.toString()},${city.text.toString()},${district.text},${state.text}"
+                Toast.makeText(this,address,Toast.LENGTH_LONG).show()*/
+            }
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView.visibility=View.GONE
+           //activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText.visibility=View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView.visibility=View.VISIBLE
+        }
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView.setOnClickListener {
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView.setText(address)
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView.visibility=View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView.visibility=View.VISIBLE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText.visibility=View.GONE
+            activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView.visibility=View.GONE
         }
     }
 
     private fun updateDateInView() {
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
     }
 }

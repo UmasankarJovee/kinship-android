@@ -17,6 +17,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.RadioButton
 import android.widget.Toast
+import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.view.SomeOneRequestFragment
@@ -58,7 +59,7 @@ class Home : AppCompatActivity() {
             }
 
             R.id.navigation_top20 -> {
-                select= UserProfileEditFragment.newInstance()
+                select= Top20Fragment.newInstance()
                 goToSelectFragment()
             }
         }
@@ -135,6 +136,7 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        BottomNavigationHelper.disableShiftMode(activity_login_navigation_bottomNavigationView)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setLogo(R.mipmap.home_logo)
         supportActionBar!!.setDisplayUseLogoEnabled(true)
@@ -176,8 +178,7 @@ class Home : AppCompatActivity() {
         when (item.itemId) {
             0 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                val i = Intent(applicationContext, UserProfileEdit::class.java)
-                startActivity(i)
+                startActivity(Intent(applicationContext, UserProfileEdit::class.java))
                 return true
             }
             1 -> {

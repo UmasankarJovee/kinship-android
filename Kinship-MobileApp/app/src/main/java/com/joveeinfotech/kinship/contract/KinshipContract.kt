@@ -123,10 +123,26 @@ interface KinshipContract {
         fun languageSettings()
         fun onItemClick(data: Album)
         fun displayResult(result:Boolean)
+        fun callEditProfile()
     }
 
     interface LanguageListener{
         fun onLanguageClick(data:String)
+    }
+
+    // UserProfileEditFragment
+    interface UserProfileEditFragmentView{
+        fun setCountries(dataAdapter: CountryResult)
+        fun setStates(stateList: StateResult)
+        fun setDistricts(districtList: DistrictResult)
+        fun updateDateInView()
+    }
+    interface UserProfileEditFragmentPresenter{
+        fun initPresenter()
+        fun loadCountries()
+        fun sendCountryReceiveState(country : String)
+        fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
+        fun sendStateReceiveDistrict(state: String)
     }
 
 }

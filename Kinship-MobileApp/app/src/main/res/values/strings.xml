@@ -25,15 +25,17 @@
     <!--activity_user_profile_edit-->
     <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          Your Profile        </string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView">9876543210</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText">9876543210</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_textView">vigneshkumar@gmail.com</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_email_editText">vigneshkumar@gmail.com</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_textView">AB+</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_blood_group_spinner">AB+</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_textView">Male</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_gender_spinner">Male</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView">2000-01-01</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView">2000-01-01</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView">70</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText">70</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView">1/99,KK NAGAR,MADURAI-625020</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>
 
     <!--activity_user_registration-->
     <string name="activity_user_registration_scrollView_constraintLayout_phone_number_editText">Phone Number</string>

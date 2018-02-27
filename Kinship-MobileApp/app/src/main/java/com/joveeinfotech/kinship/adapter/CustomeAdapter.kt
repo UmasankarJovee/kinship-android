@@ -72,7 +72,10 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
             Log.e("Message","Before setOnClickListener" )
             val card = itemView.findViewById<CardView>(R.id.cards_layout_CardView)
             card.setOnClickListener{
-                if(data.text == "Language"){
+                if (data.text == "Edit Profile"){
+                    listener.callEditProfile()
+                }
+                else if(data.text == "Language"){
                     Log.e("Message","Before listener.languageSettings()" )
                     listener.languageSettings()
                 }

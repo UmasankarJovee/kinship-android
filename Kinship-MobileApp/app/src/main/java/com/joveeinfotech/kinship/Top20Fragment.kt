@@ -27,7 +27,7 @@ class Top20Fragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_top20, container, false)
+        return inflater.inflate(R.layout.alert_address_details, container, false)
     }
 
     companion object {

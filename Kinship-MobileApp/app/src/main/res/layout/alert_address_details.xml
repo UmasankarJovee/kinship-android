@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="#FFFFFF"
+    android:scrollbars="none">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/alert_address_details_scrollView_linearLayout1"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+        <Spinner
+            android:id="@+id/alert_address_details_scrollView_linearLayout1_country_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
+
+        <Spinner
+            android:id="@+id/alert_address_details_scrollView_linearLayout1_state_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <Spinner
+            android:id="@+id/alert_address_details_scrollView_linearLayout1_district_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/city_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/alert_address_details_scrollView_linearLayout1_city_editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:hint="City"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:theme="@style/MyEditTextTheme" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/locality_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/alert_address_details_scrollView_linearLayout1_locality_editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:hint="Locality"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:theme="@style/MyEditTextTheme" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/street_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/alert_address_details_scrollView_linearLayout1_street_editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:hint="Street"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:theme="@style/MyEditTextTheme" />
+        </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:id="@+id/alert_address_details_scrollView_linearLayout1_linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="left"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="left"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/toolBarColor"
+                android:padding="12dp"
+                android:text="CANCEL"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3_okButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/toolBarColor"
+                    android:padding="12dp"
+                    android:text="Ok"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
