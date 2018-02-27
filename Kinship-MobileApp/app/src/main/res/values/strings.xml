@@ -22,7 +22,7 @@
     <string name="activity_home_fragment_bloodDonatorInstructions_textview">BLOOD DONATOR INSTRUCTIONS</string>
     <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTER INSTRUCTIONS</string>
 
-    <!--activity_user_profile_edit-->
+    fragment_user_profile_editedit-->
     <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          Your Profile        </string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>

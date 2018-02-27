@@ -1,46 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
     android:scrollbars="none"
-    android:background="@color/black"
-    tools:context="com.joveeinfotech.kinship.view.UserProfileEditFragment">
+    tools:context="com.joveeinfotech.kinship.UserProfileEdit">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/fragment_user_profile_edit_constraintLayout"
+        android:id="@+id/activity_user_profile_edit_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/fragment_user_profile_edit_constraintLayout_toolBar"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_toolBar"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:background="@drawable/gradient"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
         <ImageView
-            android:id="@+id/fragment_user_profile_edit_constraintLayout_userProfile_imageView"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_userProfile_imageView"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintLeft_toLeftOf="@+id/fragment_user_profile_edit_constraintLayout_toolBar"
-            app:layout_constraintRight_toRightOf="@+id/fragment_user_profile_edit_constraintLayout_toolBar"
-            app:layout_constraintTop_toTopOf="@+id/fragment_user_profile_edit_constraintLayout_toolBar"
-            android:src="@drawable/profile_image"/>
+            app:layout_constraintLeft_toLeftOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
+            app:layout_constraintRight_toRightOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
+            app:layout_constraintTop_toTopOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
+            app:srcCompat="@drawable/profile_image" />
 
         <ImageView
-            android:id="@+id/fragment_user_profile_edit_constraintLayout_userProfileEditIcon_imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="84dp"
+            android:id="@+id/activity_user_profile_edit_constraintLayout_userProfileEditIcon_imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="75dp"
             android:src="@mipmap/profile_image_icon"
-            app:layout_constraintHorizontal_bias="0.648"
-            app:layout_constraintLeft_toLeftOf="@+id/fragment_user_profile_edit_constraintLayout_toolBar"
-            app:layout_constraintRight_toRightOf="@+id/fragment_user_profile_edit_constraintLayout_toolBar"
-            app:layout_constraintTop_toTopOf="@+id/fragment_user_profile_edit_constraintLayout_toolBar" />
+            app:layout_constraintEnd_toEndOf="@+id/activity_user_profile_edit_constraintLayout_yourProfile_button"
+            app:layout_constraintHorizontal_bias="0.933"
+            app:layout_constraintTop_toTopOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
+            app:layout_constraintStart_toStartOf="@+id/activity_user_profile_edit_constraintLayout_userProfile_imageView" />
+        <TextView
+            android:id="@+id/activity_user_profile_edit_constraintLayout_userName_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/activity_user_profile_edit_constraintLayout_userName_textView"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_userProfile_imageView" />
 
+        <Button
+            android:id="@+id/activity_user_profile_edit_constraintLayout_yourProfile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/button_profile"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:text="@string/activity_user_profile_edit_constraintLayout_yourProfile_button"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_userName_textView" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_yourProfile_button">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_imageView"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/gender"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="22dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <EditText
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="22dp"
+                    android:background="@color/transparent"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@mipmap/edit"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@mipmap/check"
+                    android:visibility="gone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@mipmap/phone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_imageView"/>
+
+                <TextView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="73dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toRightOf="@id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="73dp"
+                    android:background="@color/transparent"
+                    android:inputType="number"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toRightOf="@id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon2_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="60dp"
+                    android:src="@mipmap/edit"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="60dp"
+                    android:src="@mipmap/check"
+                    android:visibility="gone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_imageView"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@mipmap/date_of_birth"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneIcon_imageView"/>
+
+                <TextView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="125dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView"
+                    android:textSize="16dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon3_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="112dp"
+                    android:src="@mipmap/edit"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="112dp"
+                    android:src="@mipmap/check"
+                    android:visibility="gone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_edit_constraintLayout_cardView1">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weightIcon_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@mipmap/user_edit_weight"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="72dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="19dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weightIcon_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.09" />
+                <EditText
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="19dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText"
+                    android:textSize="16sp"
+                    android:inputType="number"
+                    android:background="@color/transparent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weightIcon_imageView"/>
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@mipmap/edit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent" />
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@mipmap/check"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent" />
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_emailIcon_imageView"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@mipmap/mail"
+                    app:layout_constraintHorizontal_bias="0.034"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weightIcon_imageView"/>
+
+                <TextView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="69dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView"
+                    android:textSize="16sp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_emailIcon_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <EditText
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="69dp"
+                    android:background="@color/transparent"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_emailIcon_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="55dp"
+                    android:src="@mipmap/edit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent" />
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="55dp"
+                    android:src="@mipmap/check"
+                    android:visibility="gone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_imageView"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@mipmap/address"
+                    app:layout_constraintHorizontal_bias="0.034"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_emailIcon_imageView" />
+
+                <TextView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="120dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView"
+                    android:textSize="16sp"
+                    app:layout_constraintHorizontal_bias="0.063"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <EditText
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:background="@color/transparent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_imageView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="28dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="112dp"
+                    android:src="@mipmap/edit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="112dp"
+                    android:src="@mipmap/check"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text=""
+            app:layout_constraintTop_toBottomOf="@id/activity_user_profile_edit_constraintLayout_cardView2" />
     </android.support.constraint.ConstraintLayout>
+
 </ScrollView>

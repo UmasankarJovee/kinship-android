@@ -178,7 +178,7 @@ class Home : AppCompatActivity() {
         when (item.itemId) {
             0 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                startActivity(Intent(applicationContext, UserProfileEdit::class.java))
+                //startActivity(Intent(applicationContext, ::class.java))
                 return true
             }
             1 -> {

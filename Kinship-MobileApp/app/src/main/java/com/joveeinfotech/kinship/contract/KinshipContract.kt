@@ -115,8 +115,8 @@ interface KinshipContract {
         fun initPresenter()
         fun loadDistricts()
         fun sendDistrictsReceiveHospitals(district: String)
-        fun sendUserRequestDetails(name : String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
-        fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+        fun sendUserRequestDetails(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String, relationship: String)
+        fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String, relationship: String)
     }
 
     interface Listener {
@@ -136,6 +136,7 @@ interface KinshipContract {
         fun setStates(stateList: StateResult)
         fun setDistricts(districtList: DistrictResult)
         fun updateDateInView()
+        fun call(field:String,value:String)
     }
     interface UserProfileEditFragmentPresenter{
         fun initPresenter()

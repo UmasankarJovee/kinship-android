@@ -14,7 +14,6 @@ import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.DistrictResult
 import com.joveeinfotech.kinship.model.SearchHospitalResult
 import com.joveeinfotech.kinship.presenter.SomeOneRequestFragmentPresenterImpl
-import com.joveeinfotech.kinship.presenter.UserRequestFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_some_one_request.*
 import kotlinx.android.synthetic.main.fragment_some_one_request.view.*
 import kotlinx.android.synthetic.main.fragment_user_request.*
@@ -26,6 +25,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
     var view1 : View? = null
 
     var search_blood_group : String? = null
+    var relationship : String? = null
     var search_unit : String? = null
     var search_district : String? = null
     var search_hospital : String? = null
@@ -59,9 +59,19 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
         categories.add("O+")
         categories.add("O-")
 
+        var categories_of_relation = ArrayList<String>()
+        categories.add("Select Relation")
+        categories.add("Relation")
+        categories.add("Friend")
+        categories.add("Unknown")
+
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.spinner_some_one_search_blood_group?.adapter = dataAdapter
+
+        val dataAdapter_of_relation = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories_of_relation)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.spinner_some_one_relationship?.adapter = dataAdapter
 
         view1?.spinner_some_one_search_blood_group?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -73,11 +83,21 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
             }
         }
 
+        view1?.spinner_some_one_relationship?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                relationship = categories_of_relation.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
+
         view1?.button_user_search_submit?.setOnClickListener{
             someOneRequestFragmentPresenter?.sendUserRequestDetails(editText_some_one_name.text.toString(),
                     editText_some_one_phone_number.text.toString(),search_blood_group!!,
                     editText_some_one_search_units.text.toString(),
-                    search_district!!,search_hospital!!)
+                    search_district!!,search_hospital!!,relationship!!)
         }
 
         return view1

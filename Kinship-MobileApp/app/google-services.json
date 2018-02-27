@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "925384792703",
+    "firebase_url": "https://kinship-665c2.firebaseio.com",
+    "project_id": "kinship-665c2",
+    "storage_bucket": "kinship-665c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925384792703:android:4f39f1ae239e9ad1",
+        "android_client_info": {
+          "package_name": "com.joveeinfotech.kinship"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925384792703-bfeh50p6tas7n1vnibrlonngub133ssq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joveeinfotech.kinship",
+            "certificate_hash": "1639f572950a73a64b6b9975023b3777c7f835e3"
+          }
+        },
+        {
+          "client_id": "925384792703-d0rm9p661skoojmhqkvu2eqi1a0ggd47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOKwWc_jaVZevblwf4Uz2KwrBCt9lBMxo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925384792703-d0rm9p661skoojmhqkvu2eqi1a0ggd47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

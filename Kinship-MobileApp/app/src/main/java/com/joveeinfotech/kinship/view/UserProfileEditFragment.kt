@@ -3,28 +3,30 @@ package com.joveeinfotech.kinship.view
 import android.app.DatePickerDialog
 import android.content.ContentResolver
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.SendingUserProfileEdit
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.CountryResult
 import com.joveeinfotech.kinship.model.DistrictResult
 import com.joveeinfotech.kinship.model.StateResult
 import com.joveeinfotech.kinship.presenter.UserProfileEditFragmentPresenterImpl
-import kotlinx.android.synthetic.main.activity_user_profile_edit.*
-import kotlinx.android.synthetic.main.activity_user_profile_edit.view.*
+import com.joveeinfotech.kinship.utils.LocationService
+import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
+import kotlinx.android.synthetic.main.fragment_user_profile_edit.view.*
 import kotlinx.android.synthetic.main.alert_address_details.*
 import kotlinx.android.synthetic.main.alert_address_details.view.*
-import kotlinx.android.synthetic.main.fragment_user_address.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -68,7 +70,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         resolver = activity?.contentResolver
         val trans= fragmentManager?.beginTransaction()
         userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
-        upefView=inflater.inflate(R.layout.activity_user_profile_edit, container, false)
+        upefView=inflater.inflate(R.layout.fragment_user_profile_edit, container, false)
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setLines(1)
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setHorizontallyScrolling(true)
@@ -83,10 +85,13 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText?.setSingleLine()
 
         val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            Log.d("Message","Inside dataSetListener")
             cal.set(Calendar.YEAR, year)
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            Log.d("Message","Before call updateDataInView()")
             updateDateInView()
+            Log.d("Message","After finish updateDataInView()")
         }
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.setOnClickListener{
@@ -97,6 +102,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
+            //call("",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
             upefView?.activity_user_profile_edit_constraintLayout_userName_textView?.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.visibility = View.GONE
@@ -111,6 +117,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView?.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
+            //call("",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView?.visibility = View.VISIBLE
@@ -120,12 +127,14 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon3_imageView?.visibility=View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView?.visibility = View.VISIBLE
 
+            Log.d("Message","Before DataPickerDialog")
             DatePickerDialog(upefContext,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)).show()
+            Log.d("Message","After DataPickerDialog")
         }
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView?.setOnClickListener{
@@ -244,10 +253,22 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
     }
 
+    override fun call(field: String, value: String) {
+
+        var intent= Intent(upefContext,SendingUserProfileEdit::class.java)
+        intent.putExtra("filed",field)
+        intent.putExtra("value",field)
+        upefContext.startService(intent)
+
+    }
+
     override fun updateDateInView() {
+        Log.d("Message","Before updateDataInView()")
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
+        Log.d("Message","after sdf")
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
+        Log.d("Message","set Value ")
     }
     companion object {
       fun newInstance(): UserProfileEditFragment {

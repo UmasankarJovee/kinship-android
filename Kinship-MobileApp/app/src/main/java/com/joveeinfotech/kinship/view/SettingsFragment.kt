@@ -48,8 +48,7 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
 
     override fun displayResult(result: Boolean) {
         setBooleanPreference(mContext,"notification",result)
-        if(result == true)
-            Toast.makeText(mContext,"Notifications is On",Toast.LENGTH_SHORT).show()
+        if(result == true)Toast.makeText(mContext,"Notifications is On",Toast.LENGTH_SHORT).show()
         else Toast.makeText(mContext,"Notifications is Off",Toast.LENGTH_SHORT).show()
     }
 

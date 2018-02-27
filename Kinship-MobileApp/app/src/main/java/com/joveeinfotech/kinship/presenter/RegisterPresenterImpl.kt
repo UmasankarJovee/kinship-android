@@ -55,6 +55,14 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         val queryParams = HashMap<String, String>()
         queryParams.put("password", password)
         queryParams.put("phone_number", phone_number)
+
+        queryParams.put("app_id","com.joveeinfotech.kinship")
+        queryParams.put("android_id","dfgdfg")
+        queryParams.put("client_id","12345")
+        queryParams.put("device_name","dg")
+        queryParams.put("device_version","dfg")
+        queryParams.put("device_model","dfgdfg")
+
         networkCall?.APIRequest("api/v3/password", queryParams, PasswordResult::class.java, this, 3, "Setting your Password...")
 
     }
