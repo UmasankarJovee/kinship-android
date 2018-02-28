@@ -69,7 +69,6 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         // Inflate the layout for this fragment
         resolver = activity?.contentResolver
         val trans= fragmentManager?.beginTransaction()
-        userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
         upefView=inflater.inflate(R.layout.fragment_user_profile_edit, container, false)
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setLines(1)
@@ -163,12 +162,15 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
+            call("E-mail",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
+            Toast.makeText(upefContext,activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),Toast.LENGTH_SHORT).show()
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText?.visibility=View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.visibility=View.GONE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.setOnClickListener {
+            userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
             val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
@@ -209,7 +211,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
         return upefView
     }
-    override fun setCountries(countryList: CountryResult) {
+    /*override fun setCountries(countryList: CountryResult) {
         val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, countryList.country)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_country_spinner.adapter=dataAdapter
@@ -251,7 +253,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
                 Toast.makeText(upefContext, district, Toast.LENGTH_LONG).show()
             }
         }
-    }
+    }*/
 
     override fun call(field: String, value: String) {
 
@@ -268,6 +270,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         Log.d("Message","after sdf")
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
+        call("E-mail",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text.toString())
         Log.d("Message","set Value ")
     }
     companion object {

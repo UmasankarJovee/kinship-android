@@ -105,17 +105,17 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
 
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val countryList = response as CountryResult
-                view.setCountries(countryList)
+               // view.setCountries(countryList)
             }
             2 -> { // Get State
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val stateList = response as StateResult
-                view.setStates(stateList)
+                //view.setStates(stateList)
             }
             3 -> { // Get District
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val districtList = response as DistrictResult
-                view.setDistricts(districtList)
+                //view.setDistricts(districtList)
             }
             4 -> { // Send Address
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")

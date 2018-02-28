@@ -35,10 +35,11 @@ class SendingUserProfileEdit : Service(), APIListener{
         var value = i?.getString("value")
 
         val queryParams = HashMap<String, String>()
+        queryParams.put("user_id","81")
         queryParams.put("field",field!!)
         queryParams.put("value", value!!)
         Log.e("MAIN ACTIVITY : ","inside location" )
-        networkCall?.APIRequest("api/v1/profile",queryParams, SendingUserProfileEditResult::class.java,this, 1, "Sending Location...",false)
+        networkCall?.APIRequest("api/v1/profile1",queryParams, SendingUserProfileEditResult::class.java,this, 1, "Sending Location...")
 
         //intent?.putExtra("key1","value1")
         return super.onStartCommand(intent, flags, startId)
