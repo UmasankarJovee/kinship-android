@@ -202,14 +202,14 @@ class UserProfileEdit : AppCompatActivity() {
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView.visibility = View.GONE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_dateOfBirth_textView.visibility = View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView.visibility=View.VISIBLE
-            call1()
+            call1("dfg","dfg")
         }
     }
 
-    private fun call1() {
+    private fun call1(field : String,value : String) {
         val intent = Intent(this, LocationService::class.java)
-        intent.putExtra("key1","field")
-        intent.putExtra("key2","value")
+        intent.putExtra("filed",field)
+        intent.putExtra("value",value)
         startService(intent)
     }
 

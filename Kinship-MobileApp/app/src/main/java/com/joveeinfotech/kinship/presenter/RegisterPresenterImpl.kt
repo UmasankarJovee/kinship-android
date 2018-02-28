@@ -2,6 +2,7 @@ package com.joveeinfotech.kinship.presenter
 
 import android.content.Context
 import android.content.Intent
+import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
 import android.util.Log
@@ -52,19 +53,24 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
     }
 
     override fun passwordContent(password: String, phone_number: String) {
+
+        var deviceId = Settings.Secure.getString(mContext.contentResolver,
+                Settings.Secure.ANDROID_ID)
+        var deviceModel= android.os.Build.MODEL
+        var deviceName= android.os.Build.MANUFACTURER
+        var deviceVersion= android.os.Build.VERSION.SDK_INT
+
         val queryParams = HashMap<String, String>()
         queryParams.put("password", password)
         queryParams.put("phone_number", phone_number)
 
         queryParams.put("app_id","com.joveeinfotech.kinship")
-        queryParams.put("android_id","dfgdfg")
-        queryParams.put("client_id","12345")
-        queryParams.put("device_name","dg")
-        queryParams.put("device_version","dfg")
-        queryParams.put("device_model","dfgdfg")
+        queryParams.put("android_id",deviceId)
+        queryParams.put("device_name",deviceName)
+        queryParams.put("device_version",deviceVersion.toString())
+        queryParams.put("device_model",deviceModel)
 
         networkCall?.APIRequest("api/v3/password", queryParams, PasswordResult::class.java, this, 3, "Setting your Password...")
-
     }
     override fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String) {
         this.phone_number = phone_number

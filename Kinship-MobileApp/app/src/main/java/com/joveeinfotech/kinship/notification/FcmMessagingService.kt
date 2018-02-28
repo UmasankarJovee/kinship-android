@@ -9,10 +9,8 @@ import android.media.RingtoneManager
 import android.support.v4.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.joveeinfotech.kinship.AlertActivity
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getBooleanPreference
-import com.joveeinfotech.kinship.view.Login
 
 /**
  * Created by prandex-and-05 on 20/2/18.

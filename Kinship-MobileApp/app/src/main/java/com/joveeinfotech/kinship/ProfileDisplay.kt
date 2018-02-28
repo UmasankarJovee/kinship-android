@@ -5,13 +5,21 @@ import android.graphics.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
+import android.util.Log
+import android.widget.ImageView
+import com.joveeinfotech.kinship.model.PasswordResult
+import com.joveeinfotech.kinship.model.RegisterResult
+import com.joveeinfotech.kinship.model.UserProfileDisplayResult
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile_display.*
 import kotlinx.android.synthetic.main.top20_donars_list.*
+import java.util.HashMap
 
-class ProfileDisplay : AppCompatActivity() {
+class ProfileDisplay : AppCompatActivity(), APIListener {
 
     private var mResources: Resources? = null
     var srcBitmap : Bitmap? = null
+    var networkCall : APICall? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +27,50 @@ class ProfileDisplay : AppCompatActivity() {
 
         mResources = resources
         srcBitmap = BitmapFactory.decodeResource(mResources, R.drawable.profile)
+        networkCall = APICall(this)
         //activity_profile_display_profile_image.setImageResource(R.drawable.profile)
         setCircle()
+        getUserProfile()
     }
+
+    private fun getUserProfile() {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("phone_number", "9600862338")
+        networkCall?.APIRequest("api/v3/profile", queryParams, UserProfileDisplayResult::class.java, this, 3, "Setting your Password...")
+    }
+
+    override fun onSuccess(from: Int, response: Any) {
+        when (from) {
+            1 -> { // User Register
+                val result = response as UserProfileDisplayResult
+                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                if (result.status) {
+
+                    var imageUrl = result.image_url
+                    Picasso.with(this).load(imageUrl).into( activity_profile_display_profile_image)
+
+                    fragment_profile_display_TextView_user_name.text=result.name
+                    fragment_profile_display_TextView_user_email.text=result.email
+                    fragment_profile_display_TextView_user_phone_number.text=result.phone_number
+                    fragment_profile_display_TextView_user_blood_group.text=result.blood_group
+                    fragment_profile_display_TextView_user_date_of_birth.text=result.date_of_birth
+
+                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
+                } else {
+                    //snackbar(.findViewById(android.R.id.content), "Please wait some minutes")
+                }
+            }
+        }
+    }
+
+    override fun onFailure(from: Int, t: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    override fun onNetworkFailure(from: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
     private fun setCircle() {
         val paint = Paint()
@@ -29,11 +78,6 @@ class ProfileDisplay : AppCompatActivity() {
         val srcBitmapWidth = srcBitmap?.width
         val srcBitmapHeight = srcBitmap?.height
 
-        /*
-                    IMPORTANT NOTE : You should experiment with border and shadow width
-                    to get better circular ImageView as you expected.
-                    I am confused about those size.
-                */
         // Define border and shadow width
         val borderWidth = 25
         val shadowWidth = 10
@@ -69,30 +113,14 @@ class ProfileDisplay : AppCompatActivity() {
         // Draw the shadow on circular bitmap
         canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), (canvas.width / 2).toFloat(), paint)
 
-        /*
-                    RoundedBitmapDrawable
-                        A Drawable that wraps a bitmap and can be drawn with rounded corners. You
-                        can create a RoundedBitmapDrawable from a file path, an input stream, or
-                        from a Bitmap object.
-                */
-        // Initialize a new RoundedBitmapDrawable object to make ImageView circular
         val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(mResources!!, dstBitmap)
 
-        /*
-                    setCircular(boolean circular)
-                        Sets the image shape to circular.
-                */
         // Make the ImageView image to a circular image
         roundedBitmapDrawable.isCircular = true
 
-        /*
-                    setAntiAlias(boolean aa)
-                        Enables or disables anti-aliasing for this drawable.
-                */
         roundedBitmapDrawable.setAntiAlias(true)
 
         // Set the ImageView image as drawable object
-        //activity_profile_display_profile_image.setImageDrawable(roundedBitmapDrawable)
         top20_donars_list_Linear_layout_CardView_ImageView_profile.setImageDrawable(roundedBitmapDrawable)
     }
 }

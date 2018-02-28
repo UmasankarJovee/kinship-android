@@ -22,7 +22,11 @@ data class PasswordResult(var status : Boolean, var status_value: Int, var messa
 
 data class UserProfileResult(var status : Boolean, var status_value: Int, var message: String)
 
-data class UpdateDetailsResult(var count_of_hospitals : String,var count_of_users : String,var count_of_donors : String,var message: String,var status : Boolean)
+data class UpdateDetailsResult(var count_of_hospitals : String,
+                               var count_of_users : String,
+                               var count_of_donors : String,
+                               var message: String,
+                               var status : Boolean)
 
 data class CountryResult(var country : ArrayList<String>)
 
@@ -59,4 +63,22 @@ data class SendingUserProfileEditResult(var status: Boolean)
 data class ReplyBloodRequestResult(var status: Boolean, var phoneNumber : Long)
 
 data class NotComeForRequestResult(var status: Boolean)
+
+data class UserProfileDisplayResult(var status : Boolean,
+                                    var name : String,
+                                    var image_url : String,
+                                    var phone_number : String,
+                                    var email : String,
+                                    var blood_group : String,
+                                    var date_of_birth : String,
+                                    var total_donated : String,
+                                    var total_request : String,
+                                    var last_donated_date : String,
+                                    var address : List<AddressOfUser>)
+
+data class AddressOfUser(var street_name : String,
+                         var locality : String,
+                         var city : String,
+                         var district : String,
+                         var state : String)
 
