@@ -24,13 +24,12 @@
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/activity_user_profile_edit_constraintLayout_userProfile_imageView"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/home2"
-
+            android:src="@drawable/profile_image"
             app:layout_constraintLeft_toLeftOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
             app:layout_constraintRight_toRightOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
             app:layout_constraintTop_toTopOf="@+id/activity_user_profile_edit_constraintLayout_toolBar" />

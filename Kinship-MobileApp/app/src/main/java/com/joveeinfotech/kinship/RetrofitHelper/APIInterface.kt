@@ -20,4 +20,5 @@ interface APIInterface {
     @Multipart
     @POST("api/v1/persons")
     fun uploadImage(@Part image: MultipartBody.Part): Observable<ImageUpload>
+
 }

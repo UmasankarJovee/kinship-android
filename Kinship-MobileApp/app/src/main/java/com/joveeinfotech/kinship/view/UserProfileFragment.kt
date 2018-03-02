@@ -34,7 +34,7 @@ import java.util.*
 class UserProfileFragment : Fragment(), UserProfileFragmentView {
 
     var bitmap: Bitmap? = null
-    var ba: ByteArray? = null
+    var byteArray: ByteArray? = null
     var cal = Calendar.getInstance()
     var gender: Int? = null
 
@@ -95,7 +95,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
             userProfileFragmentPresenter?.userProfileDetails(editText_first_name.text.toString(),editText_last_name.text.toString(), editText_date_of_birth.text.toString(),gender!!)
         }
 
-        Log.e("inside create view : " ,ba.toString())
+        Log.e("inside create view : " ,byteArray.toString())
        /* if(savedInstanceState!=null){
             ba = savedInstanceState.getByteArray("myarray")
             view1?.editText_first_name?.setText(savedInstanceState.getString("first_name"))
@@ -129,10 +129,10 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
             val uri = I.data
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(resolver, uri)
-                val bStream = ByteArrayOutputStream()
-                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, bStream)
-                ba = bStream.toByteArray()
-                Log.e("inside : ",ba.toString())
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                byteArray = byteArrayOutputStream.toByteArray()
+                Log.e("inside : ",byteArray.toString())
                 imageView.setImageBitmap(bitmap)
                 val isr = resolver?.openInputStream(I.data!!)
                 uploadImage(getBytes(isr))

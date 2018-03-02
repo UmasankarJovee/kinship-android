@@ -20,7 +20,10 @@ import android.widget.Toast
 import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
+import com.joveeinfotech.kinship.view.ProfileDisplayFragment
 import com.joveeinfotech.kinship.view.SomeOneRequestFragment
+import com.joveeinfotech.kinship.view.Top20Fragment
+import com.joveeinfotech.kinship.view.UserRequestFragment
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
@@ -85,7 +88,7 @@ class Home : AppCompatActivity() {
                 //goToPreviousSelectFragment()
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.activity_home_frame_layout,UserRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout, UserRequestFragment.newInstance())
                 trans.commit()
             } else {
                 val trans = supportFragmentManager.beginTransaction()

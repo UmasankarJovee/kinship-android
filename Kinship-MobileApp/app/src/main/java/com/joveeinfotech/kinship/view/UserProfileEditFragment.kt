@@ -7,14 +7,11 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.app.AlertDialog
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,13 +25,13 @@ import com.joveeinfotech.kinship.SendingUserProfileEdit
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.UserProfileEditFragmentPresenterImpl
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.view.*
 import kotlinx.android.synthetic.main.alert_address_details.view.*
 import kotlinx.android.synthetic.main.alert_user_details.view.*
-import kotlinx.android.synthetic.main.top20_donars_list.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -56,7 +53,7 @@ import java.util.*
 class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
     var bitmap: Bitmap? = null
-    var ba: ByteArray? = null
+    var byteArray: ByteArray? = null
     var progressDialog : ProgressDialog? = null
     var upefView:View?=null
     var networkCall: APICall? = null
@@ -90,6 +87,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         resolver = activity?.contentResolver
         val trans= fragmentManager?.beginTransaction()
         upefView=inflater.inflate(R.layout.fragment_user_profile_edit, container, false)
+        userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setLines(1)
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setHorizontallyScrolling(true)
@@ -206,7 +204,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.visibility=View.GONE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.setOnClickListener {
-            userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
+            userProfileEditFragmentPresenter?.loadCountries()
             val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
@@ -317,13 +315,15 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             val uri = I.data
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(resolver, uri)
-                val bStream = ByteArrayOutputStream()
-                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, bStream)
-                ba = bStream.toByteArray()
-                Log.e("inside : ", ba.toString())
+                val byteArrayOutoutStream = ByteArrayOutputStream()
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutoutStream)
+                byteArray = byteArrayOutoutStream.toByteArray()
+                val imageString=Base64.encodeToString(byteArray,Base64.DEFAULT)
+                Log.e("inside : ", byteArray.toString())
                 upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
-                val isr = resolver?.openInputStream(I.data!!)
-                uploadImage(getBytes(isr))
+                userProfileEditFragmentPresenter?.sendImageString(imageString)
+                //val isr = resolver?.openInputStream(I.data!!)
+                //uploadImage(getBytes(isr))
 
             } catch (e: IOException) {
 
@@ -331,7 +331,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
     }
 
-    private fun getBytes(inputStream: InputStream?): ByteArray {
+    /*private fun getBytes(inputStream: InputStream?): ByteArray {
         val byteBuff = ByteArrayOutputStream()
 
         val buffSize = 1024
@@ -370,6 +370,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
                         }
                 )
     }
+*/
 
    /* private fun setCircle() {
 
@@ -444,9 +445,30 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         //activity_profile_display_profile_image.setImageDrawable(roundedBitmapDrawable)
         top20_donars_list_Linear_layout_CardView_ImageView_profile.setImageDrawable(roundedBitmapDrawable)
     }*/
+
+    override fun setProfileDetails(image_url: String, name: String, phone_number: String, date_of_birth: String, email: String, address: String) {
+        Picasso.with(upefContext).load(image_url).into(activity_user_profile_edit_constraintLayout_userProfile_imageView)
+        activity_user_profile_edit_constraintLayout_userName_textView.text=name
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.text=name
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.text=phone_number
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setText(phone_number)
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text=date_of_birth
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.text=email
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.setText(email)
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView.text=address
+    }
     companion object {
       fun newInstance(): UserProfileEditFragment {
           return UserProfileEditFragment()
       }
     }
+
+    //Encode
+    /*var encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT)*/
+
+    //Decode
+    /*Bitmap bm = BitmapFactory.decodeFile("/path/to/image.jpg");
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+    byte[] b = baos.toByteArray();*/
 }// Required empty public constructor

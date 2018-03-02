@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.view
 
 import android.content.Context
 import android.os.Bundle
@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.DistrictResult
 import com.joveeinfotech.kinship.model.SearchHospitalResult
 import com.joveeinfotech.kinship.presenter.UserRequestFragmentPresenterImpl
+import com.joveeinfotech.kinship.utils.CustomToast
 import com.joveeinfotech.kinship.utils.SharedData
 import kotlinx.android.synthetic.main.fragment_user_request.*
 import kotlinx.android.synthetic.main.fragment_user_request.view.*
@@ -78,8 +80,13 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         }*/
 
         view1?.button_user_search_submit?.setOnClickListener{
-            userRequestFragmentPresenter?.sendUserRequestDetails(search_blood_group!!,editText_user_search_units.text.toString(),
-                    search_district!!,search_hospital!!)
+            if(search_blood_group!!.isNotEmpty()  &&  editText_user_search_units.text.isNotEmpty()
+                    && search_district!!.isNotEmpty() && search_hospital!!.isNotEmpty()){
+                userRequestFragmentPresenter?.sendUserRequestDetails(search_blood_group!!,editText_user_search_units.text.toString(),
+                        search_district!!,search_hospital!!)
+            }else{
+                CustomToast().alertToast(mContext,"Fill the all fields")
+            }
         }
 
         return view1
