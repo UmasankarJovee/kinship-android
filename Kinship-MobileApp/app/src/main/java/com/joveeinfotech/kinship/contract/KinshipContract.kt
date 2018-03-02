@@ -2,6 +2,7 @@ package com.joveeinfotech.kinship.contract
 
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListAdapter
+import com.joveeinfotech.kinship.adapter.Top20ListAdapter
 import com.joveeinfotech.kinship.model.*
 
 /**
@@ -53,7 +54,6 @@ interface KinshipContract {
         fun OtpContent(otp: String)
         fun passwordContent(password: String, phone_number: String)
     }
-
 
     //UserDetails
     interface UserDetailsView{
@@ -119,14 +119,48 @@ interface KinshipContract {
         fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String, relationship: String)
     }
 
+    // Top20 Fragment
+    interface Top20FragmentView{
+        fun setAdapterOfTop20(top20ListAdapter: Top20ListAdapter?)
+    }
+    interface Top20FragmentPresenter{
+        fun initPresenter()
+        fun loadTop20()
+    }
+
+    // ProfileDisplayActivity
+    interface ProfileDisplayView{
+        fun setProfileDetails(image_url: String, name: String, total_donated: String, total_request: String, last_donated_date: String, email: String, phone_number: String, blood_group: String, date_of_birth: String, address: String)
+    }
+    interface ProfileDisplayPresenter{
+        fun initPresenter()
+        fun loadProfileDetails()
+    }
+
     interface Listener {
         fun languageSettings()
         fun onItemClick(data: Album)
         fun displayResult(result:Boolean)
+        fun callEditProfile()
     }
 
     interface LanguageListener{
         fun onLanguageClick(data:String)
     }
 
+    // UserProfileEditFragment
+    interface UserProfileEditFragmentView{
+        /*fun setCountries(dataAdapter: CountryResult)
+        fun setStates(stateList: StateResult)
+        fun setDistricts(districtList: DistrictResult)*/
+        fun updateDateInView()
+        fun call(field:String,value:String)
+    }
+    interface UserProfileEditFragmentPresenter{
+        fun initPresenter()
+        fun loadCountries()
+        fun sendCountryReceiveState(country : String)
+        fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
+        fun sendStateReceiveDistrict(state: String)
+    }
 }

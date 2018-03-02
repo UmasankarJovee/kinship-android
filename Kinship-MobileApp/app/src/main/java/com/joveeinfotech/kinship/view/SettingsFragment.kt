@@ -13,6 +13,7 @@ import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.presenter.*
+import com.joveeinfotech.kinship.view.UserProfileEditFragment
 import kotlinx.android.synthetic.main.fragment_settings.view.*
 
 
@@ -21,6 +22,7 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
     private lateinit var settingsFragmentPresenterImpl:SettingsFragmentPresenterImpl
     lateinit var mContext: Context
     var view1:View?=null
+    var select : Fragment? = null
     override fun onAttach(context: Context) {
         this.mContext=context
         super.onAttach(context)
@@ -55,12 +57,24 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
     }
 
     override fun languageSettings() {
+
         val mydialog = LanguageListDialogFragment()
         mydialog.setCancelable(true)
         mydialog.show(activity?.fragmentManager, "tag")
         mydialog.cancelButton?.setOnClickListener {
             Toast.makeText(mContext,"hello",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun callEditProfile() {
+        select=UserProfileEditFragment.newInstance()
+        goToSelectFragment()
+    }
+    private fun goToSelectFragment() {
+        val trans = fragmentManager?.beginTransaction()
+        trans?.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+        trans?.replace(R.id.activity_home_frame_layout,select)
+        trans?.commit()
     }
 
     companion object {

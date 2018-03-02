@@ -31,14 +31,15 @@ class SendingUserProfileEdit : Service(), APIListener{
         //mApiInterface= RetrofitClient.getClient()
         networkCall = APICall(this)
         var i =intent?.extras
-        var field = i?.getString("key1")
-        var value = i?.getString("value1")
+        var field = i?.getString("field")
+        var value = i?.getString("value")
 
         val queryParams = HashMap<String, String>()
+        queryParams.put("user_id","81")
         queryParams.put("field",field!!)
         queryParams.put("value", value!!)
         Log.e("MAIN ACTIVITY : ","inside location" )
-        networkCall?.APIRequest("api/v1/profile",queryParams, SendingUserProfileEditResult::class.java,this, 1, "Sending Location...",false)
+        networkCall?.APIRequest("api/v1/profile1",queryParams, SendingUserProfileEditResult::class.java,this, 1, "Sending Location...")
 
         //intent?.putExtra("key1","value1")
         return super.onStartCommand(intent, flags, startId)

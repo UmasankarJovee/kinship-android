@@ -14,6 +14,7 @@ import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.DistrictResult
 import com.joveeinfotech.kinship.model.SearchHospitalResult
 import com.joveeinfotech.kinship.presenter.SomeOneRequestFragmentPresenterImpl
+import com.joveeinfotech.kinship.utils.CustomToast
 import kotlinx.android.synthetic.main.fragment_some_one_request.*
 import kotlinx.android.synthetic.main.fragment_some_one_request.view.*
 import kotlinx.android.synthetic.main.fragment_user_request.*
@@ -94,10 +95,17 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
         }
 
         view1?.button_user_search_submit?.setOnClickListener{
-            someOneRequestFragmentPresenter?.sendUserRequestDetails(editText_some_one_name.text.toString(),
-                    editText_some_one_phone_number.text.toString(),search_blood_group!!,
-                    editText_some_one_search_units.text.toString(),
-                    search_district!!,search_hospital!!,relationship!!)
+            if(editText_some_one_name.text.isNotEmpty() && editText_some_one_phone_number.text.isNotEmpty()
+                    && search_blood_group!!.isNotEmpty() && editText_some_one_search_units.text.isNotEmpty()
+                    && search_district!!.isNotEmpty() && search_hospital!!.isNotEmpty()
+                    && relationship!!.isNotEmpty()) {
+                someOneRequestFragmentPresenter?.sendUserRequestDetails(editText_some_one_name.text.toString(),
+                        editText_some_one_phone_number.text.toString(), search_blood_group!!,
+                        editText_some_one_search_units.text.toString(),
+                        search_district!!, search_hospital!!, relationship!!)
+            }else{
+                CustomToast().alertToast(mContext!!,"Fill the all fields")
+            }
         }
 
         return view1

@@ -17,9 +17,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.RadioButton
 import android.widget.Toast
+import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
+import com.joveeinfotech.kinship.view.ProfileDisplayFragment
 import com.joveeinfotech.kinship.view.SomeOneRequestFragment
+import com.joveeinfotech.kinship.view.Top20Fragment
+import com.joveeinfotech.kinship.view.UserRequestFragment
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
@@ -84,7 +88,7 @@ class Home : AppCompatActivity() {
                 //goToPreviousSelectFragment()
                 val trans = supportFragmentManager.beginTransaction()
                 trans.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out)
-                trans.replace(R.id.activity_home_frame_layout,UserRequestFragment.newInstance())
+                trans.replace(R.id.activity_home_frame_layout, UserRequestFragment.newInstance())
                 trans.commit()
             } else {
                 val trans = supportFragmentManager.beginTransaction()
@@ -135,6 +139,7 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        BottomNavigationHelper.disableShiftMode(activity_login_navigation_bottomNavigationView)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setLogo(R.mipmap.home_logo)
         supportActionBar!!.setDisplayUseLogoEnabled(true)
@@ -176,8 +181,7 @@ class Home : AppCompatActivity() {
         when (item.itemId) {
             0 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                val i = Intent(applicationContext, UserProfileEdit::class.java)
-                startActivity(i)
+                //startActivity(Intent(applicationContext, ::class.java))
                 return true
             }
             1 -> {

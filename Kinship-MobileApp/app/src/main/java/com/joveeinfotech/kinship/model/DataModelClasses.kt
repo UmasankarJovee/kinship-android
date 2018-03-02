@@ -51,7 +51,7 @@ data class ImageUpload(var status: Boolean)
 data class SendTokenResult(var status: Boolean)
 
 /*data class AndroidResponse(val android_lists:List<GetTop20Result>)*/
-data class GetTop20Result(var profileURL : String,
+data class GetTop20Result(var profile_url : String,
                           var name : String,
                           var district: String,
                           var total_like : Int,
@@ -65,7 +65,8 @@ data class ReplyBloodRequestResult(var status: Boolean, var phoneNumber : Long)
 data class NotComeForRequestResult(var status: Boolean)
 
 data class UserProfileDisplayResult(var status : Boolean,
-                                    var name : String,
+                                    var first_name : String,
+                                    var last_name : String,
                                     var image_url : String,
                                     var phone_number : String,
                                     var email : String,
@@ -74,11 +75,10 @@ data class UserProfileDisplayResult(var status : Boolean,
                                     var total_donated : String,
                                     var total_request : String,
                                     var last_donated_date : String,
-                                    var address : List<AddressOfUser>)
-
-data class AddressOfUser(var street_name : String,
-                         var locality : String,
-                         var city : String,
-                         var district : String,
-                         var state : String)
+                                    var street_name : String,
+                                    var locality : String,
+                                    var city : String,
+                                    var district : String,
+                                    var state : String
+                                    /*var address : List<AddressOfUser>*/)
 

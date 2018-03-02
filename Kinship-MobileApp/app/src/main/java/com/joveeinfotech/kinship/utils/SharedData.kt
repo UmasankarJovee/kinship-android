@@ -150,8 +150,4 @@ class SharedData {
     fun isEnterIntoSearch(): Boolean {
         return pref!!.getBoolean(IS_SEARCH,false)
     }
-
-
-
-
 }

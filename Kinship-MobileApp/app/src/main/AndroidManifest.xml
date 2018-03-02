@@ -33,15 +33,12 @@
 
         </activity>
         <activity
-            android:name=".UserProfileEdit"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
             android:name=".view.UserDetails"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar" />
 
         <activity
-            android:name=".ProfileDisplay"
+            android:name=".view.ProfileDisplay"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,6 +51,10 @@
             android:name=".utils.LocationService"
             android:enabled="true"
             android:exported="true" />
+        <!--<service
+            android:name=".SendingUserProfileEdit"
+            android:enabled="true"
+            android:exported="true" />-->
         <service android:name=".notification.FcmInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
