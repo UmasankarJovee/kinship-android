@@ -47,7 +47,6 @@ class Top20Fragment : Fragment(), APIListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.alert_address_details, container, false)
 
         networkCall = APICall(mContext!!)
         var view1 : View = inflater.inflate(R.layout.fragment_top20, container, false)

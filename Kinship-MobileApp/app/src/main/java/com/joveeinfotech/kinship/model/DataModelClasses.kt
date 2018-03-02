@@ -54,7 +54,7 @@ data class GetTop20Result(var profileURL : String,
                           var total_donated : Int,
                           var last_donated_date : String)
 
-data class SendingUserProfileEditResult(var status: Boolean)
+data class SendingUserProfileEditResult(var status: Boolean,var message: String,var result: String)
 
 data class ReplyBloodRequestResult(var status: Boolean, var phoneNumber : Long)
 

@@ -136,7 +136,7 @@ interface KinshipContract {
         fun setStates(stateList: StateResult)
         fun setDistricts(districtList: DistrictResult)*/
         fun updateDateInView()
-        fun call(field:String,value:String)
+        fun call(field:String,value:String,field1:String,value1:String)
     }
     interface UserProfileEditFragmentPresenter{
         fun initPresenter()

@@ -5,8 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    android:scrollbars="none"
-    tools:context="com.joveeinfotech.kinship.UserProfileEdit">
+    android:scrollbars="none">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_user_profile_edit_constraintLayout"
@@ -30,10 +29,11 @@
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="15dp"
+            android:src="@drawable/home2"
+
             app:layout_constraintLeft_toLeftOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
             app:layout_constraintRight_toRightOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
-            app:layout_constraintTop_toTopOf="@+id/activity_user_profile_edit_constraintLayout_toolBar"
-            app:srcCompat="@drawable/profile_image" />
+            app:layout_constraintTop_toTopOf="@+id/activity_user_profile_edit_constraintLayout_toolBar" />
 
         <ImageView
             android:id="@+id/activity_user_profile_edit_constraintLayout_userProfileEditIcon_imageView"
@@ -110,20 +110,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_imageView"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
-                <EditText
-                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="55dp"
-                    android:layout_marginTop="22dp"
-                    android:background="@color/transparent"
-                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_imageView"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+
                 <ImageView
                     android:id="@+id/activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView"
                     android:layout_width="40dp"
@@ -421,22 +408,6 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-                <EditText
-                    android:id="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="55dp"
-                    android:layout_marginTop="120dp"
-                    android:layout_marginLeft="8dp"
-                    android:text="@string/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:background="@color/transparent"
-                    app:layout_constraintLeft_toRightOf="@+id/activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_imageView"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <ImageView
