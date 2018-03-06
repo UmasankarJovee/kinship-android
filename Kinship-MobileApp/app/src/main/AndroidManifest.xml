@@ -40,7 +40,10 @@
             android:name=".Home"
             android:configChanges="orientation|keyboardHidden"
             android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar"></activity>
+            android:theme="@style/AppThemeActionBar">
+
+        </activity>
+
         <activity
             android:name=".view.UserDetails"
             android:configChanges="orientation|keyboardHidden"

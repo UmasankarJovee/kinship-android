@@ -50,6 +50,17 @@
     <string name="alert_password_get_confirm_password_editText">Confirm Password</string>
     <string name="alert_password_get_confirmPasswordButton">SUBMIT</string>
 
+    <!--alert-address_details-->
+    <string name="alert_address_details_scrollView_linearLayout1_city_editText">City</string>
+    <string name="alert_address_details_scrollView_linearLayout1_locality_editText">Locality</string>
+    <string name="alert_address_details_scrollView_linearLayout1_street_editText">Street</string>
+    <string name="alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton">CANCEL</string>
+    <string name="alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3_okButton">OK</string>
+
+    <!--alert_user_details-->
+    <string name="alert_user_details_firstName_editText">First Name</string>
+    <string name="alert_user_details_lastName_editText">Last Name</string>
+    <string name="alert_user_details_okButton">Ok</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="blood_donator_instructions_heading">BLOOD DONATOR INSTRUCTIONS</string>
@@ -90,6 +101,7 @@
     <string name="settingsFragment_cardView1_textView">Edit Profile</string>
     <string name="settingsFragment_cardView2_textView">Notifications</string>
     <string name="settingsFragment_cardView3_textView">Language</string>
+    <string name="settingsFragment_cardView4_textView">Logout</string>
     <string name="alert_language_settings_cardView_textView">Language Settings</string>
     <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
     <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>

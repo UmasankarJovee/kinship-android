@@ -1,6 +1,10 @@
 package com.joveeinfotech.kinship.contract
 
 import com.joveeinfotech.kinship.adapter.*
+import com.joveeinfotech.kinship.adapter.CustomeAdapter
+import com.joveeinfotech.kinship.adapter.LanguageListAdapter
+import com.joveeinfotech.kinship.adapter.LanguageListsAdapter
+import com.joveeinfotech.kinship.adapter.Top20ListAdapter
 import com.joveeinfotech.kinship.model.*
 
 /**
@@ -25,7 +29,7 @@ interface KinshipContract {
     }
     interface SettingsFragmentPresenter{
         fun initPresenter()
-        fun getLanguagesData(): LanguageListAdapter
+        fun getLanguagesData(): LanguageListsAdapter
     }
 
     // Login Activity
@@ -140,10 +144,11 @@ interface KinshipContract {
         fun onItemClick(data: Album)
         fun displayResult(result:Boolean)
         fun callEditProfile()
+        fun logoutuserid()
     }
 
     interface LanguageListener{
-        fun onLanguageClick(data:String)
+        fun onLanguageClick(data:Int)
     }
 
     // UserProfileEditFragment
@@ -152,14 +157,17 @@ interface KinshipContract {
         fun setStates(stateList: StateResult)
         fun setDistricts(districtList: DistrictResult)*/
         fun updateDateInView()
-        fun call(field:String,value:String)
+        fun call(field:String,value:String,field1:String,value1:String)
+        fun setProfileDetails(image_url: String, name: String,phone_number: String,date_of_birth: String,email: String,address: String)
     }
     interface UserProfileEditFragmentPresenter{
         fun initPresenter()
+        fun loadProfileDetails()
         fun loadCountries()
         fun sendCountryReceiveState(country : String)
         fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
         fun sendStateReceiveDistrict(state: String)
+        fun sendImageString(imageString:String)
     }
 
     interface DonorsFragmentView{

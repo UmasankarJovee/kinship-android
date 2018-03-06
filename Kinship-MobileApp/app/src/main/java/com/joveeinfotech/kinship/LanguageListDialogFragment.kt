@@ -36,7 +36,7 @@ class LanguageListDialogFragment:DialogFragment(),LanguageListener{
     var view1 : View? = null
     var sd : SettingsFragmentPresenterImpl? = null
     var settingsFragment : SettingsFragment? = null
-    var getLanguage:String?=null
+    var getLanguage:Int=0
     val language:String?=null
     var languageToLoad:String?=null
     lateinit var locale:Locale
@@ -44,12 +44,17 @@ class LanguageListDialogFragment:DialogFragment(),LanguageListener{
 
     val languages = arrayOf("English", "தமிழ்", "हिंदी")
     val languages_code = arrayOf("en", "ta", "hi")
+    var lLDFContext:Context?=null
+    override fun onAttach(context: Context?) {
+        this.lLDFContext=context
+        super.onAttach(context)
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         view1 =inflater!!.inflate(R.layout.alert_language_settings,null)
         dialog.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-        sd = SettingsFragmentPresenterImpl(activity,this)
+        sd = SettingsFragmentPresenterImpl(lLDFContext!!,this)
         settingsFragment = SettingsFragment()
         /*alert_language_settings_cardView_constraintLayout_spinner?.adapter=ArrayAdapter<String>(activity,R.layout.alert_language_settings,languages)as SpinnerAdapter?
 
@@ -62,23 +67,24 @@ class LanguageListDialogFragment:DialogFragment(),LanguageListener{
                 setLocale(languages_code.get(p2))
             }
         }*/
-        //view1?.alert_language_settings_cardView_constraintLayout_scrollView_recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-        //view1?.alert_language_settings_cardView_constraintLayout_scrollView_recyclerView?.adapter=sd?.getLanguagesData()
-        /*cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
+        view1?.alert_language_settings_cardView_constraintLayout_listView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+        view1?.alert_language_settings_cardView_constraintLayout_listView?.adapter=sd?.getLanguagesData()
+        cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
         okButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_okButton)
         cancelButton?.setOnClickListener {
            dismiss()
         }
         okButton?.setOnClickListener {
             Toast.makeText(activity, "${getLanguage} Clicked !", Toast.LENGTH_SHORT).show()
-            when(getLanguage){
+            dismiss()
+            /*when(getLanguage){
                 "Tamil" ->{
                     Toast.makeText(activity, "${getLanguage} Clicke", Toast.LENGTH_SHORT).show()
-                    LocaleHelper.setLocale(activity,getLanguage)
+                    //LocaleHelper.setLocale(activity,getLanguage)
                 }
 
-            }
-        }*/
+            }*/
+        }
         return view1!!
     }
     fun setLocale(lang:String){
@@ -89,21 +95,24 @@ class LanguageListDialogFragment:DialogFragment(),LanguageListener{
         resources.updateConfiguration(conf,dm)
         onConfigurationChanged(conf)
     }
-    override fun onLanguageClick(data: String) {
-        /*settingsFragment?.onLanguageClicks(data)*/
+   override fun onLanguageClick(data: Int) {
+        //*settingsFragment?.onLanguageClicks(data)*//*
         Log.e("Message", "onItemClicks function")
-        if(data == "Tamil") {
-            Toast.makeText(activity, "${data} Clicked !", Toast.LENGTH_SHORT).show()
+        if(data == 0) {
+            Toast.makeText(activity, "Tamil Clicked !", Toast.LENGTH_SHORT).show()
+            //dismiss()
             getLanguage=data
         }
-        else if(data == "English")
+        else if(data == 1)
         {
-            Toast.makeText(activity, "${data} Clicked !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "English Clicked !", Toast.LENGTH_SHORT).show()
+            //dismiss()
             getLanguage=data
         }
         else
         {
-            Toast.makeText(activity, "${data} Clicked !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Hindi Clicked !", Toast.LENGTH_SHORT).show()
+            //dismiss()
             getLanguage=data
         }
     }

@@ -1,32 +1,43 @@
 package com.joveeinfotech.kinship.view
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
+import com.joveeinfotech.kinship.APIClient
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.SendingUserProfileEdit
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.model.CountryResult
-import com.joveeinfotech.kinship.model.DistrictResult
-import com.joveeinfotech.kinship.model.StateResult
 import com.joveeinfotech.kinship.presenter.UserProfileEditFragmentPresenterImpl
-import com.joveeinfotech.kinship.utils.LocationService
+import com.joveeinfotech.kinship.utils.CustomToast
+import com.squareup.picasso.Picasso
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.view.*
-import kotlinx.android.synthetic.main.alert_address_details.*
 import kotlinx.android.synthetic.main.alert_address_details.view.*
+import kotlinx.android.synthetic.main.alert_user_details.view.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,13 +45,16 @@ import java.util.*
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [UserProfileEditFragment.OnFragmentInteractionListener] interface
+ * [UserProfileEditFragment] interface
  * to handle interaction events.
  * Use the [UserProfileEditFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
+    var bitmap: Bitmap? = null
+    var byteArray: ByteArray? = null
+    var progressDialog : ProgressDialog? = null
     var upefView:View?=null
     var networkCall: APICall? = null
 
@@ -50,10 +64,13 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
     var resolver: ContentResolver? = null
     lateinit var upefContext: Context
-    var userProfileEditFragmentPresenter:UserProfileEditFragmentPresenterImpl?= null
+    var userProfileEditFragmentPresenter:UserProfileEditFragmentPresenterImpl?=null
 
     var cal = Calendar.getInstance()
     var address:String?=null
+
+    var first_name:EditText?=null
+    var last_name:EditText?=null
 
     override fun onAttach(context: Context) {
         this.upefContext = context
@@ -70,6 +87,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         resolver = activity?.contentResolver
         val trans= fragmentManager?.beginTransaction()
         upefView=inflater.inflate(R.layout.fragment_user_profile_edit, container, false)
+        userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setLines(1)
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setHorizontallyScrolling(true)
@@ -92,18 +110,33 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             updateDateInView()
             Log.d("Message","After finish updateDataInView()")
         }
+        upefView?.activity_user_profile_edit_constraintLayout_userProfileEditIcon_imageView?.setOnClickListener {
+            var intent=Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(Intent.createChooser(intent, "select image"), 1)
+        }
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.setOnClickListener{
+            val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
+            val inflater:LayoutInflater=this.layoutInflater
+            val dialogView:View=inflater.inflate(R.layout.alert_user_details,null)
+            dialogbuilder.setView(dialogView)
+            dialogbuilder.create().show()
+            first_name=dialogView.findViewById(R.id.alert_user_details_firstName_editText)
+            last_name=dialogView.findViewById(R.id.alert_user_details_lastName_editText)
+
+            dialogView.alert_user_details_okButton.setOnClickListener {
+                call("first_name",first_name?.text.toString(),"last_name",last_name?.text.toString())
+                dialogbuilder.create().dismiss()
+            }
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.visibility=View.GONE
-            upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText?.visibility = View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.visibility = View.VISIBLE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.setOnClickListener{
-            upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
-            //call("",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
-            upefView?.activity_user_profile_edit_constraintLayout_userName_textView?.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText.text.toString())
-            upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText?.visibility = View.GONE
+            upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.setText(first_name?.text.toString()+last_name?.text.toString())
+            upefView?.activity_user_profile_edit_constraintLayout_userName_textView?.setText(first_name?.text.toString()+last_name?.text.toString())
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.visibility = View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.visibility=View.VISIBLE
@@ -116,7 +149,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView?.setText(activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
-            //call("",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString())
+            call("phone_number",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.text.toString(),"","")
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon2_imageView?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView?.visibility = View.VISIBLE
@@ -149,6 +182,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon4_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView?.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText.text.toString())
+            call("weight",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText.text.toString(),"","")
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon4_imageView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText?.visibility =View.GONE
@@ -162,7 +196,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
-            call("E-mail",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
+            call("E-mail",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),"","")
             Toast.makeText(upefContext,activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),Toast.LENGTH_SHORT).show()
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView?.visibility=View.VISIBLE
@@ -170,7 +204,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.visibility=View.GONE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.setOnClickListener {
-            userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
+            userProfileEditFragmentPresenter?.loadCountries()
             val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
@@ -198,14 +232,12 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             }
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView?.visibility=View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.visibility=View.GONE
-            //activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView?.visibility=View.VISIBLE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView?.setOnClickListener {
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView?.setText(address)
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.visibility=View.VISIBLE
-            upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText?.visibility=View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon6_imageView?.visibility=View.GONE
         }
 
@@ -255,11 +287,13 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
     }*/
 
-    override fun call(field: String, value: String) {
+    override fun call(field: String, value: String,field1:String,value1:String) {
 
         var intent= Intent(upefContext,SendingUserProfileEdit::class.java)
-        intent.putExtra("filed",field)
-        intent.putExtra("value",field)
+        intent.putExtra("field",field)
+        intent.putExtra("value",value)
+        intent.putExtra("field1",field1)
+        intent.putExtra("value1",value1)
         upefContext.startService(intent)
 
     }
@@ -270,12 +304,171 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         Log.d("Message","after sdf")
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
-        call("E-mail",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text.toString())
+        call("date_of_birth",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text.toString(),"","")
         Log.d("Message","set Value ")
+    }
+
+    override fun onActivityResult(RC: Int, RQC: Int, I: Intent?) {
+        super.onActivityResult(RC, RQC, I)
+
+        if (RC == 1 && RQC == Activity.RESULT_OK && I != null && I.data != null) {
+            val uri = I.data
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(resolver, uri)
+                val byteArrayOutoutStream = ByteArrayOutputStream()
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutoutStream)
+                byteArray = byteArrayOutoutStream.toByteArray()
+                val imageString=Base64.encodeToString(byteArray,Base64.DEFAULT)
+                Log.e("inside : ", byteArray.toString())
+                upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
+                userProfileEditFragmentPresenter?.sendImageString(imageString)
+                //val isr = resolver?.openInputStream(I.data!!)
+                //uploadImage(getBytes(isr))
+
+            } catch (e: IOException) {
+
+            }
+        }
+    }
+
+    /*private fun getBytes(inputStream: InputStream?): ByteArray {
+        val byteBuff = ByteArrayOutputStream()
+
+        val buffSize = 1024
+        val buff = ByteArray(buffSize)
+
+        var len = 0
+        len = inputStream!!.read(buff)
+        while ( len != -1) {
+            byteBuff.write(buff, 0, len)
+            len = inputStream!!.read(buff)
+        }
+        return byteBuff.toByteArray()
+    }
+
+    private fun uploadImage(imageBytes: ByteArray) {
+
+        progressDialog = ProgressDialog(upefContext, R.style.MyAlertDialogStyle)
+        progressDialog?.setMessage("Authenticating...")
+        progressDialog?.show()
+
+        val retrofitInterface = APIClient.getClient()
+
+        val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
+
+        val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
+
+        retrofitInterface?.uploadImage(body)?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribeOn(Schedulers.io())
+                ?.subscribe(
+                        { result ->
+                            progressDialog?.dismiss()
+                            CustomToast().normalToast(upefContext,"Uploaded Successfully")
+                        },
+                        { error ->
+                            progressDialog?.dismiss()
+                        }
+                )
+    }
+*/
+
+   /* private fun setCircle() {
+
+        val paint = Paint()
+        // Get source bit map width and height
+        val srcBitmapWidth = bitmap?.width
+        val srcBitmapHeight = bitmap?.height
+
+        *//*
+                    IMPORTANT NOTE : You should experiment with border and shadow width
+                    to get better circular ImageView as you expected.
+                    I am confused about those size.
+                *//*
+        // Define border and shadow width
+        val borderWidth = 25
+        val shadowWidth = 10
+
+        // destination bitmap width
+        val dstBitmapWidth = Math.min(srcBitmapWidth!!, srcBitmapHeight!!) + borderWidth * 2
+        //float radius = Math.min(srcBitmapWidth,srcBitmapHeight)/2;
+
+        // Initializing a new bitmap to draw source bitmap, border and shadow
+        val dstBitmap = Bitmap.createBitmap(dstBitmapWidth, dstBitmapWidth, Bitmap.Config.ARGB_8888)
+
+        // Initialize a new canvas
+        val canvas = Canvas(dstBitmap)
+
+        // Draw a solid color to canvas
+        canvas.drawColor(Color.WHITE)
+
+        // Draw the source bitmap to destination bitmap by keeping border and shadow spaces
+        canvas.drawBitmap(bitmap, ((dstBitmapWidth - srcBitmapWidth) / 2).toFloat(), ((dstBitmapWidth - srcBitmapHeight) / 2).toFloat(), null)
+
+        // Use Paint to draw border
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = (borderWidth * 2).toFloat()
+        paint.color = Color.RED
+
+        // Draw the border in destination bitmap
+        canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), (canvas.width / 2).toFloat(), paint)
+
+        // Use Paint to draw shadow
+        paint.color = Color.LTGRAY
+        paint.strokeWidth = shadowWidth.toFloat()
+
+        // Draw the shadow on circular bitmap
+        canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), (canvas.width / 2).toFloat(), paint)
+
+        *//*
+                    RoundedBitmapDrawable
+                        A Drawable that wraps a bitmap and can be drawn with rounded corners. You
+                        can create a RoundedBitmapDrawable from a file path, an input stream, or
+                        from a Bitmap object.
+                *//*
+        // Initialize a new RoundedBitmapDrawable object to make ImageView circular
+        val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources!!, dstBitmap)
+
+        *//*
+                    setCircular(boolean circular)
+                        Sets the image shape to circular.
+                *//*
+        // Make the ImageView image to a circular image
+        roundedBitmapDrawable.isCircular = true
+
+        *//*
+                    setAntiAlias(boolean aa)
+                        Enables or disables anti-aliasing for this drawable.
+                *//*
+        roundedBitmapDrawable.setAntiAlias(true)
+
+        // Set the ImageView image as drawable object
+        //activity_profile_display_profile_image.setImageDrawable(roundedBitmapDrawable)
+        top20_donars_list_Linear_layout_CardView_ImageView_profile.setImageDrawable(roundedBitmapDrawable)
+    }*/
+
+    override fun setProfileDetails(image_url: String, name: String, phone_number: String, date_of_birth: String, email: String, address: String) {
+        Picasso.with(upefContext).load(image_url).into(activity_user_profile_edit_constraintLayout_userProfile_imageView)
+        activity_user_profile_edit_constraintLayout_userName_textView.text=name
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.text=name
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.text=phone_number
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setText(phone_number)
+        activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text=date_of_birth
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.text=email
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.setText(email)
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView.text=address
     }
     companion object {
       fun newInstance(): UserProfileEditFragment {
           return UserProfileEditFragment()
       }
     }
+
+    //Encode
+    /*var encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT)*/
+
+    //Decode
+    /*Bitmap bm = BitmapFactory.decodeFile("/path/to/image.jpg");
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+    byte[] b = baos.toByteArray();*/
 }// Required empty public constructor

@@ -33,14 +33,25 @@ class SendingUserProfileEdit : Service(), APIListener{
         var i =intent?.extras
         var field = i?.getString("field")
         var value = i?.getString("value")
-
-        val queryParams = HashMap<String, String>()
-        queryParams.put("user_id","81")
-        queryParams.put("field",field!!)
-        queryParams.put("value", value!!)
-        Log.e("MAIN ACTIVITY : ","inside location" )
-        networkCall?.APIRequest("api/v1/profile1",queryParams, SendingUserProfileEditResult::class.java,this, 1, "Sending Location...")
-
+        var field1 =i?.getString("field1")
+        var value1=i?.getString("value1")
+        if(field1 == "" && value1== "") {
+            val queryParams = HashMap<String, String>()
+            queryParams.put("user_id", "81")
+            queryParams.put("field", field!!)
+            queryParams.put("value", value!!)
+            Log.e("MAIN ACTIVITY : ", "inside location true ${field}${value}")
+            networkCall?.APIRequest("api/v1/profile1", queryParams, SendingUserProfileEditResult::class.java, this, 1, "Sending Location...",false)
+        } else{
+            val queryParams = HashMap<String, String>()
+            queryParams.put("user_id", "81")
+            queryParams.put("field", field!!)
+            queryParams.put("value", value!!)
+            queryParams.put("field1",field1!!)
+            queryParams.put("value1",value1!!)
+            Log.e("MAIN ACTIVITY : ", "inside location${field1}${value1}")
+            networkCall?.APIRequest("api/v1/profile1", queryParams, SendingUserProfileEditResult::class.java, this, 1, "Sending Location...",false)
+        }
         //intent?.putExtra("key1","value1")
         return super.onStartCommand(intent, flags, startId)
     }
