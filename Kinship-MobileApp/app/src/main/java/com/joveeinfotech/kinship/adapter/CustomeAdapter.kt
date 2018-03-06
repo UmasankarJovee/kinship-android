@@ -15,8 +15,7 @@ import com.joveeinfotech.kinship.model.Album
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
-
-
+import com.joveeinfotech.kinship.utils.SharedData
 
 
 /**
@@ -93,6 +92,9 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
                         listener.displayResult(false)
                         setIntPreference(mcontext,"startingIValue",1)
                     }
+                }
+                else if(data.text == "Logout"){
+                    listener.logoutuserid()
                 }
                 else listener.onItemClick(data)
             }

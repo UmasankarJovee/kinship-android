@@ -44,7 +44,9 @@ data class SearchHospitalResult(var hospitals: ArrayList<String>)
 
 data class SearchBloodInUserRequest(var status: Boolean)
 
-data class Languages(val tamil_language:String,val english_language:String,val hindi_language:String)
+/*data class UserModel(var isSelected:Boolean,var languageNames:String)*/
+
+data class Languages(val languages: String)
 
 data class ImageUpload(var status: Boolean)
 

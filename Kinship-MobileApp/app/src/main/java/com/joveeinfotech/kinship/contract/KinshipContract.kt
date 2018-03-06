@@ -2,6 +2,7 @@ package com.joveeinfotech.kinship.contract
 
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListAdapter
+import com.joveeinfotech.kinship.adapter.LanguageListsAdapter
 import com.joveeinfotech.kinship.adapter.Top20ListAdapter
 import com.joveeinfotech.kinship.model.*
 
@@ -27,7 +28,7 @@ interface KinshipContract {
     }
     interface SettingsFragmentPresenter{
         fun initPresenter()
-        fun getLanguagesData(): LanguageListAdapter
+        fun getLanguagesData(): LanguageListsAdapter
     }
 
     // Login Activity
@@ -142,10 +143,11 @@ interface KinshipContract {
         fun onItemClick(data: Album)
         fun displayResult(result:Boolean)
         fun callEditProfile()
+        fun logoutuserid()
     }
 
     interface LanguageListener{
-        fun onLanguageClick(data:String)
+        fun onLanguageClick(data:Int)
     }
 
     // UserProfileEditFragment

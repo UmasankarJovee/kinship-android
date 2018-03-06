@@ -101,6 +101,7 @@
     <string name="settingsFragment_cardView1_textView">Edit Profile</string>
     <string name="settingsFragment_cardView2_textView">Notifications</string>
     <string name="settingsFragment_cardView3_textView">Language</string>
+    <string name="settingsFragment_cardView4_textView">Logout</string>
     <string name="alert_language_settings_cardView_textView">Language Settings</string>
     <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
     <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>
