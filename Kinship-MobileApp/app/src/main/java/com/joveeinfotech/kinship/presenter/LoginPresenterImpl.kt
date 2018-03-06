@@ -6,6 +6,8 @@ import android.content.Intent
 import android.util.Log
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.kinship.model.LoginResult
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
@@ -98,6 +100,7 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
                 val loginResult = response as LoginResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (loginResult.status) {
+                    setStringPreference(mContext,"user_id",loginResult.user_id)
                     session?.createLoginSession(phone_number!!, password!!)
                     CustomToast().normalToast(mContext,loginResult.message)
                     val i= Intent(mContext, UserDetails::class.java)

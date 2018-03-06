@@ -4,7 +4,8 @@ import android.graphics.Bitmap
 import android.widget.SpinnerAdapter
 
 data class LoginResult(var status: Boolean,
-                       var message: String)
+                       var message: String,
+                       var user_id : String)
 
 data class UserDetailResult(var isRegisterUserProfile : Boolean,
                             var isRegisterHomeAddress : Boolean,
@@ -51,12 +52,14 @@ data class ImageUpload(var status: Boolean)
 data class SendTokenResult(var status: Boolean)
 
 /*data class AndroidResponse(val android_lists:List<GetTop20Result>)*/
-data class GetTop20Result(var profile_url : String,
-                          var name : String,
-                          var district: String,
-                          var total_like : Int,
-                          var total_donated : Int,
-                          var last_donated_date : String)
+data class GetTop20Result(var details : List<detailsResult>)
+
+data class detailsResult(var profile_url : String,
+                   var name : String,
+                   var district: String,
+                   var total_likes : Int,
+                   var total_donated : Int,
+                   var last_donated_date : String)
 
 data class SendingUserProfileEditResult(var status: Boolean)
 
@@ -81,4 +84,10 @@ data class UserProfileDisplayResult(var status : Boolean,
                                     var district : String,
                                     var state : String
                                     /*var address : List<AddressOfUser>*/)
+
+data class DonationHistoryResult(var donorList : List<donationDetails>)
+
+data class donationDetails(var date : String, var image_url: String, var name: String, var district: String)
+
+data class donationInnerDetails(var image_url: String, var name: String, var district: String)
 

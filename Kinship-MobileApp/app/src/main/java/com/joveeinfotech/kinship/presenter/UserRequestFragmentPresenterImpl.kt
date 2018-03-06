@@ -74,6 +74,13 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
         networkCall?.APIRequest("api/v1/search_blood_group", queryParams, SearchHospitalResult::class.java, this, 3, "Sending Your Request...")
     }
 
+    fun sendUserRequestToServer1() {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("blood_group", "AB+")
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v1/search", queryParams, ImageUpload::class.java, this, 4, "Sending Your Request...")
+    }
+
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Get Districts
@@ -97,6 +104,13 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
                     //Toast.makeText(mContext, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)
+                }
+            }
+            4 -> { // Send Address
+                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                val searchResult = response as ImageUpload
+                if (searchResult.status) {
+                    CustomToast().normalToast(mContext,"Your request has been send")
                 }
             }
         }

@@ -1,11 +1,15 @@
 package com.joveeinfotech.kinship
 
 import android.app.AlarmManager
+import android.app.Notification
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
 import android.content.res.Configuration
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -19,6 +23,8 @@ import android.widget.RadioButton
 import android.widget.Toast
 import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
 import com.joveeinfotech.kinship.utils.LocationService
+import com.joveeinfotech.kinship.utils.Others
+import com.joveeinfotech.kinship.utils.Others.DLog
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.view.ProfileDisplayFragment
 import com.joveeinfotech.kinship.view.SomeOneRequestFragment
@@ -147,6 +153,7 @@ class Home : AppCompatActivity() {
 
 
         //startAlert()
+        session = SharedData(this)
         activity_login_navigation_bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
         trans.replace(R.id.activity_home_frame_layout, HomeFragment.newInstance())
@@ -186,6 +193,7 @@ class Home : AppCompatActivity() {
             }
             1 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
+
                 session?.logoutUser()
                 session?.createFirstInstallSetFalse()
                 finish()
@@ -214,6 +222,7 @@ class Home : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
+
 
 }
 

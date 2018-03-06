@@ -16,6 +16,7 @@ import com.joveeinfotech.kinship.model.ReplyBloodRequestResult
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 import android.support.v4.content.ContextCompat.startActivity
+import com.joveeinfotech.kinship.EmptyActivity
 import com.joveeinfotech.kinship.model.NotComeForRequestResult
 import com.joveeinfotech.kinship.utils.DisplayDialog
 
@@ -31,9 +32,11 @@ class NotificationReceiver : BroadcastReceiver(), APIListener {
 
         val action = intent?.action
         if ("YES_ACTION" == action) {
-            Toast.makeText(context, "YES CALLED", Toast.LENGTH_SHORT).show()
+            val i=Intent(context, EmptyActivity::class.java)
+            context.startActivity(i)
+            /*Toast.makeText(context, "YES CALLED", Toast.LENGTH_SHORT).show()
             //DisplayDialog(context).onCreateDialog(0)
-            getPhoneNumberOfRequestor()
+            getPhoneNumberOfRequestor()*/
         } else if ("NO_ACTION" == action) {
             Toast.makeText(context, "STOP CALLED", Toast.LENGTH_SHORT).show()
             notCome()
