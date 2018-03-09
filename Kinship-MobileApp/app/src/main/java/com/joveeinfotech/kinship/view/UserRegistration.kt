@@ -12,6 +12,7 @@ import android.widget.EditText
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.RegisterPresenterImpl
+import com.joveeinfotech.kinship.utils.CustomToast
 import kotlinx.android.synthetic.main.activity_user_registration.*
 import kotlinx.android.synthetic.main.alert_otp_get.*
 
@@ -79,7 +80,11 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         alertDialog.setCancelable(false)
 
         buttonConfirmOTP!!.setOnClickListener {
-            registerPresenter?.OtpContent(editTextotp?.text.toString())
+            if(editTextotp!!.text.isNotEmpty()){
+                registerPresenter?.OtpContent(editTextotp?.text.toString())
+            }else{
+                CustomToast().alertToast(this,"Fill the OTP")
+            }
         }
     }
 
@@ -98,8 +103,14 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         alertDialog1?.setCancelable(false)
 
         buttonConfirmPassword!!.setOnClickListener {
-            if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
-                registerPresenter?.passwordContent(editTextpassword?.text.toString(),activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString())
+            if(editTextpassword!!.text.isNotEmpty() && editTextConfirmPassword!!.text.isNotEmpty()){
+                if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
+                    registerPresenter?.passwordContent(editTextpassword?.text.toString(),activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString())
+                }else{
+                    CustomToast().alertToast(this,"Both passwords must be equal")
+                }
+            }else{
+                CustomToast().alertToast(this,"Fill the all fields")
             }
         }
     }

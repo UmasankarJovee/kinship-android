@@ -57,11 +57,50 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         categories.add("O+")
         categories.add("O-")
 
+        var district_categories = ArrayList<String>()
+        district_categories.add("Select District")
+        district_categories.add("Madurai")
+        district_categories.add("Virudhunagar")
+
+        var hospital_categories = ArrayList<String>()
+        hospital_categories.add("Select Hospital")
+        hospital_categories.add("Apollo")
+        hospital_categories.add("Meenachi Mission")
+        hospital_categories.add("A.R. ")
+
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.spinner_user_search_blood_group?.adapter = dataAdapter
 
         view1?.spinner_user_search_blood_group?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                search_blood_group = categories.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, district_categories)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.spinner_user_search_district?.adapter = district_dataAdapter
+
+        view1?.spinner_user_search_district?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                search_blood_group = categories.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val hospital_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospital_categories)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.spinner_user_search_hospitals?.adapter = hospital_dataAdapter
+
+        view1?.spinner_user_search_hospitals?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -80,13 +119,14 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         }*/
 
         view1?.button_user_search_submit?.setOnClickListener{
-            if(search_blood_group!!.isNotEmpty()  &&  editText_user_search_units.text.isNotEmpty()
+            /*if(search_blood_group!!.isNotEmpty()  &&  editText_user_search_units.text.isNotEmpty()
                     && search_district!!.isNotEmpty() && search_hospital!!.isNotEmpty()){
                 userRequestFragmentPresenter?.sendUserRequestDetails(search_blood_group!!,editText_user_search_units.text.toString(),
                         search_district!!,search_hospital!!)
             }else{
                 CustomToast().alertToast(mContext,"Fill the all fields")
-            }
+            }*/
+            userRequestFragmentPresenter?.sendUserRequestToServer1()
         }
 
         return view1

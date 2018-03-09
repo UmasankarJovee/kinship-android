@@ -19,9 +19,12 @@ class FcmMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(p0: RemoteMessage?) {
 
-        if(getBooleanPreference(this,"notification",true)) {
-            var title = p0?.notification?.title
+        //if(getBooleanPreference(this,"notification",true)) {
+            /*var title = p0?.notification?.title
             var message = p0?.notification?.body
+*/
+            var title = "fch"
+            var message = "fhfhh"
 
             /*var intent = Intent(applicationContext, Login::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -49,6 +52,6 @@ class FcmMessagingService : FirebaseMessagingService() {
 
             var notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.notify(0, notificationBuilder.build())
-        }
+        //}
     }
 }

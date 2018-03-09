@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    tools:context=".view.UserRegistration">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_user_registration"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:text="If you attack any diseases on now or before, Please select following list"
+            android:textSize="17dp"
+            android:textColor="#D14035"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.132"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox1_diabetic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Epilespy"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView6" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox2_Asthmetic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asthmetic"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_health_details_checkbox1_diabetic" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox3_heart_patient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Heart Patient"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox2_Asthmetic"/>
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox4_tuber_closis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Tuber Closis"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox3_heart_patient" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox5_epilepsy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Asthmetic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox4_tuber_closis" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox6_typoid_or_malaria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Typoid / Malaria"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox5_epilepsy" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox7_joundice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Joundice"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox6_typoid_or_malaria" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox8_major_surgery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Joundice"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox7_joundice" />
+
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox9_transfusion_tatto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Tooth Extraction"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox8_major_surgery" />
+
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox10_tooth_extraction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Major Surgery"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox9_transfusion_tatto" />
+
+        <Button
+            android:id="@+id/fragment_user_health_details_button_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/btn"
+            android:text="SUBMIT"
+            android:textColor="#ffffff"
+            android:textSize="19dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_health_details_checkbox10_tooth_extraction"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginTop="13dp"
+            android:text=""
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_button_submit" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

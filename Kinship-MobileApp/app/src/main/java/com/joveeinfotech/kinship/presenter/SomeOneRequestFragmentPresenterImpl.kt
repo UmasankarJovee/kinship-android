@@ -1,6 +1,7 @@
 package com.joveeinfotech.kinship.presenter
 
 import android.content.Context
+import android.provider.ContactsContract
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import com.joveeinfotech.kinship.APICall
@@ -8,6 +9,7 @@ import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.DistrictResult
+import com.joveeinfotech.kinship.model.ImageUpload
 import com.joveeinfotech.kinship.model.SearchBloodInUserRequest
 import com.joveeinfotech.kinship.model.SearchHospitalResult
 import com.joveeinfotech.kinship.utils.CustomToast
@@ -78,6 +80,13 @@ class SomeOneRequestFragmentPresenterImpl : APIListener, SomeOneRequestFragmentP
         networkCall?.APIRequest("api/v1/search_blood_group", queryParams, SearchHospitalResult::class.java, this, 3, "Sending Your Request...")
     }
 
+    fun sendUserRequestToServer1() {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("blood_group", "AB+")
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v1/search", queryParams, ImageUpload::class.java, this, 3, "Sending Your Request...")
+    }
+
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Get Districts
@@ -101,6 +110,13 @@ class SomeOneRequestFragmentPresenterImpl : APIListener, SomeOneRequestFragmentP
                     //Toast.makeText(mContext, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)
+                }
+            }
+            4 -> { // Send Address
+                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                val searchResult = response as ImageUpload
+                if (searchResult.status) {
+                    CustomToast().normalToast(mContext,"Your request has been send")
                 }
             }
         }

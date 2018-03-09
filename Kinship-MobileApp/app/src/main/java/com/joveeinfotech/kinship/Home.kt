@@ -20,10 +20,7 @@ import android.widget.Toast
 import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
-import com.joveeinfotech.kinship.view.ProfileDisplayFragment
-import com.joveeinfotech.kinship.view.SomeOneRequestFragment
-import com.joveeinfotech.kinship.view.Top20Fragment
-import com.joveeinfotech.kinship.view.UserRequestFragment
+import com.joveeinfotech.kinship.view.*
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
@@ -147,6 +144,7 @@ class Home : AppCompatActivity() {
 
 
         //startAlert()
+        session = SharedData(this)
         activity_login_navigation_bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val trans = supportFragmentManager.beginTransaction()
         trans.replace(R.id.activity_home_frame_layout, HomeFragment.newInstance())
@@ -165,27 +163,28 @@ class Home : AppCompatActivity() {
     }
 
     private fun CreateMenu(menu: Menu) {
-        val mnu1 = menu.add(0, 0, 0, "Edit Profile")
+        val mnu1 = menu.add(0, 0, 0, "Request History")
         run {
             //mnu1.setIcon(R.drawable.ic_launcher);
             //mnu1.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
         val mnu2 = menu.add(0, 1, 0, "Logout")
         run {
-            //mnu1.setIcon(R.drawable.ic_launcher);
-            //mnu1.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+             //mnu2.setIcon(R.drawable.ic_launcher);
+             //mnu2.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
     }
 
     private fun MenuChoice(item: MenuItem): Boolean {
         when (item.itemId) {
             0 -> {
-                //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                //startActivity(Intent(applicationContext, ::class.java))
+                Toast.makeText(this, "You clicked Request History",Toast.LENGTH_LONG).show()
+                startActivity(Intent(applicationContext, RequestHistory::class.java))
                 return true
             }
             1 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
+
                 session?.logoutUser()
                 session?.createFirstInstallSetFalse()
                 finish()
@@ -214,6 +213,7 @@ class Home : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
+
 
 }
 

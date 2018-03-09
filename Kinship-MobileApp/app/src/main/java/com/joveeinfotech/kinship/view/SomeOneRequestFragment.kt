@@ -66,6 +66,17 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
         categories.add("Friend")
         categories.add("Unknown")
 
+        var district_categories = ArrayList<String>()
+        district_categories.add("Select District")
+        district_categories.add("Madurai")
+        district_categories.add("Virudhunagar")
+
+        var hospital_categories = ArrayList<String>()
+        hospital_categories.add("Select Hospital")
+        hospital_categories.add("Apollo")
+        hospital_categories.add("Meenachi Mission")
+        hospital_categories.add("A.R. ")
+
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.spinner_some_one_search_blood_group?.adapter = dataAdapter
@@ -89,13 +100,44 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
 
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                relationship = categories_of_relation.get(position).toString()
+                //relationship = categories_of_relation.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
         }
 
-        view1?.button_user_search_submit?.setOnClickListener{
-            if(editText_some_one_name.text.isNotEmpty() && editText_some_one_phone_number.text.isNotEmpty()
+        val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, district_categories)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.spinner_some_one_search_district?.adapter = district_dataAdapter
+
+        view1?.spinner_some_one_search_district?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                search_blood_group = categories.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val hospital_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospital_categories)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.spinner_some_one_search_hospitals?.adapter = hospital_dataAdapter
+
+        view1?.spinner_some_one_search_hospitals?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                search_blood_group = categories.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
+
+
+
+
+        view1?.button_some_one_search_submit?.setOnClickListener{
+           /* if(editText_some_one_name.text.isNotEmpty() && editText_some_one_phone_number.text.isNotEmpty()
                     && search_blood_group!!.isNotEmpty() && editText_some_one_search_units.text.isNotEmpty()
                     && search_district!!.isNotEmpty() && search_hospital!!.isNotEmpty()
                     && relationship!!.isNotEmpty()) {
@@ -105,7 +147,8 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
                         search_district!!, search_hospital!!, relationship!!)
             }else{
                 CustomToast().alertToast(mContext!!,"Fill the all fields")
-            }
+            }*/
+            someOneRequestFragmentPresenter?.sendUserRequestToServer1()
         }
 
         return view1

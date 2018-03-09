@@ -1,7 +1,7 @@
 package com.joveeinfotech.kinship.contract
 
+import com.joveeinfotech.kinship.adapter.*
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
-import com.joveeinfotech.kinship.adapter.LanguageListAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListsAdapter
 import com.joveeinfotech.kinship.adapter.Top20ListAdapter
 import com.joveeinfotech.kinship.model.*
@@ -69,7 +69,7 @@ interface KinshipContract {
     interface UserProfileFragmentView{}
     interface UserProfileFragmentPresenter{
         fun initPresenter()
-        fun userProfileDetails(first_name : String, last_name : String, date_of_birth : String, gender : Int)
+        fun userProfileDetails(first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int)
     }
 
     // UserAddressFragment
@@ -167,5 +167,24 @@ interface KinshipContract {
         fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
         fun sendStateReceiveDistrict(state: String)
         fun sendImageString(imageString:String)
+    }
+
+    //DonorsFragment
+    interface DonorsFragmentView{
+        fun setAdapterOfDonors(donorsListAdapter: DonorsListAdapter?)
+    }
+    interface DonorsFragmentPresenter{
+        fun initPresenter()
+        fun loadDonorsList()
+    }
+
+    //RequestHistoryActivity
+    interface RequestHistoryView{
+        fun setAdaperofRequestHistory(requestHistoryListAdapter:RequestHistoryListAdapter?)
+    }
+
+    interface RequestHistoryPresenter{
+        fun initPresenter()
+        fun loadRequestHisoryList()
     }
 }

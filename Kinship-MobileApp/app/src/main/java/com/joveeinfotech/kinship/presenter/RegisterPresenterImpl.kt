@@ -49,6 +49,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
     override fun OtpContent(otp: String) {
         val queryParams = HashMap<String, String>()
         queryParams.put("otp", otp)
+        queryParams.put("client_id","56")
         networkCall?.APIRequest("api/v2/otp", queryParams, OTPResult::class.java, this, 2, "Verifying Your OTP")
     }
 
@@ -69,7 +70,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         queryParams.put("device_name",deviceName)
         queryParams.put("device_version",deviceVersion.toString())
         queryParams.put("device_model",deviceModel)
-
+        queryParams.put("client_id","56")
         networkCall?.APIRequest("api/v3/password", queryParams, PasswordResult::class.java, this, 3, "Setting your Password...")
     }
     override fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String) {
@@ -91,6 +92,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         val queryParams = HashMap<String, String>()
         queryParams.put("phone_number", phone_number!!)
         queryParams.put("blood_group", blood_group!!)
+        queryParams.put("client_id","56")
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/register", queryParams, RegisterResult::class.java, this, 1, "Registering...")
     }

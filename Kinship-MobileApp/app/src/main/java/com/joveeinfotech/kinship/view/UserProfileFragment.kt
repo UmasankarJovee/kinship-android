@@ -92,7 +92,13 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
         }
 
         view.user_profile_submit.setOnClickListener {
-            userProfileFragmentPresenter?.userProfileDetails(editText_first_name.text.toString(),editText_last_name.text.toString(), editText_date_of_birth.text.toString(),gender!!)
+            if(editText_first_name.text.isNotEmpty() && editText_last_name.text.isNotEmpty()
+                    && editText_date_of_birth.text.isNotEmpty() && gender != null
+                    && editText_weight.text.toString().toInt() != null){
+                userProfileFragmentPresenter?.userProfileDetails(editText_first_name.text.toString(),editText_last_name.text.toString(), editText_date_of_birth.text.toString(),editText_weight.text.toString().toInt(),gender!!)
+            }else{
+                CustomToast().alertToast(mContext,"Fill the all fields")
+            }
         }
 
         Log.e("inside create view : " ,byteArray.toString())

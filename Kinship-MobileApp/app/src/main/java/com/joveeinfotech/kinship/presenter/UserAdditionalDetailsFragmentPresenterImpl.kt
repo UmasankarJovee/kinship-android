@@ -10,6 +10,7 @@ import com.joveeinfotech.kinship.Home
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.R.id.editText_additional_phone_number
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.UserAdditionalDetailsResult
 import com.joveeinfotech.kinship.view.UserAddressFragment
 import kotlinx.android.synthetic.main.fragment_user_additional_details.*
@@ -65,6 +66,8 @@ class UserAdditionalDetailsFragmentPresenterImpl : APIListener, UserAdditionalDe
     }
     private fun sendAdditionalDetails() {
         val queryParams = HashMap<String, String>()
+        var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
+        queryParams.put("user_id",user_id!!)
         queryParams.put("occupation", category_of_person!!)
         queryParams.put("phone_number", additionalPhoneNumber!!)
         queryParams.put("address", additionalEmail!!)

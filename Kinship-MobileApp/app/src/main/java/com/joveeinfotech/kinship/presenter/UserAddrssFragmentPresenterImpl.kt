@@ -8,6 +8,7 @@ import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.*
 import com.joveeinfotech.kinship.view.UserAdditionalDetailsFragment
 import java.util.HashMap
@@ -82,6 +83,8 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
 
     fun sendAddress1() {
         val queryParams = HashMap<String, String>()
+        var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
+        queryParams.put("user_id",user_id!!)
         queryParams.put("country", "India")
         queryParams.put("state", "Tamilnadu")
         queryParams.put("district","Madurai")
