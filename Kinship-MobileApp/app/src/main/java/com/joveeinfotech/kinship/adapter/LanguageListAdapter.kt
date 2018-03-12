@@ -11,9 +11,12 @@ import android.widget.TextView
 import com.joveeinfotech.kinship.LanguageListDialogFragment
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setIntPreference
 import com.joveeinfotech.kinship.model.Languages
+import com.joveeinfotech.kinship.utils.Others.DLog
 import kotlinx.android.synthetic.main.language_list_item.view.*
 import kotlinx.android.synthetic.main.languages_list.view.*
 
@@ -30,6 +33,7 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
     }
 
     override fun onBindViewHolder(viewHolder: LanguageListAdapter<T>.ViewHolder, i: Int) {
+
         viewHolder.language_list_item_imageCheck_radioButton.setChecked(i == mSelectedItem)
     }
 
@@ -50,6 +54,29 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
             Log.e("Message","1")
             language_list_item_languageNames_textView = inflate.findViewById(R.id.language_list_item_languageNames_textView)
             language_list_item_imageCheck_radioButton = inflate.findViewById(R.id.language_list_item_imageCheck_radioButton)
+
+
+            var df = getStringPreference(mContext, "selectLanguageString", "English")
+            //var dataView = v as TextView
+            //var data = dataView.text
+            /*if(df == "Tamil"){
+                DLog("LanguageListAdapter : ","Tamil")
+                language_list_item_imageCheck_radioButton.isChecked=true
+                //viewHolder.language_list_item_imageCheck_radioButton.setOnClickListener(clickListener)
+                //itemView.setOnClickListener(clickListener)
+            }else if(df == "English"){
+                DLog("LanguageListAdapter : ","English")
+                language_list_item_imageCheck_radioButton.isChecked=true
+                //viewHolder.language_list_item_imageCheck_radioButton.setOnClickListener(clickListener)
+                //itemView.setOnClickListener(clickListener)
+            }else{
+                DLog("LanguageListAdapter : ","Hindi")
+                language_list_item_imageCheck_radioButton.isChecked=true
+                //viewHolder.language_list_item_imageCheck_radioButton.setOnClickListener(clickListener)
+                //itemView.setOnClickListener(clickListener)
+            }*/
+
+
             Log.e("Message","2")
             Log.e("Preference","Before getIntPreference${mSelectedItem}")
             mSelectedItems= getIntPreference(mContext,"checked",1)
@@ -80,17 +107,27 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
                 }
             }
 
+            //callClick()
+
             clickListener = object : View.OnClickListener{
                 override fun onClick(v: View) {
                     mSelectedItem = getAdapterPosition()
                     listener.onLanguageClick(mSelectedItem)
                     setIntPreference(mContext,"checked",mSelectedItem)
                     Log.e("Preference","After setIntPreference ${mSelectedItem}")
+                    //dismiss()
                     notifyDataSetChanged()
                 }
             }
+
+
+
             itemView.setOnClickListener(clickListener)
             language_list_item_imageCheck_radioButton.setOnClickListener(clickListener)
         }
+    }
+
+    private fun callClick() {
+
     }
 }

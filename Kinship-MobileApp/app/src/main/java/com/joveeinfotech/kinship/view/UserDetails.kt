@@ -14,6 +14,7 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
     var isCompleteProfile : Boolean? = null
     var isCompleteAddress : Boolean? = null
     var isCompleteAdditionalDetails : Boolean? = null
+    var isCompleteHealthDetails : Boolean? = null
 
     var userDetailsPresenter : UserDetailsPresenterImpl? = null
 
@@ -23,12 +24,12 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
 
         val trans = supportFragmentManager.beginTransaction()
         userDetailsPresenter = UserDetailsPresenterImpl(trans,this,this)
-
     }
 
-    override fun setNavigationFragmentValues(isCompleteProfile: Boolean, isCompleteAddress: Boolean, isCompleteAdditionalDetails: Boolean) {
+    override fun setNavigationFragmentValues(isCompleteProfile: Boolean, isCompleteAddress: Boolean, isCompleteAdditionalDetails: Boolean, isCompleteHealthDetails: Boolean) {
         this.isCompleteProfile = isCompleteProfile
         this.isCompleteAddress = isCompleteAddress
         this.isCompleteAdditionalDetails = isCompleteAdditionalDetails
+        this.isCompleteHealthDetails = isCompleteHealthDetails
     }
 }

@@ -11,7 +11,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.SettingsFragment
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.LocaleHelper
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setIntPreference
 import com.joveeinfotech.kinship.presenter.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -42,7 +47,21 @@ class HomeFragment : Fragment(), HomeFragmentView {
         val blooddonatorinstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
         val bloodRequestorInstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
 
+        /*setIntPreference(mContext,"languageRepeat3",0)
+        var language = getIntPreference(mContext, "languageCode3", 0)
+        var languageRepeat = getIntPreference(mContext,"languageRepeat3",0)
+        if(language == 0 && languageRepeat == 0){
+            LocaleHelper.setLocale(mContext,"ta")
+            val trans = fragmentManager?.beginTransaction()
+            //trans?.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            trans?.replace(R.id.activity_home_frame_layout, HomeFragment.newInstance())
+            trans?.commit()
+            //setIntPreference(mContext,"languageRepeat3",1)
+        }*/
         homeFragmentPresenter= HomeFragmentPresenterImpl(this,mContext)
+
+        //LocaleHelper.setLocale(mContext,"ta")
+
         view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
         blooddonatorinstructionsTextView.setOnClickListener{
             bloodDonatorInstructions()
@@ -151,6 +170,11 @@ class HomeFragment : Fragment(), HomeFragmentView {
                 }
             }
         }
+    }*/
+
+    /*override fun onDestroyView() {
+        super.onDestroyView()
+        setIntPreference(mContext,"languageRepeat1",0)
     }*/
 }
 

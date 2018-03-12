@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.joveeinfotech.kinship.adapter.DonorsListAdapter1
+import com.joveeinfotech.kinship.adapter.DonorsListAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.DonorsFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_donars.view.*
@@ -40,7 +40,7 @@ class DonarsFragment : Fragment(), DonorsFragmentView {
         return view1
     }
 
-    override fun setAdapterOfDonors(donorsListAdapter: DonorsListAdapter1?) {
+    override fun setAdapterOfDonors(donorsListAdapter: DonorsListAdapter?) {
         view1?.fragment_donars_RecyclerView?.setHasFixedSize(true)
         val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(mContext)
         view1?.fragment_donars_RecyclerView?.layoutManager = layoutManager

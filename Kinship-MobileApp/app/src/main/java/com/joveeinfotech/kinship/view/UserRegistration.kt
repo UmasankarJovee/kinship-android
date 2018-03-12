@@ -1,9 +1,12 @@
 package com.joveeinfotech.kinship.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -36,6 +39,7 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         registerPresenter = RegisterPresenterImpl(this, this)
 
 
+
         var categories = ArrayList<String>()
         categories.add("Select Blood Group")
         categories.add("AB+")
@@ -62,6 +66,9 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         }
 
         activity_user_registration_scrollView_constraintLayout_registerButton.setOnClickListener {
+            var sp : SharedPreferences = applicationContext.getSharedPreferences("FCM_PREF", Context.MODE_PRIVATE)
+            var token = sp.getString("FCM_TOKEN","")
+            Log.e("dg","$token")
             registerPresenter?.userPhoneNumberAndBloodGroup(activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString(), blood_group!!)
         }
     }

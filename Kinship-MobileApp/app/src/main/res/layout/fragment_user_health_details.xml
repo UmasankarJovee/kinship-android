@@ -127,6 +127,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox9_transfusion_tatto" />
 
+        <CheckBox
+            android:id="@+id/fragment_user_health_details_checkbox11_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="None"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_checkbox10_tooth_extraction" />
+
         <Button
             android:id="@+id/fragment_user_health_details_button_submit"
             android:layout_width="0dp"
@@ -140,7 +150,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_user_health_details_checkbox10_tooth_extraction"
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_health_details_checkbox11_none"
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView

@@ -74,7 +74,7 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
                 if (data.text == "Edit Profile"){
                     listener.callEditProfile()
                 }
-                else if(data.text == "Language"){
+                else if(data.text == mcontext.getString(R.string.settingsFragment_cardView3_textView)){
                     Log.e("Message","Before listener.languageSettings()" )
                     listener.languageSettings()
                 }

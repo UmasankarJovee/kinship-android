@@ -11,7 +11,8 @@
     <string name="activity_login_phone_number_editText">Phone Number</string>
     <string name="activity_login_password_editText">Password</string>
     <string name="activity_login_loginButton">LOGIN</string>
-    <string name="activity_login_register_textView">Forget Password | Register</string>
+    <string name="activity_login_register_textView">| Register</string>
+    <string name="activity_login_forget_password_textView">Forget Passsword </string>
 
     <!--fragment_home-->
     <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">RECENT BLOOD DONATED PERSON</string>
@@ -23,7 +24,7 @@
     <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTER INSTRUCTIONS</string>
 
     <!--fragment_user_profile_edit-->
-    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Jemima</string>
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          Your Profile        </string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText">Vigneshkumar M</string>
@@ -105,4 +106,29 @@
     <string name="alert_language_settings_cardView_textView">Language Settings</string>
     <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
     <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>
+
+    <string name="total_donated">Total Donated</string>
+    <string name="total_request">Total Request</string>
+    <string name="last_donated">Last Donated</string>
+
+    <!--UserAddress.xml-->
+    <string name="user_address_select_your_country">Select your Country</string>
+    <string name="user_address_select_your_state">Select your State</string>
+    <string name="user_address_select_your_district">Select your District</string>
+    <string name="user_address_submit">SUBMIT</string>
+    <string name="user_address_city">City</string>
+    <string name="user_address_locality">Locality</string>
+    <string name="user_address_street">Street</string>
+    <string name="user_address_home_address">Home Address</string>
+
+    <!--alert_one_day_diseases_get.xml-->
+    <string name="alert_one_day_diseases_get_Verify_following_details">Verify following details</string>
+    <string name="alert_one_day_diseases_get_Are_you_Slept_well_yesterday">Are you Slept well yesterday</string>
+    <string name="alert_one_day_diseases_get_Did_you_take_any_antibiotics_tablets">Did you take any antibiotics tablets</string>
+    <string name="alert_one_day_diseases_get_Did_you_drink_Alcohol_yesterday">Did you drink Alcohol yesterday</string>
+    <string name="alert_one_day_diseases_get_Did_you_face_any_side_effects_in_previous_donation">Did you face any side effects in previous donation</string>
+    <string name="alert_one_day_diseases_get_Had_tooth_extraction_in_the_past_3_weeks">Had tooth extraction in the past 3 weeks</string>
+    <string name="alert_one_day_diseases_get_SUBMIT">SUBMIT</string>
+
+
 </resources>

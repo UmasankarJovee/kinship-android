@@ -75,45 +75,4 @@ class EmptyActivity : AppCompatActivity() {
             }
         }
     }
-
-    fun sendNotification() {
-
-        var title ="Kinship"
-        var message = "Are you ready to give your blood?"
-
-        /*var intent = Intent(applicationContext, GetActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        var pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
-       */
-        var notificationBuilder: android.support.v4.app.NotificationCompat.Builder = android.support.v4.app.NotificationCompat.Builder(this)
-        notificationBuilder.setContentTitle(title)
-        notificationBuilder.setContentText(message)
-        notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
-        notificationBuilder.setAutoCancel(true)
-        notificationBuilder.setVisibility(Notification.VISIBILITY_PUBLIC)
-        notificationBuilder.setVibrate(longArrayOf(1000, 1000, 1000))
-        notificationBuilder.setPriority(Notification.PRIORITY_HIGH)
-
-        val yesReceive = Intent()
-        yesReceive.action = "YES_ACTION"
-        val pendingIntentYes = PendingIntent.getBroadcast(this, 12345, yesReceive, PendingIntent.FLAG_UPDATE_CURRENT)
-        notificationBuilder.addAction(R.drawable.settings, "Yes", pendingIntentYes)
-
-        val yesReceive2 = Intent()
-        yesReceive2.action = "NO_ACTION"
-        val pendingIntentYes2 = PendingIntent.getBroadcast(this, 12345, yesReceive2, PendingIntent.FLAG_UPDATE_CURRENT)
-        notificationBuilder.addAction(R.drawable.settings, "No", pendingIntentYes2)
-
-        /*notificationBuilder.setContentIntent(pendingIntent)
-        notificationBuilder.addAction(R.mipmap.ic_launcher,"Accept",pendingIntent);
-        notificationBuilder.addAction(R.mipmap.ic_launcher,"Deny",pendingIntent);*/
-
-        val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        //notificationBuilder.setSound(uri)
-        notificationBuilder.setSound(Uri.parse("android.resource://com.example.prandex_and_05.mobilenotification/"+R.raw.alert_tones))
-        //notificationBuilder.click(1)
-
-        var notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(0, notificationBuilder.build())
-    }
 }

@@ -12,6 +12,7 @@ import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.model.UserProfileResult
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.view.UserHealthDetailsFragment
 import java.util.HashMap
 
 /**
@@ -69,9 +70,9 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
             1 -> { // User profile
                 val result = response as UserProfileResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
-                if (result.status) {
+                if (result.status){
                     if(true){
-                        trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
+                        trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()
                     }

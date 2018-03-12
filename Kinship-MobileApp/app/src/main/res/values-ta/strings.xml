@@ -3,4 +3,22 @@
     <string name="settingsFragment_cardView1_textView">சுயவிவரத்தைத் திருத்தவும்</string>
     <string name="settingsFragment_cardView2_textView">அறிவிப்புகள்</string>
     <string name="settingsFragment_cardView3_textView">மொழி</string>
+
+
+    <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">dgdgdgdgdgg</string>
+    <string name="activity_home_fragment_updatedDetails_TextView">dfgdgdfgdghdg</string>
+    <string name="activity_home_fragment_hospitals_TextView">dfgdgddgd</string>
+    <string name="activity_home_fragment_users_TextView">dfgdfgdg</string>
+    <string name="activity_home_fragment_donator_TextView">dgdg</string>
+    <string name="activity_home_fragment_bloodDonatorInstructions_textview">dfhdghdgg</string>
+    <string name="activity_home_fragment_bloodRequestInstructions_textview">dfhdhdhdh</string>
+
+    <string name="navigation_home">sdegdg</string>
+    <string name="navigation_blood_request">sdfss</string>
+    <string name="navigation_settings">dfghdfcg</string>
+
+    <string name="total_donated">dfgdggdg</string>
+    <string name="total_request">dfgdfg</string>
+    <string name="last_donated">dfghdgdg</string>
+
 </resources>

@@ -2,6 +2,7 @@ package com.joveeinfotech.kinship.presenter
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
@@ -84,6 +85,10 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
             }
         }
         else {
+            var sp : SharedPreferences = mContext.getSharedPreferences("FCM_PREF", Context.MODE_PRIVATE)
+            var token = sp.getString("FCM_TOKEN","")
+            Log.e("dg","$token")
+            Log.e("dgdh","fcfc $token")
             CustomToast().alertToast(mContext,"Please fill two fields")
         }
     }

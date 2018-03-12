@@ -155,7 +155,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
     }
 
     override fun setDistricts(districtResult: DistrictResult) {
-        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtResult.district)
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtResult.districts)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_user_search_district.adapter=dataAdapter
         spinner_user_search_district.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -163,7 +163,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
 
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                search_district= districtResult.district[position].toString()
+                search_district= districtResult.districts[position].toString()
                 someOneRequestFragmentPresenter?.sendDistrictsReceiveHospitals(search_district!!)
                 Toast.makeText(mContext, search_district, Toast.LENGTH_LONG).show()
             }

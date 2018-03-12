@@ -2,7 +2,6 @@ package com.joveeinfotech.kinship.contract
 
 import com.joveeinfotech.kinship.adapter.*
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
-import com.joveeinfotech.kinship.adapter.LanguageListAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListsAdapter
 import com.joveeinfotech.kinship.adapter.Top20ListAdapter
 import com.joveeinfotech.kinship.model.*
@@ -59,7 +58,7 @@ interface KinshipContract {
 
     //UserDetails
     interface UserDetailsView{
-        fun setNavigationFragmentValues(isCompleteProfile : Boolean, isCompleteAddress : Boolean, isCompleteAdditionalDetails : Boolean)
+        fun setNavigationFragmentValues(isCompleteProfile: Boolean, isCompleteAddress: Boolean, isCompleteAdditionalDetails: Boolean, isCompleteHealthDetails: Boolean)
     }
     interface UserDetailsPresenter{
         fun initPresenter()
@@ -75,9 +74,9 @@ interface KinshipContract {
 
     // UserAddressFragment
     interface UserAddrssFragmentView{
-        fun setCountries(dataAdapter: CountryResult)
-        fun setStates(stateList: StateResult)
-        fun setDistricts(districtList: DistrictResult)
+        fun setCountries(dataAdapter: ArrayList<String>)
+        fun setStates(stateList: ArrayList<String>)
+        fun setDistricts(districtList: ArrayList<String>)
     }
     interface UserAddressFragmentPresenter{
         fun initPresenter()
@@ -171,10 +170,18 @@ interface KinshipContract {
     }
 
     interface DonorsFragmentView{
-        fun setAdapterOfDonors(donorsListAdapter: DonorsListAdapter1?)
+        fun setAdapterOfDonors(donorsListAdapter: DonorsListAdapter?)
     }
     interface DonorsFragmentPresenter{
         fun initPresenter()
         fun loadDonorsList()
+    }
+
+    // UserHealthDetailsFragment
+    interface UserHealthDetailsFragmentView{
+    }
+    interface UserHealthDetailsFragmentPresenter{
+        fun initPresenter()
+        fun sendHealthDetails(healthDetails: StringBuffer?)
     }
 }

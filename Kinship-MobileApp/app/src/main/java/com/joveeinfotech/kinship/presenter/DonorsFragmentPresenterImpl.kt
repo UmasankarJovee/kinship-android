@@ -5,7 +5,6 @@ import android.util.Log
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.adapter.DonorsListAdapter
-import com.joveeinfotech.kinship.adapter.DonorsListAdapter1
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.DonationHistoryResult
 import com.joveeinfotech.kinship.model.donationDetails
@@ -29,7 +28,7 @@ class DonorsFragmentPresenterImpl : APIListener, DonorsFragmentPresenter {
 
     private var mdonorsArrayList: ArrayList<donationDetails>? = null
 
-    var donorsListAdapter : DonorsListAdapter1? = null
+    var donorsListAdapter : DonorsListAdapter? = null
 
     constructor(view: DonorsFragmentView, context: Context){
         donorsFragmentView=view
@@ -54,8 +53,6 @@ class DonorsFragmentPresenterImpl : APIListener, DonorsFragmentPresenter {
         //var mSet = mutableSetOf<String,MutableSet<donationInnerDetails>>()
         //var mList = listOf<String>()
         //var mList: MutableList<donationInnerDetails>? = null
-        var mdonorsInnerArrayList : ArrayList<donationInnerDetails>? = null
-        var donorsInnerListAdapter : DonorsListAdapter.ViewHolder.DonorsInnerListAdapter? = null
 
         when (from) {
             1 -> { // Send Additional Details
@@ -87,7 +84,7 @@ class DonorsFragmentPresenterImpl : APIListener, DonorsFragmentPresenter {
                     }
                 }
 
-                donorsListAdapter = DonorsListAdapter1(mMap, mContext!!)
+                donorsListAdapter = DonorsListAdapter(mMap, mContext!!)
                 //Log.e("")
                 donorsFragmentView?.setAdapterOfDonors(donorsListAdapter)
 
