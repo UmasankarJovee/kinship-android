@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.view
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import com.joveeinfotech.kinship.R
+
 import com.joveeinfotech.kinship.adapter.DonorsListAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.DonorsFragmentPresenterImpl

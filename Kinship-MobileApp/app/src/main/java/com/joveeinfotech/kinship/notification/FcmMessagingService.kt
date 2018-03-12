@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.RingtoneManager
 import android.net.Uri
+import android.provider.Settings
 import android.support.v4.app.NotificationCompat
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -94,6 +95,7 @@ class FcmMessagingService : FirebaseMessagingService() {
             var notificationBuilder: android.support.v4.app.NotificationCompat.Builder = android.support.v4.app.NotificationCompat.Builder(this)
             notificationBuilder.setContentTitle(title)
             notificationBuilder.setContentText(message)
+
             //notificationBuilder.setLargeIcon(srcBitmap)
             notificationBuilder.setSmallIcon(R.drawable.kinship_logo)
             notificationBuilder.setAutoCancel(true)
@@ -106,6 +108,10 @@ class FcmMessagingService : FirebaseMessagingService() {
             val pendingIntentYes = PendingIntent.getBroadcast(this, 12345, yesReceive, PendingIntent.FLAG_UPDATE_CURRENT)
             notificationBuilder.addAction(R.drawable.call, "Call the Requester", pendingIntentYes)
 
+            /*if(Settings.canDrawOverlays()){
+
+            }*/
+            //val yesReceive2 = Intent(Login.ACTION_MANAGE_OVERLAY_PERMISSION)
             val yesReceive2 = Intent()
             yesReceive2.action = "NO_ACTION"
             val pendingIntentYes2 = PendingIntent.getBroadcast(this, 12345, yesReceive2, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -114,11 +120,11 @@ class FcmMessagingService : FirebaseMessagingService() {
             /*notificationBuilder.setContentIntent(pendingIntent)
             notificationBuilder.addAction(R.mipmap.ic_launcher,"Accept",pendingIntent);
             notificationBuilder.addAction(R.mipmap.ic_launcher,"Deny",pendingIntent);
-    */
+    *//*
             val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             //notificationBuilder.setSound(uri)
             notificationBuilder.setSound(Uri.parse("android.resource://com.example.prandex_and_05.mobilenotification/"+R.raw.alert_tones))
-            //notificationBuilder.click(1)
+            //notificationBuilder.click(1)*/
 
             var notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.notify(0, notificationBuilder.build())

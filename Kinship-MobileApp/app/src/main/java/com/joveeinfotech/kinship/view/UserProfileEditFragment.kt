@@ -16,6 +16,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
@@ -23,11 +25,15 @@ import com.joveeinfotech.kinship.APIClient
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.SendingUserProfileEdit
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.model.CountryResult
+import com.joveeinfotech.kinship.model.DistrictResult
+import com.joveeinfotech.kinship.model.StateResult
 import com.joveeinfotech.kinship.presenter.UserProfileEditFragmentPresenterImpl
 import com.joveeinfotech.kinship.utils.CustomToast
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.alert_address_details.*
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.view.*
 import kotlinx.android.synthetic.main.alert_address_details.view.*
@@ -64,7 +70,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
     var resolver: ContentResolver? = null
     lateinit var upefContext: Context
-    var userProfileEditFragmentPresenter:UserProfileEditFragmentPresenterImpl?=null
+    var userProfileEditFragmentPresenterImpl:UserProfileEditFragmentPresenterImpl?=null
 
     var cal = Calendar.getInstance()
     var address:String?=null
@@ -87,7 +93,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         resolver = activity?.contentResolver
         val trans= fragmentManager?.beginTransaction()
         upefView=inflater.inflate(R.layout.fragment_user_profile_edit, container, false)
-        userProfileEditFragmentPresenter = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
+        userProfileEditFragmentPresenterImpl = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setLines(1)
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setHorizontallyScrolling(true)
@@ -122,13 +128,14 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_user_details,null)
             dialogbuilder.setView(dialogView)
-            dialogbuilder.create().show()
+            val dialogbuilderCall=dialogbuilder.create()
+            dialogbuilderCall.show()
             first_name=dialogView.findViewById(R.id.alert_user_details_firstName_editText)
             last_name=dialogView.findViewById(R.id.alert_user_details_lastName_editText)
 
             dialogView.alert_user_details_okButton.setOnClickListener {
-                call("first_name",first_name?.text.toString(),"last_name",last_name?.text.toString())
-                dialogbuilder.create().dismiss()
+                Toast.makeText(upefContext,"sorry doalogBuilder is error",Toast.LENGTH_SHORT).show()
+                dialogbuilderCall.dismiss()
             }
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.visibility=View.GONE
@@ -137,6 +144,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.setText(first_name?.text.toString()+last_name?.text.toString())
             upefView?.activity_user_profile_edit_constraintLayout_userName_textView?.setText(first_name?.text.toString()+last_name?.text.toString())
+            call("first_name",first_name?.text.toString(),"last_name",last_name?.text.toString())
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon1_imageView?.visibility = View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.visibility = View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.visibility=View.VISIBLE
@@ -196,7 +204,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.setOnClickListener{
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
-            call("E-mail",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),"","")
+            call("email",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),"","")
             Toast.makeText(upefContext,activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),Toast.LENGTH_SHORT).show()
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.visibility=View.VISIBLE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView?.visibility=View.VISIBLE
@@ -204,29 +212,31 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.visibility=View.GONE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.setOnClickListener {
-            userProfileEditFragmentPresenter?.loadCountries()
+            userProfileEditFragmentPresenterImpl?.loadCountries()
             val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
             dialogbuilder.setView(dialogView)
-            dialogbuilder.create().show()
+            val dialogBuilderCall=dialogbuilder.create()
+            dialogBuilderCall.show()
            /* val street: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_street_editText)
             val locality: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_locality_editText)
             val city: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_city_editText)*/
             dialogView.alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton.setOnClickListener {
-                dialogbuilder.create().dismiss()
+                //dialogbuilder.create().dismiss()
+                dialogBuilderCall.dismiss()
             }
             dialogView.alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3_okButton.setOnClickListener {
-                userProfileEditFragmentPresenter?.sendAddress1()
-                dialogbuilder.create().dismiss()
-                /* if (country?.trim()?.length == 0 && state?.trim()?.length == 0 && district?.trim()?.length == 0
-                         && editText_city.text.trim().isNotEmpty() && editText_locality.text.trim().isNotEmpty()
-                         && editText_street.text.trim().isNotEmpty()){
-                     userAddressFragmentPresenter?.userAddressDetails(country!!,state!!,district!!,editText_city.text.toString(),"gdgdg",editText_street.text.toString())
+                //userProfileEditFragmentPresenterImpl?.sendAddress()
+                 dialogBuilderCall.dismiss()
+                 if (country?.trim()?.length == 0 && state?.trim()?.length == 0 && district?.trim()?.length == 0
+                         && alert_address_details_scrollView_linearLayout1_city_editText.text.trim().isNotEmpty() && alert_address_details_scrollView_linearLayout1_locality_editText.text.trim().isNotEmpty()
+                         && alert_address_details_scrollView_linearLayout1_street_editText.text.trim().isNotEmpty()){
+                     userProfileEditFragmentPresenterImpl?.userAddressDetails(country!!,state!!,district!!,alert_address_details_scrollView_linearLayout1_city_editText.text.toString(),alert_address_details_scrollView_linearLayout1_locality_editText.text.toString(),alert_address_details_scrollView_linearLayout1_street_editText.text.toString())
                  } else {
                      //showDialog(0) // Please fill the all the fields
-                     Toast.makeText(mContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
-                 }*/
+                     Toast.makeText(upefContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
+                 }
                 /*address="${street.text.toString()},${locality.text.toString()},${city.text.toString()},${district.text},${state.text}"
                 Toast.makeText(upefContext,address,Toast.LENGTH_LONG).show()*/
             }
@@ -243,7 +253,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
         return upefView
     }
-    /*override fun setCountries(countryList: CountryResult) {
+    override fun setCountries(countryList: CountryResult) {
         val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, countryList.country)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_country_spinner.adapter=dataAdapter
@@ -251,7 +261,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             override fun onNothingSelected(parent: AdapterView<*>?) {            }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 country = countryList.country[position].toString()
-                userProfileEditFragmentPresenter?.sendCountryReceiveState(country!!)
+                userProfileEditFragmentPresenterImpl?.sendCountryReceiveState(country!!)
                 Toast.makeText(upefContext, country, Toast.LENGTH_LONG).show()
             }
         }
@@ -267,33 +277,35 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 state = stateList.state[position].toString()
-                userProfileEditFragmentPresenter?.sendStateReceiveDistrict(state!!)
+                userProfileEditFragmentPresenterImpl?.sendStateReceiveDistrict(state!!)
                 Toast.makeText(upefContext, state, Toast.LENGTH_LONG).show()
             }
         }
     }
 
     override fun setDistricts(districtList: DistrictResult) {
-        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, districtList.district)
+        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, districtList.districts)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_district_spinner.adapter = dataAdapter
         alert_address_details_scrollView_linearLayout1_district_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {            }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                district = districtList.district[position].toString()
+                district = districtList.districts[position].toString()
                 //sendStateReceiveDistrict()
                 Toast.makeText(upefContext, district, Toast.LENGTH_LONG).show()
             }
         }
-    }*/
+    }
 
     override fun call(field: String, value: String,field1:String,value1:String) {
 
+        Log.e("call Message","Before call SendingUserProfileEddit")
         var intent= Intent(upefContext,SendingUserProfileEdit::class.java)
         intent.putExtra("field",field)
         intent.putExtra("value",value)
         intent.putExtra("field1",field1)
         intent.putExtra("value1",value1)
+        Log.e("call Message","${field},${value},${field1},${value1}")
         upefContext.startService(intent)
 
     }
@@ -321,7 +333,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
                 val imageString=Base64.encodeToString(byteArray,Base64.DEFAULT)
                 Log.e("inside : ", byteArray.toString())
                 upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
-                userProfileEditFragmentPresenter?.sendImageString(imageString)
+                userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
                 //val isr = resolver?.openInputStream(I.data!!)
                 //uploadImage(getBytes(isr))
 
@@ -446,13 +458,15 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         top20_donars_list_Linear_layout_CardView_ImageView_profile.setImageDrawable(roundedBitmapDrawable)
     }*/
 
-    override fun setProfileDetails(image_url: String, name: String, phone_number: String, date_of_birth: String, email: String, address: String) {
+    override fun setProfileDetails(image_url: String, name: String,date_of_birth: String, weight:String,address: String,phone_number: String, email: String) {
         Picasso.with(upefContext).load(image_url).into(activity_user_profile_edit_constraintLayout_userProfile_imageView)
         activity_user_profile_edit_constraintLayout_userName_textView.text=name
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.text=name
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.text=phone_number
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText.setText(phone_number)
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text=date_of_birth
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView.text=weight
+        activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText.setText(weight)
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView.text=email
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.setText(email)
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView.text=address

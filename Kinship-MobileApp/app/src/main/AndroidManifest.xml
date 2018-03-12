@@ -8,12 +8,13 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -24,11 +25,6 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.Login"
@@ -41,7 +37,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:icon="@drawable/logo"
             android:theme="@style/AppThemeActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.UserDetails"
@@ -55,12 +55,12 @@
             android:name=".utils.LocationService"
             android:enabled="true"
             android:exported="true"/>
-        <!--
-            <service
+
+        <service
             android:name=".SendingUserProfileEdit"
             android:enabled="true"
             android:exported="true" />
-        -->
+
         <service android:name=".notification.FcmInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -81,6 +81,10 @@
 
         <activity
             android:name=".EmptyActivity"
+            android:theme="@style/AppThemeNoActionBar">
+        </activity>
+        <activity android:name=".RequestHistory"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar">
         </activity>
     </application>

@@ -1,15 +1,11 @@
 package com.joveeinfotech.kinship
 
 import android.app.AlarmManager
-import android.app.Notification
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
 import android.content.res.Configuration
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -26,8 +22,6 @@ import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
 import com.joveeinfotech.kinship.helper.LocaleHelper
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.kinship.utils.LocationService
-import com.joveeinfotech.kinship.utils.Others
-import com.joveeinfotech.kinship.utils.Others.DLog
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.view.*
 import com.joveeinfotech.kinship.view.Top20Fragment
@@ -187,8 +181,8 @@ class Home : AppCompatActivity() {
         }
         val mnu3 = menu.add(0, 2, 0, "Logout")
         run {
-            //mnu1.setIcon(R.drawable.ic_launcher);
-            //mnu1.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+             //mnu2.setIcon(R.drawable.ic_launcher);
+             //mnu2.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
     }
 
@@ -198,13 +192,12 @@ class Home : AppCompatActivity() {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
                 startActivity(Intent(applicationContext, ProfileDisplay::class.java))
                 //sendNotification()
+                //Toast.makeText(this, "You clicked Request History",Toast.LENGTH_LONG).show()
                 return true
             }
             1 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-                session?.logoutUser()
-                session?.createFirstInstallSetFalse()
-                finish()
+                startActivity(Intent(applicationContext, RequestHistory::class.java))
                 return true
             }
             2 -> {
@@ -236,49 +229,6 @@ class Home : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
-    }
-
-
-    fun sendNotification() {
-
-        var title ="RajuVicky"
-        var message = "Some Text Here"
-
-        /*var intent = Intent(applicationContext, GetActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        var pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
-        */
-        var notificationBuilder: android.support.v4.app.NotificationCompat.Builder = android.support.v4.app.NotificationCompat.Builder(this)
-        notificationBuilder.setContentTitle(title)
-        notificationBuilder.setContentText(message)
-        notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
-        notificationBuilder.setAutoCancel(true)
-        notificationBuilder.setVisibility(Notification.VISIBILITY_PUBLIC)
-        notificationBuilder.setVibrate(longArrayOf(1000, 1000))
-        notificationBuilder.setPriority(Notification.PRIORITY_HIGH)
-
-        val yesReceive = Intent()
-        yesReceive.action = "YES_ACTION"
-        val pendingIntentYes = PendingIntent.getBroadcast(this, 12345, yesReceive, PendingIntent.FLAG_UPDATE_CURRENT)
-        notificationBuilder.addAction(R.drawable.settings, "Yes", pendingIntentYes)
-
-        val yesReceive2 = Intent()
-        yesReceive2.action = "NO_ACTION"
-        val pendingIntentYes2 = PendingIntent.getBroadcast(this, 12345, yesReceive2, PendingIntent.FLAG_UPDATE_CURRENT)
-        notificationBuilder.addAction(R.drawable.settings, "No", pendingIntentYes2)
-
-        /*notificationBuilder.setContentIntent(pendingIntent)
-        notificationBuilder.addAction(R.mipmap.ic_launcher,"Accept",pendingIntent);
-        notificationBuilder.addAction(R.mipmap.ic_launcher,"Deny",pendingIntent);
-*/
-
-        val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        //notificationBuilder.setSound(uri)
-        notificationBuilder.setSound(Uri.parse("android.resource://com.example.prandex_and_05.mobilenotification/"+R.raw.alert_tones))
-        //notificationBuilder.click(1)
-
-        var notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(0, notificationBuilder.build())
     }
 
 }

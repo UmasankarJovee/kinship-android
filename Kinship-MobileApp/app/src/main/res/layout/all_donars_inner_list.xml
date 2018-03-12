@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/all_donars_inner_list_user_name"
-            android:layout_width="152dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="29dp"
@@ -43,9 +43,8 @@
 
         <TextView
             android:id="@+id/all_donars_inner_list_user_district"
-            android:layout_width="152dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
             android:text="in Madurai"
             android:textColor="#D14035"

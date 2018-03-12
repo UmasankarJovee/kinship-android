@@ -152,12 +152,12 @@ interface KinshipContract {
 
     // UserProfileEditFragment
     interface UserProfileEditFragmentView{
-        /*fun setCountries(dataAdapter: CountryResult)
+        fun setCountries(dataAdapter: CountryResult)
         fun setStates(stateList: StateResult)
-        fun setDistricts(districtList: DistrictResult)*/
+        fun setDistricts(districtList: DistrictResult)
         fun updateDateInView()
         fun call(field:String,value:String,field1:String,value1:String)
-        fun setProfileDetails(image_url: String, name: String,phone_number: String,date_of_birth: String,email: String,address: String)
+        fun setProfileDetails(image_url: String, name: String,date_of_birth: String,weight:String,address: String,phone_number: String,email: String)
     }
     interface UserProfileEditFragmentPresenter{
         fun initPresenter()
@@ -169,6 +169,7 @@ interface KinshipContract {
         fun sendImageString(imageString:String)
     }
 
+    //DonorsFragment
     interface DonorsFragmentView{
         fun setAdapterOfDonors(donorsListAdapter: DonorsListAdapter?)
     }
@@ -180,8 +181,17 @@ interface KinshipContract {
     // UserHealthDetailsFragment
     interface UserHealthDetailsFragmentView{
     }
-    interface UserHealthDetailsFragmentPresenter{
+    interface UserHealthDetailsFragmentPresenter {
         fun initPresenter()
         fun sendHealthDetails(healthDetails: StringBuffer?)
+    }
+
+    //RequestHistoryActivity
+    interface RequestHistoryView{
+        fun setAdaperofRequestHistory(requestHistoryListAdapter:RequestHistoryListAdapter?)
+    }
+    interface RequestHistoryPresenter{
+        fun initPresenter()
+        fun loadRequestHisoryList()
     }
 }

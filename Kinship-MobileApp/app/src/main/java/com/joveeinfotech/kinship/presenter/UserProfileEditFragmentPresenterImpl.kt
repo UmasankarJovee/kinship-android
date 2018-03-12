@@ -30,7 +30,7 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
     }
     override fun loadProfileDetails() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("phone_number", "8220127939")
+        queryParams.put("phone_number", "8189922043")
         networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 4, "Fetching...")
     }
     override fun loadCountries() {
@@ -64,17 +64,18 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
     }
     private fun sendAddress(country: String, state: String, district: String, city: String, locality: String, street: String) {
         val queryParams = HashMap<String, String>()
+        queryParams.put("id","169")
         queryParams.put("country", country)
         queryParams.put("state", state)
         queryParams.put("district", district)
         queryParams.put("city", city)
-        queryParams.put("locality","sdfg")
-        queryParams.put("street", street)
+        queryParams.put("locality",locality)
+        queryParams.put("street_name", street)
         Log.e("MAIN ACTIVITY : ", "inside button")
-        addressNetworkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
+        addressNetworkCall?.APIRequest("api/v1/address", queryParams, SendAddressResult::class.java, this, 5, "Sending your address...")
     }
 
-    fun sendAddress1() {
+    /*fun sendAddress1() {
         val queryParams = HashMap<String, String>()
         queryParams.put("country", "India")
         queryParams.put("state", "Tamilnadu")
@@ -84,7 +85,7 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
         queryParams.put("street_name", "Vinayagar")
         Log.e("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
-    }
+    }*/
 
     override fun sendImageString(imageString: String) {
         val queryParams = HashMap<String, String>()
@@ -115,24 +116,24 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
 
                 Log.e("API CALL : ", "inside CountryResult API CALL and onSuccess when")
                 val countryList = response as CountryResult
-                // view.setCountries(countryList)
+                view.setCountries(countryList)
             }
             2 -> { // Get State
                 Log.e("API CALL : ", "inside StateResult API CALL and onSuccess when")
                 val stateList = response as StateResult
-                //view.setStates(stateList)
+                view.setStates(stateList)
             }
             3 -> { // Get District
                 Log.e("API CALL : ", "inside DistrictResult API CALL and onSuccess when")
                 val districtList = response as DistrictResult
-                //view.setDistricts(districtList)
+                view.setDistricts(districtList)
             }
             4 -> {
                 val result = response as UserProfileDisplayResult
                 Log.e("API CALL : ", "inside UserProfileDisplayResult API CALL and onSuccess when")
                 if (true) {
 
-                    view.setProfileDetails(result.image_url, "${result.first_name} ${result.last_name}", result.phone_number, result.date_of_birth, result.email, "${result.street_name},${result.locality},${result.city},${result.district},${result.state}")
+                    view.setProfileDetails(result.image_url, "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
 
                     //val imageView : ImageView = ImageView(this)
                     var imageUrl = result.image_url

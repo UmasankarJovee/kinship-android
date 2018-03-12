@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="1dp"
     android:paddingRight="1dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
-
     <android.support.v7.widget.CardView
-        android:id="@+id/cards_layout_CardView"
+        android:id="@+id/all_requestor_list_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
@@ -17,56 +15,35 @@
         android:focusable="true"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@android:color/transparent">
-
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/cards_layout_CardView_LinearLayout"
+            android:id="@+id/all_requestor_list_cardView_constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <TextView
-                android:id="@+id/all_donars_list_day"
+                android:id="@+id/all_requestor_list_cardView_constraintLayout_day_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text=""
-                android:textSize="17sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintTop_toTopOf="parent"/>
             <android.support.v7.widget.CardView
-                android:id="@+id/all_donars_list_inner_cardView"
+                android:id="@+id/all_requestor_list_cardView_constraintLayout_cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/all_donars_list_day">
-
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/all_requestor_list_cardView_constraintLayout_day_textView">
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/all_donars_inner_list_RecyclerView"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    android:id="@+id/all_requestor_list_cardView_constraintLayout_cardView_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-
             </android.support.v7.widget.CardView>
-
-
-            <!--<TextView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_TextView_district"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginLeft="13dp"
-                android:text="in Virudhunagar"
-                android:textColor="#D14035"
-                app:layout_constraintHorizontal_bias="0.145"
-                app:layout_constraintLeft_toRightOf="@+id/top20_donars_list_Linear_layout_CardView_ImageView_profile"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/top20_donars_list_Linear_layout_CardView_TextView_name" />
--->
-
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
+
 </LinearLayout>

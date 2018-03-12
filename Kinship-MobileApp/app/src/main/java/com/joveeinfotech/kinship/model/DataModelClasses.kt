@@ -69,22 +69,25 @@ data class ReplyBloodRequestResult(var status: Boolean, var phoneNumber : Long)
 
 data class NotComeForRequestResult(var status: Boolean)
 
-data class UserProfileDisplayResult(var status : Boolean,
+data class UserProfileDisplayResult(var image_url : String,
                                     var first_name : String,
                                     var last_name : String,
-                                    var image_url : String,
+                                    var date_of_birth : String,
+                                    var weight:String,
+                                    var street_name : String,
+                                    var locality : String,
+                                    var district : String,
+                                    var city : String,
+                                    var state : String,
+                                    var country:String,
                                     var phone_number : String,
                                     var email : String,
-                                    var blood_group : String,
-                                    var date_of_birth : String,
+                                    var social_profile:String,
                                     var total_donated : String,
                                     var total_request : String,
                                     var last_donated_date : String,
-                                    var street_name : String,
-                                    var locality : String,
-                                    var city : String,
-                                    var district : String,
-                                    var state : String
+                                    var blood_group : String,
+                                    var status : Boolean
                                     /*var address : List<AddressOfUser>*/)
 
 data class DonationHistoryResult(var donorList : List<donationDetails>)
@@ -95,3 +98,8 @@ data class donationInnerDetails(var image_url: String, var name: String, var dis
 
 data class UserHealthDetailsResult(var status: Boolean)
 
+data class RequestHistoryResult(var requestorList:List<requestorList>)
+
+data class requestorList(var date:String,var image_url: String,var name: String,var hospital_name:String,var district: String)
+
+data class requestInnerDetails(var image_url: String,var name: String,var hospital_name: String,var district: String)

@@ -12,6 +12,9 @@ import android.os.IBinder
 import android.support.v4.app.ActivityCompat
 import android.util.Log
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
+
+import android.widget.Toast
+
 import com.joveeinfotech.kinship.model.LocationResult
 import com.joveeinfotech.kinship.model.SendingUserProfileEditResult
 import com.joveeinfotech.kinship.model.UserAdditionalDetailsResult
@@ -40,6 +43,7 @@ class SendingUserProfileEdit : Service(), APIListener{
         if(field1 == "" && value1== "") {
             val queryParams = HashMap<String, String>()
             queryParams.put("user_id", user_id!!)
+            queryParams.put("user_id", "161")
             queryParams.put("field", field!!)
             queryParams.put("value", value!!)
             Log.e("MAIN ACTIVITY : ", "inside location true ${field}${value}")
@@ -47,6 +51,7 @@ class SendingUserProfileEdit : Service(), APIListener{
         } else{
             val queryParams = HashMap<String, String>()
             queryParams.put("user_id", user_id!!)
+            queryParams.put("user_id", "161")
             queryParams.put("field", field!!)
             queryParams.put("value", value!!)
             queryParams.put("field1",field1!!)
@@ -64,7 +69,7 @@ class SendingUserProfileEdit : Service(), APIListener{
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val sendingUserProfileEditResult = response as SendingUserProfileEditResult
                 if(sendingUserProfileEditResult.status){
-
+                    Toast.makeText(context,"${sendingUserProfileEditResult.status}",Toast.LENGTH_SHORT).show()
                 }
             }
         }
