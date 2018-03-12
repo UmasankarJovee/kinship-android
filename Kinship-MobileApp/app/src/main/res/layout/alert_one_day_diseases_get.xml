@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/alert_one_day_diseases_get_title_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -34,7 +34,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView6" />
+            app:layout_constraintTop_toBottomOf="@id/alert_one_day_diseases_get_title_textView" />
 
         <CheckBox
             android:id="@+id/alert_one_day_diseases_get_checkbox2_antibiotics"

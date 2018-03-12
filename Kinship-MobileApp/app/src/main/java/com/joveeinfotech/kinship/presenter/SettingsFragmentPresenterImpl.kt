@@ -5,16 +5,13 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.Log
 import com.joveeinfotech.kinship.APICall
-import com.joveeinfotech.kinship.LanguageListDialogFragment
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.R.string.*
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
-import com.joveeinfotech.kinship.adapter.LanguageListAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListsAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.model.Languages
-import kotlinx.android.synthetic.main.language_list_item.view.*
 
 /**
  * Created by shanmugarajjoveeinfo on 16/2/18.

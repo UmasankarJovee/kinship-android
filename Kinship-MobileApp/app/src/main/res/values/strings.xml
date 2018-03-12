@@ -62,7 +62,7 @@
     <string name="alert_user_details_lastName_editText">Last Name</string>
     <string name="alert_user_details_okButton">Ok</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--alert_blood_donator_instructions-->
     <string name="blood_donator_instructions_heading">BLOOD DONATOR INSTRUCTIONS</string>
     <string name="blood_donator_instructions_textview">
         <b><font color='#D14035'>Instructions to Blood Donors Before Blood Donation</font></b>\n\n
@@ -86,6 +86,8 @@
         3. The withdrawan blood volume is restored within 24 hours and the haemoglobin and cell components are restored in 2 months. \n
         4. Therefore it is safe to donate blood every three months.
     </string>
+
+    <!-- alert_blood_requestor_instructions-->
     <string name="blood_requestor_instructions_textview">
        <b><font color='#D14035'>Instructions to Blood Requester Before Blood Request</font></b>\n\n
         1. You must select correct blood request. \n
@@ -94,15 +96,19 @@
         <b><font color='#D14035'>Instructions to Blood Requester After Blood Donation</font></b>\n\n
         1. You must like on social profile previous blood donor of your request.
     </string>
-    <string name="hello"></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- settingsFragment-->
     <string name="settingsFragment_cardView1_textView">Edit Profile</string>
     <string name="settingsFragment_cardView2_textView">Notifications</string>
     <string name="settingsFragment_cardView3_textView">Language</string>
     <string name="settingsFragment_cardView4_textView">Logout</string>
+
+    <!-- alert_language_settings-->
     <string name="alert_language_settings_cardView_textView">Language Settings</string>
     <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
     <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>
+
+    <!--alert_one_day_diseases_get-->
+    <string name="alert_one_day_diseases_get_title_textView">Verify following details</string>
 </resources>
