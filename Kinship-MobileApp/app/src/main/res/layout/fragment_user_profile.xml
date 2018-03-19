@@ -8,15 +8,15 @@
     tools:context=".view.UserDetails">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/activity_user_registration"
+        android:id="@+id/fragment_user_profile_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar1"
+            android:id="@+id/fragment_user_profile_constraintLayout_toolBar"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:background="#D14035"
+            android:background="@color/toolBarColor"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -25,13 +25,13 @@
             tools:layout_constraintRight_creator="1" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView"
+            android:id="@+id/fragment_user_profile_constraintLayout_profile_imageView"
             android:layout_width="166dp"
             android:layout_height="166dp"
             android:layout_marginTop="70dp"
-            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
-            app:layout_constraintRight_toRightOf="@+id/toolbar1"
-            app:layout_constraintTop_toTopOf="@+id/toolbar1"
+            app:layout_constraintLeft_toLeftOf="@+id/fragment_user_profile_constraintLayout_toolBar"
+            app:layout_constraintRight_toRightOf="@+id/fragment_user_profile_constraintLayout_toolBar"
+            app:layout_constraintTop_toTopOf="@+id/fragment_user_profile_constraintLayout_toolBar"
             app:srcCompat="@drawable/profile_image" />
 
         <android.support.design.widget.TextInputLayout
@@ -45,17 +45,17 @@
             android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView">
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_profile_constraintLayout_profile_imageView">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_first_name"
+                android:id="@+id/fragment_user_profile_constraintLayout_firstName_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint=" First Name"
+                android:hint="@string/fragment_user_profile_constraintLayout_firstName_editText"
                 android:inputType="textPersonName"
-                android:textColor="#000000"
-                android:textColorHint="#D14035"
+                android:textColor="@color/black"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
@@ -76,13 +76,13 @@
             app:layout_constraintTop_toBottomOf="@id/firstname">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_last_name"
+                android:id="@+id/fragment_user_profile_constraintLayout_lastName_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint=" Last Name"
+                android:hint="@string/fragment_user_profile_constraintLayout_lastName_editText"
                 android:inputType="textPersonName"
-                android:textColorHint="#D14035"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
@@ -102,12 +102,12 @@
             app:layout_constraintTop_toBottomOf="@id/lastname">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_date_of_birth"
+                android:id="@+id/fragment_user_profile_constraintLayout_dateOfBirth_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" Date of Birth"
+                android:hint="@string/fragment_user_profile_constraintLayout_dateOfBirth_editText"
                 android:inputType="number"
-                android:textColorHint="#D14035"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
@@ -127,19 +127,19 @@
             app:layout_constraintTop_toBottomOf="@id/dob">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_weight"
+                android:id="@+id/fragment_user_profile_constraintLayout_weight_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" Weight"
+                android:hint="@string/fragment_user_profile_constraintLayout_weight_editText"
                 android:inputType="number"
-                android:textColorHint="#D14035"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/user_profile_submit"
+            android:id="@+id/fragment_user_profile_constraintLayout_submit_button"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginEnd="40dp"
@@ -148,13 +148,13 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="35dp"
             android:background="@drawable/btn"
-            android:text="SUBMIT"
+            android:text="@string/fragment_user_profile_constraintLayout_submit_button"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rl" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_profile_constraintLayout_relativeLayout" />
 
         <TextView
             android:id="@+id/nil"
@@ -164,25 +164,25 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="26dp"
             android:text=""
-            android:textSize="17dp"
+            android:textSize="17sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_profile_submit" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_profile_constraintLayout_submit_button" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/fragment_user_profile_userProfile_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="13dp"
-            android:text="User Profile"
+            android:text="@string/fragment_user_profile_userProfile_textView"
             android:textColor="@android:color/white"
-            android:textSize="19dp"
-            app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
-            app:layout_constraintTop_toTopOf="@+id/toolbar1" />
+            android:textSize="19sp"
+            app:layout_constraintLeft_toLeftOf="@+id/fragment_user_profile_constraintLayout_toolBar"
+            app:layout_constraintTop_toTopOf="@+id/fragment_user_profile_constraintLayout_toolBar" />
 
         <RelativeLayout
-            android:id="@+id/rl"
+            android:id="@+id/fragment_user_profile_constraintLayout_relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -191,26 +191,26 @@
             app:layout_constraintTop_toBottomOf="@id/weight">
 
             <RadioButton
-                android:id="@+id/radio_male"
+                android:id="@+id/fragment_user_profile_constraintLayout_relativeLayout_male_radioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="Male" />
+                android:text="@string/fragment_user_profile_constraintLayout_relativeLayout_male_radioButton"/>
 
             <RadioButton
-                android:id="@+id/radio_female"
+                android:id="@+id/fragment_user_profile_constraintLayout_relativeLayout_female_radioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="31dp"
                 android:layout_marginLeft="31dp"
-                android:layout_alignTop="@+id/radio_male"
-                android:layout_toEndOf="@+id/radio_male"
-                android:layout_toRightOf="@+id/radio_male"
-                android:text="Female" />
+                android:layout_alignTop="@+id/fragment_user_profile_constraintLayout_relativeLayout_male_radioButton"
+                android:layout_toEndOf="@+id/fragment_user_profile_constraintLayout_relativeLayout_male_radioButton"
+                android:layout_toRightOf="@+id/fragment_user_profile_constraintLayout_relativeLayout_male_radioButton"
+                android:text="@string/fragment_user_profile_constraintLayout_relativeLayout_female_radioButton"/>
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/fragment_user_profile_constraintLayout_relativeLayout_gender_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_alignParentLeft="true"
@@ -218,8 +218,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="28dp"
                 android:layout_marginStart="31dp"
-                android:text="Gender"
-                android:textSize="20dp" />
+                android:text="@string/fragment_user_profile_constraintLayout_relativeLayout_gender_textView"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 

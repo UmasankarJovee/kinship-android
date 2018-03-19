@@ -3,8 +3,10 @@ package kinship.joveeinfotech.kinship
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v4.view.PagerAdapter
+import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +17,28 @@ import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import me.relex.circleindicator.CircleIndicator
+import java.util.*
 
 /*
 * HomeFragment It is the Home */
 class HomeFragment : Fragment(), HomeFragmentView {
 
-    private lateinit var homeFragmentPresenter: HomeFragmentPresenterImpl
-    var imageArray : Array<String> = arrayOf(
-    "https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
+    private val imageArrayList = ArrayList<String>()
+    private var mPager: ViewPager? = null
+    var mindicator:CircleIndicator?=null
+    private var currentPage = 0
+    private val imageArray = arrayOf<String>("https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
             "https://cdn.arstechnica.net/wp-content/uploads/2013/05/donate_blood_rotator.jpg",
             "https://www.discoverwellingborough.co.uk/wp-content/uploads/2016/02/blood-logo.png")
+
+
+    private lateinit var homeFragmentPresenter: HomeFragmentPresenterImpl
+    var view1:View?=null
+    /*var imageArray : Array<String> = arrayOf(
+    "https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
+            "https://cdn.arstechnica.net/wp-content/uploads/2013/05/donate_blood_rotator.jpg",
+            "https://www.discoverwellingborough.co.uk/wp-content/uploads/2016/02/blood-logo.png")*/
 
     var alert_blood_donator_instructions_exit: ImageView? = null
     var alert_blood_requestor_instructions_exit: ImageView? = null
@@ -38,21 +51,66 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        var view:View=inflater.inflate(R.layout.fragment_home,container,false)
-        val blooddonatorinstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
-        val bloodRequestorInstructionsTextView=view.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
+        view1=inflater.inflate(R.layout.fragment_home,container,false)
+        val blooddonatorinstructionsTextView=view1?.findViewById<TextView>(R.id.activity_home_fragment_bloodDonatorInstructions_textview)
+        val bloodRequestorInstructionsTextView=view1?.findViewById<TextView>(R.id.activity_home_fragment_bloodRequestInstructions_textview)
 
+        /*setIntPreference(mContext,"languageRepeat3",0)
+        var language = getIntPreference(mContext, "languageCode3", 0)
+        var languageRepeat = getIntPreference(mContext,"languageRepeat3",0)
+        if(language == 0 && languageRepeat == 0){
+            LocaleHelper.setLocale(mContext,"ta")
+            val trans = fragmentManager?.beginTransaction()
+            //trans?.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            trans?.replace(R.id.activity_home_frame_layout, HomeFragment.newInstance())
+            trans?.commit()
+            //setIntPreference(mContext,"languageRepeat3",1)
+        }*/
         homeFragmentPresenter= HomeFragmentPresenterImpl(this,mContext)
-        view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
-        blooddonatorinstructionsTextView.setOnClickListener{
+
+        //LocaleHelper.setLocale(mContext,"ta")
+
+        //view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
+        init()
+        blooddonatorinstructionsTextView?.setOnClickListener{
             bloodDonatorInstructions()
         }
-        bloodRequestorInstructionsTextView.setOnClickListener{
+        bloodRequestorInstructionsTextView?.setOnClickListener{
             bloodRequestorInstructions()
         }
-        return view
+        return view1
+    }
+    private fun init() {
+        for (i in imageArray.indices)
+            imageArrayList.add(imageArray[i])
+
+        mPager = view1?.findViewById<ViewPager>(R.id.activity_home_fragment_ImageSlider_ViewPager) as ViewPager
+        mPager!!.adapter = ImageSliderAdapterClass()
+        mindicator =view1?.findViewById<CircleIndicator>(R.id.activity_home_fragment_ImageSlider_Indicator)as CircleIndicator
+        mindicator?.setViewPager(mPager)
+
+        // Auto start of viewpager
+        val handler = Handler()
+        val Update = Runnable {
+            if (currentPage == imageArray.size) {
+                currentPage = 0
+            }
+            mPager!!.setCurrentItem(currentPage++, true)
+        }
+        val swipeTimer = Timer()
+        swipeTimer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post(Update)
+            }
+        }, 2500, 2500)
     }
 
+    /*companion object {
+
+        private var mPager: ViewPager? = null
+        private var currentPage = 0
+        private val XMEN = arrayOf(R.drawable.index1, R.drawable.index4, R.drawable.index6, R.drawable.index7)
+    }*/
     override fun bloodDonatorInstructions(){
         val layoutinflater=LayoutInflater.from(mContext)
         val conformDialog=layoutinflater.inflate(R.layout.alert_blood_donator_instructions,null)
@@ -88,7 +146,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         }
 
         override fun getCount(): Int {
-           return imageArray.size
+           return imageArrayList.size
         }
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -96,7 +154,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
             //var imageUrl ="https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"
 
             val imageView : ImageView = ImageView(mContext)
-            Picasso.with(mContext).load(imageArray[position]).into(imageView)
+            Picasso.with(mContext).load(imageArrayList[position]).into(imageView)
             container.addView(imageView,0)
             return imageView
         }
@@ -151,6 +209,11 @@ class HomeFragment : Fragment(), HomeFragmentView {
                 }
             }
         }
+    }*/
+
+    /*override fun onDestroyView() {
+        super.onDestroyView()
+        setIntPreference(mContext,"languageRepeat1",0)
     }*/
 }
 

@@ -1,22 +1,13 @@
 package com.joveeinfotech.kinship.presenter
 
-import android.R
-import android.app.Activity
 import android.support.v4.app.FragmentTransaction
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
-import com.joveeinfotech.kinship.Home
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.model.LoginResult
 import com.joveeinfotech.kinship.model.UserDetailResult
-import com.joveeinfotech.kinship.utils.CustomToast
-import com.joveeinfotech.kinship.utils.SharedData
-import com.joveeinfotech.kinship.utils.Validation
 import com.joveeinfotech.kinship.view.*
-import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 
 /**
@@ -62,13 +53,17 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
                 Log.e("API CALL : ", "inside UserDetails activity and onSuccess")
 
                 userDetailsView.setNavigationFragmentValues(userDetailResult.isRegisterUserProfile,
-                        userDetailResult.isRegisterHomeAddress,userDetailResult.isRegisterAdditionalDetails)
+                        userDetailResult.isRegisterHomeAddress,userDetailResult.isRegisterAdditionalDetails,
+                        userDetailResult.isRegisterHealthDetails)
 
                 if(!userDetailResult.isRegisterUserProfile){
                     trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserProfileFragment.newInstance())
                     trans?.commit()
                 }else if(!userDetailResult.isRegisterHomeAddress){
                     trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
+                    trans?.commit()
+                }else if(!userDetailResult.isRegisterHealthDetails){
+                    trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
                     trans?.commit()
                 }else if(!userDetailResult.isRegisterAdditionalDetails){
                     trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())

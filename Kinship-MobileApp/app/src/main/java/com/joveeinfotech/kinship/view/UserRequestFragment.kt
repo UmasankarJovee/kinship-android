@@ -70,9 +70,9 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
 
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        view1?.spinner_user_search_blood_group?.adapter = dataAdapter
+        view1?.fragment_user_request_constraintLayout_bloodGroup_spinner?.adapter = dataAdapter
 
-        view1?.spinner_user_search_blood_group?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        view1?.fragment_user_request_constraintLayout_bloodGroup_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -84,9 +84,9 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
 
         val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, district_categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        view1?.spinner_user_search_district?.adapter = district_dataAdapter
+        view1?.fragment_user_request_constraintLayout_districts_spinner?.adapter = district_dataAdapter
 
-        view1?.spinner_user_search_district?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        view1?.fragment_user_request_constraintLayout_districts_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -98,9 +98,9 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
 
         val hospital_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospital_categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        view1?.spinner_user_search_hospitals?.adapter = hospital_dataAdapter
+        view1?.fragment_user_request_constraintLayout_hospitals_spinner?.adapter = hospital_dataAdapter
 
-        view1?.spinner_user_search_hospitals?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        view1?.fragment_user_request_constraintLayout_hospitals_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -118,7 +118,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
             view1?.editText_user_search_units?.setText("xdg")
         }*/
 
-        view1?.button_user_search_submit?.setOnClickListener{
+        view1?.fragment_user_request_constraintLayout_submit_button?.setOnClickListener{
             /*if(search_blood_group!!.isNotEmpty()  &&  editText_user_search_units.text.isNotEmpty()
                     && search_district!!.isNotEmpty() && search_hospital!!.isNotEmpty()){
                 userRequestFragmentPresenter?.sendUserRequestDetails(search_blood_group!!,editText_user_search_units.text.toString(),
@@ -143,15 +143,15 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
     }
 
     override fun setDistricts(districtResult: DistrictResult) {
-        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtResult.district)
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtResult.districts)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_user_search_district.adapter=dataAdapter
-        spinner_user_search_district.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        fragment_user_request_constraintLayout_districts_spinner.adapter=dataAdapter
+        fragment_user_request_constraintLayout_districts_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                search_district= districtResult.district[position].toString()
+                search_district= districtResult.districts[position].toString()
                 userRequestFragmentPresenter?.sendDistrictsReceiveHospitals(search_district!!)
                 Toast.makeText(mContext, search_district, Toast.LENGTH_LONG).show()
             }
@@ -161,8 +161,8 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
     override fun setHospitals(hospitalsList: SearchHospitalResult) {
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospitalsList.hospitals)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_user_search_hospitals.adapter=dataAdapter
-        spinner_user_search_hospitals.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        fragment_user_request_constraintLayout_hospitals_spinner.adapter=dataAdapter
+        fragment_user_request_constraintLayout_hospitals_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }

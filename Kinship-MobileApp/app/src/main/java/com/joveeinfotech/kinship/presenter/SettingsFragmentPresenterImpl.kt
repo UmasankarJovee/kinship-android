@@ -30,8 +30,8 @@ class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
         languageListeners=listener
     }
 
-    constructor(view:SettingsFragmentView, context: Context,listener:Listener){
-        this.mContext=context
+    constructor(view:SettingsFragmentView, mcontext: Context,listener:Listener){
+        this.mContext=mcontext
         settingsFragmentView=view
         listeners=listener
         initPresenter()
@@ -41,7 +41,7 @@ class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
         Log.e("Message","Before items" )
         val items=ArrayList<Album>()
 
-        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.edit_profile), mContext!!.getString(settingsFragment_cardView1_textView)))
+        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.edit_user_profile), mContext!!.getString(settingsFragment_cardView1_textView)))
         items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.notifications), mContext!!.getString(settingsFragment_cardView2_textView)))
         items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.language), mContext!!.getString(settingsFragment_cardView3_textView)))
         items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.logout_icon),mContext!!.getString(settingsFragment_cardView4_textView)))

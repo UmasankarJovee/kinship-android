@@ -15,12 +15,16 @@ import android.support.v7.widget.AppCompatButton
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
+import com.joveeinfotech.kinship.helper.LocaleHelper
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.view.*
+import com.joveeinfotech.kinship.view.Top20Fragment
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
@@ -53,7 +57,7 @@ class Home : AppCompatActivity() {
                 //return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_donars -> {
+            R.id.navigation_donors -> {
                 select= DonarsFragment.newInstance()
                 goToSelectFragment()
             }
@@ -143,6 +147,8 @@ class Home : AppCompatActivity() {
         supportActionBar!!.setTitle("Kinship")
 
 
+
+
         //startAlert()
         session = SharedData(this)
         activity_login_navigation_bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -163,12 +169,17 @@ class Home : AppCompatActivity() {
     }
 
     private fun CreateMenu(menu: Menu) {
-        val mnu1 = menu.add(0, 0, 0, "Request History")
+        val mnu1 = menu.add(0, 0, 0, "Profile")
         run {
             //mnu1.setIcon(R.drawable.ic_launcher);
             //mnu1.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
-        val mnu2 = menu.add(0, 1, 0, "Logout")
+        val mnu2 = menu.add(0, 1, 0, "Request History")
+        run {
+            //mnu1.setIcon(R.drawable.ic_launcher);
+            //mnu1.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        }
+        val mnu3 = menu.add(0, 2, 0, "Logout")
         run {
              //mnu2.setIcon(R.drawable.ic_launcher);
              //mnu2.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -178,13 +189,19 @@ class Home : AppCompatActivity() {
     private fun MenuChoice(item: MenuItem): Boolean {
         when (item.itemId) {
             0 -> {
-                Toast.makeText(this, "You clicked Request History",Toast.LENGTH_LONG).show()
-                startActivity(Intent(applicationContext, RequestHistory::class.java))
+                //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
+                startActivity(Intent(applicationContext, ProfileDisplay::class.java))
+                //sendNotification()
+                //Toast.makeText(this, "You clicked Request History",Toast.LENGTH_LONG).show()
                 return true
             }
             1 -> {
                 //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
-
+                startActivity(Intent(applicationContext, RequestHistory::class.java))
+                return true
+            }
+            2 -> {
+                //Toast.makeText(this, "You clicked on Item 1",Toast.LENGTH_LONG).show()
                 session?.logoutUser()
                 session?.createFirstInstallSetFalse()
                 finish()
@@ -213,7 +230,6 @@ class Home : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
-
 
 }
 

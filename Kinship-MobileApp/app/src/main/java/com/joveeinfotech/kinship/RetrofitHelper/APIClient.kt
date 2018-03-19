@@ -18,7 +18,6 @@ class APIClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(APIInterface::class.java)
-
         private var default_headers: Map<String, String>? = HashMap()
 
         fun getCommonHeaders(): Map<String, String>? {

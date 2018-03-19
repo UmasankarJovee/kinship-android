@@ -33,6 +33,7 @@ class NotificationReceiver : BroadcastReceiver(), APIListener {
         val action = intent?.action
         if ("YES_ACTION" == action) {
             val i=Intent(context, EmptyActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(i)
             /*Toast.makeText(context, "YES CALLED", Toast.LENGTH_SHORT).show()
             //DisplayDialog(context).onCreateDialog(0)

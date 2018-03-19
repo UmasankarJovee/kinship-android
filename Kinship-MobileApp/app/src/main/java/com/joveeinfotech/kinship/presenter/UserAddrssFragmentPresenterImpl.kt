@@ -48,18 +48,22 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
         networkCall?.APIRequest("api/v1/address", queryParams, CountryResult::class.java, this, 1, "Fetching...")
     }
     override fun sendCountryReceiveState(country: String) {
-        val queryParams = HashMap<String, String>()
-        queryParams.put("input", "state")
-        //queryParams.put("subFieldName", country!!)
-        Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
+        if(country != mContext.getString(R.string.user_address_select_your_country)){
+            val queryParams = HashMap<String, String>()
+            queryParams.put("country",country)
+            //queryParams.put("subFieldName", country!!)
+            Log.e("MAIN ACTIVITY : ", "inside button")
+            networkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
+        }
     }
     override fun sendStateReceiveDistrict(state: String) {
-        val queryParams = HashMap<String, String>()
-        queryParams.put("input", "district")
-        //queryParams.put("subFieldName", state!!)
-        Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
+        if(state != mContext.getString(R.string.user_address_select_your_state)){
+            val queryParams = HashMap<String, String>()
+            queryParams.put("state",state)
+            //queryParams.put("subFieldName", state!!)
+            Log.e("MAIN ACTIVITY : ", "inside button")
+            networkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
+        }
     }
     override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
         if (country.trim().isNotEmpty() && state.trim().isNotEmpty() && district.trim().isNotEmpty() && city.trim().isNotEmpty() && locality.trim().isNotEmpty() && street.trim().isNotEmpty()){
@@ -119,17 +123,17 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
 
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val countryList = response as CountryResult
-                userAddressFragmentView.setCountries(countryList)
+                userAddressFragmentView.setCountries(countryList.country)
             }
             2 -> { // Get State
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val stateList = response as StateResult
-                userAddressFragmentView.setStates(stateList)
+                userAddressFragmentView.setStates(stateList.state)
             }
             3 -> { // Get District
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val districtList = response as DistrictResult
-                userAddressFragmentView.setDistricts(districtList)
+                userAddressFragmentView.setDistricts(districtList.districts)
             }
             4 -> { // Send Address
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")

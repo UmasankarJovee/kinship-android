@@ -29,7 +29,7 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
         this.mContext=context
         profileDisplayFragmentView=view
         initPresenter()
-        //loadProfileDetails()
+        loadProfileDetails()
     }
 
     override fun initPresenter() {
@@ -39,7 +39,7 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
     override fun loadProfileDetails() {
         val queryParams = HashMap<String, String>()
         queryParams.put("phone_number", "8220127939")
-        networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 1, "Setting your Password...")
+        networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 1, "Setting your Password...",false)
     }
 
     override fun onSuccess(from: Int, response: Any) {

@@ -35,7 +35,7 @@ data class StateResult(var state : ArrayList<String>)
 
 data class SendAddressResult(var status :Boolean)
 
-data class DistrictResult(var district : ArrayList<String>)
+data class DistrictResult(var districts : ArrayList<String>)
 
 data class UserAdditionalDetailsResult(var status: Boolean)
 
@@ -87,7 +87,8 @@ data class UserProfileDisplayResult(var image_url : String,
                                     var total_request : String,
                                     var last_donated_date : String,
                                     var blood_group : String,
-                                    var status : Boolean
+                                    var status : Boolean,
+                                    var message: String
                                     /*var address : List<AddressOfUser>*/)
 
 data class DonationHistoryResult(var donorList : List<donationDetails>)
@@ -95,6 +96,8 @@ data class DonationHistoryResult(var donorList : List<donationDetails>)
 data class donationDetails(var date : String, var image_url: String, var name: String, var district: String)
 
 data class donationInnerDetails(var image_url: String, var name: String, var district: String)
+
+data class UserHealthDetailsResult(var status: Boolean)
 
 data class RequestHistoryResult(var requestorList:List<requestorList>)
 

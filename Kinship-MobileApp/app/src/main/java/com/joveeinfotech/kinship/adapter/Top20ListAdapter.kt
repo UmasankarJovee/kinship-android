@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.kinship.R
-import com.joveeinfotech.kinship.model.GetTop20Result
 import com.joveeinfotech.kinship.model.detailsResult
-import kotlinx.android.synthetic.main.top20_donars_list.view.*
+import kotlinx.android.synthetic.main.top20_donors_list.view.*
 
 /**
  * Created by shanmugarajjoveeinfo on 12/2/18.
@@ -27,7 +26,7 @@ class Top20ListAdapter(val getTop20Result:List<detailsResult>, val mcontext: Con
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.top20_donars_list, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.top20_donors_list, parent, false)
 
         return ViewHolder(view)
     }
@@ -36,12 +35,12 @@ class Top20ListAdapter(val getTop20Result:List<detailsResult>, val mcontext: Con
 
         fun bind(getTop20Result : detailsResult, colors : Array<String>, position: Int) {
 
-            itemView.top20_donars_list_Linear_layout_CardView_ImageView_profile
-            itemView.top20_donars_list_Linear_layout_CardView_TextView_name.text = getTop20Result.name
-            itemView.top20_donars_list_Linear_layout_CardView_TextView_district.text = getTop20Result.district
-            itemView.top20_donars_list_Linear_layout_CardView_TextView_total_like.text = getTop20Result.total_likes.toString()
-            itemView.top20_donars_list_Linear_layout_CardView_TextView_total_donation.text = getTop20Result.total_donated.toString()
-            itemView.top20_donars_list_Linear_layout_CardView_TextView_last_donation.text = getTop20Result.last_donated_date
+            itemView.top20_donors_list_linearLayout_cardView_constraintLayout_profile_imageView
+            itemView.top20_donors_list_linearLayout_cardView_constraintLayout_name_textView.text = getTop20Result.name
+            itemView.top20_donors_list_linearLayout_cardView_constraintLayout_district_textView.text = getTop20Result.district
+            itemView.top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView.text = getTop20Result.total_likes.toString()
+            itemView.top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView.text = getTop20Result.total_donated.toString()
+            itemView.top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView.text = getTop20Result.last_donated_date
             //itemView.setBackgroundColor(android.graphics.Color.parseColor(colors[position % 6]))
             //itemView.setOnClickListener{ listener.onItemClick(android) }
         }

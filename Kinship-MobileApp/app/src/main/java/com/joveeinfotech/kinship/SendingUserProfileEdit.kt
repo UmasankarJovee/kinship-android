@@ -11,7 +11,10 @@ import android.os.Bundle
 import android.os.IBinder
 import android.support.v4.app.ActivityCompat
 import android.util.Log
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
+
 import android.widget.Toast
+
 import com.joveeinfotech.kinship.model.LocationResult
 import com.joveeinfotech.kinship.model.SendingUserProfileEditResult
 import com.joveeinfotech.kinship.model.UserAdditionalDetailsResult
@@ -36,8 +39,10 @@ class SendingUserProfileEdit : Service(), APIListener{
         var value = i?.getString("value")
         var field1 =i?.getString("field1")
         var value1=i?.getString("value1")
+        var user_id = getStringPreference(context!!,"user_id","81")
         if(field1 == "" && value1== "") {
             val queryParams = HashMap<String, String>()
+            queryParams.put("user_id", user_id!!)
             queryParams.put("user_id", "161")
             queryParams.put("field", field!!)
             queryParams.put("value", value!!)
@@ -45,6 +50,7 @@ class SendingUserProfileEdit : Service(), APIListener{
             networkCall?.APIRequest("api/v1/profile1", queryParams, SendingUserProfileEditResult::class.java, this, 1, "Sending Location...",false)
         } else{
             val queryParams = HashMap<String, String>()
+            queryParams.put("user_id", user_id!!)
             queryParams.put("user_id", "161")
             queryParams.put("field", field!!)
             queryParams.put("value", value!!)

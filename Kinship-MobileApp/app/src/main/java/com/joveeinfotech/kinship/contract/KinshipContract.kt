@@ -58,7 +58,7 @@ interface KinshipContract {
 
     //UserDetails
     interface UserDetailsView{
-        fun setNavigationFragmentValues(isCompleteProfile : Boolean, isCompleteAddress : Boolean, isCompleteAdditionalDetails : Boolean)
+        fun setNavigationFragmentValues(isCompleteProfile: Boolean, isCompleteAddress: Boolean, isCompleteAdditionalDetails: Boolean, isCompleteHealthDetails: Boolean)
     }
     interface UserDetailsPresenter{
         fun initPresenter()
@@ -74,9 +74,9 @@ interface KinshipContract {
 
     // UserAddressFragment
     interface UserAddrssFragmentView{
-        fun setCountries(dataAdapter: CountryResult)
-        fun setStates(stateList: StateResult)
-        fun setDistricts(districtList: DistrictResult)
+        fun setCountries(dataAdapter: ArrayList<String>)
+        fun setStates(stateList: ArrayList<String>)
+        fun setDistricts(districtList: ArrayList<String>)
     }
     interface UserAddressFragmentPresenter{
         fun initPresenter()
@@ -152,7 +152,7 @@ interface KinshipContract {
 
     // UserProfileEditFragment
     interface UserProfileEditFragmentView{
-        fun setCountries(dataAdapter: CountryResult)
+        fun setCountries(dataAdapter: ArrayList<String>)
         fun setStates(stateList: StateResult)
         fun setDistricts(districtList: DistrictResult)
         fun updateDateInView()
@@ -178,11 +178,18 @@ interface KinshipContract {
         fun loadDonorsList()
     }
 
+    // UserHealthDetailsFragment
+    interface UserHealthDetailsFragmentView{
+    }
+    interface UserHealthDetailsFragmentPresenter {
+        fun initPresenter()
+        fun sendHealthDetails(healthDetails: StringBuffer?)
+    }
+
     //RequestHistoryActivity
     interface RequestHistoryView{
         fun setAdaperofRequestHistory(requestHistoryListAdapter:RequestHistoryListAdapter?)
     }
-
     interface RequestHistoryPresenter{
         fun initPresenter()
         fun loadRequestHisoryList()

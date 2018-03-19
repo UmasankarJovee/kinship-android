@@ -10,35 +10,33 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_user_registration"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/fragment_user_additional_details_additionalDetails_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
-            android:text="Additional Details"
-            android:textSize="25dp"
-            android:textColor="#D14035"
+            android:text="@string/fragment_user_additional_details_additionalDetails_textView"
+            android:textSize="25sp"
+            android:textColor="@color/toolBarColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.132"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_send_additional_details"
+            android:id="@+id/fragment_user_additional_details_submit_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="35dp"
             android:background="@drawable/btn"
-            android:text="SUBMIT"
-            android:textColor="#ffffff"
-            android:textSize="19dp"
+            android:text="@string/fragment_user_additional_details_submit_button"
+            android:textColor="@color/white"
+            android:textSize="17sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -52,53 +50,52 @@
             android:text=""
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/floatingActionButton_skip" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_additional_details_skip_textView" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/fragment_user_additional_details_occupation_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Occupation"
-            android:textSize="20dp"
+            android:text="@string/fragment_user_additional_details_occupation_textView"
+            android:textSize="20sp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView6" />
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_additional_details_additionalDetails_textView" />
 
         <RadioButton
-            android:id="@+id/radio_student"
+            android:id="@+id/fragment_user_additional_details_student_radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student"
+            android:text="@string/fragment_user_additional_details_student_radioButton"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView7"
-            />
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_additional_details_occupation_textView" />
 
         <RadioButton
-            android:id="@+id/radio_working"
+            android:id="@+id/fragment_user_additional_details_working_radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Working"
+            android:text="@string/fragment_user_additional_details_working_radioButton"
             android:layout_marginLeft="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/radio_student"
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_additional_details_student_radioButton"
             />
 
         <RadioButton
-            android:id="@+id/radio_others"
+            android:id="@+id/fragment_user_additional_details_others_radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="4dp"
-            android:text="Others"
+            android:text="@string/fragment_user_additional_details_others_radioButton"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_working" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_additional_details_working_radioButton" />
 
         <EditText
-            android:id="@+id/editText_others"
+            android:id="@+id/fragment_user_additional_details_othersMentionHere_editText"
             android:visibility="gone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -106,10 +103,10 @@
             android:layout_marginRight="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Mention here"
+            android:hint="@string/fragment_user_additional_details_othersMentionHere_editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/radio_others" />
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_additional_details_others_radioButton" />
 
 
 
@@ -124,17 +121,17 @@
             android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_others">
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_additional_details_othersMentionHere_editText">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_additional_phone_number"
+                android:id="@+id/fragment_user_additional_details_phoneNumberOptional_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint=" Phone Number (Optional)"
+                android:hint="@string/fragment_user_additional_details_phoneNumberOptional_editText"
                 android:inputType="textPersonName"
-                android:textColor="#000000"
-                android:textColorHint="#D14035"
+                android:textColor="@color/black"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
@@ -155,13 +152,13 @@
             app:layout_constraintTop_toBottomOf="@id/firstname">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_additional_email"
+                android:id="@+id/fragment_user_additional_details_emailOptional_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint=" E-Mail (Optional)"
+                android:hint="@string/fragment_user_additional_details_emailOptional_editText"
                 android:inputType="textPersonName"
-                android:textColorHint="#D14035"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
@@ -181,29 +178,29 @@
             app:layout_constraintTop_toBottomOf="@id/lastname">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText_social_profile"
+                android:id="@+id/fragment_user_additional_details_socialProfileOptional_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" Social Profile Id (Optional)"
+                android:hint="@string/fragment_user_additional_details_socialProfileOptional_editText"
                 android:inputType="textPersonName"
-                android:textColorHint="#D14035"
+                android:textColorHint="@color/toolBarColor"
                 android:textSize="20sp"
                 android:theme="@style/MyEditTextTheme" />
 
         </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/floatingActionButton_skip"
+            android:id="@+id/fragment_user_additional_details_skip_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FE8A03"
+            android:textColor="@color/orange"
             android:clickable="true"
-            android:text=">>> skip"
-            android:textSize="21dp"
+            android:text="@string/fragment_user_additional_details_skip_textView"
+            android:textSize="21sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@id/button_send_additional_details" />
+            app:layout_constraintTop_toBottomOf="@id/fragment_user_additional_details_submit_button" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -24,7 +24,7 @@ class FcmInstanceIdService : FirebaseInstanceIdService(), APIListener {
         var spe : SharedPreferences.Editor = sp.edit()
         spe.putString("FCM_TOKEN",recent_token)
         spe.commit()
-        sendTokenToServer(recent_token!!)
+        //sendTokenToServer(recent_token!!)
     }
 
     private fun sendTokenToServer(recent_token : String) {

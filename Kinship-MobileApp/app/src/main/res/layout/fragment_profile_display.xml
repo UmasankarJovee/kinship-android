@@ -51,7 +51,7 @@
             android:id="@+id/fragment_profile_display_TextView_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_user_profile_edit_constraintLayout_userName_textView"
+            android:text="Jemima"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/fragment_profile_display_user_profile_image"
             android:textSize="20sp"
@@ -67,12 +67,13 @@
             android:layout_height="100dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="28dp"
             android:visibility="visible"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_profile_display_TextView_user_name">
@@ -86,150 +87,121 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_home_fragment_updatedDetails_CardView_hospitals_constraintLayout"
-                    android:layout_width="111dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/activity_home_fragment_updatedDetails_CardView_shape_rectangle1_ImageView"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintRight_toLeftOf="@id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0">
 
                     <TextView
                         android:id="@+id/fragment_profile_display_Total_donated"
-                        android:layout_width="wrap_content"
-                        android:layout_height="19dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
                         android:gravity="center"
-                        android:text="Total Donated"
-                        android:textSize="15dp"
+                        android:text="@string/total_donated"
+                        android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fragment_profile_display_TextView_Total_donated"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="32dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
                         android:text="20"
                         android:textColor="#D14035"
                         android:textSize="18dp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fragment_profile_display_Total_donated"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_profile_display_Total_donated" />
                 </android.support.constraint.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/activity_home_fragment_updatedDetails_CardView_shape_rectangle1_ImageView"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/shape_rectangle_for_profile_display"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/activity_home_fragment_updatedDetails_CardView_hospitals_constraintLayout"
-                    app:layout_constraintRight_toLeftOf="@id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_shape_rectangle1_ImageView"
-                    app:layout_constraintRight_toLeftOf="@+id/activity_home_fragment_updatedDetails_CardView_shape_rectangle2_ImageView"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_hospitals_constraintLayout"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_home_fragment_updatedDetails_CardView_donator_constraintLayout"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/fragment_profile_display_Total_requested"
-                        android:layout_width="wrap_content"
-                        android:layout_height="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
                         android:gravity="center"
-                        android:textSize="15dp"
-                        android:text="Total Request"
+                        android:text="@string/total_request"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fragment_profile_display_TextView_Total_requested"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="32dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="16dp"
-                        android:textSize="18dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:textColor="#D14035"
-                        android:textStyle="bold"
                         android:text="34"
+                        android:textColor="#D14035"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fragment_profile_display_Total_requested"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_profile_display_Total_requested" />
                 </android.support.constraint.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/activity_home_fragment_updatedDetails_CardView_shape_rectangle2_ImageView"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/shape_rectangle_for_profile_display"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
-                    app:layout_constraintRight_toLeftOf="@id/activity_home_fragment_updatedDetails_CardView_donator_constraintLayout"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_home_fragment_updatedDetails_CardView_donator_constraintLayout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_shape_rectangle2_ImageView"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/fragment_profile_display_Last_donated"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="19dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="28dp"
                         android:gravity="center"
+                        android:text="@string/last_donated"
                         android:textSize="15dp"
-                        android:text="Last Donated"
                         android:textStyle="bold"
-                        android:layout_marginLeft="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fragment_profile_display_TextView_Last_donated"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginTop="16dp"
                         android:gravity="center"
                         android:text="12/10/2017"
                         android:textColor="#D14035"
-                        android:layout_marginLeft="5dp"
                         android:textSize="15dp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_profile_display_Last_donated" />
@@ -266,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="vigneshkumar@gmail.com"
+                    android:text="Jemima@gmail.com"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -354,7 +326,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="12/10/1995"
+                    android:text="Krishna street, RS Nagar,\nVirudhunagar."
                     android:textStyle="bold" />
             </LinearLayout>
 

@@ -7,13 +7,9 @@ import android.util.Log
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.Home
-import com.joveeinfotech.kinship.R
-import com.joveeinfotech.kinship.R.id.editText_additional_phone_number
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.UserAdditionalDetailsResult
-import com.joveeinfotech.kinship.view.UserAddressFragment
-import kotlinx.android.synthetic.main.fragment_user_additional_details.*
 import java.util.HashMap
 
 /**
