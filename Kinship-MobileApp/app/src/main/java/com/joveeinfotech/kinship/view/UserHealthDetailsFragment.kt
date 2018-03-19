@@ -33,33 +33,43 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
         var view : View = inflater.inflate(R.layout.fragment_user_health_details, container, false)
 
         view.fragment_user_health_details_checkbox1_diabetic.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Diabetic,")
         }
         view.fragment_user_health_details_checkbox2_Asthmetic.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Asthmetic,")
         }
         view.fragment_user_health_details_checkbox3_heart_patient.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Heart_Patient,")
         }
         view.fragment_user_health_details_checkbox4_tuber_closis.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Tuber_closis,")
         }
         view.fragment_user_health_details_checkbox5_epilepsy.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Epilesy,")
         }
         view.fragment_user_health_details_checkbox6_typoid_or_malaria.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Typoid / Malaria,")
         }
         view.fragment_user_health_details_checkbox7_joundice.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Joundice,")
         }
         view.fragment_user_health_details_checkbox8_major_surgery.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Major_surgery,")
         }
         view.fragment_user_health_details_checkbox9_transfusion_tatto.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Transfusion / Tatto,")
         }
         view.fragment_user_health_details_checkbox10_tooth_extraction.setOnClickListener{
+            view.fragment_user_health_details_checkbox11_none.isChecked = false
             healthDetails?.append("Tooth_extraction,")
         }
         view.fragment_user_health_details_checkbox11_none.setOnClickListener{
@@ -73,7 +83,6 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
             view.fragment_user_health_details_checkbox8_major_surgery.isChecked = false
             view.fragment_user_health_details_checkbox9_transfusion_tatto.isChecked = false
             view.fragment_user_health_details_checkbox10_tooth_extraction.isChecked = false
-            view.fragment_user_health_details_checkbox11_none.isChecked
         }
         view.fragment_user_health_details_button_submit.setOnClickListener{
             if(view.fragment_user_health_details_checkbox1_diabetic.isChecked

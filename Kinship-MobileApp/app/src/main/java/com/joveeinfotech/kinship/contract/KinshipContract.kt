@@ -34,22 +34,28 @@ interface KinshipContract {
     // Login Activity
     interface LoginView{
         fun closeActivity()
+        fun getOTP()
+        fun resetPassword()
+        fun closePasswordDialog()
     }
     interface LoginPresenter{
         fun initPresenter()
         fun navigateActivity()
+        fun sendOTP(otp: String)
+        fun sendPassword(password : String)
         fun callRegisterActivity()
+        fun getPhoneNumber(phone_number: String)
         fun userPhoneNumberAndPassword(phone_number : String, password : String)
     }
 
     // Register Activity
     interface RegisterView{
         fun closeActivity()
+        fun closePasswordDialog()
         fun confirmOTP()
         fun confirmPassword()
     }
     interface RegisterPresenter {
-
         fun initPresenter()
         fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String)
         fun OtpContent(otp: String)

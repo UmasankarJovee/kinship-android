@@ -31,6 +31,8 @@ class UserRegistration : AppCompatActivity(), RegisterView {
     var editTextotp: EditText? = null
     var editTextpassword: EditText? = null
     var editTextConfirmPassword: EditText? = null
+
+    var alertDialog : AlertDialog? = null
     var alertDialog1: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,9 +84,9 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         val alert = AlertDialog.Builder(this)
         alert.setView(confirmDialog)
 
-        val alertDialog = alert.create()
-        alertDialog.show()
-        alertDialog.setCancelable(false)
+        alertDialog = alert.create()
+        alertDialog?.show()
+        alertDialog?.setCancelable(false)
 
         buttonConfirmOTP!!.setOnClickListener {
             if(editTextotp!!.text.isNotEmpty()){
@@ -96,6 +98,7 @@ class UserRegistration : AppCompatActivity(), RegisterView {
     }
 
     override fun confirmPassword() {
+        alertDialog?.dismiss()
         val li1 = LayoutInflater.from(this)
         val confimDialog1 = li1.inflate(com.joveeinfotech.kinship.R.layout.alert_password_get, null)
         buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.alert_password_get_confirmPasswordButton) as AppCompatButton
@@ -149,6 +152,10 @@ class UserRegistration : AppCompatActivity(), RegisterView {
                 )
     }
 */
+
+    override fun closePasswordDialog() {
+        alertDialog1?.dismiss()
+    }
 
     override fun closeActivity() { finish() }
 }

@@ -1,6 +1,7 @@
 package com.joveeinfotech.kinship
 
 import android.content.Context
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,12 +13,16 @@ import java.util.HashMap
 class APIClient {
 
     companion object {
-        fun getClient(): APIInterface? = Retrofit.Builder()
-                .baseUrl("http://192.168.43.49/")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(APIInterface::class.java)
+        fun getClient(mcontext: Context): APIInterface? {
+            var ip = getStringPreference(mcontext,"ip","192.168.43.49")
+            return  Retrofit.Builder()
+                    .baseUrl("http://192.168.0.56/")
+                    //.baseUrl("http://${ip}/")
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(APIInterface::class.java)
+        }
 
         private var default_headers: Map<String, String>? = HashMap()
 

@@ -103,3 +103,11 @@ data class RequestHistoryResult(var requestorList:List<requestorList>)
 data class requestorList(var date:String,var image_url: String,var name: String,var hospital_name:String,var district: String)
 
 data class requestInnerDetails(var image_url: String,var name: String,var hospital_name: String,var district: String)
+
+data class ForgotPasswordSendOTPToPhoneNumber(var status: Boolean)
+
+data class ForgotPasswordVerifyOTP(var status: Boolean)
+
+data class ForgotPasswordSendPasswordResult(var status: Boolean)
+
+data class SendingRequestResponseResult(var status: Boolean)

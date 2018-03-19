@@ -199,7 +199,8 @@
                       android:textColor="#ffffff"
                       app:layout_constraintLeft_toLeftOf="parent"
                       app:layout_constraintRight_toRightOf="parent"
-                      app:layout_constraintTop_toBottomOf="@+id/estreet" />
+                      app:layout_constraintTop_toBottomOf="@+id/estreet"
+                      />
 
                   <TextView
                       android:id="@+id/textVie"

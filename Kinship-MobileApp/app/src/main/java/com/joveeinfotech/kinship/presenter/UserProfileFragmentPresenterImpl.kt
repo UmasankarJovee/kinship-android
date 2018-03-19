@@ -55,7 +55,7 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
     private fun sendUserProfile(first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int) {
         var user_id = getStringPreference(mContext,"user_id","56")
         val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", user_id!!)
+        queryParams.put("user_id", "168")
         queryParams.put("first_name", first_name)
         queryParams.put("last_name", last_name)
         queryParams.put("date_of_birth", date_of_birth)

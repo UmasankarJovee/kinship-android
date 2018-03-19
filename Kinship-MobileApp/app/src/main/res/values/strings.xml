@@ -11,8 +11,8 @@
     <string name="activity_login_phone_number_editText">Phone Number</string>
     <string name="activity_login_password_editText">Password</string>
     <string name="activity_login_loginButton">LOGIN</string>
-    <string name="activity_login_register_textView">| Register</string>
-    <string name="activity_login_forget_password_textView">Forget Passsword </string>
+    <string name="activity_login_register_textView">"|  Register in New"</string>
+    <string name="activity_login_forget_password_textView">"Forget Password  "</string>
 
     <!--fragment_home-->
     <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">RECENT BLOOD DONATED PERSON</string>

@@ -30,11 +30,15 @@ class EmptyActivity : AppCompatActivity() {
 
     var bn : AppCompatButton? = null
 
+    var phone_number : String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empty)
 
+        var i =intent?.extras
+        phone_number = i?.getString("phone_number")
         createDialog()
 
     }
@@ -64,11 +68,11 @@ class EmptyActivity : AppCompatActivity() {
                 CustomToast().normalToast(this,"You not able to give your Blood")
             }else{
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                    val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "8189922043"))
+                    val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "$phone_number"))
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent)
                 } else{
-                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "8189922043"))
+                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "$phone_number"))
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent)
                 }
