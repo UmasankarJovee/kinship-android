@@ -87,7 +87,8 @@ data class UserProfileDisplayResult(var image_url : String,
                                     var total_request : String,
                                     var last_donated_date : String,
                                     var blood_group : String,
-                                    var status : Boolean
+                                    var status : Boolean,
+                                    var message: String
                                     /*var address : List<AddressOfUser>*/)
 
 data class DonationHistoryResult(var donorList : List<donationDetails>)

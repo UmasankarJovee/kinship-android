@@ -38,40 +38,40 @@ class UserAdditionalDetailsFragment : Fragment(), UserAdditionalDetailsFragmentV
         val trans = fragmentManager?.beginTransaction()
         userAddtitionalDetailsFragmentPresenter = UserAdditionalDetailsFragmentPresenterImpl(trans, this, mContext)
 
-        view.radio_student.setOnClickListener{
-            view.radio_others.isChecked=false
-            view.radio_working.isChecked=false
-            view.editText_others.visibility=View.GONE
+        view.fragment_user_additional_details_student_radioButton.setOnClickListener{
+            view.fragment_user_additional_details_others_radioButton.isChecked=false
+            view.fragment_user_additional_details_working_radioButton.isChecked=false
+            view.fragment_user_additional_details_othersMentionHere_editText.visibility=View.GONE
             category_of_person="Student"
         }
-        view.radio_working.setOnClickListener{
-            view.radio_student.isChecked=false
-            view.radio_others.isChecked=false
-            view.editText_others.visibility=View.GONE
+        view.fragment_user_additional_details_working_radioButton.setOnClickListener{
+            view.fragment_user_additional_details_student_radioButton.isChecked=false
+            view.fragment_user_additional_details_others_radioButton.isChecked=false
+            view.fragment_user_additional_details_othersMentionHere_editText.visibility=View.GONE
             category_of_person="Working"
         }
-        view.radio_others.setOnClickListener{
-            view.radio_student.isChecked=false
-            view.radio_working.isChecked=false
-            view.editText_others.visibility=View.VISIBLE
+        view.fragment_user_additional_details_others_radioButton.setOnClickListener{
+            view.fragment_user_additional_details_student_radioButton.isChecked=false
+            view.fragment_user_additional_details_working_radioButton.isChecked=false
+            view.fragment_user_additional_details_othersMentionHere_editText.visibility=View.VISIBLE
         }
 
-        view.button_send_additional_details.setOnClickListener{
+        view.fragment_user_additional_details_submit_button.setOnClickListener{
 
-            if(view.editText_others.visibility == View.VISIBLE){
-                category_of_person=editText_others.text.toString()
+            if(view.fragment_user_additional_details_othersMentionHere_editText.visibility == View.VISIBLE){
+                category_of_person=fragment_user_additional_details_othersMentionHere_editText.text.toString()
             }
             if(category_of_person != null) {
-                userAddtitionalDetailsFragmentPresenter?.userAdditionalDetails(category_of_person!!, editText_additional_phone_number.text.toString(),
-                        editText_additional_email.text.toString(),
-                        editText_social_profile.text.toString())
+                userAddtitionalDetailsFragmentPresenter?.userAdditionalDetails(category_of_person!!, fragment_user_additional_details_phoneNumberOptional_editText.text.toString(),
+                        fragment_user_additional_details_emailOptional_editText.text.toString(),
+                        fragment_user_additional_details_socialProfileOptional_editText.text.toString())
             }
             else
             {
                 CustomToast().alertToast(mContext,"You must select Occupation")
             }
         }
-        view.floatingActionButton_skip.setOnClickListener{
+        view.fragment_user_additional_details_skip_textView.setOnClickListener{
             userAddtitionalDetailsFragmentPresenter?.moveSkiptoHome()
         }
         return view

@@ -57,8 +57,8 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
         val trans = fragmentManager?.beginTransaction()
         userProfileFragmentPresenter = UserProfileFragmentPresenterImpl(trans,this,mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_profile, container, false)
-        view.imageView.setImageResource(R.drawable.profile_image)
-        view.imageView.setOnClickListener {
+        view.fragment_user_profile_constraintLayout_profile_imageView.setImageResource(R.drawable.profile_image)
+        view.fragment_user_profile_constraintLayout_profile_imageView.setOnClickListener {
             val i = Intent()
             i.type = "image/*"
             i.action = Intent.ACTION_GET_CONTENT
@@ -72,7 +72,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
             updateDateInView()
         }
 
-        view.editText_date_of_birth!!.setOnClickListener {
+        view.fragment_user_profile_constraintLayout_dateOfBirth_editText!!.setOnClickListener {
             DatePickerDialog(mContext,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
@@ -81,21 +81,21 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                     cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-        view.radio_male.setOnClickListener {
+        view.fragment_user_profile_constraintLayout_relativeLayout_male_radioButton.setOnClickListener {
             gender = 1
-            radio_female.isChecked = false
+            fragment_user_profile_constraintLayout_relativeLayout_female_radioButton.isChecked = false
         }
 
-        view.radio_female.setOnClickListener {
+        view.fragment_user_profile_constraintLayout_relativeLayout_female_radioButton.setOnClickListener {
             gender = 2
-            radio_male.isChecked = false
+            fragment_user_profile_constraintLayout_relativeLayout_male_radioButton.isChecked = false
         }
 
-        view.user_profile_submit.setOnClickListener {
-            if(editText_first_name.text.isNotEmpty() && editText_last_name.text.isNotEmpty()
-                    && editText_date_of_birth.text.isNotEmpty() && gender != null
-                    && editText_weight.text.toString().toInt() != null){
-                userProfileFragmentPresenter?.userProfileDetails(editText_first_name.text.toString(),editText_last_name.text.toString(), editText_date_of_birth.text.toString(),editText_weight.text.toString().toInt(),gender!!)
+        view.fragment_user_profile_constraintLayout_submit_button.setOnClickListener {
+            if(fragment_user_profile_constraintLayout_firstName_editText.text.isNotEmpty() && fragment_user_profile_constraintLayout_lastName_editText.text.isNotEmpty()
+                    && fragment_user_profile_constraintLayout_dateOfBirth_editText.text.isNotEmpty() && gender != null
+                    && fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt() != null){
+                userProfileFragmentPresenter?.userProfileDetails(fragment_user_profile_constraintLayout_firstName_editText.text.toString(),fragment_user_profile_constraintLayout_lastName_editText.text.toString(), fragment_user_profile_constraintLayout_dateOfBirth_editText.text.toString(),fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt(),gender!!)
             }else{
                 CustomToast().alertToast(mContext,"Fill the all fields")
             }
@@ -119,7 +119,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
     private fun updateDateInView() {
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        editText_date_of_birth.setText(sdf.format(cal.time))
+        fragment_user_profile_constraintLayout_dateOfBirth_editText.setText(sdf.format(cal.time))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,7 +139,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                 byteArray = byteArrayOutputStream.toByteArray()
                 Log.e("inside : ",byteArray.toString())
-                imageView.setImageBitmap(bitmap)
+                fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap)
                 val isr = resolver?.openInputStream(I.data!!)
                 //uploadImage(getBytes(isr))
 

@@ -47,7 +47,7 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
 
             toolsIcons.setImageBitmap(data.image)
             toolsTitles.text=data.text
-            if(toolsTitles.text.toString() == "Notifications"){
+            if(toolsTitles.text.toString() == mcontext.getString(R.string.settingsFragment_cardView2_textView)){
                 toolsOnOff.visibility=View.VISIBLE
             }
             toolsOnOff.setOnClickListener {
@@ -71,14 +71,14 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
             Log.e("Message","Before setOnClickListener" )
             val card = itemView.findViewById<CardView>(R.id.cards_layout_CardView)
             card.setOnClickListener{
-                if (data.text == "Edit Profile"){
+                if (data.text == mcontext.getString(R.string.settingsFragment_cardView1_textView)){
                     listener.callEditProfile()
                 }
                 else if(data.text == mcontext.getString(R.string.settingsFragment_cardView3_textView)){
                     Log.e("Message","Before listener.languageSettings()" )
                     listener.languageSettings()
                 }
-                else if(data.text == "Notifications"){
+                else if(data.text == mcontext.getString(R.string.settingsFragment_cardView2_textView)){
                     //Log.e("Message","i value after getIntPreference ${i}" )
                     if (i==1){
                         Log.e("Message","i value if condition ${i}" )
@@ -93,7 +93,7 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
                         setIntPreference(mcontext,"startingIValue",1)
                     }
                 }
-                else if(data.text == "Logout"){
+                else if(data.text == mcontext.getString(R.string.settingsFragment_cardView4_textView)){
                     listener.logoutuserid()
                 }
                 else listener.onItemClick(data)

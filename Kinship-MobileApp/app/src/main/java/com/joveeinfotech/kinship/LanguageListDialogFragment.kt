@@ -29,27 +29,27 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     var cancelButton : Button? = null
     var okButton : Button? = null
     var view1 : View? = null
-    var sd : SettingsFragmentPresenterImpl? = null
+    var settingsFragmentPresenterImpl : SettingsFragmentPresenterImpl? = null
     var settingsFragment : SettingsFragment? = null
     var getLanguage:Int=0
     val language:String?=null
-    var languageToLoad:String?=null
+    /*var languageToLoad:String?=null
     lateinit var locale:Locale
     lateinit var config:Configuration
 
     val languages = arrayOf("English", "தமிழ்", "हिंदी")
-    val languages_code = arrayOf("en", "ta", "hi")
-    var lLDFContext:Context?=null
-    override fun onAttach(context: Context?) {
-        this.lLDFContext=context
-        super.onAttach(context)
-    }
+    val languages_code = arrayOf("en", "ta", "hi")*/
+   /* var lLDFContext:Context?=null
+    override fun onAttach(lLDFContext: Context) {
+        this.lLDFContext=lLDFContext
+        super.onAttach(lLDFContext)
+    }*/
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        view1 =inflater!!.inflate(R.layout.alert_language_settings,null)
+        view1 =inflater.inflate(R.layout.alert_language_settings,null)
         dialog.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-        sd = SettingsFragmentPresenterImpl(lLDFContext!!,this)
+        settingsFragmentPresenterImpl = SettingsFragmentPresenterImpl(mContext,this)
         settingsFragment = SettingsFragment()
         /*alert_language_settings_cardView_constraintLayout_spinner?.adapter=ArrayAdapter<String>(activity,R.layout.alert_language_settings,languages)as SpinnerAdapter?
 
@@ -63,7 +63,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
             }
         }*/
         view1?.alert_language_settings_cardView_constraintLayout_listView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-        view1?.alert_language_settings_cardView_constraintLayout_listView?.adapter=sd?.getLanguagesData()
+        view1?.alert_language_settings_cardView_constraintLayout_listView?.adapter=settingsFragmentPresenterImpl?.getLanguagesData()
         cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
         okButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_okButton)
         cancelButton?.setOnClickListener {
@@ -76,7 +76,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
             when(getLanguage){
                 0 ->{
                     Toast.makeText(activity, "${getLanguage} Clicke", Toast.LENGTH_SHORT).show()
-                    setStringPreference(lLDFContext!!,"selectLanguageString","Tamil")
+                    setStringPreference(mContext,"selectLanguageString","Tamil")
                     LocaleHelper.setLocale(mContext,"ta")
                     //settingsFragment!!.setCreate(mContext,inflater,container,savedInstanceState)
                     DLog("settingsFragment : ","setcreate1")
@@ -84,7 +84,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
                 }
                 1 ->{
                     //Toast.makeText(activity, "${getLanguage} Clicke", Toast.LENGTH_SHORT).show()
-                    setStringPreference(lLDFContext!!,"selectLanguageString","English")
+                    setStringPreference(mContext,"selectLanguageString","English")
                     //LocaleHelper.setLocale(mContext,"ta")
                     //settingsFragment!!.setCreate(mContext,inflater,container,savedInstanceState)
                     //DLog("settingsFragment : ","setcreate1")
@@ -93,7 +93,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
                 }
                 2 ->{
                     //Toast.makeText(activity, "${getLanguage} Clicke", Toast.LENGTH_SHORT).show()
-                    setStringPreference(lLDFContext!!,"selectLanguageString","Hindi")
+                    setStringPreference(mContext,"selectLanguageString","Hindi")
                     //LocaleHelper.setLocale(mContext,"ta")
                     //settingsFragment!!.setCreate(mContext,inflater,container,savedInstanceState)
                     //DLog("settingsFragment : ","setcreate1")
@@ -117,7 +117,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
         if(data == 0) {
             Toast.makeText(activity, "Tamil Clicked !", Toast.LENGTH_SHORT).show()
             LocaleHelper.setLocale(mContext,"ta")
-            setStringPreference(lLDFContext!!,"selectLanguageString","Tamil")
+            setStringPreference(mContext,"selectLanguageString","Tamil")
             getLanguage=0
            /* val ft = fragmentManager?.beginTransaction()
             ft?.detach(this)?.attach(this)?.commit()*/
@@ -132,7 +132,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
             Toast.makeText(activity, "English Clicked !", Toast.LENGTH_SHORT).show()
             LocaleHelper.setLocale(mContext,"en")
             dismiss()
-            setStringPreference(lLDFContext!!,"selectLanguageString","English")
+            setStringPreference(mContext,"selectLanguageString","English")
             getLanguage=1
             /*val ft = fragmentManager?.beginTransaction()
             ft?.detach(this)?.attach(this)?.commit()*/
@@ -147,7 +147,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
             Toast.makeText(activity, "Hindi Clicked !", Toast.LENGTH_SHORT).show()
             LocaleHelper.setLocale(mContext,"hi")
             dismiss()
-            setStringPreference(lLDFContext!!,"selectLanguageString","Hindi")
+            setStringPreference(mContext,"selectLanguageString","Hindi")
             getLanguage=2
             /*val ft = fragmentManager?.beginTransaction()
             ft?.detach(this)?.attach(this)?.commit()*/

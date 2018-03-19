@@ -2,6 +2,7 @@ package com.joveeinfotech.kinship
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Message
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
@@ -76,6 +77,7 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
 
     override fun languageSettings() {
 
+        Log.e("Message","after language settings")
         val mydialog = LanguageListDialogFragment(trans!!,mContext)
         mydialog.setCancelable(true)
         mydialog.show(activity?.fragmentManager, "tag")

@@ -9,7 +9,7 @@
     android:orientation="horizontal">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cards_layout_CardView"
+        android:id="@+id/top20_donors_list_linearLayout_cardView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="4dp"
@@ -17,12 +17,12 @@
         android:focusable="true">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/cards_layout_CardView_LinearLayout"
+            android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_ImageView_profile"
+                android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_profile_imageView"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginLeft="23dp"
@@ -33,33 +33,33 @@
                 app:layout_constraintVertical_bias="0.63" />
 
             <TextView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_TextView_name"
+                android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_name_textView"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Ramakrishnan S"
-                android:textSize="20dp"
+                android:text="@string/top20_donors_list_linearLayout_cardView_constraintLayout_name_textView"
+                android:textSize="20sp"
                 android:layout_marginLeft="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.145"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/top20_donars_list_Linear_layout_CardView_ImageView_profile"
+                app:layout_constraintStart_toEndOf="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_profile_imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_TextView_district"
+                android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_district_textView"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="in Madurai"
+                android:text="@string/top20_donors_list_linearLayout_cardView_constraintLayout_district_textView"
                 android:textColor="#D14035"
                 android:layout_marginLeft="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.145"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/top20_donars_list_Linear_layout_CardView_ImageView_profile"
+                app:layout_constraintStart_toEndOf="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_profile_imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!--<TextView
@@ -80,7 +80,7 @@
                 android:layout_height="0.5dp"
                 android:layout_marginTop="15dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@id/top20_donars_list_Linear_layout_CardView_ImageView_profile" />
+                app:layout_constraintTop_toBottomOf="@id/top20_donors_list_linearLayout_cardView_constraintLayout_profile_imageView" />
 
             <ImageView
                 android:id="@+id/like"
@@ -93,12 +93,12 @@
                 app:layout_constraintTop_toBottomOf="@id/line" />
 
             <TextView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_TextView_total_like"
+                android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="13dp"
-                android:text="30"
+                android:text="@string/top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView"
                 android:textSize="15sp"
                 app:layout_constraintLeft_toRightOf="@+id/like"
                 app:layout_constraintTop_toBottomOf="@id/line" />
@@ -114,25 +114,25 @@
                 app:layout_constraintTop_toBottomOf="@id/line" />
 
             <TextView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_TextView_total_donation"
+                android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="13dp"
-                android:text="30"
+                android:text="@string/top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView"
                 android:textSize="15sp"
                 app:layout_constraintLeft_toRightOf="@+id/total_count"
                 app:layout_constraintTop_toBottomOf="@id/line" />
 
 
             <TextView
-                android:id="@+id/top20_donars_list_Linear_layout_CardView_TextView_last_donation"
+                android:id="@+id/top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="13dp"
-                android:text="3 days ago"
+                android:text="@string/top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView"
                 android:textSize="15sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line" />

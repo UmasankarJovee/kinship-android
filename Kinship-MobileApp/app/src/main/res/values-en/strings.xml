@@ -1,6 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--navigation.xml-->
+    <string name="navigation_home">Home</string>
+    <string name="navigation_blood_request">Blood Request</string>
+    <string name="navigation_settings">Settings</string>
+    <string name="navigation_donors">Donors</string>
+    <string name="navigation_top20">Top 20</string>
+
+    <!-- activity_login-->
+    <string name="activity_login_phone_number_editText">Phone Number</string>
+    <string name="activity_login_password_editText">Password</string>
+    <string name="activity_login_loginButton">LOGIN</string>
+    <string name="activity_login_register_textView">| Register</string>
+    <string name="activity_login_forget_password_textView">Forgot Password </string>
+
+    <!--fragment_home-->
+    <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">RECENT BLOOD DONATED PERSON</string>
+    <string name="activity_home_fragment_updatedDetails_TextView">UPDATED DETAILS</string>
+    <string name="activity_home_fragment_hospitals_TextView">HOSPITALS</string>
+    <string name="activity_home_fragment_users_TextView">USERS</string>
+    <string name="activity_home_fragment_donator_TextView">DONATOR</string>
+    <string name="activity_home_fragment_bloodDonatorInstructions_textview">BLOOD DONATOR INSTRUCTIONS</string>
+    <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTER INSTRUCTIONS</string>
+
+    <!--fragment_user_profile_edit-->
+    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          Your Profile        </string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView">9876543210</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText">9876543210</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView">2000-01-01</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView">70</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText">70</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView">1/99,KK NAGAR,MADURAI-625020</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>
+
+    <!--activity_user_registration-->
+    <string name="activity_user_registration_scrollView_constraintLayout_phone_number_editText">Phone Number</string>
+    <string name="activity_user_registration_scrollView_constraintLayout_registerButton">REGISTER</string>
+
+    <!--alert_otp_get-->
+    <string name="alert_otp_get_otp_EditText">Enter the code received</string>
+    <string name="alert_otp_get_confirmOTPButton">CONFIRM</string>
+
+    <!--alert_password_get-->
+    <string name="alert_password_get_password_editText">Password</string>
+    <string name="alert_password_get_confirm_password_editText">Confirm Password</string>
+    <string name="alert_password_get_confirmPasswordButton">SUBMIT</string>
+
+    <!--alert-address_details-->
+    <string name="alert_address_details_scrollView_linearLayout1_city_editText">City</string>
+    <string name="alert_address_details_scrollView_linearLayout1_locality_editText">Locality</string>
+    <string name="alert_address_details_scrollView_linearLayout1_street_editText">Street</string>
+    <string name="alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton">CANCEL</string>
+    <string name="alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3_okButton">OK</string>
+
+    <!--alert_user_details-->
+    <string name="alert_user_details_firstName_editText">First Name</string>
+    <string name="alert_user_details_lastName_editText">Last Name</string>
+    <string name="alert_user_details_okButton">Ok</string>
+
+    <!--alert_blood_donator_instructions-->
+    <string name="blood_donator_instructions_heading">BLOOD DONATOR INSTRUCTIONS</string>
+    <string name="blood_donator_instructions_textview">
+        Instructions to Blood Donors Before Blood Donation:\n\n
+        1. Take light refreshment/food before 2 hours of blood donation. \n
+        2. Women should avoid blood donation during their menstrual bleeding. \n
+        3. Person who has consumed alchocol should avoid giving blood for next 24 hours. \n
+        4. Person who had recent attack of infection like Jaundice, Typhoid, Malaria, Rubella, etc., should not give blood. \n
+        5. Person who had undergone major surgery should avoid blood donation for 6 months. \n
+        6. Pregnancy, lactating women should avoid blood donation.\n\n
+        Instructions to Blood Donors After Blood Donation:\n\n
+        1. Drink plenty of liquids for the whole day. \n
+        2. Eat well and do not remain hungry. \n
+        3. Do not smoke for half an hour. \n
+        4. Do not do any heavy exercises on that day. \n
+        5. Do not do any vehicle for 1-2 hours. \n
+        6. Do not participate in sports and games on the day of blood donation. \n
+        7. If there is any bleeding from the place from where blood is collected, apply pressure and raise the arm for a few minutes.\n\n
+        Instructions to Blood Donors How much blood can be taken in your Body:\n\n
+        1. Our body has 5.5 litre of blood of which only 350 ml - 450 ml of blood is taken depending upon weight of donor. \n
+        2. Majority of healthy adults can tolerate withdrawal of one unit of blood. \n
+        3. The withdrawan blood volume is restored within 24 hours and the haemoglobin and cell components are restored in 2 months. \n
+        4. Therefore it is safe to donate blood every three months.
+    </string>
+
+    <!-- alert_blood_requestor_instructions-->
+    <string name="blood_requestor_instructions_textview">
+       Instructions to Blood Requester Before Blood Request:\n\n
+        1. You must select correct blood request. \n
+        2. You give correct unit of need of blood .Do not give additional units. \n
+        3. If you play with this application then the action will be taken on you. \n\n
+        Instructions to Blood Requester After Blood Donation:\n\n
+        1. You must like on social profile previous blood donor of your request.
+    </string>
+
+    <!-- settingsFragment-->
     <string name="settingsFragment_cardView1_textView">Edit Profile</string>
     <string name="settingsFragment_cardView2_textView">Notifications</string>
     <string name="settingsFragment_cardView3_textView">Language</string>
+    <string name="settingsFragment_cardView4_textView">Logout</string>
+
+    <!-- alert_language_settings-->
+    <string name="alert_language_settings_cardView_textView">Language Settings</string>
+    <string name="alert_language_settings_cardView_constraintLayout_cancelButton">Cancel</string>
+    <string name="alert_language_settings_cardView_constraintLayout_okButton">Ok</string>
+
+    <!--fragment_profile_display-->
+    <string name="total_donated">Total Donated</string>
+    <string name="total_request">Total Request</string>
+    <string name="last_donated">Last Donated</string>
+
+    <!--fragment_user_address.xml-->
+    <string name="user_address_select_your_country">Select your Country</string>
+    <string name="user_address_select_your_state">Select your State</string>
+    <string name="user_address_select_your_district">Select your District</string>
+    <string name="user_address_submit">SUBMIT</string>
+    <string name="user_address_city">City</string>
+    <string name="user_address_locality">Locality</string>
+    <string name="user_address_street">Street</string>
+    <string name="user_address_home_address">Home Address</string>
+
+    <!--alert_one_day_diseases_get.xml-->
+    <string name="alert_one_day_diseases_get_Verify_following_details">Verify following details</string>
+    <string name="alert_one_day_diseases_get_Are_you_Slept_well_yesterday">Are you Slept well yesterday</string>
+    <string name="alert_one_day_diseases_get_Did_you_take_any_antibiotics_tablets">Did you take any antibiotics tablets</string>
+    <string name="alert_one_day_diseases_get_Did_you_drink_Alcohol_yesterday">Did you drink Alcohol yesterday</string>
+    <string name="alert_one_day_diseases_get_Did_you_face_any_side_effects_in_previous_donation">Did you face any side effects in previous donation</string>
+    <string name="alert_one_day_diseases_get_Had_tooth_extraction_in_the_past_3_weeks">Had tooth extraction in the past 3 weeks</string>
+    <string name="alert_one_day_diseases_get_SUBMIT">SUBMIT</string>
+
+    <!--fragment_some_one_request-->
+    <string name="fragment_some_one_request_name_editText">" Name"</string>
+    <string name="fragment_some_one_request_phoneNumber_editText">" Phone Number"</string>
+    <string name="fragment_some_one_request_units_editText">" Units"</string>
+    <string name="fragment_some_one_request_submit_button">SUBMIT</string>
+
+    <!--fragment_user_additional_details-->
+    <string name="fragment_user_additional_details_additionalDetails_textView">Additional Details</string>
+    <string name="fragment_user_additional_details_submit_button">SUBMIT</string>
+    <string name="fragment_user_additional_details_occupation_textView">Occupation</string>
+    <string name="fragment_user_additional_details_student_radioButton">Student</string>
+    <string name="fragment_user_additional_details_working_radioButton">Working</string>
+    <string name="fragment_user_additional_details_others_radioButton">Others</string>
+    <string name="fragment_user_additional_details_othersMentionHere_editText">Mention Here</string>
+    <string name="fragment_user_additional_details_phoneNumberOptional_editText">" Phone Number (Optional)"</string>
+    <string name="fragment_user_additional_details_emailOptional_editText">" E-Mail (Optional)"</string>
+    <string name="fragment_user_additional_details_socialProfileOptional_editText">" Social Profile (Optional)"</string>
+    <string name="fragment_user_additional_details_skip_textView">>>> skip</string>
+
+    <!--fragment_user_health_details-->
+    <string name="fragment_user_health_title_textView">If you attack any diseases on now or before, Please select following list</string>
+    <string name="fragment_user_health_details_diabetic_checkBox1">Diabetic</string>
+    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmetic</string>
+    <string name="fragment_user_health_details_heartPatient_checkBox3">Heart Patient</string>
+    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuber Closis</string>
+    <string name="fragment_user_health_details_epilepsy_checkBox5">Epilepsy</string>
+    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typoid / Malaria</string>
+    <string name="fragment_user_health_details_joundice_checkBox7">Joundice</string>
+    <string name="fragment_user_health_details_majorSurgery_checkBox8">Major Surgery</string>
+    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tatto</string>
+    <string name="fragment_user_health_details_toothExtraction_checkBox10">Tooth Extraction</string>
+    <string name="fragment_user_health_details_none_checkBox11">None</string>
+    <string name="fragment_user_health_details_submit_button">SUBMIT</string>
+
+
+    <!--fragment_user_profile-->
+    <string name="fragment_user_profile_constraintLayout_firstName_editText">" First Name"</string>
+    <string name="fragment_user_profile_constraintLayout_lastName_editText">" Last Name"</string>
+    <string name="fragment_user_profile_constraintLayout_dateOfBirth_editText">" Date of Birth"</string>
+    <string name="fragment_user_profile_constraintLayout_weight_editText">" Weight"</string>
+    <string name="fragment_user_profile_constraintLayout_submit_button">SUBMIT</string>
+    <string name="fragment_user_profile_userProfile_textView">User Profile</string>
+    <string name="fragment_user_profile_constraintLayout_relativeLayout_male_radioButton">Male</string>
+    <string name="fragment_user_profile_constraintLayout_relativeLayout_female_radioButton">Female</string>
+    <string name="fragment_user_profile_constraintLayout_relativeLayout_gender_textView">Gender</string>
+
+    <!--fragment_user_request-->
+    <string name="fragment_user_request_constraintLayout_units_editText">" Units"</string>
+    <string name="fragment_user_request_constraintLayout_submit_button">SUBMIT</string>
+
+    <!--top20_donors_list-->
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_name_textView">"Ramakrishnan S"</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_district_textView">in Madurai</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
 </resources>

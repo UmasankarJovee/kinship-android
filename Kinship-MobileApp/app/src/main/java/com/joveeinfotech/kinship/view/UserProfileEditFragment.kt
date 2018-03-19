@@ -12,7 +12,6 @@ import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,31 +20,24 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
-import com.joveeinfotech.kinship.APIClient
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.SendingUserProfileEdit
 import com.joveeinfotech.kinship.contract.KinshipContract.*
-import com.joveeinfotech.kinship.model.CountryResult
 import com.joveeinfotech.kinship.model.DistrictResult
 import com.joveeinfotech.kinship.model.StateResult
 import com.joveeinfotech.kinship.presenter.UserProfileEditFragmentPresenterImpl
-import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.Others.DLog
 import com.squareup.picasso.Picasso
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.alert_address_details.*
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
 import kotlinx.android.synthetic.main.fragment_user_profile_edit.view.*
 import kotlinx.android.synthetic.main.alert_address_details.view.*
 import kotlinx.android.synthetic.main.alert_user_details.view.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -108,13 +100,13 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText?.setSingleLine()
 
         val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            Log.d("Message","Inside dataSetListener")
+            DLog("Message","Inside dataSetListener")
             cal.set(Calendar.YEAR, year)
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            Log.d("Message","Before call updateDataInView()")
+            DLog("Message","Before call updateDataInView()")
             updateDateInView()
-            Log.d("Message","After finish updateDataInView()")
+            DLog("Message","After finish updateDataInView()")
         }
         upefView?.activity_user_profile_edit_constraintLayout_userProfileEditIcon_imageView?.setOnClickListener {
             var intent=Intent()
@@ -167,14 +159,14 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon3_imageView?.visibility=View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView?.visibility = View.VISIBLE
 
-            Log.d("Message","Before DataPickerDialog")
+            DLog("Message","Before DataPickerDialog")
             DatePickerDialog(upefContext,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)).show()
-            Log.d("Message","After DataPickerDialog")
+            DLog("Message","After DataPickerDialog")
         }
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView?.setOnClickListener{
@@ -212,13 +204,16 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.visibility=View.GONE
         }
         upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.setOnClickListener {
-            userProfileEditFragmentPresenterImpl?.loadCountries()
+            DLog("Root","1")
             val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
             dialogbuilder.setView(dialogView)
             val dialogBuilderCall=dialogbuilder.create()
             dialogBuilderCall.show()
+            DLog("Root","2")
+            userProfileEditFragmentPresenterImpl?.loadCountries()
+            DLog("Root","3")
            /* val street: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_street_editText)
             val locality: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_locality_editText)
             val city: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_city_editText)*/
@@ -253,14 +248,16 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
         return upefView
     }
-    override fun setCountries(countryList: CountryResult) {
-        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, countryList.country)
+    override fun setCountries(countryList: ArrayList<String>) {
+        countryList.add(0,upefContext.getString(R.string.user_address_select_your_country))
+        DLog("Root","2i2")
+        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, countryList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        alert_address_details_scrollView_linearLayout1_country_spinner.adapter=dataAdapter
-        alert_address_details_scrollView_linearLayout1_country_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        upefView?.alert_address_details_scrollView_linearLayout1_country_spinner?.adapter=dataAdapter
+        upefView?.alert_address_details_scrollView_linearLayout1_country_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {            }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                country = countryList.country[position].toString()
+                country = countryList[position].toString()
                 userProfileEditFragmentPresenterImpl?.sendCountryReceiveState(country!!)
                 Toast.makeText(upefContext, country, Toast.LENGTH_LONG).show()
             }
@@ -268,6 +265,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
     }
 
     override fun setStates(stateList: StateResult) {
+        DLog("Root","2i4")
         val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, stateList.state)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_state_spinner.adapter = dataAdapter
@@ -299,25 +297,25 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
     override fun call(field: String, value: String,field1:String,value1:String) {
 
-        Log.e("call Message","Before call SendingUserProfileEddit")
+        DLog("call Message","Before call SendingUserProfileEddit")
         var intent= Intent(upefContext,SendingUserProfileEdit::class.java)
         intent.putExtra("field",field)
         intent.putExtra("value",value)
         intent.putExtra("field1",field1)
         intent.putExtra("value1",value1)
-        Log.e("call Message","${field},${value},${field1},${value1}")
+        DLog("call Message","${field},${value},${field1},${value1}")
         upefContext.startService(intent)
 
     }
 
     override fun updateDateInView() {
-        Log.d("Message","Before updateDataInView()")
+        DLog("Message","Before updateDataInView()")
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        Log.d("Message","after sdf")
+        DLog("Message","after sdf")
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.setText(sdf.format(cal.time))
         call("date_of_birth",activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView.text.toString(),"","")
-        Log.d("Message","set Value ")
+        DLog("Message","set Value ")
     }
 
     override fun onActivityResult(RC: Int, RQC: Int, I: Intent?) {
@@ -327,11 +325,11 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             val uri = I.data
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(resolver, uri)
-                val byteArrayOutoutStream = ByteArrayOutputStream()
-                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutoutStream)
-                byteArray = byteArrayOutoutStream.toByteArray()
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                byteArray = byteArrayOutputStream.toByteArray()
                 val imageString=Base64.encodeToString(byteArray,Base64.DEFAULT)
-                Log.e("inside : ", byteArray.toString())
+                DLog("inside : ", imageString)
                 upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
                 userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
                 //val isr = resolver?.openInputStream(I.data!!)
@@ -459,6 +457,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
     }*/
 
     override fun setProfileDetails(image_url: String, name: String,date_of_birth: String, weight:String,address: String,phone_number: String, email: String) {
+        DLog("New Message","${image_url}")
         Picasso.with(upefContext).load(image_url).into(activity_user_profile_edit_constraintLayout_userProfile_imageView)
         activity_user_profile_edit_constraintLayout_userName_textView.text=name
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.text=name

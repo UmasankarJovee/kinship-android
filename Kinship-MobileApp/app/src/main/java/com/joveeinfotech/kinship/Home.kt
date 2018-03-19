@@ -57,7 +57,7 @@ class Home : AppCompatActivity() {
                 //return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_donars -> {
+            R.id.navigation_donors -> {
                 select= DonarsFragment.newInstance()
                 goToSelectFragment()
             }

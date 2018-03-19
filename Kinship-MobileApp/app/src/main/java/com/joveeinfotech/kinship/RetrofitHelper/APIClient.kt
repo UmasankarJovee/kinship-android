@@ -13,6 +13,7 @@ import java.util.HashMap
 class APIClient {
 
     companion object {
+
         fun getClient(mcontext: Context): APIInterface? {
             var ip = getStringPreference(mcontext,"ip","192.168.43.49")
             return  Retrofit.Builder()
@@ -23,6 +24,8 @@ class APIClient {
                     .build()
                     .create(APIInterface::class.java)
         }
+
+
 
         private var default_headers: Map<String, String>? = HashMap()
 

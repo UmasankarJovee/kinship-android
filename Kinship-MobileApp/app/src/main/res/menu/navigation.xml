@@ -17,13 +17,13 @@
         android:title="@string/navigation_settings"/>
 
     <item
-        android:id="@+id/navigation_donars"
-        android:icon="@mipmap/donars"
-        android:title="Donars"/>
+        android:id="@+id/navigation_donors"
+        android:icon="@mipmap/donors_icon"
+        android:title="@string/navigation_donors"/>
 
     <item
         android:id="@+id/navigation_top20"
-        android:icon="@mipmap/top_20"
-        android:title="Top 20"/>
+        android:icon="@mipmap/top_20_icon"
+        android:title="@string/navigation_top20"/>
 
 </menu>

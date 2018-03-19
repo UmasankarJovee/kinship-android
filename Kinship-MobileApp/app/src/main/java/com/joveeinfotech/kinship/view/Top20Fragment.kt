@@ -8,11 +8,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.adapter.Top20ListAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.Top20FragmentPresenterImpl
+import kotlinx.android.synthetic.main.fragment_offline.*
 import kotlinx.android.synthetic.main.fragment_top20.*
 import kotlinx.android.synthetic.main.fragment_top20.view.*
 
@@ -46,9 +49,17 @@ class Top20Fragment : Fragment(), Top20FragmentView {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.alert_address_details, container, false)
-        view1 = inflater.inflate(R.layout.fragment_top20, container, false)
+        //view1 = inflater.inflate(R.layout.fragment_top20, container, false)
+        view1 = inflater.inflate(R.layout.fragment_offline, container, false)
 
-        top20FragmentPresenterImpl = Top20FragmentPresenterImpl(this,mContext!!)
+        val imageView=view1?.findViewById<ImageView>(R.id.images)as ImageView
+
+        Glide.with(mContext)
+                .load(R.drawable.offline)
+                .asGif()  // you may not need this
+                .crossFade()
+                .into(imageView);
+        //top20FragmentPresenterImpl = Top20FragmentPresenterImpl(this,mContext!!)
 
         //view1.fragment_top20_RecyclerView.adapter
 

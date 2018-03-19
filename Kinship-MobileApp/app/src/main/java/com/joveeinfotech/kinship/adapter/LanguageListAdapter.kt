@@ -8,17 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
-import com.joveeinfotech.kinship.LanguageListDialogFragment
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setIntPreference
-import com.joveeinfotech.kinship.model.Languages
-import com.joveeinfotech.kinship.utils.Others.DLog
-import kotlinx.android.synthetic.main.language_list_item.view.*
-import kotlinx.android.synthetic.main.languages_list.view.*
 
 /**
  * Created by shanmugarajjoveeinfo on 15/2/18.

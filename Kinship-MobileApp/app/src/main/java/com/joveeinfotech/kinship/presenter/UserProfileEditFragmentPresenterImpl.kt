@@ -7,7 +7,12 @@ import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.kinship.model.*
+import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.Others
+import com.joveeinfotech.kinship.utils.Others.DLog
 import java.util.HashMap
 
 /**
@@ -34,6 +39,7 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
         networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 4, "Fetching...")
     }
     override fun loadCountries() {
+        Others.DLog("Root", "2i1")
         addressNetworkCall= APICall(context)
         val queryParams = HashMap<String, String>()
         queryParams.put("input", "country")
@@ -41,6 +47,7 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, CountryResult::class.java, this, 1, "Fetching...")
     }
     override fun sendCountryReceiveState(country: String) {
+        Others.DLog("Root", "2i3")
         val queryParams = HashMap<String, String>()
         queryParams.put("input", "state")
         //queryParams.put("subFieldName", country!!)
@@ -48,6 +55,7 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
     }
     override fun sendStateReceiveDistrict(state: String) {
+        Others.DLog("Root", "2i5")
         val queryParams = HashMap<String, String>()
         queryParams.put("input", "district")
         //queryParams.put("subFieldName", state!!)
@@ -88,9 +96,12 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
     }*/
 
     override fun sendImageString(imageString: String) {
+        val str:String="data:image/png;base64,"
         val queryParams = HashMap<String, String>()
-        queryParams.put("imageString", imageString)
-        networkCall?.APIRequest("api/v1/persons", queryParams, UserProfileDisplayResult::class.java, this, 5, "Fetching...")
+        queryParams.put("field","image")
+        queryParams.put("value", "${str}${imageString}")
+        DLog("ImageString","${str}${imageString}")
+        networkCall?.APIRequest("api/v1/profile1", queryParams, UserProfileDisplayResult::class.java, this, 5, "Fetching...")
     }
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
@@ -116,7 +127,7 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
 
                 Log.e("API CALL : ", "inside CountryResult API CALL and onSuccess when")
                 val countryList = response as CountryResult
-                view.setCountries(countryList)
+                view.setCountries(countryList.country)
             }
             2 -> { // Get State
                 Log.e("API CALL : ", "inside StateResult API CALL and onSuccess when")
@@ -132,9 +143,10 @@ class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?
                 val result = response as UserProfileDisplayResult
                 Log.e("API CALL : ", "inside UserProfileDisplayResult API CALL and onSuccess when")
                 if (true) {
-
-                    view.setProfileDetails(result.image_url, "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
-
+                    setStringPreference(context,"image_url","http://192.168.0.56/images/")
+                    var image_url= getStringPreference(context,"image_url","http://192.168.0.56/images/qrc/")
+                    view.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
+                    CustomToast().normalToast(context,"${result.message}")
                     //val imageView : ImageView = ImageView(this)
                     var imageUrl = result.image_url
                     //Picasso.with().load(imageUrl).into(fragment_profile_display_user_profile_image)

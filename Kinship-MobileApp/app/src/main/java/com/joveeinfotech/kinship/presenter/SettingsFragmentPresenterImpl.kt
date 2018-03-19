@@ -5,16 +5,13 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.Log
 import com.joveeinfotech.kinship.APICall
-import com.joveeinfotech.kinship.LanguageListDialogFragment
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.R.string.*
 import com.joveeinfotech.kinship.adapter.CustomeAdapter
-import com.joveeinfotech.kinship.adapter.LanguageListAdapter
 import com.joveeinfotech.kinship.adapter.LanguageListsAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.model.Languages
-import kotlinx.android.synthetic.main.language_list_item.view.*
 
 /**
  * Created by shanmugarajjoveeinfo on 16/2/18.
@@ -33,8 +30,8 @@ class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
         languageListeners=listener
     }
 
-    constructor(view:SettingsFragmentView, context: Context,listener:Listener){
-        this.mContext=context
+    constructor(view:SettingsFragmentView, mcontext: Context,listener:Listener){
+        this.mContext=mcontext
         settingsFragmentView=view
         listeners=listener
         initPresenter()
@@ -44,7 +41,7 @@ class SettingsFragmentPresenterImpl:SettingsFragmentPresenter {
         Log.e("Message","Before items" )
         val items=ArrayList<Album>()
 
-        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.edit_profile), mContext!!.getString(settingsFragment_cardView1_textView)))
+        items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.edit_user_profile), mContext!!.getString(settingsFragment_cardView1_textView)))
         items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.notifications), mContext!!.getString(settingsFragment_cardView2_textView)))
         items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.language), mContext!!.getString(settingsFragment_cardView3_textView)))
         items.add(Album(BitmapFactory.decodeResource(mContext?.resources,R.mipmap.logout_icon),mContext!!.getString(settingsFragment_cardView4_textView)))
