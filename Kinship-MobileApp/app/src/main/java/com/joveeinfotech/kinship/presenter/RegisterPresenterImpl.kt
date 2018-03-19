@@ -130,8 +130,10 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
                 val registerResult = response as PasswordResult
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (registerResult.status) {
+                    registerView.closePasswordDialog()
                     val i = Intent(mContext, Login::class.java)
                     mContext.startActivity(i)
+                    registerView.closeActivity()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     CustomToast().alertToast(mContext,"Try again")

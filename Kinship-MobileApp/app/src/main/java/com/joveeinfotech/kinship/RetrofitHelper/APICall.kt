@@ -3,12 +3,9 @@ package com.joveeinfotech.kinship
 
 import android.app.Activity
 import android.app.ProgressDialog
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.text.TextUtils
 import android.util.Log
 import com.google.gson.Gson
-import com.joveeinfotech.kinship.R
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -16,7 +13,6 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.ResponseBody
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.design.snackbar
-import org.json.JSONObject
 import retrofit2.Response
 
 /**
@@ -30,7 +26,7 @@ class APICall(val mcontext: Context) {
     var progressDialog: ProgressDialog? = null
 
     val createRetrofitApiClient by lazy {
-        APIClient.getClient()
+        APIClient.getClient(mcontext)
     }
 
     var from : Int? = null

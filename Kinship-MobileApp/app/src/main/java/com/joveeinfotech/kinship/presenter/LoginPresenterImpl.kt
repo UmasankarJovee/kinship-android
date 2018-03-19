@@ -8,6 +8,9 @@ import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
+import com.joveeinfotech.kinship.model.ForgotPasswordSendOTPToPhoneNumber
+import com.joveeinfotech.kinship.model.ForgotPasswordSendPasswordResult
+import com.joveeinfotech.kinship.model.ForgotPasswordVerifyOTP
 import com.joveeinfotech.kinship.model.LoginResult
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
@@ -94,18 +97,81 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
         Log.e("MAIN ACTIVITY : ","inside button" )
         networkCall?.APIRequest("api/v1/login",queryParams, LoginResult::class.java,this, 1, "Authenticating...")
     }
+
+    override fun getPhoneNumber(phone_number: String) {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("phone_number",phone_number)
+        Log.e("MAIN ACTIVITY : ","inside button" )
+        networkCall?.APIRequest("api/v1/forgotpassword",queryParams, ForgotPasswordSendOTPToPhoneNumber::class.java,this, 2, "Authenticating...")
+    }
+
+    override fun sendOTP(otp: String) {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("otp",otp)
+        Log.e("MAIN ACTIVITY : ","inside button" )
+        networkCall?.APIRequest("api/v1/forgotpassword",queryParams, ForgotPasswordVerifyOTP::class.java,this, 3, "Authenticating...")
+    }
+
+    override fun sendPassword(password : String) {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("password",password)
+        Log.e("MAIN ACTIVITY : ","inside button" )
+        networkCall?.APIRequest("api/v1/forgotpassword",queryParams, ForgotPasswordSendPasswordResult::class.java,this, 4, "Authenticating...")
+    }
+
     override fun onSuccess(from: Int, response: Any) {
         when(from) {
             1 -> { // User Login
                 val loginResult = response as LoginResult
+                Log.e("dgdgdsg : ","${loginResult.status}")
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (loginResult.status) {
-                    setStringPreference(mContext,"user_id",loginResult.user_id)
+
+                    setStringPreference(mContext,"user_id","168")
                     session?.createLoginSession(phone_number!!, password!!)
                     CustomToast().normalToast(mContext,loginResult.message)
                     val i= Intent(mContext, UserDetails::class.java)
                     mContext.startActivity(i)
-                    loginView.closeActivity()
+                    //loginView.closeActivity()
+                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                } else {
+                    //snackbar(this,)
+                    snackbar((mContext as Activity).findViewById(android.R.id.content), "Please wait some minute")
+                    //Log.e("API CALL : ","inside Main activity and onSuccess else condition")
+                    //Log.d(TAG, "Something missing")
+                }
+            }
+            2 -> {
+                val forgotPasswordResult = response as ForgotPasswordSendOTPToPhoneNumber
+                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                if (forgotPasswordResult.status) {
+                    loginView.getOTP()
+                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                } else {
+                    //snackbar(this,)
+                    snackbar((mContext as Activity).findViewById(android.R.id.content), "Please wait some minute")
+                    //Log.e("API CALL : ","inside Main activity and onSuccess else condition")
+                    //Log.d(TAG, "Something missing")
+                }
+            }
+            3 -> {
+                val forgotPasswordResult = response as ForgotPasswordVerifyOTP
+                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                if (forgotPasswordResult.status) {
+                    loginView.resetPassword()
+                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                } else {
+                    //snackbar(this,)
+                    snackbar((mContext as Activity).findViewById(android.R.id.content), "Please wait some minute")
+                    //Log.e("API CALL : ","inside Main activity and onSuccess else condition")
+                    //Log.d(TAG, "Something missing")
+                }
+            }
+            4 -> {
+                val forgotPasswordSendPasswordResult = response as ForgotPasswordSendPasswordResult
+                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                if (forgotPasswordSendPasswordResult.status) {
+                    loginView.closePasswordDialog()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     //snackbar(this,)

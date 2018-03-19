@@ -19,13 +19,14 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your need"/>
+        android:text="Your need (From Friend / Relation)"/>
 
     <RadioButton
         android:id="@+id/radio_some_one_need"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Some one need"/>
+        android:text="Some one need (From Whatsapp / Facebook)"/>
+
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/button_search_next"

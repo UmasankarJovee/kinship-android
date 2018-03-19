@@ -53,7 +53,7 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         collapsingToolbarLayout.setStatusBarScrimColor(Color.parseColor("#FF919297"))
         collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(mContext, R.color.toolBarColor))
 
-        view.button_send_address.setOnClickListener {
+        view.fragment_user_address_button_send_address.setOnClickListener {
             userAddressFragmentPresenter?.sendAddress1()
            /* if (country?.trim()?.length == 0 && state?.trim()?.length == 0 && district?.trim()?.length == 0
                     && editText_city.text.trim().isNotEmpty() && editText_locality.text.trim().isNotEmpty()
@@ -72,8 +72,8 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         countryList.add(0,mContext.getString(R.string.user_address_select_your_country))
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, countryList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_counry.adapter=dataAdapter
-        spinner_counry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        fragment_user_address_spinner_counry.adapter=dataAdapter
+        fragment_user_address_spinner_counry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -91,8 +91,8 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         stateList.add(0,mContext.getString(R.string.user_address_select_your_state))
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, stateList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_state.adapter = dataAdapter
-        spinner_state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        fragment_user_address_spinner_state.adapter = dataAdapter
+        fragment_user_address_spinner_state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -110,8 +110,8 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         districtList.add(0,mContext.getString(R.string.user_address_select_your_district))
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_district.adapter = dataAdapter
-        spinner_district.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        fragment_user_address_spinner_district.adapter = dataAdapter
+        fragment_user_address_spinner_district.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }

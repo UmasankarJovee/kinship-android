@@ -141,7 +141,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 Log.e("inside : ",byteArray.toString())
                 fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap)
                 val isr = resolver?.openInputStream(I.data!!)
-                uploadImage(getBytes(isr))
+                //uploadImage(getBytes(isr))
 
             } catch (e: IOException) {
 
@@ -163,13 +163,13 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
         return byteBuff.toByteArray()
     }
 
-    private fun uploadImage(imageBytes: ByteArray) {
+    /*private fun uploadImage(imageBytes: ByteArray) {
 
         progressDialog = ProgressDialog(mContext, R.style.MyAlertDialogStyle)
         progressDialog?.setMessage("Authenticating...")
         progressDialog?.show()
 
-        val retrofitInterface = APIClient.getClient()
+        val retrofitInterface = APIClient.getClient(mcontext)
 
         val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
 
@@ -187,7 +187,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                         }
                 )
     }
-
+*/
     companion object {
         fun newInstance(): UserProfileFragment {
             return UserProfileFragment()

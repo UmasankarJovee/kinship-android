@@ -6,16 +6,35 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
+import android.support.v7.widget.AppCompatButton
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.EditText
 import com.joveeinfotech.kinship.*
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.LoginPresenterImpl
+import com.joveeinfotech.kinship.utils.CustomToast
 import com.joveeinfotech.kinship.utils.LocationService
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_user_registration.*
 
 class Login : AppCompatActivity(), LoginView {
 
     var loginPresenter : LoginPresenterImpl? = null
+    var buttonSubmitPhoneNumber : AppCompatButton? = null
+    var editTextPhoneNumber : EditText? = null
+
+    var buttonConfirmOTP: AppCompatButton? = null
+    var editTextotp: EditText? = null
+
+    var buttonConfirmPassword: AppCompatButton? = null
+    var editTextpassword: EditText? = null
+    var editTextConfirmPassword: EditText? = null
+
+    var alertDialogGetPhoneNumber: AlertDialog? = null
+    var alertDialogGetOTP: AlertDialog? = null
+    var alertDialogGetPassword: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +44,103 @@ class Login : AppCompatActivity(), LoginView {
         Log.e("qqqqqqqqqqqqqqqq","call inside login")
 
         loginPresenter?.navigateActivity()
+
         activity_login_loginButton.setOnClickListener{
             loginPresenter?.userPhoneNumberAndPassword(activity_login_phone_number_editText.text.toString(),activity_login_password_editText.text.toString())
+           /* val i= Intent(applicationContext, UserDetails::class.java)
+            startActivity(i)
+*/
         }
 
-        activity_login_register_textView.setOnClickListener{
+        activity_login_textView_register.setOnClickListener{
            loginPresenter?.callRegisterActivity()
+        }
+
+        /*activity_login_textview_forget_password.setOnClickListener{
+            displayForgotPasswordGetPhoneNumber()
+        }*/
+    }
+
+    private fun displayForgotPasswordGetPhoneNumber() {
+        val li = LayoutInflater.from(this)
+        val confirmDialog = li.inflate(com.joveeinfotech.kinship.R.layout.alert_forgot_password, null)
+        buttonSubmitPhoneNumber = confirmDialog.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.alert_forgot_password_Button_submit) as AppCompatButton
+        editTextPhoneNumber = confirmDialog.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_forgot_password_EditText_phone_number) as EditText
+
+        val alert = AlertDialog.Builder(this)
+        alert.setView(confirmDialog)
+
+        alertDialogGetPhoneNumber = alert.create()
+        alertDialogGetPhoneNumber?.show()
+        alertDialogGetPhoneNumber?.setCancelable(false)
+
+        buttonSubmitPhoneNumber!!.setOnClickListener {
+            if(editTextPhoneNumber!!.text.isNotEmpty()){
+                loginPresenter?.getPhoneNumber(editTextPhoneNumber?.text.toString())
+            }else{
+                CustomToast().alertToast(this,"Fill the OTP")
+            }
         }
     }
 
     override fun closeActivity() {  finish()  }
+
+    override fun getOTP() {
+        alertDialogGetPhoneNumber?.dismiss()
+        val li = LayoutInflater.from(this)
+        val confirmDialog = li.inflate(com.joveeinfotech.kinship.R.layout.alert_otp_get, null)
+        buttonConfirmOTP = confirmDialog.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.alert_otp_get_confirmOTPButton) as AppCompatButton
+        editTextotp = confirmDialog.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_otp_get_otp_EditText) as EditText
+
+        val alert = AlertDialog.Builder(this)
+        alert.setView(confirmDialog)
+
+        alertDialogGetOTP = alert.create()
+        alertDialogGetOTP?.show()
+        alertDialogGetOTP?.setCancelable(false)
+
+        buttonConfirmOTP!!.setOnClickListener {
+            if(editTextotp!!.text.isNotEmpty()){
+                loginPresenter?.sendOTP(editTextotp?.text.toString())
+            }else{
+                CustomToast().alertToast(this,"Fill the OTP")
+            }
+        }
+    }
+
+    override fun resetPassword() {
+        alertDialogGetOTP?.dismiss()
+        val li1 = LayoutInflater.from(this)
+        val confimDialog1 = li1.inflate(com.joveeinfotech.kinship.R.layout.alert_password_get, null)
+        buttonConfirmPassword = confimDialog1.findViewById<AppCompatButton>(com.joveeinfotech.kinship.R.id.alert_password_get_confirmPasswordButton) as AppCompatButton
+        editTextpassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_password_get_password_editText) as EditText
+        editTextConfirmPassword = confimDialog1.findViewById<EditText>(com.joveeinfotech.kinship.R.id.alert_password_get_confirm_password_editText) as EditText
+
+        val alert1 = AlertDialog.Builder(this)
+        alert1.setView(confimDialog1)
+
+        alertDialogGetPassword = alert1.create()
+        alertDialogGetPassword?.show()
+        alertDialogGetPassword?.setCancelable(false)
+
+        buttonConfirmPassword!!.setOnClickListener {
+            if(editTextpassword!!.text.isNotEmpty() && editTextConfirmPassword!!.text.isNotEmpty()){
+                if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
+                    loginPresenter?.sendPassword(editTextpassword?.text.toString())
+                }else{
+                    CustomToast().alertToast(this,"Both passwords must be equal")
+                }
+            }else{
+                CustomToast().alertToast(this,"Fill the all fields")
+            }
+        }
+    }
+
+    override fun closePasswordDialog(){
+        alertDialogGetPassword?.dismiss()
+    }
+
+
 
     private fun setAlarm() {
         val intent = Intent(this, LocationService::class.java)
@@ -74,7 +180,6 @@ class Login : AppCompatActivity(), LoginView {
                 )
     }
 */
-
 
     override fun onBackPressed() {
 
