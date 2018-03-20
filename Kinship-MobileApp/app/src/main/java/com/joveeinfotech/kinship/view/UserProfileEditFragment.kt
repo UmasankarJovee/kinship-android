@@ -85,7 +85,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         resolver = activity?.contentResolver
         val trans= fragmentManager?.beginTransaction()
         upefView=inflater.inflate(R.layout.fragment_user_profile_edit, container, false)
-        userProfileEditFragmentPresenterImpl = UserProfileEditFragmentPresenterImpl(trans,this,upefContext)
+        userProfileEditFragmentPresenterImpl = UserProfileEditFragmentPresenterImpl(this,upefContext)
 
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setLines(1)
         upefView?.activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText?.setHorizontallyScrolling(true)

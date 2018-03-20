@@ -18,7 +18,7 @@ import java.util.HashMap
 /**
  * Created by shanmugarajjoveeinfo on 27/2/18.
  */
-class UserProfileEditFragmentPresenterImpl(var transaction: FragmentTransaction?, var view: UserProfileEditFragmentView, var context: Context):APIListener,UserProfileEditFragmentPresenter {
+class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentView, var context: Context):APIListener,UserProfileEditFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 

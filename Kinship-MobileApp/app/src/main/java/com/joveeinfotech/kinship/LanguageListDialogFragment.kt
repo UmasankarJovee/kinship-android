@@ -64,9 +64,9 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
         }*/
         view1?.alert_language_settings_cardView_constraintLayout_listView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
         view1?.alert_language_settings_cardView_constraintLayout_listView?.adapter=settingsFragmentPresenterImpl?.getLanguagesData()
-        cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
-        okButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_okButton)
-        cancelButton?.setOnClickListener {
+        //cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
+        //okButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_okButton)
+        /*cancelButton?.setOnClickListener {
            dismiss()
         }
         okButton?.setOnClickListener {
@@ -100,7 +100,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
                     //call1().call2(trans)
                 }
             }
-        }
+        }*/
         return view1!!
     }
     /*fun setLocale(lang:String){
@@ -123,6 +123,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
             ft?.detach(this)?.attach(this)?.commit()*/
 
             dismiss()
+            call1().call2(trans)
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/
@@ -131,13 +132,14 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
         {
             Toast.makeText(activity, "English Clicked !", Toast.LENGTH_SHORT).show()
             LocaleHelper.setLocale(mContext,"en")
-            dismiss()
+            //dismiss()
             setStringPreference(mContext,"selectLanguageString","English")
             getLanguage=1
             /*val ft = fragmentManager?.beginTransaction()
             ft?.detach(this)?.attach(this)?.commit()*/
 
             dismiss()
+            call1().call2(trans)
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/
@@ -153,6 +155,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
             ft?.detach(this)?.attach(this)?.commit()*/
 
             dismiss()
+            call1().call2(trans)
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/

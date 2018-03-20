@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -59,7 +60,7 @@
             android:exported="true" />
 
         <service
-            android:name=".System_alert_notification"
+            android:name=".notification.System_alert_notification"
             android:enabled="true"
             android:exported="true" />
 
@@ -93,7 +94,10 @@
         <activity
             android:name=".EmptyActivity1"
             android:theme="@style/AppThemeNoActionBar">
-
+        </activity>
+        <activity
+            android:name=".view.UserProfileEdit"
+            android:theme="@style/AppThemeNoActionBar">
         </activity>
     </application>
 

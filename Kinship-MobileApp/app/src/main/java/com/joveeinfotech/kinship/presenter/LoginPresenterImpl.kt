@@ -132,6 +132,7 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
                     CustomToast().normalToast(mContext,loginResult.message)
                     val i= Intent(mContext, UserDetails::class.java)
                     mContext.startActivity(i)
+                    loginView.closeActivity()
                     //loginView.closeActivity()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
