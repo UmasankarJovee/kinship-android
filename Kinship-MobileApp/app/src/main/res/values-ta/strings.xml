@@ -23,6 +23,14 @@
     <string name="activity_home_fragment_bloodDonatorInstructions_textview">இரத்த தான முகாமையாளர் அறிவுறுத்தல்கள்</string>
     <string name="activity_home_fragment_bloodRequestInstructions_textview">இரத்தக் கோரிக்கை அறிவுறுத்தல்கள்</string>
 
+    <!--image_and_content_sliding-->
+    <string name="image_and_sliding_content_userNameLabel_textView">" பெயர்:"</string>
+    <string name="image_and_sliding_content_userName_textView">-</string>
+    <string name="image_and_sliding_content_bloodGroupLabel_textView">" இரத்த வகை:"</string>
+    <string name="image_and_sliding_content_bloodGroup_textView">-</string>
+    <string name="image_and_sliding_content_districtLabel_textView">" மாவட்டம்:"</string>
+    <string name="image_and_sliding_content_district_textView">-</string>
+
     <!--fragment_user_profile_edit-->
     <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          உங்கள் சுயவிவரம்         </string>
@@ -189,5 +197,7 @@
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
 
 </resources>
