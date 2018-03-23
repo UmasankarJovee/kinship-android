@@ -49,19 +49,19 @@ class Top20Fragment : Fragment(), Top20FragmentView {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.alert_address_details, container, false)
-        //view1 = inflater.inflate(R.layout.fragment_top20, container, false)
-        view1 = inflater.inflate(R.layout.fragment_offline, container, false)
+        view1 = inflater.inflate(R.layout.fragment_top20, container, false)
+        //view1 = inflater.inflate(R.layout.fragment_offline, container, false)
 
-        val imageView=view1?.findViewById<ImageView>(R.id.images)as ImageView
+        //val imageView=view1?.findViewById<ImageView>(R.id.images)as ImageView
 
-        Glide.with(mContext)
+        /*Glide.with(mContext)
                 .load(R.drawable.offline)
                 .asGif()  // you may not need this
                 .crossFade()
-                .into(imageView);
-        //top20FragmentPresenterImpl = Top20FragmentPresenterImpl(this,mContext!!)
+                .into(imageView);*/
+        top20FragmentPresenterImpl = Top20FragmentPresenterImpl(this,mContext!!)
 
-        //view1.fragment_top20_RecyclerView.adapter
+        view1?.fragment_top20_RecyclerView?.adapter
 
         return view1
     }
