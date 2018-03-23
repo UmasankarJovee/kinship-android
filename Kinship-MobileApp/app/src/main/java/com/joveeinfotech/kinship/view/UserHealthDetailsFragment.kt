@@ -34,42 +34,117 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
         view.fragment_user_health_details_diabetic_checkBox1.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_asthmetic_checkBox2.isChecked = false
+            view.fragment_user_health_details_heartPatient_checkBox3.isChecked = false
+            view.fragment_user_health_details_tuberClosis_checkBox4.isChecked = false
+            view.fragment_user_health_details_epilepsy_checkBox5.isChecked = false
+            view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked = false
+            view.fragment_user_health_details_joundice_checkBox7.isChecked = false
+            view.fragment_user_health_details_majorSurgery_checkBox8.isChecked = false
+            view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked = false
+            view.fragment_user_health_details_toothExtraction_checkBox10.isChecked = false
+
             healthDetails?.append("Diabetic,")
         }
         view.fragment_user_health_details_asthmetic_checkBox2.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_diabetic_checkBox1.isChecked = false
+            view.fragment_user_health_details_heartPatient_checkBox3.isChecked = false
+            view.fragment_user_health_details_tuberClosis_checkBox4.isChecked = false
+            view.fragment_user_health_details_epilepsy_checkBox5.isChecked = false
+            view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked = false
+            view.fragment_user_health_details_joundice_checkBox7.isChecked = false
+            view.fragment_user_health_details_majorSurgery_checkBox8.isChecked = false
+            view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked = false
+            view.fragment_user_health_details_toothExtraction_checkBox10.isChecked = false
+
             healthDetails?.append("Asthmetic,")
         }
         view.fragment_user_health_details_heartPatient_checkBox3.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_diabetic_checkBox1.isChecked = false
+            view.fragment_user_health_details_asthmetic_checkBox2.isChecked = false
+            view.fragment_user_health_details_tuberClosis_checkBox4.isChecked = false
+            view.fragment_user_health_details_epilepsy_checkBox5.isChecked = false
+            view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked = false
+            view.fragment_user_health_details_joundice_checkBox7.isChecked = false
+            view.fragment_user_health_details_majorSurgery_checkBox8.isChecked = false
+            view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked = false
+            view.fragment_user_health_details_toothExtraction_checkBox10.isChecked = false
+
             healthDetails?.append("Heart_Patient,")
         }
         view.fragment_user_health_details_tuberClosis_checkBox4.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_diabetic_checkBox1.isChecked = false
+            view.fragment_user_health_details_asthmetic_checkBox2.isChecked = false
+            view.fragment_user_health_details_heartPatient_checkBox3.isChecked = false
+            view.fragment_user_health_details_epilepsy_checkBox5.isChecked = false
+            view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked = false
+            view.fragment_user_health_details_joundice_checkBox7.isChecked = false
+            view.fragment_user_health_details_majorSurgery_checkBox8.isChecked = false
+            view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked = false
+            view.fragment_user_health_details_toothExtraction_checkBox10.isChecked = false
+
             healthDetails?.append("Tuber_closis,")
         }
         view.fragment_user_health_details_epilepsy_checkBox5.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_diabetic_checkBox1.isChecked = false
+            view.fragment_user_health_details_asthmetic_checkBox2.isChecked = false
+            view.fragment_user_health_details_heartPatient_checkBox3.isChecked = false
+            view.fragment_user_health_details_tuberClosis_checkBox4.isChecked = false
+            view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked = false
+            view.fragment_user_health_details_joundice_checkBox7.isChecked = false
+            view.fragment_user_health_details_majorSurgery_checkBox8.isChecked = false
+            view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked = false
+            view.fragment_user_health_details_toothExtraction_checkBox10.isChecked = false
+
             healthDetails?.append("Epilesy,")
         }
         view.fragment_user_health_details_typoidOrMalaria_checkBox6.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_typoidOrMalaria_month_EditText.visibility = View.VISIBLE
+            view.fragment_user_health_details_typoidOrMalaria_year_EditText.visibility = View.VISIBLE
+
             healthDetails?.append("Typoid / Malaria,")
         }
         view.fragment_user_health_details_joundice_checkBox7.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_joundice_month_EditText.visibility = View.VISIBLE
+            view.fragment_user_health_details_joundice_year_EditText.visibility = View.VISIBLE
+
             healthDetails?.append("Joundice,")
         }
         view.fragment_user_health_details_majorSurgery_checkBox8.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_majorSurgery_month_EditText.visibility = View.VISIBLE
+            view.fragment_user_health_details_majorSurgery_year_EditText.visibility = View.VISIBLE
+
             healthDetails?.append("Major_surgery,")
         }
         view.fragment_user_health_details_transfusionOrTatto_checkBox9.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_transfusionOrTatto_month_EditText.visibility = View.VISIBLE
+            view.fragment_user_health_details_transfusionOrTatto_year_EditText.visibility = View.VISIBLE
+
             healthDetails?.append("Transfusion / Tatto,")
         }
         view.fragment_user_health_details_toothExtraction_checkBox10.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
+
+            view.fragment_user_health_details_toothExtraction_month_EditText.visibility = View.VISIBLE
+            view.fragment_user_health_details_toothExtraction_year_EditText.visibility = View.VISIBLE
+
             healthDetails?.append("Tooth_extraction,")
         }
         view.fragment_user_health_details_none_checkBox11.setOnClickListener{

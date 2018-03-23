@@ -15,6 +15,7 @@ import com.joveeinfotech.kinship.model.DistrictResult
 import com.joveeinfotech.kinship.model.SearchHospitalResult
 import com.joveeinfotech.kinship.presenter.UserRequestFragmentPresenterImpl
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.Others.DLog
 import com.joveeinfotech.kinship.utils.SharedData
 import kotlinx.android.synthetic.main.fragment_user_request.*
 import kotlinx.android.synthetic.main.fragment_user_request.view.*
@@ -57,6 +58,16 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         categories.add("O+")
         categories.add("O-")
 
+        var timeCategories = ArrayList<String>()
+        timeCategories.add("Select any one")
+        timeCategories.add("Immediate")
+        timeCategories.add("Hour")
+        timeCategories.add("Day")
+        timeCategories.add("Week")
+        timeCategories.add("Month")
+
+
+
         var district_categories = ArrayList<String>()
         district_categories.add("Select District")
         district_categories.add("Madurai")
@@ -83,7 +94,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         }
 
         val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, district_categories)
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        district_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.fragment_user_request_constraintLayout_districts_spinner?.adapter = district_dataAdapter
 
         view1?.fragment_user_request_constraintLayout_districts_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -97,7 +108,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         }
 
         val hospital_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospital_categories)
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        hospital_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.fragment_user_request_constraintLayout_hospitals_spinner?.adapter = hospital_dataAdapter
 
         view1?.fragment_user_request_constraintLayout_hospitals_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -106,6 +117,24 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 search_blood_group = categories.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val time_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, timeCategories)
+        DLog("UserRequest :","UserRequest1")
+        time_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        DLog("UserRequest :","UserRequest2")
+        view1?.fragment_user_request_constraintLayout_time_to_arrive_spinner?.adapter = time_dataAdapter
+        DLog("UserRequest :","UserRequest3")
+        view1?.fragment_user_request_constraintLayout_time_to_arrive_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                search_blood_group =categories.get(position).toString()
+                DLog("UserRequest :","UserRequest4")
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
         }

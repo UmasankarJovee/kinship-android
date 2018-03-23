@@ -41,21 +41,22 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
         networkCall = APICall(mContext)
     }
 
-    override fun  userProfileDetails(first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int) {
-        if (first_name.trim().isNotEmpty() && last_name.trim().isNotEmpty()
+    override fun  userProfileDetails(imageString : String, first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int) {
+        if (imageString.trim().isNotEmpty() && first_name.trim().isNotEmpty() && last_name.trim().isNotEmpty()
                 && date_of_birth.trim().isNotEmpty() && (gender == 1 || gender == 2)
                 && weight != null) {
-            sendUserProfile(first_name, last_name, date_of_birth, weight, gender)
+            sendUserProfile(imageString,first_name, last_name, date_of_birth, weight, gender)
         } else {
             //showDialog(2) // Please fill the all details
             CustomToast().alertToast(mContext,"Fill the all fields")
         }
     }
 
-    private fun sendUserProfile(first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int) {
+    private fun sendUserProfile(imageString: String, first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int) {
         var user_id = getStringPreference(mContext,"user_id","56")
         val queryParams = HashMap<String, String>()
         queryParams.put("user_id", "168")
+        queryParams.put("imageString",imageString)
         queryParams.put("first_name", first_name)
         queryParams.put("last_name", last_name)
         queryParams.put("date_of_birth", date_of_birth)

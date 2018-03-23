@@ -6,6 +6,8 @@ import android.util.Log
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.model.UserProfileDisplayResult
 import java.util.HashMap
 
@@ -38,8 +40,8 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
 
     override fun loadProfileDetails() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("phone_number", "8220127939")
-        networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 1, "Setting your Password...",false)
+        queryParams.put("phone_number", "8189922043")
+        networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 1, "Setting your Password...")
     }
 
     override fun onSuccess(from: Int, response: Any) {
@@ -52,7 +54,10 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
                     var name = "${result.first_name} ${result.last_name}"
                     var address = "${result.street_name},${result.locality},${result.city},${result.district},${result.state}"
 
-                    profileDisplayFragmentView.setProfileDetails(result.image_url,name,result.total_donated,
+                    var image_url= getStringPreference(mContext, "image_url", "http://192.168.0.56/images/qrc/")
+                    //profileDisplayFragmentView.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
+
+                    profileDisplayFragmentView.setProfileDetails(image_url!!,name,result.total_donated,
                             result.total_request,result.last_donated_date,result.email,
                             result.phone_number,result.blood_group,result.date_of_birth,address)
 

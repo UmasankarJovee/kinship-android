@@ -16,6 +16,7 @@ import com.joveeinfotech.kinship.model.SearchHospitalResult
 import com.joveeinfotech.kinship.presenter.SomeOneRequestFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_some_one_request.view.*
 import kotlinx.android.synthetic.main.fragment_user_request.*
+import kotlinx.android.synthetic.main.fragment_user_request.view.*
 
 class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
 
@@ -74,6 +75,14 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
         hospital_categories.add("Meenachi Mission")
         hospital_categories.add("A.R. ")
 
+        var timeCategories = ArrayList<String>()
+        timeCategories.add("Select any one")
+        timeCategories.add("Immediate")
+        timeCategories.add("Hour")
+        timeCategories.add("Day")
+        timeCategories.add("Week")
+        timeCategories.add("Month")
+
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.spinner_some_one_search_blood_group?.adapter = dataAdapter
@@ -130,8 +139,19 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
             }
         }
 
+        val time_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, timeCategories)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.fragment_some_one_request_constraintLayout_time_to_arrive_spinner?.adapter = time_dataAdapter
 
+        view1?.fragment_some_one_request_constraintLayout_time_to_arrive_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
 
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                search_blood_group = timeCategories.get(position).toString()
+                //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
+            }
+        }
 
         view1?.fragment_some_one_request_submit_button?.setOnClickListener{
            /* if(editText_some_one_name.text.isNotEmpty() && editText_some_one_phone_number.text.isNotEmpty()

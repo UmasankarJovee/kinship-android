@@ -86,6 +86,28 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_epilepsy_checkBox5" />
 
+        <EditText
+            android:id="@+id/fragment_user_health_details_typoidOrMalaria_month_EditText"
+            android:visibility="gone"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Month (mm)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_typoidOrMalaria_checkBox6"/>
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_typoidOrMalaria_year_EditText"
+            android:visibility="gone"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:text="Year (yyyy)"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_typoidOrMalaria_checkBox6"
+            app:layout_constraintLeft_toRightOf="@+id/fragment_user_health_details_typoidOrMalaria_month_EditText"/>
+
         <CheckBox
             android:id="@+id/fragment_user_health_details_joundice_checkBox7"
             android:layout_width="wrap_content"
@@ -94,7 +116,30 @@
             android:layout_marginTop="3dp"
             android:text="@string/fragment_user_health_details_joundice_checkBox7"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_typoidOrMalaria_checkBox6" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_typoidOrMalaria_month_EditText" />
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_joundice_month_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Month (mm)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_joundice_checkBox7"/>
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_joundice_year_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="Year (yyyy)"
+            app:layout_constraintLeft_toRightOf="@+id/fragment_user_health_details_joundice_month_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_joundice_checkBox7" />
+
 
         <CheckBox
             android:id="@+id/fragment_user_health_details_majorSurgery_checkBox8"
@@ -104,7 +149,30 @@
             android:layout_marginTop="3dp"
             android:text="@string/fragment_user_health_details_majorSurgery_checkBox8"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_joundice_checkBox7" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_joundice_month_EditText" />
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_majorSurgery_month_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Month (mm)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_majorSurgery_checkBox8"/>
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_majorSurgery_year_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="Year (yyyy)"
+            app:layout_constraintLeft_toRightOf="@+id/fragment_user_health_details_majorSurgery_month_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_majorSurgery_checkBox8" />
+
 
         <CheckBox
             android:id="@+id/fragment_user_health_details_transfusionOrTatto_checkBox9"
@@ -114,7 +182,29 @@
             android:layout_marginTop="3dp"
             android:text="@string/fragment_user_health_details_transfusionOrTatto_checkBox9"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_majorSurgery_checkBox8" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_majorSurgery_month_EditText" />
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_transfusionOrTatto_month_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Month (mm)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_transfusionOrTatto_checkBox9"/>
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_transfusionOrTatto_year_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="Year (yyyy)"
+            app:layout_constraintLeft_toRightOf="@+id/fragment_user_health_details_transfusionOrTatto_month_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_transfusionOrTatto_checkBox9" />
 
         <CheckBox
             android:id="@+id/fragment_user_health_details_toothExtraction_checkBox10"
@@ -124,7 +214,31 @@
             android:layout_marginTop="3dp"
             android:text="@string/fragment_user_health_details_toothExtraction_checkBox10"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_transfusionOrTatto_checkBox9" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_transfusionOrTatto_month_EditText" />
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_toothExtraction_month_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:text="Month (mm)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_toothExtraction_checkBox10"/>
+
+        <EditText
+            android:id="@+id/fragment_user_health_details_toothExtraction_year_EditText"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="Year (yyyy)"
+            app:layout_constraintLeft_toRightOf="@+id/fragment_user_health_details_toothExtraction_month_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_toothExtraction_checkBox10" />
+
+
         <CheckBox
             android:id="@+id/fragment_user_health_details_none_checkBox11"
             android:layout_width="wrap_content"
@@ -133,7 +247,7 @@
             android:layout_marginTop="3dp"
             android:text="@string/fragment_user_health_details_none_checkBox11"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_toothExtraction_checkBox10" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_user_health_details_toothExtraction_month_EditText" />
 
         <Button
             android:id="@+id/fragment_user_health_details_submit_button"

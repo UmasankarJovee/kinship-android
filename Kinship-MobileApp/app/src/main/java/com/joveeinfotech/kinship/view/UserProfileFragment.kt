@@ -9,6 +9,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +19,12 @@ import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.UserProfileFragmentPresenterImpl
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.Others
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 import kotlinx.android.synthetic.main.fragment_user_profile.view.*
+import kotlinx.android.synthetic.main.fragment_user_profile_edit.view.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -37,6 +40,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
     var byteArray: ByteArray? = null
     var cal = Calendar.getInstance()
     var gender: Int? = null
+    var imageString : String? = null
 
     var progressDialog : ProgressDialog? = null
 
@@ -95,7 +99,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
             if(fragment_user_profile_constraintLayout_firstName_editText.text.isNotEmpty() && fragment_user_profile_constraintLayout_lastName_editText.text.isNotEmpty()
                     && fragment_user_profile_constraintLayout_dateOfBirth_editText.text.isNotEmpty() && gender != null
                     && fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt() != null){
-                userProfileFragmentPresenter?.userProfileDetails(fragment_user_profile_constraintLayout_firstName_editText.text.toString(),fragment_user_profile_constraintLayout_lastName_editText.text.toString(), fragment_user_profile_constraintLayout_dateOfBirth_editText.text.toString(),fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt(),gender!!)
+                userProfileFragmentPresenter?.userProfileDetails(imageString!!,fragment_user_profile_constraintLayout_firstName_editText.text.toString(),fragment_user_profile_constraintLayout_lastName_editText.text.toString(), fragment_user_profile_constraintLayout_dateOfBirth_editText.text.toString(),fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt(),gender!!)
             }else{
                 CustomToast().alertToast(mContext,"Fill the all fields")
             }
@@ -131,7 +135,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
     override fun onActivityResult(RC: Int, RQC: Int, I: Intent?) {
         super.onActivityResult(RC, RQC, I)
 
-        if (RC == 1 && RQC == Activity.RESULT_OK && I != null && I.data != null) {
+        /*if (RC == 1 && RQC == Activity.RESULT_OK && I != null && I.data != null) {
             val uri = I.data
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(resolver, uri)
@@ -141,6 +145,27 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 Log.e("inside : ",byteArray.toString())
                 fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap)
                 val isr = resolver?.openInputStream(I.data!!)
+                //uploadImage(getBytes(isr))
+
+            } catch (e: IOException) {
+
+            }
+        }*/
+
+
+        if (RC == 1 && RQC == Activity.RESULT_OK && I != null && I.data != null) {
+            val uri = I.data
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(resolver, uri)
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                byteArray = byteArrayOutputStream.toByteArray()
+                imageString= Base64.encodeToString(byteArray, Base64.DEFAULT)
+                Others.DLog("inside : ", imageString!!)
+                fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap)
+                //upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
+                //userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
+                //val isr = resolver?.openInputStream(I.data!!)
                 //uploadImage(getBytes(isr))
 
             } catch (e: IOException) {

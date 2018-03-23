@@ -6,25 +6,31 @@ import android.content.Context
 import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
+import android.support.v7.app.ActionBar
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.AppCompatButton
+import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import com.joveeinfotech.kinship.`object`.BottomNavigationHelper
-import com.joveeinfotech.kinship.helper.LocaleHelper
-import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference
+
 import com.joveeinfotech.kinship.utils.LocationService
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.view.*
 import com.joveeinfotech.kinship.view.Top20Fragment
+
+
 import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
@@ -136,15 +142,26 @@ class Home : AppCompatActivity() {
         }
     }
 
+
+    /*var mActionBar: ActionBar? = null
+    var actionBar: View? = null
+    var mTitleTextView: TextView? = null
+    var rightBmb: BoomMenuButton? = null
+    var mContext: Context? = null
+    var isInit: Boolean? = false*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         BottomNavigationHelper.disableShiftMode(activity_login_navigation_bottomNavigationView)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        /*supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setLogo(R.mipmap.home_logo)
         supportActionBar!!.setDisplayUseLogoEnabled(true)
         supportActionBar!!.setTitle("Kinship")
+*/
+
+        //boomMenu()
 
 
 
@@ -157,6 +174,77 @@ class Home : AppCompatActivity() {
         trans.commit()
     }
 
+    /*private fun boomMenu() {
+        mContext = this@Home
+
+        mActionBar = supportActionBar
+        assert(mActionBar != null)
+        mActionBar?.setDisplayShowHomeEnabled(false)
+        mActionBar?.setDisplayShowTitleEnabled(false)
+        val mInflater = LayoutInflater.from(this)
+
+        actionBar = mInflater.inflate(R.layout.custom_actionbar, null)
+        mTitleTextView = actionBar?.findViewById<TextView>(R.id.title_text) as TextView
+        mTitleTextView?.setText("Kinship")
+        mActionBar?.setCustomView(actionBar)
+        mActionBar?.setDisplayShowCustomEnabled(true)
+        (actionBar?.getParent() as Toolbar).setContentInsetsAbsolute(0, 0)
+
+        rightBmb = actionBar?.findViewById<BoomMenuButton>(R.id.action_bar_right_bmb) as BoomMenuButton
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+
+        if (isInit == true) {
+            initInfoBoom()
+        }
+        isInit = true
+    }
+
+    private fun initInfoBoom() {
+
+        val drawables = arrayOfNulls<Drawable>(3)
+        val drawablesResources = intArrayOf(
+                R.mipmap.icon_profile1,
+                R.mipmap.icon_blood_request,
+                R.mipmap.icon_logout
+        )
+        for (i in 0..2) {
+            drawables[i] = ContextCompat.getDrawable(mContext!!, drawablesResources[i])
+        }
+
+        val colors = Array(3) { IntArray(2) }
+        for (i in 0..2) {
+            colors[i][1] = ContextCompat.getColor(mContext!!, R.color.white)
+            colors[i][0] = Util.getInstance().getPressedColor(colors[i][1])
+        }
+
+        BoomMenuButton.Builder()
+                .subButtons(drawables, colors, arrayOf("Profile", "Request History", "Logout"))
+                .button(ButtonType.HAM)
+                .boom(BoomType.PARABOLA_2)
+                .place(PlaceType.HAM_3_1)
+                .subButtonsShadow(Util.getInstance().dp2px(2f), Util.getInstance().dp2px(2f))
+                .subButtonTextColor(ContextCompat.getColor(mContext!!, R.color.toolBarColor))
+                .onSubButtonClick { buttonIndex ->
+                    if (buttonIndex == 0) {
+                        //Toast.makeText(mContext, "First", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(applicationContext, ProfileDisplay::class.java))
+                    } else if (buttonIndex == 1) {
+                        //Toast.makeText(mContext, "Second", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(applicationContext, RequestHistory::class.java))
+                    } else {
+                        //Toast.makeText(mContext, "Third", Toast.LENGTH_LONG).show()
+                        session?.logoutUser()
+                        session?.createFirstInstallSetFalse()
+                        finish()
+                    }
+                }
+                .init(rightBmb)
+
+    }
+*/
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         super.onCreateOptionsMenu(menu)

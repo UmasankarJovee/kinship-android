@@ -1,4 +1,4 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.notification
 
 import android.app.Service
 import android.content.Context
@@ -12,14 +12,18 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
-import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
+import com.joveeinfotech.kinship.APICall
+import com.joveeinfotech.kinship.EmptyActivity
+import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.SendingRequestResponse
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setBooleanPreference
-import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
-import com.joveeinfotech.kinship.model.LoginResult
 import kotlinx.android.synthetic.main.system_alert_notification_get.view.*
-import java.util.HashMap
+import android.media.MediaPlayer
+import android.os.VibrationEffect
+import android.os.Vibrator
+
 
 /**
  * Created by prandex-and-05 on 16/3/18.
@@ -27,12 +31,14 @@ import java.util.HashMap
 class System_alert_notification : Service() {
 
     var networkCall : APICall? = null
+    var objPlayer: MediaPlayer? = null
 
     override fun onBind(intent: Intent?): IBinder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        objPlayer?.start()
         /*onCreate()
 
         SharedPreferenceHelper.setBooleanPreference(this, "isDisplay", false)
@@ -47,6 +53,24 @@ class System_alert_notification : Service() {
         super.onCreate()
 
         networkCall = APICall(this)
+        objPlayer = MediaPlayer.create(this,R.raw.alert_tones)
+
+
+        var v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            v.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE))
+        }else{
+            v.vibrate(500)
+        }
+
+        /*Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE))
+        }else{
+            //deprecated in API 26
+            v.vibrate(500)
+        }*/
 
         var LAYOUT_FLAG: Int
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -100,11 +124,11 @@ class System_alert_notification : Service() {
                     setBooleanPreference(this@System_alert_notification, "isClick", false)
                     myView.visibility = View.INVISIBLE
 
-                    var intent= Intent(this@System_alert_notification,SendingRequestResponse::class.java)
+                    var intent= Intent(this@System_alert_notification, SendingRequestResponse::class.java)
                     intent.putExtra("response","yes")
                     startService(intent)
 
-                    var i = Intent(this@System_alert_notification,EmptyActivity::class.java)
+                    var i = Intent(this@System_alert_notification, EmptyActivity::class.java)
                     i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     i.putExtra("phone_number",phone_number)
                     startActivity(i)
@@ -125,7 +149,7 @@ class System_alert_notification : Service() {
                     myView.visibility = View.INVISIBLE
 
 
-                    var intent= Intent(this@System_alert_notification,SendingRequestResponse::class.java)
+                    var intent= Intent(this@System_alert_notification, SendingRequestResponse::class.java)
                     intent.putExtra("response","no")
                     startService(intent)
                     //sendNoResponse()

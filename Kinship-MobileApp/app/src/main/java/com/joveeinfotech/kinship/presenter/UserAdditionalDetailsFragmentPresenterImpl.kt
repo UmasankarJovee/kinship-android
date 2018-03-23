@@ -63,7 +63,7 @@ class UserAdditionalDetailsFragmentPresenterImpl : APIListener, UserAdditionalDe
     private fun sendAdditionalDetails() {
         val queryParams = HashMap<String, String>()
         var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
-        queryParams.put("user_id",user_id!!)
+        queryParams.put("user_id","161")
         queryParams.put("occupation", category_of_person!!)
         queryParams.put("phone_number", additionalPhoneNumber!!)
         queryParams.put("address", additionalEmail!!)

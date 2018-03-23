@@ -13,9 +13,6 @@ import com.joveeinfotech.kinship.model.UserProfileResult
 import com.joveeinfotech.kinship.view.UserAddressFragment
 import java.util.HashMap
 
-/**
- * Created by shanmugarajjoveeinfo on 8/2/18.
- */
 class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
@@ -42,8 +39,9 @@ class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFra
     override fun sendHealthDetails(healthDetails: StringBuffer?) {
         var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
         val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", user_id!!)
-        queryParams.put("healthdetails", "Joundice")
+        //queryParams.put("user_id", user_id!!)
+        queryParams.put("disease", "Jaundice")
+        queryParams.put("disease_time","2017-01-01")
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/health", queryParams, UserHealthDetailsResult::class.java, this, 1, "Your Details are storing...")
     }

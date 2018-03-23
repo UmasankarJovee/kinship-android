@@ -54,11 +54,14 @@ class Top20Fragment : Fragment(), Top20FragmentView {
 
         //val imageView=view1?.findViewById<ImageView>(R.id.images)as ImageView
 
-        /*Glide.with(mContext)
+
+       /* Glide.with(mContext)
+
                 .load(R.drawable.offline)
                 .asGif()  // you may not need this
                 .crossFade()
                 .into(imageView);*/
+
         top20FragmentPresenterImpl = Top20FragmentPresenterImpl(this,mContext!!)
 
         view1?.fragment_top20_RecyclerView?.adapter
