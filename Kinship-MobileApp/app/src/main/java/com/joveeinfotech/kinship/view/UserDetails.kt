@@ -23,7 +23,10 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
         setContentView(R.layout.activity_user_details)
 
         val trans = supportFragmentManager.beginTransaction()
-        userDetailsPresenter = UserDetailsPresenterImpl(trans,this,this)
+        //userDetailsPresenter = UserDetailsPresenterImpl(trans,this,this)
+        trans?.replace(com.joveeinfotech.kinship.R.id.activity_user_details_frame_layout, UserProfileFragment.newInstance())
+        trans?.commit()
+
     }
 
     override fun setNavigationFragmentValues(isCompleteProfile: Boolean, isCompleteAddress: Boolean, isCompleteAdditionalDetails: Boolean, isCompleteHealthDetails: Boolean) {

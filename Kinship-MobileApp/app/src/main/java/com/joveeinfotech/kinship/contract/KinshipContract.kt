@@ -75,7 +75,7 @@ interface KinshipContract {
     interface UserProfileFragmentView{}
     interface UserProfileFragmentPresenter{
         fun initPresenter()
-        fun userProfileDetails(first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int)
+        fun userProfileDetails(imageString: String,first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int)
     }
 
     // UserAddressFragment

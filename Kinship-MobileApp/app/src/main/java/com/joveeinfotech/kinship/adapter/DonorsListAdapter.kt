@@ -8,9 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.donationInnerDetails
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.all_donars_inner_list.view.*
 import kotlinx.android.synthetic.main.all_donars_list.view.*
+import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
 
 /**
  * Created by shanmugarajjoveeinfo on 12/2/18.
@@ -100,15 +103,17 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
             override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
                 val view = LayoutInflater.from(parent?.context).inflate(R.layout.all_donars_inner_list, parent, false)
                 Log.e("size",getTop20Result.size.toString())
-                return ViewHolder(view)
+                return ViewHolder(view,mcontext)
             }
 
-            class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+            class ViewHolder(view : View, var mcontext: Context) : RecyclerView.ViewHolder(view) {
 
                 fun bind(donationInner : donationInnerDetails, colors : Array<String>, position: Int) {
                     Log.e("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
-                    itemView.all_donars_inner_list_user_profile
+                    //var image_url= SharedPreferenceHelper.getStringPreference(context, "image_url", "http://192.168.0.56/images/qrc/")
+                    var url = "http://192.168.0.56/images/${donationInner.image_url}"
+                    Picasso.with(mcontext).load(url).into(itemView.all_donars_inner_list_user_profile)
                     Log.e("InnerList : ",donationInner.image_url)
                     Log.e("InnerList : ",donationInner.name)
                     Log.e("InnerList : ",donationInner.district)
