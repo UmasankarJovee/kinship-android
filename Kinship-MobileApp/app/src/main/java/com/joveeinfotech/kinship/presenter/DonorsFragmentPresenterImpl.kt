@@ -71,14 +71,14 @@ class DonorsFragmentPresenterImpl : APIListener, DonorsFragmentPresenter {
                         //mList?.add(i.image_url,donorsResult.name,donorsResult.district)
                         Log.e("DonorsList : ","inside if")
                         //mList1?.add(donationInnerDetails(i.image_url,i.name,i.district))
-                        mMap[i.date]?.add(donationInnerDetails(i.image_url,i.name,i.district))
+                        mMap[i.date]?.add(donationInnerDetails(i.person_id,i.image_url,i.name,i.district))
                         Log.e("dgdgfs","${i.date} ${i.image_url} ${i.name} ${i.district}")
                         //mMap.put(i.date,mList1!!)
                         //mMap.replace(i.date,mList1)
                     }else{
                         Log.e("DonorsList : ","inside else")
                         var mList2 = mutableListOf<donationInnerDetails>()
-                        mList2.add(donationInnerDetails(i.image_url,i.name,i.district))
+                        mList2.add(donationInnerDetails(i.person_id,i.image_url,i.name,i.district))
                         Log.e("dgdgfs","${i.date} ${i.image_url} ${i.name} ${i.district}")
                         mMap.put(i.date,mList2)
                     }

@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.R.id.language_list_item_imageCheck_radioButton
-import com.joveeinfotech.kinship.UserModel
 import com.joveeinfotech.kinship.contract.KinshipContract.LanguageListener
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getIntPreference

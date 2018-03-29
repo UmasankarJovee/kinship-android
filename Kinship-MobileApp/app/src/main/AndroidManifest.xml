@@ -98,6 +98,11 @@
             android:name=".view.UserProfileEdit"
             android:theme="@style/AppThemeNoActionBar">
         </activity>
+        <activity
+            android:name=".view.ProfileView"
+            android:theme="@style/AppThemeNoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

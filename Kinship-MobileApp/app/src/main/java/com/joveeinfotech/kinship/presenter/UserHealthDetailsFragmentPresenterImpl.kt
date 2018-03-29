@@ -11,7 +11,7 @@ import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.UserHealthDetailsResult
 import com.joveeinfotech.kinship.model.UserProfileResult
 import com.joveeinfotech.kinship.view.UserAddressFragment
-import java.util.HashMap
+import java.util.*
 
 class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFragmentPresenter {
 
@@ -36,12 +36,11 @@ class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFra
         networkCall = APICall(mContext)
     }
 
-    override fun sendHealthDetails(healthDetails: StringBuffer?) {
+    override fun sendHealthDetails(healthDetails: Array<Array<String>?>) {
         var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
         val queryParams = HashMap<String, String>()
         //queryParams.put("user_id", user_id!!)
-        queryParams.put("disease", "Jaundice")
-        queryParams.put("disease_time","2017-01-01")
+        queryParams.put("disease", Arrays.deepToString(healthDetails))
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/health", queryParams, UserHealthDetailsResult::class.java, this, 1, "Your Details are storing...")
     }

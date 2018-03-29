@@ -189,7 +189,7 @@ interface KinshipContract {
     }
     interface UserHealthDetailsFragmentPresenter {
         fun initPresenter()
-        fun sendHealthDetails(healthDetails: StringBuffer?)
+        fun sendHealthDetails(healthDetails: Array<Array<String>?>)
     }
 
     //RequestHistoryActivity
@@ -199,5 +199,15 @@ interface KinshipContract {
     interface RequestHistoryPresenter{
         fun initPresenter()
         fun loadRequestHisoryList()
+    }
+
+    //ProfileViewActivity
+    interface ProfileViewActivity{
+        //fun setViewData(name:String,image_url:String,blood_group:String,email:String,occupation:String,facebook_id:String,total_donated: String,total_request: String,last_donated_date: String)
+        fun setViewData(first_name:String,last_name:String,image:String,blood_group: String,email: String,occupation:String,facebook_id:String,total_donated: String,total_request: String,last_donated_date: String)
+    }
+    interface ProfileViewPresenter{
+        fun initpresenter(person_id:String)
+        fun Click(person_id: String)
     }
 }
