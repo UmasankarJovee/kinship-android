@@ -1,15 +1,19 @@
 package com.joveeinfotech.kinship.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.donationInnerDetails
+import com.joveeinfotech.kinship.view.ProfileView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.all_donars_inner_list.view.*
 import kotlinx.android.synthetic.main.all_donars_list.view.*
@@ -21,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_user_profile_edit.*
 
 class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donationInnerDetails>>, val mcontext: Context): RecyclerView.Adapter<DonorsListAdapter.ViewHolder>() {
 
+    var mSelectedItem:Int = -1
     var ll = getTop20Result as LinkedHashMap
 
     var gh: Array<String> = ll.keys.toTypedArray()
@@ -32,7 +37,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
         //holder.bind(ll.get((ll.keySet()getTop20Result[position], colors)
         // return map.get( (map.keySet().toArray())[ index ] );
         //holder.bind(ll.get((ll.keys.toTypedArray()) as [position]}))
-        holder.bind(getTop20Result,gh[position], colors)
+        holder.bind(getTop20Result,gh[position])
     }
 
     override fun getItemCount(): Int = getTop20Result.size
@@ -52,7 +57,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
         var mdonorsInnerArrayList : ArrayList<donationInnerDetails>? = null
         var donorsInnerListAdapter : DonorsInnerListAdapter? = null
 
-        fun bind(getTop20Result: MutableMap<String, MutableList<donationInnerDetails>>,key: String, colors: Array<String>) {
+        fun bind(getTop20Result: MutableMap<String, MutableList<donationInnerDetails>>,key: String) {
 
             itemView.all_donars_list_day.text = "Date : $key"
 
@@ -108,10 +113,13 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
 
             class ViewHolder(view : View, var mcontext: Context) : RecyclerView.ViewHolder(view) {
 
+                var clickListener:View.OnClickListener?=null
+                var mSelectedItem:Int=-1
                 fun bind(donationInner : donationInnerDetails, colors : Array<String>, position: Int) {
+
                     Log.e("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
-                    //var image_url= SharedPreferenceHelper.getStringPreference(context, "image_url", "http://192.168.0.56/images/qrc/")
+                    //var image_url= SharedPreferenceHelper.getStringPreference(mcontext, "image_url", "http://192.168.0.56/images/")
                     var url = "http://192.168.0.56/images/${donationInner.image_url}"
                     Picasso.with(mcontext).load(url).into(itemView.all_donars_inner_list_user_profile)
                     Log.e("InnerList : ",donationInner.image_url)
@@ -119,6 +127,20 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
                     Log.e("InnerList : ",donationInner.district)
                     itemView.all_donars_inner_list_user_name.text = donationInner.name
                     itemView.all_donars_inner_list_user_district.text = donationInner.district
+                    clickListener = object : View.OnClickListener{
+                        override fun onClick(v: View) {
+                            mSelectedItem = getAdapterPosition()
+                            //Toast.makeText(mcontext,"${donationInner.name}",Toast.LENGTH_SHORT).show()
+                            //SharedPreferenceHelper.setIntPreference(mContext, "checked", mSelectedItem)
+                            val intent=Intent(mcontext,ProfileView::class.java)
+                            intent.putExtra("person_id",donationInner.person_id)
+                            mcontext.startActivity(intent)
+                            Log.e("Preference","After setIntPreference ${mSelectedItem}")
+                            //dismiss()
+                            //notifyDataSetChanged()
+                        }
+                    }
+                    itemView.setOnClickListener(clickListener)
                 }
             }
         }

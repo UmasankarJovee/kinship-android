@@ -18,6 +18,7 @@ import java.net.URL
 import android.graphics.PorterDuffXfermode
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.presenter.ProfileDisplayPresenterImpl
 import kotlinx.android.synthetic.main.all_donars_inner_list.view.*
 
@@ -74,12 +75,7 @@ class ProfileDisplay : AppCompatActivity(), ProfileDisplayView {
                                    total_request: String, last_donated_date: String,
                                    email: String, phone_number: String, blood_group: String,
                                    date_of_birth: String, address: String) {
-
-        var url = "http://192.168.0.56/images/${image_url}"
-        //Picasso.with(this).load(url).into(fragment_profile_display_user_profile_image)
-
-
-        Picasso.with(this).load(url).into(fragment_profile_display_user_profile_image)
+        Picasso.with(this).load(image_url).into(fragment_profile_display_user_profile_image)
         fragment_profile_display_TextView_user_name.text = name
         fragment_profile_display_TextView_Total_donated.text = total_donated
         fragment_profile_display_TextView_Total_requested.text = total_request

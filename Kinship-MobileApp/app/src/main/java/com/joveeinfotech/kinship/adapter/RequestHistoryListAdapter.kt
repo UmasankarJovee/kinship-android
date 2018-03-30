@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.R.id.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.requestInnerDetails
 import com.joveeinfotech.kinship.utils.Others
 import com.joveeinfotech.kinship.utils.Others.DLog
@@ -108,7 +110,11 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
                 return ViewHolder(view, rhContext)
             }
 
-            class ViewHolder(view : View, var rhContext: Context) : RecyclerView.ViewHolder(view) {
+           /* class ViewHolder(view : View, var rhContext: Context) : RecyclerView.ViewHolder(view) {
+                return ViewHolder(view,rhContext)
+            }*/
+
+            class ViewHolder(view : View,var rhContext: Context) : RecyclerView.ViewHolder(view) {
 
                 fun bind(requestInner : requestInnerDetails,position: Int) {
                     Log.e("DonorsInnerList : ", "inside bind")
@@ -116,6 +122,8 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
 
                     var url = "http://192.168.0.56/images/${requestInner.image_url}"
                     Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
+                    var image_url= SharedPreferenceHelper.getStringPreference(rhContext, "image_url", "http://192.168.0.56/images/")
+                    Picasso.with(rhContext).load("${image_url}${requestInner.image_url}").into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
                     itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
                     Log.e("InnerList : ",requestInner.image_url)
                     Log.e("InnerList : ",requestInner.name)

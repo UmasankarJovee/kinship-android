@@ -45,7 +45,6 @@ data class SearchHospitalResult(var hospitals: ArrayList<String>)
 
 data class SearchBloodInUserRequest(var status: Boolean)
 
-/*data class UserModel(var isSelected:Boolean,var languageNames:String)*/
 
 data class Languages(val languages: String)
 
@@ -93,9 +92,9 @@ data class UserProfileDisplayResult(var image_url : String,
 
 data class DonationHistoryResult(var donorList : List<donationDetails>)
 
-data class donationDetails(var date : String, var image_url: String, var name: String, var district: String)
+data class donationDetails(var date : String, var person_id:String, var image_url: String, var name: String, var district: String)
 
-data class donationInnerDetails(var image_url: String, var name: String, var district: String)
+data class donationInnerDetails(var person_id:String,var image_url: String, var name: String, var district: String)
 
 data class UserHealthDetailsResult(var status: Boolean)
 
@@ -137,4 +136,5 @@ data class FcmRequestData(var status: Boolean,
 
 //data class FcmGetPermission()
 
+data class profileview(var first_name:String,var last_name:String,var image:String,var blood_group: String,var email: String,var occupation:String,var facebook_id:String,var total_donated: String,var total_request: String,var last_donated_date: String)
 

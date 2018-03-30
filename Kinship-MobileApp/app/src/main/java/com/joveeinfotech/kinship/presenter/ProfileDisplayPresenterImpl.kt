@@ -54,11 +54,10 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
                     var name = "${result.first_name} ${result.last_name}"
                     var address = "${result.street_name},${result.locality},${result.city},${result.district},${result.state}"
 
-                    var image_url= getStringPreference(mContext, "image_url", "http://192.168.0.56/images/qrc/")
+                    var image_url= getStringPreference(mContext, "image_url", "http://192.168.0.56/images/")
                     //profileDisplayFragmentView.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
 
-                    profileDisplayFragmentView.setProfileDetails(image_url!!,name,result.total_donated,
-                            result.total_request,result.last_donated_date,result.email,
+                    profileDisplayFragmentView.setProfileDetails("${image_url}${result.image_url}",name,result.total_donated,result.total_request,result.last_donated_date,result.email,
                             result.phone_number,result.blood_group,result.date_of_birth,address)
 
                     //val imageView : ImageView = ImageView(this)

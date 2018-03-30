@@ -8,13 +8,17 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.joveeinfotech.kinship.R
-
 import com.joveeinfotech.kinship.adapter.DonorsListAdapter
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.DonorsFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_donars.view.*
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_donars.*
+import android.widget.AdapterView.OnItemClickListener
+
+
+
 
 class DonarsFragment : Fragment(), DonorsFragmentView {
 
@@ -47,6 +51,28 @@ class DonarsFragment : Fragment(), DonorsFragmentView {
         view1?.fragment_donars_RecyclerView?.setHasFixedSize(true)
         val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(mContext)
         view1?.fragment_donars_RecyclerView?.layoutManager = layoutManager
+        /*view1?.fragment_donars_RecyclerView?.addOnItemTouchListener(object :RecyclerItemClickListener?.OnItemTouchListener(){
+            fun onItemClick(view: View, position: Int) {
+                // ...
+            }
+
+            fun onItemLongClick(view: View, position: Int) {
+                // ...
+            }
+
+
+        })
+
+        recyclerView.addOnItemTouchListener(RecyclerItemClickListener(activity, recyclerView, object : RecyclerItemClickListener.OnItemClickListener() {
+            fun onItemClick(view: View, position: Int) {
+                // ...
+            }
+
+            fun onItemLongClick(view: View, position: Int) {
+                // ...
+            }
+        }))*/
+        //val listener = { view, position -> Toast.makeText(context, "Position " + position, Toast.LENGTH_SHORT).show() }
         view1?.fragment_donars_RecyclerView?.adapter=donorsListAdapter
     }
 

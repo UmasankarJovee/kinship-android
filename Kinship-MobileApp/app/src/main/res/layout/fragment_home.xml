@@ -124,7 +124,7 @@
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="4dp" />
 
                     <TextView
                         android:id="@+id/activity_home_fragment_hospitals_count_TextView"
@@ -140,8 +140,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/activity_home_fragment_hospitals_TextView"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/activity_home_fragment_hospitals_TextView" />
                 </android.support.constraint.ConstraintLayout>
 
                 <ImageView
@@ -154,7 +153,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_hospitals_constraintLayout"
                     app:layout_constraintRight_toLeftOf="@+id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" android:contentDescription="@string/todo" />
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"
@@ -181,12 +180,12 @@
 
                     <TextView
                         android:id="@+id/activity_home_fragment_users_count_TextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="32dp"
                         android:layout_marginTop="16dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="13sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +202,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:background="@drawable/shape_rectangle"
                     app:layout_constraintRight_toLeftOf="@+id/activity_home_fragment_updatedDetails_CardView_donator_constraintLayout"
-                    app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout"/>
+                    app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_updatedDetails_CardView_users_constraintLayout" android:contentDescription="@string/todo" />
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_home_fragment_updatedDetails_CardView_donator_constraintLayout"
@@ -227,7 +226,7 @@
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="4dp" />
 
                     <TextView
                         android:id="@+id/activity_home_fragment_donator_count_TextView"
@@ -309,7 +308,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/activity_home_fragment_instructions_Cardview_bloodDonatorInstructions_ConstraintLayout"
                     app:layout_constraintRight_toLeftOf="@+id/activity_home_fragment_instructions_Cardview_bloodRequestInstructions_ConstraintLayout"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" android:contentDescription="@string/todo" />
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_home_fragment_instructions_Cardview_bloodRequestInstructions_ConstraintLayout"

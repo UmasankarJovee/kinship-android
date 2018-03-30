@@ -3,4 +3,5 @@
     <string name="settingsFragment_cardView1_textView">प्रोफाइल एडिट करें</string>
     <string name="settingsFragment_cardView2_textView">सूचनाएं</string>
     <string name="settingsFragment_cardView3_textView">भाषा</string>
+    <string name="todo">TODO</string>
 </resources>

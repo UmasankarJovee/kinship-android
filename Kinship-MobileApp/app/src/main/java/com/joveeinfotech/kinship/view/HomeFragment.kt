@@ -19,20 +19,28 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.relex.circleindicator.CircleIndicator
 import java.util.*
+import android.R.attr.country
+
+
 
 /*
 * HomeFragment It is the Home */
 class HomeFragment : Fragment(), HomeFragmentView {
 
     private val imageArrayList = ArrayList<String>()
+    private val nameArrayList = ArrayList<String>()
+    private val bloodGroupArrayList = ArrayList<String>()
+    private val countryArrayList = ArrayList<String>()
     private var mPager: ViewPager? = null
     var mindicator:CircleIndicator?=null
     private var currentPage = 0
-    private val imageArray = arrayOf<String>("https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
+   /* private val imageArray = arrayOf<String>("https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
             "https://cdn.arstechnica.net/wp-content/uploads/2013/05/donate_blood_rotator.jpg",
-            "https://www.discoverwellingborough.co.uk/wp-content/uploads/2016/02/blood-logo.png")
-
-
+            "https://www.discoverwellingborough.co.uk/wp-content/uploads/2016/02/blood-logo.png")*/
+    private val imageArray = arrayOf<String>("https://media.npr.org/assets/img/2015/06/14/james-harrison-blood_custom-11081c1f49b5e933ca2c2e2f148a73a4b9df78e3-s900-c85.jpg","https://amazingworldrecords.files.wordpress.com/2010/03/cessnocke28099sphilbaird.jpg")
+    private val nameArray= arrayOf<String>("James Harrison","Cessnock’s Phil Baird")
+    private val bloodGroupArray= arrayOf<String>("ABO","-")
+    private val countryArray= arrayOf<String>("Australia","Australia")
     private lateinit var homeFragmentPresenter: HomeFragmentPresenterImpl
     var view1:View?=null
     /*var imageArray : Array<String> = arrayOf(
@@ -83,6 +91,12 @@ class HomeFragment : Fragment(), HomeFragmentView {
     private fun init() {
         for (i in imageArray.indices)
             imageArrayList.add(imageArray[i])
+        for(j in nameArray.indices)
+            nameArrayList.add(nameArray[j])
+        for(k in bloodGroupArray.indices)
+            bloodGroupArrayList.add(bloodGroupArray[k])
+        for (l in countryArray.indices)
+            countryArrayList.add(countryArray[l])
 
         mPager = view1?.findViewById<ViewPager>(R.id.activity_home_fragment_ImageSlider_ViewPager) as ViewPager
         mPager!!.adapter = ImageSliderAdapterClass()
@@ -141,6 +155,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
 
     inner class ImageSliderAdapterClass : PagerAdapter(){
+        var inflater: LayoutInflater? = null
         override fun isViewFromObject(view: View, `object`: Any): Boolean {
             return view === `object`
         }
@@ -149,14 +164,36 @@ class HomeFragment : Fragment(), HomeFragmentView {
            return imageArrayList.size
         }
 
-        override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        override fun instantiateItem(container: ViewGroup, position: Int): View {
 
             //var imageUrl ="https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"
 
-            val imageView : ImageView = ImageView(mContext)
+            /*val imageView : ImageView = ImageView(mContext)
             Picasso.with(mContext).load(imageArrayList[position]).into(imageView)
             container.addView(imageView,0)
-            return imageView
+            return imageView*/
+
+
+            inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val itemView = inflater?.inflate(R.layout.image_and_content_sliding, container,false)
+
+            // Locate the ImageView in viewpager_item.xml
+            val name=itemView?.findViewById<TextView>(R.id.image_and_sliding_content_userName_textView)as TextView
+            val bloodGroup=itemView?.findViewById<TextView>(R.id.image_and_sliding_content_bloodGroup_textView)as TextView
+            val country=itemView?.findViewById<TextView>(R.id.image_and_sliding_content_district_textView)as TextView
+            val imgflag= itemView?.findViewById<ImageView>(R.id.flag)as ImageView
+
+            name.setText(nameArrayList[position])
+            bloodGroup.setText(bloodGroupArrayList[position])
+            country.setText(countryArrayList[position])
+            Picasso.with(mContext).load(imageArrayList[position]).into(imgflag)
+            container.addView(itemView,0)
+            // Capture position and set to the ImageView
+            //imgflag.setImageResource(flag[position])
+
+            // Add viewpager_item.xml to ViewPager
+
+            return itemView
         }
 
         override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {

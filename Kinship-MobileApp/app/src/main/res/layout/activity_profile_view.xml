@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView_constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/activity_profile_view_constraintLayout_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/diagonal_vector">
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout1_userName_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="M.SHANMUGARAJ"
+                    android:textColor="#ffffff"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="145dp"
+                    android:layout_height="145dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/new_circle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout1_userProfile_imageView"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/profile_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="186dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout1">
+
+                <ImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodIcon_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable"
+                    android:elevation="3dp"
+                    app:srcCompat="@drawable/ic_opacity_black_24dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroupLabel_textView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroupLabel_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="Blood Group"
+                    android:textSize="11sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodIcon_imageView"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroup_textView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroup_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="A+"
+                    android:textSize="11sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroupLabel_textView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailIcon_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable"
+                    android:elevation="3dp"
+                    app:srcCompat="@drawable/ic_email_black_24dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailLabel_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodIcon_imageView" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailLabel_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="Email"
+                    android:textSize="11sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailIcon_imageView"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_email_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroupLabel_textView" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_email_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="shanmugaraj@jovee.in"
+                    android:textSize="11sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailLabel_textView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroup_textView" />
+
+                <ImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationIcon_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable"
+                    android:elevation="3dp"
+                    app:srcCompat="@drawable/ic_occupation_black_24dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationLabel_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailIcon_imageView" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationLabel_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="Occupation"
+                    android:textSize="11sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationIcon_imageView"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupation_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailLabel_textView" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupation_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="Software Developer"
+                    android:textSize="11sp"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationLabel_textView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_email_textView" />
+
+                <ImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookIcon_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable"
+                    android:elevation="3dp"
+                    app:srcCompat="@drawable/ic_facebook_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookLabel_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationIcon_imageView" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookLabel_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="Facebook ID"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookIcon_imageView"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookid_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationLabel_textView" />
+
+                <TextView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookid_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/custom_drop_shadow_drawable1"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="shanmugaraja3926"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookLabel_textView"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupation_textView" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FE8A03"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_border_imageView1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1_totalDonatedLabel_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Donated"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1_totalDonated_textView"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1_totalDonated_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1_totalDonatedLabel_textView" />
+                </android.support.constraint.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_border_imageView1"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/right_side_border1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="37dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_border_imageView1"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_border_imageView2"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2_totalRequestLabel_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Request"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2_totalRequest_textView"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2_totalRequest_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2_totalRequestLabel_textView" />
+                </android.support.constraint.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_border_imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/right_side_border1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2"
+                    app:layout_constraintRight_toLeftOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_border_imageView2"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3_lastDonatedDateLabel_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:text="Last Donated Date"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3_lastDonatedDate_textView"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3_lastDonatedDate_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21-05-1995"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3_lastDonatedDateLabel_textView" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

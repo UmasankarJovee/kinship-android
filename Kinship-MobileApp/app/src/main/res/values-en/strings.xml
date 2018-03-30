@@ -24,6 +24,14 @@
     <string name="activity_home_fragment_bloodDonatorInstructions_textview">BLOOD DONATOR INSTRUCTIONS</string>
     <string name="activity_home_fragment_bloodRequestInstructions_textview">BLOOD REQUESTER INSTRUCTIONS</string>
 
+    <!--image_and_content_sliding-->
+    <string name="image_and_sliding_content_userNameLabel_textView">" Name:"</string>
+    <string name="image_and_sliding_content_userName_textView">-</string>
+    <string name="image_and_sliding_content_bloodGroupLabel_textView">" Blood Group:"</string>
+    <string name="image_and_sliding_content_bloodGroup_textView">-</string>
+    <string name="image_and_sliding_content_districtLabel_textView">" District:"</string>
+    <string name="image_and_sliding_content_district_textView">-</string>
+
     <!--fragment_user_profile_edit-->
     <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          Your Profile        </string>
@@ -190,4 +198,5 @@
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
+    <string name="todo">TODO</string>
 </resources>

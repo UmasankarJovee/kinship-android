@@ -90,6 +90,8 @@
             android:name=".RequestHistory"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/AppThemeNoActionBar"/>
+
         <activity
             android:name=".EmptyActivity1"
             android:theme="@style/AppThemeNoActionBar"></activity>
@@ -99,6 +101,11 @@
         <activity
             android:name=".view.RequestResponse"
             android:theme="@style/AppThemeActionBar">
+
+        </activity>
+        <activity
+            android:name=".view.ProfileView"
+            android:theme="@style/AppThemeNoActionBar">
 
         </activity>
     </application>
