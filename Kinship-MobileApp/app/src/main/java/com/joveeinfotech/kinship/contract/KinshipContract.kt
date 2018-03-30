@@ -158,7 +158,7 @@ interface KinshipContract {
 
     // UserProfileEditFragment
     interface UserProfileEditFragmentView{
-        fun setCountries(dataAdapter: ArrayList<String>)
+        fun setCountries(countryList: ArrayList<String>)
         fun setStates(stateList: StateResult)
         fun setDistricts(districtList: DistrictResult)
         fun updateDateInView()

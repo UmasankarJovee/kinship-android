@@ -36,20 +36,21 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
     override fun loadProfileDetails() {
         val queryParams = HashMap<String, String>()
         queryParams.put("phone_number", "8189922043")
+        DLog("new","hello")
         networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 4, "Fetching...")
     }
     override fun loadCountries() {
         Others.DLog("Root", "2i1")
         addressNetworkCall= APICall(context)
         val queryParams = HashMap<String, String>()
-        queryParams.put("input", "country")
+        queryParams.put("input", "countries")
         Log.e("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, CountryResult::class.java, this, 1, "Fetching...")
     }
     override fun sendCountryReceiveState(country: String) {
         Others.DLog("Root", "2i3")
         val queryParams = HashMap<String, String>()
-        queryParams.put("input", "state")
+        queryParams.put("input", "states")
         //queryParams.put("subFieldName", country!!)
         Log.e("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
@@ -57,7 +58,7 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
     override fun sendStateReceiveDistrict(state: String) {
         Others.DLog("Root", "2i5")
         val queryParams = HashMap<String, String>()
-        queryParams.put("input", "district")
+        queryParams.put("input", "districts")
         //queryParams.put("subFieldName", state!!)
         Log.e("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")

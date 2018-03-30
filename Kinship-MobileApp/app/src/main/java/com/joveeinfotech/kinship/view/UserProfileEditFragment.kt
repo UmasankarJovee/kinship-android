@@ -71,7 +71,7 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
     var last_name:EditText?=null
 
     override fun onAttach(context: Context) {
-        this.upefContext = context
+        upefContext = context
         super.onAttach(context)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -340,121 +340,6 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             }
         }
     }
-
-    /*private fun getBytes(inputStream: InputStream?): ByteArray {
-        val byteBuff = ByteArrayOutputStream()
-
-        val buffSize = 1024
-        val buff = ByteArray(buffSize)
-
-        var len = 0
-        len = inputStream!!.read(buff)
-        while ( len != -1) {
-            byteBuff.write(buff, 0, len)
-            len = inputStream!!.read(buff)
-        }
-        return byteBuff.toByteArray()
-    }
-
-    private fun uploadImage(imageBytes: ByteArray) {
-
-        progressDialog = ProgressDialog(upefContext, R.style.MyAlertDialogStyle)
-        progressDialog?.setMessage("Authenticating...")
-        progressDialog?.show()
-
-        val retrofitInterface = APIClient.getClient()
-
-        val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
-
-        val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
-
-        retrofitInterface?.uploadImage(body)?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribeOn(Schedulers.io())
-                ?.subscribe(
-                        { result ->
-                            progressDialog?.dismiss()
-                            CustomToast().normalToast(upefContext,"Uploaded Successfully")
-                        },
-                        { error ->
-                            progressDialog?.dismiss()
-                        }
-                )
-    }
-*/
-
-   /* private fun setCircle() {
-
-        val paint = Paint()
-        // Get source bit map width and height
-        val srcBitmapWidth = bitmap?.width
-        val srcBitmapHeight = bitmap?.height
-
-        *//*
-                    IMPORTANT NOTE : You should experiment with border and shadow width
-                    to get better circular ImageView as you expected.
-                    I am confused about those size.
-                *//*
-        // Define border and shadow width
-        val borderWidth = 25
-        val shadowWidth = 10
-
-        // destination bitmap width
-        val dstBitmapWidth = Math.min(srcBitmapWidth!!, srcBitmapHeight!!) + borderWidth * 2
-        //float radius = Math.min(srcBitmapWidth,srcBitmapHeight)/2;
-
-        // Initializing a new bitmap to draw source bitmap, border and shadow
-        val dstBitmap = Bitmap.createBitmap(dstBitmapWidth, dstBitmapWidth, Bitmap.Config.ARGB_8888)
-
-        // Initialize a new canvas
-        val canvas = Canvas(dstBitmap)
-
-        // Draw a solid color to canvas
-        canvas.drawColor(Color.WHITE)
-
-        // Draw the source bitmap to destination bitmap by keeping border and shadow spaces
-        canvas.drawBitmap(bitmap, ((dstBitmapWidth - srcBitmapWidth) / 2).toFloat(), ((dstBitmapWidth - srcBitmapHeight) / 2).toFloat(), null)
-
-        // Use Paint to draw border
-        paint.style = Paint.Style.STROKE
-        paint.strokeWidth = (borderWidth * 2).toFloat()
-        paint.color = Color.RED
-
-        // Draw the border in destination bitmap
-        canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), (canvas.width / 2).toFloat(), paint)
-
-        // Use Paint to draw shadow
-        paint.color = Color.LTGRAY
-        paint.strokeWidth = shadowWidth.toFloat()
-
-        // Draw the shadow on circular bitmap
-        canvas.drawCircle((canvas.width / 2).toFloat(), (canvas.height / 2).toFloat(), (canvas.width / 2).toFloat(), paint)
-
-        *//*
-                    RoundedBitmapDrawable
-                        A Drawable that wraps a bitmap and can be drawn with rounded corners. You
-                        can create a RoundedBitmapDrawable from a file path, an input stream, or
-                        from a Bitmap object.
-                *//*
-        // Initialize a new RoundedBitmapDrawable object to make ImageView circular
-        val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources!!, dstBitmap)
-
-        *//*
-                    setCircular(boolean circular)
-                        Sets the image shape to circular.
-                *//*
-        // Make the ImageView image to a circular image
-        roundedBitmapDrawable.isCircular = true
-
-        *//*
-                    setAntiAlias(boolean aa)
-                        Enables or disables anti-aliasing for this drawable.
-                *//*
-        roundedBitmapDrawable.setAntiAlias(true)
-
-        // Set the ImageView image as drawable object
-        //activity_profile_display_profile_image.setImageDrawable(roundedBitmapDrawable)
-        top20_donars_list_Linear_layout_CardView_ImageView_profile.setImageDrawable(roundedBitmapDrawable)
-    }*/
 
     override fun setProfileDetails(image_url: String, name: String,date_of_birth: String, weight:String,address: String,phone_number: String, email: String) {
         DLog("New Message","${image_url}")
