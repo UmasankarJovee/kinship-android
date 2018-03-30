@@ -9,6 +9,7 @@ import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
+import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.model.*
 import com.joveeinfotech.kinship.view.UserAdditionalDetailsFragment
 import java.util.HashMap
@@ -43,36 +44,36 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
 
     override fun loadCountries() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("input", "country")
+        queryParams.put("input", "countries")
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/address", queryParams, CountryResult::class.java, this, 1, "Fetching...")
     }
-    override fun sendCountryReceiveState(country: String) {
-        if(country != mContext.getString(R.string.user_address_select_your_country)){
+
+    override fun loadStates() {
             val queryParams = HashMap<String, String>()
-            queryParams.put("country",country)
+            queryParams.put("input","states")
             //queryParams.put("subFieldName", country!!)
             Log.e("MAIN ACTIVITY : ", "inside button")
             networkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
-        }
     }
-    override fun sendStateReceiveDistrict(state: String) {
-        if(state != mContext.getString(R.string.user_address_select_your_state)){
-            val queryParams = HashMap<String, String>()
-            queryParams.put("state",state)
-            //queryParams.put("subFieldName", state!!)
-            Log.e("MAIN ACTIVITY : ", "inside button")
-            networkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
-        }
+
+    override fun loadDistricts() {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("input","districts")
+        //queryParams.put("subFieldName", state!!)
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
     }
-    override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
+
+    /*override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
         if (country.trim().isNotEmpty() && state.trim().isNotEmpty() && district.trim().isNotEmpty() && city.trim().isNotEmpty() && locality.trim().isNotEmpty() && street.trim().isNotEmpty()){
             sendAddress(country, state, district, city, locality, street)
         } else {
             //showDialog(0) // Please fill the all the fields
             Toast.makeText(mContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
         }
-    }
+    }*/
+
     private fun sendAddress(country: String, state: String, district: String, city: String, locality: String, street: String) {
         val queryParams = HashMap<String, String>()
         queryParams.put("country", country)
@@ -80,6 +81,20 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
         queryParams.put("district", district)
         queryParams.put("city", city)
         queryParams.put("locality","sdfg")
+        queryParams.put("street", street)
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")
+    }
+
+    override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
+        val queryParams = HashMap<String, String>()
+        var user_id = getStringPreference(mContext,"user_id","")
+        queryParams.put("user_id","168")
+        queryParams.put("country", country)
+        queryParams.put("state", state)
+        queryParams.put("district", district)
+        queryParams.put("city", city)
+        queryParams.put("locality",locality)
         queryParams.put("street", street)
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 4, "Sending your address...")

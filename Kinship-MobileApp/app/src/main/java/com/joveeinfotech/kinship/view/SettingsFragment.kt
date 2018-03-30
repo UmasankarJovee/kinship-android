@@ -3,7 +3,6 @@ package com.joveeinfotech.kinship
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
@@ -19,7 +18,6 @@ import com.joveeinfotech.kinship.model.Album
 import com.joveeinfotech.kinship.presenter.*
 import com.joveeinfotech.kinship.utils.SharedData
 import com.joveeinfotech.kinship.view.UserProfileEdit
-import com.joveeinfotech.kinship.view.UserProfileEditFragment
 import kotlinx.android.synthetic.main.fragment_settings.view.*
 
 

@@ -1,6 +1,7 @@
 package com.joveeinfotech.kinship.presenter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import android.widget.Toast
@@ -10,6 +11,8 @@ import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.*
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.Others.DLog
+import com.joveeinfotech.kinship.view.RequestResponse
 import com.joveeinfotech.kinship.view.UserAdditionalDetailsFragment
 import kinship.joveeinfotech.kinship.HomeFragment
 import java.util.HashMap
@@ -34,7 +37,7 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
         this.mContext=context
         userRequestFragmentView=view
         initPresenter()
-        //loadDistricts()
+        loadDistricts()
     }
 
     override fun initPresenter() {
@@ -43,28 +46,28 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
 
     override fun loadDistricts() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("input", "country")
+        queryParams.put("input", "districts")
         Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/search_district", queryParams, DistrictResult::class.java, this, 1, "Fetching...")
+        networkCall?.APIRequest("api/v1/search", queryParams, DistrictResult::class.java, this, 1, "Fetching...")
     }
 
-    override fun sendDistrictsReceiveHospitals(district: String) {
+    override fun loadHospitals() {
         val queryParams = HashMap<String, String>()
-        queryParams.put("input", "district")
+        queryParams.put("input", "hospitals")
         Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/search_hospitals", queryParams, SearchHospitalResult::class.java, this, 2, "Fetching...")
+        networkCall?.APIRequest("api/v1/search", queryParams, SearchHospitalResult::class.java, this, 2, "Fetching...")
     }
 
-    override fun sendUserRequestDetails(search_blood_group: String, search_units: String, search_district: String, search_hospital: String) {
+    /*override fun sendUserRequestDetails(search_blood_group: String, search_units: String, search_district: String, search_hospital: String) {
         if(!search_blood_group.trim().isEmpty() && !search_units.trim().isEmpty()
                 && !search_district.trim().isEmpty() && !search_hospital.trim().isEmpty()){
                     sendUserRequestToServer(search_blood_group,search_units,search_district,search_hospital)
         } else {
             CustomToast().alertToast(mContext,"Fill the all fields")
         }
-    }
+    }*/
 
-    override fun sendUserRequestToServer(search_blood_group: String, search_units: String, search_district: String, search_hospital: String) {
+   /* override fun sendUserRequestToServer(search_blood_group: String, search_units: String, search_district: String, search_hospital: String) {
         val queryParams = HashMap<String, String>()
         queryParams.put("blood_group", search_blood_group)
         queryParams.put("units",search_units)
@@ -72,6 +75,19 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
         queryParams.put("hospital",search_hospital)
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/search_blood_group", queryParams, SearchHospitalResult::class.java, this, 3, "Sending Your Request...")
+    }*/
+
+    override fun sendUserRequestToServer(search_blood_group: String, units: String, district: String, hospital: String, time_in_number: String, time_in_string: String) {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("input", "bloodRequest")
+        queryParams.put("blood_group", search_blood_group)
+        queryParams.put("units",units)
+        queryParams.put("district",district)
+        queryParams.put("hospital",hospital)
+        queryParams.put("time_in_number",time_in_number)
+        queryParams.put("time_in_string",time_in_string)
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v1/search", queryParams, SearchBloodInUserRequest::class.java, this, 3, "Sending Your Request...")
     }
 
     fun sendUserRequestToServer1() {
@@ -84,8 +100,9 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Get Districts
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                Log.e("API CALL : ", "inside UserRequest and onSuccess when")
                 val districtsList = response as DistrictResult
+                DLog("User Request : ","${districtsList}")
                 userRequestFragmentView.setDistricts(districtsList)
             }
             2 -> { // Get Hospitals
@@ -97,22 +114,26 @@ class UserRequestFragmentPresenterImpl : APIListener, UserRequestFragmentPresent
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val searchResult = response as SearchBloodInUserRequest
                 if (searchResult.status) {
-                        trans?.replace(R.id.activity_user_details_frame_layout, HomeFragment.newInstance())
+                        /*trans?.replace(R.id.activity_user_details_frame_layout, HomeFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
-                        trans?.commit()
+                        trans?.commit()*/
+                    mContext.startActivity(Intent(mContext,RequestResponse::class.java))
+                    userRequestFragmentView.closeActivity()
                     CustomToast().normalToast(mContext,"Your Request has been send")
                     //Toast.makeText(mContext, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)
+                }else{
+                    CustomToast().normalToast(mContext,"Try again")
                 }
             }
-            4 -> { // Send Address
+            /* 4 -> { // Send Address
                 Log.e("API CALL : ", "inside Main activity and onSuccess when")
                 val searchResult = response as ImageUpload
                 if (searchResult.status) {
                     CustomToast().normalToast(mContext,"Your request has been send")
                 }
-            }
+            }*/
         }
     }
 }

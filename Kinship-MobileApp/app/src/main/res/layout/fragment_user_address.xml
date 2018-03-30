@@ -71,7 +71,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
 
-                  <Spinner
+                  <AutoCompleteTextView
                       android:id="@+id/fragment_user_address_spinner_counry"
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                       app:layout_constraintRight_toRightOf="parent"
                       app:layout_constraintTop_toTopOf="parent" />
 
-                  <Spinner
+                  <AutoCompleteTextView
                       android:id="@+id/fragment_user_address_spinner_state"
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                       app:layout_constraintRight_toRightOf="parent"
                       app:layout_constraintTop_toBottomOf="@id/fragment_user_address_spinner_counry" />
 
-                  <Spinner
+                  <AutoCompleteTextView
                       android:id="@+id/fragment_user_address_spinner_district"
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"

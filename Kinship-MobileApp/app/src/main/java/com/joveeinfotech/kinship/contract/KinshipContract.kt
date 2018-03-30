@@ -87,9 +87,10 @@ interface KinshipContract {
     interface UserAddressFragmentPresenter{
         fun initPresenter()
         fun loadCountries()
-        fun sendCountryReceiveState(country : String)
-        fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
-        fun sendStateReceiveDistrict(state: String)
+        fun loadStates()
+        fun loadDistricts()
+        fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String)
+        //fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
     }
 
     // UserAdditionalDetailsFragment
@@ -104,26 +105,31 @@ interface KinshipContract {
     interface UserRequestFragmentView{
         fun setDistricts(hospitalsList: DistrictResult)
         fun setHospitals(hospitalsList: SearchHospitalResult)
+        fun closeActivity()
     }
     interface UserRequestFragmentPresenter{
         fun initPresenter()
         fun loadDistricts()
-        fun sendDistrictsReceiveHospitals(district: String)
-        fun sendUserRequestDetails(search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
-        fun sendUserRequestToServer(search_blood_group: String, search_units: String, search_district: String, search_hospital: String)
+        fun loadHospitals()
+        fun sendUserRequestToServer(search_blood_group: String, units : String, district : String,
+                                   hospital : String, time_in_number : String, time_in_string: String)
     }
 
     // Some One Request Fragment
     interface SomeOneRequestFragmentView{
         fun setDistricts(hospitalsList: DistrictResult)
         fun setHospitals(hospitalsList: SearchHospitalResult)
+        fun closeActivity()
     }
     interface SomeOneRequestFragmentPresenter{
         fun initPresenter()
         fun loadDistricts()
-        fun sendDistrictsReceiveHospitals(district: String)
-        fun sendUserRequestDetails(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String, relationship: String)
-        fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String, relationship: String)
+        fun loadHospitals()
+        fun sendUserRequestToServer(name: String, phone_number: String,
+                                    search_blood_group: String, units: String,
+                                    district: String, hospital: String,
+                                    relationship: String, time_in_number: String, time_in_string: String)
+        /*fun sendUserRequestToServer(name: String, phone_number: String, search_blood_group: String, search_units: String, search_district: String, search_hospital: String, relationship: String)*/
     }
 
     // Top20 Fragment
@@ -159,8 +165,8 @@ interface KinshipContract {
     // UserProfileEditFragment
     interface UserProfileEditFragmentView{
         fun setCountries(countryList: ArrayList<String>)
-        fun setStates(stateList: StateResult)
-        fun setDistricts(districtList: DistrictResult)
+        fun setStates(stateList: ArrayList<String>)
+        fun setDistricts(districtList:ArrayList<String>)
         fun updateDateInView()
         fun call(field:String,value:String,field1:String,value1:String)
         fun setProfileDetails(image_url: String, name: String,date_of_birth: String,weight:String,address: String,phone_number: String,email: String)
@@ -169,9 +175,9 @@ interface KinshipContract {
         fun initPresenter()
         fun loadProfileDetails()
         fun loadCountries()
-        fun sendCountryReceiveState(country : String)
+        fun sendCountryReceiveState()
         fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
-        fun sendStateReceiveDistrict(state: String)
+        fun sendStateReceiveDistrict()
         fun sendImageString(imageString:String)
     }
 
@@ -201,6 +207,17 @@ interface KinshipContract {
         fun loadRequestHisoryList()
     }
 
+    interface RequestResponseView{
+        fun setRequestResponse(details: RequestResponseListAdapter?)
+        fun closeConfirmDialog()
+    }
+    interface RequestResponsePresenter{
+        fun initPresenter()
+        fun isDonated(booleanValue: Boolean)
+    }
+    interface RequestResponseListener {
+        fun onItemClick(responseResult: InnerRequestResponseResult)
+    }
     //ProfileViewActivity
     interface ProfileViewActivity{
         //fun setViewData(name:String,image_url:String,blood_group:String,email:String,occupation:String,facebook_id:String,total_donated: String,total_request: String,last_donated_date: String)

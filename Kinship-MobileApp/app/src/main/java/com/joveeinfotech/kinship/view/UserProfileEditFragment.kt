@@ -1,3 +1,4 @@
+/*
 package com.joveeinfotech.kinship.view
 
 import android.app.Activity
@@ -40,6 +41,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+*/
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
@@ -47,7 +49,8 @@ import kotlin.collections.ArrayList
  * to handle interaction events.
  * Use the [UserProfileEditFragment.newInstance] factory method to
  * create an instance of this fragment.
- */
+ *//*
+
 class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
 
     var bitmap: Bitmap? = null
@@ -110,7 +113,8 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
         }
         upefView?.activity_user_profile_edit_constraintLayout_userProfileEditIcon_imageView?.setOnClickListener {
             var intent=Intent()
-            intent.type = "image/*"
+            intent.type = "image*/
+/*"
             intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(Intent.createChooser(intent, "select image"), 1)
         }
@@ -214,9 +218,11 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
             DLog("Root","2")
             userProfileEditFragmentPresenterImpl?.loadCountries()
             DLog("Root","3")
-           /* val street: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_street_editText)
+           */
+/* val street: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_street_editText)
             val locality: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_locality_editText)
-            val city: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_city_editText)*/
+            val city: EditText =dialogView.findViewById(R.id.alert_address_details_scrollView_linearLayout1_city_editText)*//*
+
             dialogView.alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton.setOnClickListener {
                 //dialogbuilder.create().dismiss()
                 dialogBuilderCall.dismiss()
@@ -232,8 +238,10 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
                      //showDialog(0) // Please fill the all the fields
                      Toast.makeText(upefContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
                  }
-                /*address="${street.text.toString()},${locality.text.toString()},${city.text.toString()},${district.text},${state.text}"
-                Toast.makeText(upefContext,address,Toast.LENGTH_LONG).show()*/
+                */
+/*address="${street.text.toString()},${locality.text.toString()},${city.text.toString()},${district.text},${state.text}"
+                Toast.makeText(upefContext,address,Toast.LENGTH_LONG).show()*//*
+
             }
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView?.visibility=View.GONE
             upefView?.activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.visibility=View.GONE
@@ -362,11 +370,16 @@ class UserProfileEditFragment : Fragment(),UserProfileEditFragmentView {
     }
 
     //Encode
-    /*var encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT)*/
+    */
+/*var encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT)*//*
+
 
     //Decode
-    /*Bitmap bm = BitmapFactory.decodeFile("/path/to/image.jpg");
+    */
+/*Bitmap bm = BitmapFactory.decodeFile("/path/to/image.jpg");
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
-    byte[] b = baos.toByteArray();*/
+    byte[] b = baos.toByteArray();*//*
+
 }// Required empty public constructor
+*/

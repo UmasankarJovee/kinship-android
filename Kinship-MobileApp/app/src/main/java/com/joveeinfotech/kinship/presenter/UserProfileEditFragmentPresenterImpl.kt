@@ -47,7 +47,7 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
         Log.e("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, CountryResult::class.java, this, 1, "Fetching...")
     }
-    override fun sendCountryReceiveState(country: String) {
+    override fun sendCountryReceiveState() {
         Others.DLog("Root", "2i3")
         val queryParams = HashMap<String, String>()
         queryParams.put("input", "states")
@@ -55,7 +55,7 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
         Log.e("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
     }
-    override fun sendStateReceiveDistrict(state: String) {
+    override fun sendStateReceiveDistrict() {
         Others.DLog("Root", "2i5")
         val queryParams = HashMap<String, String>()
         queryParams.put("input", "districts")
@@ -64,14 +64,25 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
     }
     override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
-        if (country.trim().isNotEmpty() && state.trim().isNotEmpty() && district.trim().isNotEmpty() && city.trim().isNotEmpty() && locality.trim().isNotEmpty() && street.trim().isNotEmpty()){
+        /*if (country.trim().isNotEmpty() && state.trim().isNotEmpty() && district.trim().isNotEmpty() && city.trim().isNotEmpty() && locality.trim().isNotEmpty() && street.trim().isNotEmpty()){
             sendAddress(country, state, district, city, locality, street)
         } else {
             //showDialog(0) // Please fill the all the fields
             Toast.makeText(context,"Please fill the all the fields", Toast.LENGTH_LONG).show()
-        }
+        }*/
+        val queryParams = HashMap<String, String>()
+        var user_id = getStringPreference(context,"user_id","")
+        queryParams.put("addressable_id","106")
+        queryParams.put("countries", country)
+        queryParams.put("states", state)
+        queryParams.put("districts", district)
+        queryParams.put("city", city)
+        queryParams.put("locality",locality)
+        queryParams.put("street_name", street)
+        Log.e("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 6, "Sending your address...")
     }
-    private fun sendAddress(country: String, state: String, district: String, city: String, locality: String, street: String) {
+   /* private fun sendAddress(country: String, state: String, district: String, city: String, locality: String, street: String) {
         val queryParams = HashMap<String, String>()
         queryParams.put("id","169")
         queryParams.put("country", country)
@@ -81,8 +92,8 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
         queryParams.put("locality",locality)
         queryParams.put("street_name", street)
         Log.e("MAIN ACTIVITY : ", "inside button")
-        addressNetworkCall?.APIRequest("api/v1/address", queryParams, SendAddressResult::class.java, this, 5, "Sending your address...")
-    }
+        addressNetworkCall?.APIRequest("api/v1/address", queryParams, SendAddressResult::class.java, this, 6, "Sending your address...")
+    }*/
 
     /*fun sendAddress1() {
         val queryParams = HashMap<String, String>()
@@ -133,12 +144,12 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
             2 -> { // Get State
                 Log.e("API CALL : ", "inside StateResult API CALL and onSuccess when")
                 val stateList = response as StateResult
-                view.setStates(stateList)
+                view.setStates(stateList.state)
             }
             3 -> { // Get District
                 Log.e("API CALL : ", "inside DistrictResult API CALL and onSuccess when")
                 val districtList = response as DistrictResult
-                view.setDistricts(districtList)
+                view.setDistricts(districtList.districts)
             }
             4 -> {
                 val result = response as UserProfileDisplayResult
