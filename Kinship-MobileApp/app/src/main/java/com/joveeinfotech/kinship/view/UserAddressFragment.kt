@@ -20,6 +20,7 @@ import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.UserAddrssFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_user_address.*
 import kotlinx.android.synthetic.main.fragment_user_address.view.*
+import kotlinx.android.synthetic.main.fragment_user_request.view.*
 
 class UserAddressFragment : Fragment(), UserAddrssFragmentView {
 
@@ -54,8 +55,8 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
         collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(mContext, R.color.toolBarColor))
 
         view.fragment_user_address_button_send_address.setOnClickListener {
-            userAddressFragmentPresenter?.sendAddress1()
-           /* if (country?.trim()?.length == 0 && state?.trim()?.length == 0 && district?.trim()?.length == 0
+            //userAddressFragmentPresenter?.sendAddress1()
+            /*if (country?.trim()?.length == 0 && state?.trim()?.length == 0 && district?.trim()?.length == 0
                     && editText_city.text.trim().isNotEmpty() && editText_locality.text.trim().isNotEmpty()
                     && editText_street.text.trim().isNotEmpty()){
                 userAddressFragmentPresenter?.userAddressDetails(country!!,state!!,district!!,editText_city.text.toString(),"gdgdg",editText_street.text.toString())
@@ -63,15 +64,34 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
                 //showDialog(0) // Please fill the all the fields
                 Toast.makeText(mContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
             }*/
+            if(fragment_user_address_spinner_counry.text.isNotEmpty()
+                    && fragment_user_address_spinner_state.text.isNotEmpty()
+                    && fragment_user_address_spinner_district.text.isNotEmpty()
+                    && fragment_user_address_editText_city.text.isNotEmpty()
+                    && fragment_user_address_editText_locality.text.isNotEmpty()
+                    && fragment_user_address_editText_street.text.isNotEmpty()){
+
+                userAddressFragmentPresenter?.userAddressDetails(fragment_user_address_spinner_counry.text.toString(),
+                        fragment_user_address_spinner_state.text.toString(),
+                        fragment_user_address_spinner_district.text.toString(),
+                        fragment_user_address_editText_city.text.toString(),
+                        fragment_user_address_editText_locality.text.toString(),
+                        fragment_user_address_editText_street.text.toString())
+            }
         }
         return view
     }
 
     override fun setCountries(countryList: ArrayList<String>) {
         //var df = countryList as ArrayList<String>
-        countryList.add(0,mContext.getString(R.string.user_address_select_your_country))
-        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, countryList)
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //countryList.add(0,mContext.getString(R.string.user_address_select_your_country))
+        var country_array = countryList.toTypedArray()
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, country_array)
+        fragment_user_address_spinner_counry?.threshold = 1
+        fragment_user_address_spinner_counry?.setAdapter<ArrayAdapter<String>>(dataAdapter)
+        userAddressFragmentPresenter?.loadStates()
+
+        /*dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         fragment_user_address_spinner_counry.adapter=dataAdapter
         fragment_user_address_spinner_counry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -84,11 +104,18 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
                     Toast.makeText(mContext, country, Toast.LENGTH_LONG).show()
                 }
             }
-        }
+        }*/
     }
 
     override fun setStates(stateList: ArrayList<String>) {
-        stateList.add(0,mContext.getString(R.string.user_address_select_your_state))
+
+        var state_array = stateList.toTypedArray()
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, state_array)
+        fragment_user_address_spinner_state?.threshold = 1
+        fragment_user_address_spinner_state?.setAdapter<ArrayAdapter<String>>(dataAdapter)
+        userAddressFragmentPresenter?.loadDistricts()
+
+        /*stateList.add(0,mContext.getString(R.string.user_address_select_your_state))
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, stateList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         fragment_user_address_spinner_state.adapter = dataAdapter
@@ -103,11 +130,18 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
                     Toast.makeText(mContext, state, Toast.LENGTH_LONG).show()
                 }
             }
-        }
+        }*/
     }
 
     override fun setDistricts(districtList: ArrayList<String>) {
-        districtList.add(0,mContext.getString(R.string.user_address_select_your_district))
+
+        var district_array = districtList.toTypedArray()
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, district_array)
+        fragment_user_address_spinner_district?.threshold = 1
+        fragment_user_address_spinner_district?.setAdapter<ArrayAdapter<String>>(dataAdapter)
+        //userAddressFragmentPresenter?.loadHospitals()
+
+        /*districtList.add(0,mContext.getString(R.string.user_address_select_your_district))
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         fragment_user_address_spinner_district.adapter = dataAdapter
@@ -122,7 +156,7 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
                     Toast.makeText(mContext, district, Toast.LENGTH_LONG).show()
                 }
             }
-        }
+        }*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -19,6 +19,9 @@ import com.joveeinfotech.kinship.utils.Others.DLog
 import com.joveeinfotech.kinship.utils.SharedData
 import kotlinx.android.synthetic.main.fragment_user_request.*
 import kotlinx.android.synthetic.main.fragment_user_request.view.*
+import android.widget.AutoCompleteTextView
+
+
 
 
 class UserRequestFragment : Fragment(), UserRequestFragmentView {
@@ -34,6 +37,8 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
     var search_district : String? = null
     var search_hospital : String? = null
 
+    var time_in_string : String? = null
+
     override fun onAttach(context: Context) {
         this.mContext = context
         super.onAttach(context)
@@ -46,7 +51,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         session = SharedData(mContext)
 
         userRequestFragmentPresenter = UserRequestFragmentPresenterImpl(this,mContext)
-
+        DLog("dgdgdg : ","dsfgdg")
         var categories = ArrayList<String>()
         categories.add("Select Blood Group")
         categories.add("AB+")
@@ -66,18 +71,13 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         timeCategories.add("Week")
         timeCategories.add("Month")
 
+        //district_categories = fruits
+       /* district_categories?.add("Virudhunagar")
+        district_categories?.toArray()
 
-
-        var district_categories = ArrayList<String>()
-        district_categories.add("Select District")
-        district_categories.add("Madurai")
-        district_categories.add("Virudhunagar")
-
-        var hospital_categories = ArrayList<String>()
-        hospital_categories.add("Select Hospital")
-        hospital_categories.add("Apollo")
-        hospital_categories.add("Meenachi Mission")
-        hospital_categories.add("A.R. ")
+        hospital_categories?.add("Apollo")
+        hospital_categories?.add("Meenachi Mission")
+        hospital_categories?.add("A.R. ")*/
 
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -93,21 +93,29 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
             }
         }
 
-        val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, district_categories)
-        district_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        view1?.fragment_user_request_constraintLayout_districts_spinner?.adapter = district_dataAdapter
+        /*val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, fruits)
+        //district_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.fragment_user_request_constraintLayout_districts_spinner?.threshold = 1
+        view1?.fragment_user_request_constraintLayout_districts_spinner?.setAdapter<ArrayAdapter<String>>(district_dataAdapter)*/
 
-        view1?.fragment_user_request_constraintLayout_districts_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        /*view1?.fragment_user_request_constraintLayout_districts_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                search_blood_group = categories.get(position).toString()
+                search_district = categories.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
-        val hospital_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospital_categories)
+        /* val adapter = ArrayAdapter<String>(this, android.R.layout.select_dialog_item, fruits)
+        //Getting the instance of AutoCompleteTextView
+        val actv = findViewById(R.id.autoCompleteTextView) as AutoCompleteTextView
+        actv.threshold = 1//will start working from first character
+        actv.setAdapter<ArrayAdapter<String>>(adapter)//setting the adapter data into the AutoCompleteTextView
+        actv.setTextColor(Color.RED)*/
+
+        /* val hospital_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospital_categories)
         hospital_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.fragment_user_request_constraintLayout_hospitals_spinner?.adapter = hospital_dataAdapter
 
@@ -119,22 +127,18 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
                 search_blood_group = categories.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
         val time_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, timeCategories)
-        DLog("UserRequest :","UserRequest1")
         time_dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        DLog("UserRequest :","UserRequest2")
         view1?.fragment_user_request_constraintLayout_time_to_arrive_spinner?.adapter = time_dataAdapter
-        DLog("UserRequest :","UserRequest3")
         view1?.fragment_user_request_constraintLayout_time_to_arrive_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                search_blood_group =categories.get(position).toString()
-                DLog("UserRequest :","UserRequest4")
+                time_in_string =timeCategories.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
         }
@@ -148,14 +152,29 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
         }*/
 
         view1?.fragment_user_request_constraintLayout_submit_button?.setOnClickListener{
-            /*if(search_blood_group!!.isNotEmpty()  &&  editText_user_search_units.text.isNotEmpty()
-                    && search_district!!.isNotEmpty() && search_hospital!!.isNotEmpty()){
-                userRequestFragmentPresenter?.sendUserRequestDetails(search_blood_group!!,editText_user_search_units.text.toString(),
-                        search_district!!,search_hospital!!)
+
+            if(time_in_string!! == "Immediate"){
+
+            }
+
+            if(search_blood_group!!.isNotEmpty()  &&  fragment_user_request_constraintLayout_units_editText.text.isNotEmpty()
+                    && fragment_user_request_constraintLayout_districts_spinner.text.isNotEmpty()
+                    && fragment_user_request_constraintLayout_hospitals_spinner.text.isNotEmpty()
+                    && fragment_user_request_constraintLayout_time_to_arrive_editText.text.isNotEmpty()
+                    && time_in_string!!.isNotEmpty()){
+
+                userRequestFragmentPresenter?.sendUserRequestToServer(search_blood_group!!,
+                        fragment_user_request_constraintLayout_units_editText.text.toString(),
+                        fragment_user_request_constraintLayout_districts_spinner.text.toString(),
+                        fragment_user_request_constraintLayout_hospitals_spinner.text.toString(),
+                        fragment_user_request_constraintLayout_time_to_arrive_editText.text.toString(),
+                        time_in_string!!)
             }else{
                 CustomToast().alertToast(mContext,"Fill the all fields")
-            }*/
-            userRequestFragmentPresenter?.sendUserRequestToServer1()
+            }
+
+            var fg = fragment_user_request_constraintLayout_districts_spinner.text
+            //userRequestFragmentPresenter?.sendUserRequestToServer1()
         }
 
         return view1
@@ -172,42 +191,30 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
     }
 
     override fun setDistricts(districtResult: DistrictResult) {
-        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, districtResult.districts)
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        fragment_user_request_constraintLayout_districts_spinner.adapter=dataAdapter
-        fragment_user_request_constraintLayout_districts_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                search_district= districtResult.districts[position].toString()
-                userRequestFragmentPresenter?.sendDistrictsReceiveHospitals(search_district!!)
-                Toast.makeText(mContext, search_district, Toast.LENGTH_LONG).show()
-            }
-        }
+        var districtsArray: Array<String> = districtResult.districts.toTypedArray()
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, districtsArray)
+        //dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        view1?.fragment_user_request_constraintLayout_districts_spinner?.threshold = 1
+        view1?.fragment_user_request_constraintLayout_districts_spinner?.setAdapter<ArrayAdapter<String>>(dataAdapter)
+        userRequestFragmentPresenter?.loadHospitals()
     }
 
     override fun setHospitals(hospitalsList: SearchHospitalResult) {
-        val dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, hospitalsList.hospitals)
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        fragment_user_request_constraintLayout_hospitals_spinner.adapter=dataAdapter
-        fragment_user_request_constraintLayout_hospitals_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                search_hospital= hospitalsList.hospitals[position].toString()
-                //userRequestFragmentPresenter?.sendDistrictsReceiveHospitals(district!!)
-                Toast.makeText(mContext, search_hospital, Toast.LENGTH_LONG).show()
-            }
-        }
+        var hospitalsArray : Array<String> = hospitalsList.hospitals.toTypedArray()
+        val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, hospitalsArray)
+        view1?.fragment_user_request_constraintLayout_hospitals_spinner?.threshold = 1
+        view1?.fragment_user_request_constraintLayout_hospitals_spinner?.setAdapter<ArrayAdapter<String>>(dataAdapter)
     }
+
     /*override fun onDestroyView() {
         super.onDestroyView()
         Log.e("eeeeeeeee","Destroy View")
         session?.storeDetails(editText_user_search_units.text.toString().toInt())
     }*/
 
+    override fun closeActivity() {
+        activity?.finish()
+    }
 
 
 }

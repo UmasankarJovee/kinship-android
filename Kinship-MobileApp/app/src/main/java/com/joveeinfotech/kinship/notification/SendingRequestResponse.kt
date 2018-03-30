@@ -1,18 +1,14 @@
-package com.joveeinfotech.kinship
+package com.joveeinfotech.kinship.notification
 
 import android.app.Service
 import android.content.Context
 import android.content.Intent
-import android.location.LocationListener
-import android.location.LocationManager
 import android.os.IBinder
 import android.util.Log
-import android.widget.Toast
-import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
+import com.joveeinfotech.kinship.APICall
+import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.model.SendingRequestResponseResult
-import com.joveeinfotech.kinship.model.SendingUserProfileEditResult
 import com.joveeinfotech.kinship.utils.Others.DLog
-import io.reactivex.disposables.Disposable
 import java.util.HashMap
 
 class SendingRequestResponse : Service(), APIListener {
@@ -40,7 +36,7 @@ class SendingRequestResponse : Service(), APIListener {
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                Log.e("API CALL : ", "inside Sending Request Response and onSuccess when")
                 val sendingRequestResponseResult = response as SendingRequestResponseResult
                 if(sendingRequestResponseResult.status){
                     DLog("SendingRequestResponse :","Sending Response")

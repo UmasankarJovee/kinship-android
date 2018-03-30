@@ -14,13 +14,16 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.EditText
+import com.joveeinfotech.kinship.model.SendingRequestResponseResult
 import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.utils.Others
+import java.util.HashMap
 
-class EmptyActivity : AppCompatActivity() {
-
+class EmptyActivity : AppCompatActivity(), APIListener {
 
     var check1_sleep : CheckBox? = null
     var check2_antibiotics : CheckBox? = null
@@ -31,14 +34,17 @@ class EmptyActivity : AppCompatActivity() {
     var bn : AppCompatButton? = null
 
     var phone_number : String? = null
-
+    var response : String? = null
+    var networkCall : APICall? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empty)
 
+        networkCall = APICall(this)
         var i =intent?.extras
         phone_number = i?.getString("phone_number")
+        response = i?.getString("response")
         createDialog()
 
     }
@@ -68,15 +74,44 @@ class EmptyActivity : AppCompatActivity() {
                 CustomToast().normalToast(this,"You not able to give your Blood")
             }else{
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                    val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "$phone_number"))
+                    sendRequestResponse()
+                    val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9600862338"))
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent)
                 } else{
-                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "$phone_number"))
+                    sendRequestResponse()
+                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "9600862338"))
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent)
                 }
             }
         }
+    }
+
+    private fun sendRequestResponse() {
+        val queryParams = HashMap<String, String>()
+        queryParams.put("response",response!!)
+        Log.e("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
+        networkCall?.APIRequest("api/v1/requestresponse", queryParams, SendingRequestResponseResult::class.java, this, 1, "Sending Location...",false)
+    }
+
+    override fun onSuccess(from: Int, response: Any) {
+        when (from) {
+            1 -> { // Send Additional Details
+                Log.e("API CALL : ", "inside Sending Request Response and onSuccess when")
+                val sendingRequestResponseResult = response as SendingRequestResponseResult
+                if(sendingRequestResponseResult.status){
+                    Others.DLog("SendingRequestResponse :", "Sending Response")
+                    //Toast.makeText(context, "${sendingRequestResponseResult.status}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onFailure(from: Int, t: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    override fun onNetworkFailure(from: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

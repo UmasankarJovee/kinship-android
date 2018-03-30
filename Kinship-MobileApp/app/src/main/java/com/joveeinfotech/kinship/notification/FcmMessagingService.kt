@@ -1,39 +1,74 @@
 package com.joveeinfotech.kinship.notification
 
+import android.R
+import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.joveeinfotech.kinship.APICall
+import com.joveeinfotech.kinship.APIListener
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
+import com.joveeinfotech.kinship.model.FcmRequestData
+import com.joveeinfotech.kinship.model.ForgotPasswordSendOTPToPhoneNumber
+import com.joveeinfotech.kinship.model.LoginResult
+import com.joveeinfotech.kinship.utils.CustomToast
+import com.joveeinfotech.kinship.view.UserDetails
+import org.jetbrains.anko.design.snackbar
 import org.json.JSONObject
-
+import java.util.HashMap
 
 
 /**
  * Created by prandex-and-05 on 20/2/18.
  */
-class FcmMessagingService : FirebaseMessagingService() {
+class FcmMessagingService : FirebaseMessagingService(), APIListener {
 
-        /*var srcBitmap : Bitmap? = null
-        private var mResources: Resources? = null
+    /*var srcBitmap : Bitmap? = null
+    private var mResources: Resources? = null
 */
+
+    var networkCall : APICall? = null
+
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
 
+            networkCall = APICall(this)
 
             var json = JSONObject(remoteMessage?.data.toString())
-            var data = json.getJSONObject("data")
+            //var data = json.getJSONObject("data")
 
-            var phone_number = data.getString("phone_number")
-            var blood_group = data.getString("blood_group")
-            var units = data.getString("units")
-            var hospital = data.getString("hospital")
-            var time_to_arrive = data.getString("time_to_arrive")
+            Log.e("data  :","${json}")
+            var data = json.getInt("data")
 
-            setStringPreference(this,"phone_number",phone_number)
-            setStringPreference(this,"blood_group",blood_group)
+            if(data ==1){ // Get Blood Request
+                val queryParams = HashMap<String, String>()
+                queryParams.put("input","bloodRequest")
+                queryParams.put("data",data.toString())
+                Log.e("MAIN ACTIVITY : ","inside button" )
+                networkCall?.APIRequest("api/v1/getRequest",queryParams, FcmRequestData::class.java,this, 1, "Authenticating...",false)
+            }else if(data == 3){ // Get Permission of Post Image in donor
+                val queryParams = HashMap<String, String>()
+                queryParams.put("input","permission")
+                Log.e("MAIN ACTIVITY : ","inside button" )
+                networkCall?.APIRequest("api/v1/getRequest",queryParams, FcmRequestData::class.java,this, 1, "Authenticating...",false)
+            }else if(data == 4){
+                val queryParams = HashMap<String, String>()
+                queryParams.put("input","postImage")
+                queryParams.put("data",data.toString())
+                Log.e("MAIN ACTIVITY : ","inside button" )
+                networkCall?.APIRequest("api/v1/getRequest",queryParams, FcmRequestData::class.java,this, 1, "Authenticating...",false)
+            }
+
+            //setBooleanPreference(this,"isClickYes",true)
+            //setBooleanPreference(this,"isClickNo",true)
+
+        //setStringPreference(this,"phone_number",phone_number)
+
+            /*setStringPreference(this,"blood_group",blood_group)
             setStringPreference(this,"units",units)
             setStringPreference(this,"hospital",hospital)
-            setStringPreference(this,"time_to_arrive",time_to_arrive)
+            setStringPreference(this,"time_to_arrive",time_to_arrive)*/
 
 
         //if(getBooleanPreference(this,"notification",true)) {
@@ -121,9 +156,47 @@ class FcmMessagingService : FirebaseMessagingService() {
             var isDisplay = getBooleanPreference(this, "isDisplay", false)
             Log.e("FcmMessagingService1 : ","${isDisplay}")*/
 
-            setBooleanPreference(this,"isClickYes",true)
+            /*setBooleanPreference(this,"isClickYes",true)
             setBooleanPreference(this,"isClickNo",true)
 
-            startService(Intent(this, System_alert_notification::class.java))
+            startService(Intent(this, System_alert_notification::class.java))*/
+    }
+
+    override fun onSuccess(from: Int, response: Any) {
+        when(from) {
+            1 -> { // User Login
+                val result = response as FcmRequestData
+                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                if (true) {
+                    setStringPreference(this,"blood_group",result.blood_group)
+                    setStringPreference(this,"units",result.units)
+                    setStringPreference(this,"hospital",result.hospital_name)
+                    setStringPreference(this,"time_in_number",result.time_in_number)
+                    setStringPreference(this,"time_in_string",result.time_in_string)
+
+                    setBooleanPreference(this,"isClickYes",true)
+                    setBooleanPreference(this,"isClickNo",true)
+
+                    startService(Intent(this, System_alert_notification::class.java))
+
+                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                } else {
+                    //snackbar(this,)
+                    //snackbar((this as Activity).findViewById(R.id.content), "Please wait some minute")
+                    //Log.e("API CALL : ","inside Main activity and onSuccess else condition")
+                    //Log.d(TAG, "Something missing")
+                }
+            }
+            2 -> {
+
+            }
+        }
+    }
+
+    override fun onFailure(from: Int, t: Throwable) {
+
+    }
+    override fun onNetworkFailure(from: Int) {
+
     }
 }

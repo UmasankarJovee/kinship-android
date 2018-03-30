@@ -38,6 +38,8 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
     var phone_number : String? = null
     var password : String? = null
 
+    var user_id : String? = null
+
     constructor(view: LoginView,context: Context){
         loginView=view
         mContext=context
@@ -108,15 +110,17 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
     override fun sendOTP(otp: String) {
         val queryParams = HashMap<String, String>()
         queryParams.put("otp",otp)
+        queryParams.put("user_id",user_id!!)
         Log.e("MAIN ACTIVITY : ","inside button" )
-        networkCall?.APIRequest("api/v1/forgotpassword",queryParams, ForgotPasswordVerifyOTP::class.java,this, 3, "Authenticating...")
+        networkCall?.APIRequest("api/v1/otp",queryParams, ForgotPasswordVerifyOTP::class.java,this, 3, "Authenticating...")
     }
 
     override fun sendPassword(password : String) {
         val queryParams = HashMap<String, String>()
         queryParams.put("password",password)
+        queryParams.put("user_id",user_id!!)
         Log.e("MAIN ACTIVITY : ","inside button" )
-        networkCall?.APIRequest("api/v1/forgotpassword",queryParams, ForgotPasswordSendPasswordResult::class.java,this, 4, "Authenticating...")
+        networkCall?.APIRequest("api/v1/password",queryParams, ForgotPasswordSendPasswordResult::class.java,this, 4, "Authenticating...")
     }
 
     override fun onSuccess(from: Int, response: Any) {
@@ -146,6 +150,7 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
                 val forgotPasswordResult = response as ForgotPasswordSendOTPToPhoneNumber
                 Log.e("API CALL : ", "inside Main activity and onSuccess")
                 if (forgotPasswordResult.status) {
+                    user_id = forgotPasswordResult.user_id
                     loginView.getOTP()
                     Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {

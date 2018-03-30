@@ -15,7 +15,6 @@ import android.view.WindowManager
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.EmptyActivity
 import com.joveeinfotech.kinship.R
-import com.joveeinfotech.kinship.SendingRequestResponse
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setBooleanPreference
@@ -46,15 +45,16 @@ class System_alert_notification : Service() {
         var isDisplay = SharedPreferenceHelper.getBooleanPreference(this, "isDisplay", false)
         Log.e("FcmMessagingService2 : ","${isDisplay}")*/
         //return super.onStartCommand(intent, flags, startId)
+        Log.e("SystemAlert : ","onStartCommand1")
         return Service.START_STICKY
     }
 
     override fun onCreate() {
         super.onCreate()
 
+        Log.e("SystemAlert : ","onCreate1")
         networkCall = APICall(this)
         objPlayer = MediaPlayer.create(this,R.raw.alert_tones)
-
 
         var v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -104,16 +104,17 @@ class System_alert_notification : Service() {
         }
 
 
-        var phone_number = getStringPreference(this, "phone_number", "")
-        var blood_group = getStringPreference(this, "blood_group", "")
-        var units = getStringPreference(this, "units", "")
-        var hospital = getStringPreference(this, "hospital", "")
-        var time_to_arrive = getStringPreference(this, "time_to_arrive", "")
+        var phone_number = getStringPreference(this, "phone_number", "9600862338")
+        var blood_group = getStringPreference(this, "blood_group", "A+")
+        var units = getStringPreference(this, "units", "4")
+        var hospital = getStringPreference(this, "hospital", "AR Hospital, Madurai")
+        var time_to_arrive = getStringPreference(this, "time_in_number", "Immediate")
+        var time_to_string = getStringPreference(this, "time_in_string", "Immediate")
 
         myView.system_alert_notification_get_TextView_blood_group.text = blood_group
         myView.system_alert_notification_get_TextView_units.text = units
         myView.system_alert_notification_get_TextView_hospital.text = hospital
-        myView.system_alert_notification_get_TextView_time_to_arrive.text = time_to_arrive
+        myView.system_alert_notification_get_TextView_time_to_arrive.text = "${time_to_arrive} ${time_to_string}"
 
         myView.system_alert_notification_get_TextView_yes_option.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
@@ -121,16 +122,17 @@ class System_alert_notification : Service() {
                 Log.e("SampleService : ", "Called in click ${isClickYes}")
                 if(isClickYes){
                     Log.e("SampleService : ", "inside if")
-                    setBooleanPreference(this@System_alert_notification, "isClick", false)
+                    setBooleanPreference(this@System_alert_notification, "isClickYes", false)
                     myView.visibility = View.INVISIBLE
 
-                    var intent= Intent(this@System_alert_notification, SendingRequestResponse::class.java)
+                    /*var intent= Intent(this@System_alert_notification, SendingRequestResponse::class.java)
                     intent.putExtra("response","yes")
-                    startService(intent)
+                    startService(intent)*/
 
                     var i = Intent(this@System_alert_notification, EmptyActivity::class.java)
                     i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     i.putExtra("phone_number",phone_number)
+                    i.putExtra("response","yes")
                     startActivity(i)
 
                 }
@@ -144,19 +146,24 @@ class System_alert_notification : Service() {
                 var isClickNo = getBooleanPreference(this@System_alert_notification, "isClickNo", false)
                 Log.e("SampleService : ", "Called in click ${isClickNo}")
                 if(isClickNo){
-                    Log.e("SampleService : ", "inside if")
-                    setBooleanPreference(this@System_alert_notification, "isClick", false)
+                    Log.e("SampleService : ", "inside if1")
+                    setBooleanPreference(this@System_alert_notification, "isClickNo", false)
                     myView.visibility = View.INVISIBLE
 
-
+                    Log.e("SampleService : ", "inside if2")
                     var intent= Intent(this@System_alert_notification, SendingRequestResponse::class.java)
+                    Log.e("SampleService : ", "inside if3")
                     intent.putExtra("response","no")
-                    startService(intent)
+                    Log.e("SampleService : ", "inside if4")
+                    this@System_alert_notification.startService(intent)
+                    Log.e("SampleService : ", "inside if5")
                     //sendNoResponse()
                 }
                 //layout.removeAllViewsInLayout()
                 return true
             }
         })
+
+        this.stopSelf()
     }
 }

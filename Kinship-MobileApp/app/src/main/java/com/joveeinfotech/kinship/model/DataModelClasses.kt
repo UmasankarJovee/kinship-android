@@ -105,10 +105,36 @@ data class requestorList(var date:String,var image_url: String,var name: String,
 
 data class requestInnerDetails(var image_url: String,var name: String,var hospital_name: String,var district: String)
 
-data class ForgotPasswordSendOTPToPhoneNumber(var status: Boolean)
+data class ForgotPasswordSendOTPToPhoneNumber(var status: Boolean, var user_id: String)
 
 data class ForgotPasswordVerifyOTP(var status: Boolean)
 
 data class ForgotPasswordSendPasswordResult(var status: Boolean)
 
 data class SendingRequestResponseResult(var status: Boolean)
+
+/*
+data class RequestResponseResult(var status: Boolean, var donors : List<InnerRequestResponseResult>)
+
+data class InnerRequestResponseResult(var name: String,
+                                      var image_url: String,
+                                      var locality: String,
+                                      var district: String,
+                                      var phone_number: String)*/
+data class RequestResponseResult(var donorList : List<InnerRequestResponseResult>)
+
+data class InnerRequestResponseResult(var date : String, var image_url: String, var name: String, var district: String)
+
+data class SendIsDonatedResult(var status: Boolean)
+
+data class FcmRequestData(var status: Boolean,
+                          var phone_number: String,
+                          var blood_group: String,
+                          var units : String,
+                          var hospital_name: String,
+                          var time_in_number : String,
+                          var time_in_string: String)
+
+//data class FcmGetPermission()
+
+

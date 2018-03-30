@@ -11,6 +11,8 @@ import com.joveeinfotech.kinship.R
 import com.joveeinfotech.kinship.model.requestInnerDetails
 import com.joveeinfotech.kinship.utils.Others
 import com.joveeinfotech.kinship.utils.Others.DLog
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.all_donars_inner_list.view.*
 import kotlinx.android.synthetic.main.all_donars_list.view.*
 import kotlinx.android.synthetic.main.all_requestor_inner_list.view.*
 import kotlinx.android.synthetic.main.all_requestor_list.view.*
@@ -103,14 +105,17 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
             override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
                 val view = LayoutInflater.from(parent?.context).inflate(R.layout.all_requestor_inner_list, parent, false)
                 Log.e("size",getRequestResults.size.toString())
-                return ViewHolder(view)
+                return ViewHolder(view, rhContext)
             }
 
-            class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+            class ViewHolder(view : View, var rhContext: Context) : RecyclerView.ViewHolder(view) {
 
                 fun bind(requestInner : requestInnerDetails,position: Int) {
                     Log.e("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
+
+                    var url = "http://192.168.0.56/images/${requestInner.image_url}"
+                    Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
                     itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
                     Log.e("InnerList : ",requestInner.image_url)
                     Log.e("InnerList : ",requestInner.name)

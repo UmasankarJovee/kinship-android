@@ -58,7 +58,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
     var district: String? = null
 
     var resolver: ContentResolver? = null
-    lateinit var upefContext: Context
+    //lateinit var upefContext: Context
     var userProfileEditFragmentPresenterImpl: UserProfileEditFragmentPresenterImpl?=null
 
     var cal = Calendar.getInstance()
@@ -105,7 +105,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
         }
 
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_editIcon1_imageView?.setOnClickListener{
-            val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
+            val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(this)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_user_details,null)
             dialogbuilder.setView(dialogView)
@@ -115,7 +115,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
             last_name=dialogView.findViewById(R.id.alert_user_details_lastName_editText)
 
             dialogView.alert_user_details_okButton.setOnClickListener {
-                Toast.makeText(upefContext,"sorry doalogBuilder is error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"sorry doalogBuilder is error", Toast.LENGTH_SHORT).show()
                 dialogbuilderCall.dismiss()
             }
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.visibility = View.GONE
@@ -149,7 +149,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
             activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_checkIcon3_imageView?.visibility = View.VISIBLE
 
             Others.DLog("Message", "Before DataPickerDialog")
-            DatePickerDialog(upefContext,
+            DatePickerDialog(this,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
@@ -186,7 +186,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.setOnClickListener{
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
             call("email",activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(),"","")
-            Toast.makeText(upefContext,activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(), Toast.LENGTH_SHORT).show()
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.visibility=View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView?.visibility=View.VISIBLE
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText?.visibility=View.GONE
@@ -194,7 +194,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
         }
         activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon6_imageView?.setOnClickListener {
             Others.DLog("Root", "1")
-            val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(upefContext)
+            val dialogbuilder: AlertDialog.Builder= AlertDialog.Builder(this)
             val inflater:LayoutInflater=this.layoutInflater
             val dialogView:View=inflater.inflate(R.layout.alert_address_details,null)
             dialogbuilder.setView(dialogView)
@@ -219,7 +219,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
                     userProfileEditFragmentPresenterImpl?.userAddressDetails(country!!,state!!,district!!,alert_address_details_scrollView_linearLayout1_city_editText.text.toString(),alert_address_details_scrollView_linearLayout1_locality_editText.text.toString(),alert_address_details_scrollView_linearLayout1_street_editText.text.toString())
                 } else {
                     //showDialog(0) // Please fill the all the fields
-                    Toast.makeText(upefContext,"Please fill the all the fields", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"Please fill the all the fields", Toast.LENGTH_LONG).show()
                 }
                 /*address="${street.text.toString()},${locality.text.toString()},${city.text.toString()},${district.text},${state.text}"
                 Toast.makeText(upefContext,address,Toast.LENGTH_LONG).show()*/
@@ -240,7 +240,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
 
     override fun setProfileDetails(image_url: String, name: String, date_of_birth: String, weight: String, address: String, phone_number: String, email: String) {
         Others.DLog("New Message", "${image_url}")
-        Picasso.with(upefContext).load(image_url).into(activity_user_profile_edit_constraintLayout_userProfile_imageView)
+        Picasso.with(this).load(image_url).into(activity_user_profile_edit_constraintLayout_userProfile_imageView)
         activity_user_profile_edit_constraintLayout_userName_textView.text=name
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView.text=name
         activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView.text=phone_number
@@ -254,9 +254,9 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
     }
 
     override fun setCountries(countryList: ArrayList<String>) {
-        countryList.add(0,upefContext.getString(R.string.user_address_select_your_country))
+        //countryList.add(0,upefContext.getString(R.string.user_address_select_your_country))
         Others.DLog("Root", "2i2")
-        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, countryList)
+        val dataAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, countryList)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_country_spinner?.adapter=dataAdapter
         alert_address_details_scrollView_linearLayout1_country_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -264,14 +264,14 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 country = countryList[position].toString()
                 userProfileEditFragmentPresenterImpl?.sendCountryReceiveState(country!!)
-                Toast.makeText(upefContext, country, Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, country, Toast.LENGTH_LONG).show()
             }
         }
     }
 
     override fun setStates(stateList: StateResult) {
         Others.DLog("Root", "2i4")
-        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, stateList.state)
+        val dataAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, stateList.state)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_state_spinner.adapter = dataAdapter
         alert_address_details_scrollView_linearLayout1_state_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -281,13 +281,13 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 state = stateList.state[position].toString()
                 userProfileEditFragmentPresenterImpl?.sendStateReceiveDistrict(state!!)
-                Toast.makeText(upefContext, state, Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, state, Toast.LENGTH_LONG).show()
             }
         }
     }
 
     override fun setDistricts(districtList: DistrictResult) {
-        val dataAdapter = ArrayAdapter(upefContext, android.R.layout.simple_spinner_item, districtList.districts)
+        val dataAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, districtList.districts)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         alert_address_details_scrollView_linearLayout1_district_spinner.adapter = dataAdapter
         alert_address_details_scrollView_linearLayout1_district_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -295,7 +295,7 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 district = districtList.districts[position].toString()
                 //sendStateReceiveDistrict()
-                Toast.makeText(upefContext, district, Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, district, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -303,13 +303,13 @@ class UserProfileEdit : AppCompatActivity(), KinshipContract.UserProfileEditFrag
     override fun call(field: String, value: String,field1:String,value1:String) {
 
         Others.DLog("call Message", "Before call SendingUserProfileEddit")
-        var intent= Intent(upefContext, SendingUserProfileEdit::class.java)
+        var intent= Intent(applicationContext, SendingUserProfileEdit::class.java)
         intent.putExtra("field",field)
         intent.putExtra("value",value)
         intent.putExtra("field1",field1)
         intent.putExtra("value1",value1)
         Others.DLog("call Message", "${field},${value},${field1},${value1}")
-        upefContext.startService(intent)
+        this.startService(intent)
 
     }
 

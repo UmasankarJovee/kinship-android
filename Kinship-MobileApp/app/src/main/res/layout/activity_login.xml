@@ -151,6 +151,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_login_linear_layout_forget_password_and_register" />
 
+
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>

@@ -55,9 +55,9 @@ class Login : AppCompatActivity(), LoginView {
            loginPresenter?.callRegisterActivity()
         }
 
-        /*activity_login_textview_forget_password.setOnClickListener{
+        activity_login_textview_forget_password.setOnClickListener{
             displayForgotPasswordGetPhoneNumber()
-        }*/
+        }
     }
 
     private fun displayForgotPasswordGetPhoneNumber() {
