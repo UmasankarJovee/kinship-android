@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
+import com.joveeinfotech.kinship.`object`.CommonKeys.image_url
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.UpdateDetailsResult
 import com.joveeinfotech.kinship.model.profileview
@@ -60,7 +61,7 @@ class ProfileViewPresenterImpl:APIListener,ProfileViewPresenter {
                     else if(result.blood_group=="6")blood_group="AB-"
                     else if(result.blood_group=="7")blood_group="O+"
                     else blood_group="O-"
-                    profileViewActivity.setViewData(result.first_name,result.last_name,"http://192.168.0.56/images/${result.image}","${blood_group}",result.email,result.occupation,result.facebook_id,result.total_donated,result.total_request,result.last_donated_date)
+                    profileViewActivity.setViewData(result.first_name,result.last_name,"${image_url}${result.image}","${blood_group}",result.email,result.occupation,result.facebook_id,result.total_donated,result.total_request,result.last_donated_date)
                     //Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                     //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
                 } else {

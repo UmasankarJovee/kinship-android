@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.joveeinfotech.kinship.SelectLanguage">
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_select_language_constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_select_language_constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7">
+
+        <ImageView
+            android:id="@+id/activity_select_language_constraintLayout1_globalGif_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/global"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/activity_select_language_constraintLayout1_welcomeLabel_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_select_language_constraintLayout1_welcomeLabel_textView"
+            android:layout_marginBottom="50dp"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/activity_select_language_constraintLayout1_selectLanguage_spinner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/activity_select_language_constraintLayout1_selectLanguage_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_select_language_constraintLayout1_welcomeLabel_textView" />
+       <!-- <Button
+            android:id="@+id/activity_select_language_constraintLayout1_submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:textColor="@color/white"
+            android:background="@color/toolBarColor"
+            app:layout_constraintTop_toBottomOf="@+id/activity_select_language_constraintLayout1_selectLanguage_spinner"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_select_language_constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_select_language_constraintLayout1"
+        app:layout_constraintVertical_weight="0.8">
+
+        <TextView
+            android:id="@+id/activity_select_language_constraintLayout2_skip_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/right_black_24dp"
+            android:gravity="center"
+            android:text="@string/activity_select_language_constraintLayout2_skip_textView"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
+</ScrollView>

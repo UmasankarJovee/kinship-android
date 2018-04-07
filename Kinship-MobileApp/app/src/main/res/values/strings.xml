@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Kinship</string>
-
     <!--navigation.xml-->
     <string name="navigation_home">Home</string>
     <string name="navigation_blood_request">Blood Request</string>
@@ -92,18 +91,18 @@
         7. If there is any bleeding from the place from where blood is collected, apply pressure and raise the arm for a few minutes.\n\n
         Instructions to Blood Donors How much blood can be taken in your Body:\n\n
         1. Our body has 5.5 litre of blood of which only 350 ml - 450 ml of blood is taken depending upon weight of donor. \n
-        2. Majority of healthy adults can tolerate withdrawal of one unit of blood. \n
+        2. One unit of blood means 350 ml. \n
         3. The withdrawan blood volume is restored within 24 hours and the haemoglobin and cell components are restored in 2 months. \n
         4. Therefore it is safe to donate blood every three months.
     </string>
 
     <!-- alert_blood_requestor_instructions-->
     <string name="blood_requestor_instructions_textview">
-       Instructions to Blood Requester Before Blood Request:\n\n
+       Instructions to Before Blood Request:\n\n
         1. You must select correct blood request. \n
         2. You give correct unit of need of blood .Do not give additional units. \n
         3. If you play with this application then the action will be taken on you. \n\n
-        Instructions to Blood Requester After Blood Donation:\n\n
+        Instructions to After Blood Donation:\n\n
         1. You must like on social profile previous blood donor of your request.
     </string>
 
@@ -198,9 +197,11 @@
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
-
     <string name="blood_donated_confirm">Is %s donated blood?</string>
-
     <string name="todo">TODO</string>
 
+    <!-- SelectLanguage-->
+    <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">WELCOME</string>
+    <string name="activity_select_language_constraintLayout2_skip_textView">NEXT</string>
+    <string name="select_language">Select Language</string>
 </resources>

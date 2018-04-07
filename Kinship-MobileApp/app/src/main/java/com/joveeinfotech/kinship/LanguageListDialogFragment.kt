@@ -3,7 +3,6 @@ package com.joveeinfotech.kinship
 import android.app.DialogFragment
 import android.support.v4.app.FragmentTransaction
 import android.content.Context
-import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -14,12 +13,10 @@ import android.view.ViewGroup
 import android.widget.*
 import com.joveeinfotech.kinship.contract.KinshipContract.LanguageListener
 import com.joveeinfotech.kinship.helper.LocaleHelper
-import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setIntPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.kinship.presenter.SettingsFragmentPresenterImpl
 import com.joveeinfotech.kinship.utils.Others.DLog
 import kotlinx.android.synthetic.main.alert_language_settings.view.*
-import java.util.*
 
 /**
  * Created by shanmugarajjoveeinfo on 20/2/18.
@@ -33,6 +30,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     var settingsFragment: SettingsFragment? = null
     var getLanguage: Int = 0
     val language: String? = null
+    //val trans1:FragmentTransaction?=null
     /*var languageToLoad:String?=null
     lateinit var locale:Locale
     lateinit var config:Configuration
@@ -49,13 +47,13 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
         view1 = inflater.inflate(R.layout.alert_language_settings, null)
         dialog.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        //trans=fragmentManager?.beginTransaction()
         settingsFragmentPresenterImpl = SettingsFragmentPresenterImpl(mContext, this)
         settingsFragment = SettingsFragment()
         /*alert_language_settings_cardView_constraintLayout_spinner?.adapter=ArrayAdapter<String>(activity,R.layout.alert_language_settings,languages)as SpinnerAdapter?
 
         alert_language_settings_cardView_constraintLayout_spinner?.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -119,7 +117,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     }*/
     override fun onLanguageClick(data: Int) {
         //*settingsFragment?.onLanguageClicks(data)*//
-        Log.e("Message", "onItemClicks function")
+        DLog("Message", "onItemClicks function")
         if (data == 0) {
             Toast.makeText(activity, "Tamil Clicked !", Toast.LENGTH_SHORT).show()
             LocaleHelper.setLocale(mContext, "ta")
@@ -130,6 +128,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
             dismiss()
             call1().call2(trans)
+            activity.recreate()
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/
@@ -144,6 +143,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
             dismiss()
             call1().call2(trans)
+            activity.recreate()
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/
@@ -158,6 +158,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
             dismiss()
             call1().call2(trans)
+            activity.recreate()
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/

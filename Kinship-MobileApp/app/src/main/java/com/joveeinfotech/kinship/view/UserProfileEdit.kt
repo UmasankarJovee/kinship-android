@@ -370,7 +370,7 @@ class UserProfileEdit : AppCompatActivity(),UserProfileEditFragmentView {
                     byteArray = byteArrayOutputStream.toByteArray()
                     val imageString = Base64.encodeToString(byteArray, Base64.DEFAULT)
                     Others.DLog("inside : ", imageString)
-                    activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
+                    activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap!!)
                     userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
                     //val isr = resolver?.openInputStream(I.data!!)
                     //uploadImage(getBytes(isr))

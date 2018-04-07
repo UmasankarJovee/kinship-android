@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import com.joveeinfotech.kinship.APICall
 import com.joveeinfotech.kinship.APIListener
+import com.joveeinfotech.kinship.`object`.CommonKeys.image_url
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.setStringPreference
@@ -155,8 +156,6 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
                 val result = response as UserProfileDisplayResult
                 Log.e("API CALL : ", "inside UserProfileDisplayResult API CALL and onSuccess when")
                 if (true) {
-                    setStringPreference(context,"image_url","http://192.168.0.56/images/")
-                    var image_url= getStringPreference(context,"image_url","http://192.168.0.56/images/")
                     view.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
                     CustomToast().normalToast(context,"${result.message}")
                     //val imageView : ImageView = ImageView(this)

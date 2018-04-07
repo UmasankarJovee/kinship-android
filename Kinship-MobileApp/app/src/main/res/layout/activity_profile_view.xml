@@ -37,7 +37,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                <de.hdodenhof.circleimageview.CircleImageView
+                <com.joveeinfotech.kinship.CircleImageView
                     android:layout_width="145dp"
                     android:layout_height="145dp"
                     android:layout_marginBottom="2dp"
@@ -47,7 +47,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <com.joveeinfotech.kinship.CircleImageView
                     android:id="@+id/activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout1_userProfile_imageView"
                     android:layout_width="128dp"
                     android:layout_height="128dp"

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.joveeinfotech.kinship.CircleImageView
             android:id="@+id/all_donars_inner_list_user_profile"
             android:layout_width="70dp"
             android:layout_height="70dp"

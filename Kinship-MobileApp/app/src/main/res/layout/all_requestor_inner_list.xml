@@ -12,7 +12,7 @@
         android:id="@+id/all_requestor_inner_list_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.joveeinfotech.kinship.CircleImageView
             android:id="@+id/all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView"
             android:layout_width="75dp"
             android:layout_height="75dp"

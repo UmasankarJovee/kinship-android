@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.`object`.CommonKeys.image_url
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
 import com.joveeinfotech.kinship.model.donationInnerDetails
 import com.joveeinfotech.kinship.view.ProfileView
@@ -119,8 +120,8 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
 
                     Log.e("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
-                    //var image_url= SharedPreferenceHelper.getStringPreference(mcontext, "image_url", "http://192.168.0.56/images/")
-                    var url = "http://192.168.0.56/images/${donationInner.image_url}"
+                    //var image_url= SharedPreferenceHelper.getStringPreference(mcontext, "image_url", "http://192.168.0.52/images/")
+                    var url = "${image_url}${donationInner.image_url}"
                     Picasso.with(mcontext).load(url).into(itemView.all_donars_inner_list_user_profile)
                     Log.e("InnerList : ",donationInner.image_url)
                     Log.e("InnerList : ",donationInner.name)

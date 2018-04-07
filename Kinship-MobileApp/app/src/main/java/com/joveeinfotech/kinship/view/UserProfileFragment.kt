@@ -162,7 +162,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 byteArray = byteArrayOutputStream.toByteArray()
                 imageString= Base64.encodeToString(byteArray, Base64.DEFAULT)
                 Others.DLog("inside : ", imageString!!)
-                fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap)
+                fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap!!)
                 //upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
                 //userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
                 //val isr = resolver?.openInputStream(I.data!!)

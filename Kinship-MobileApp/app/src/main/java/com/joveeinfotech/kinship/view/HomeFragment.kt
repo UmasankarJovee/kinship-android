@@ -17,10 +17,9 @@ import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.presenter.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
-import me.relex.circleindicator.CircleIndicator
 import java.util.*
 import android.R.attr.country
-
+import com.joveeinfotech.kinship.CircleIndicator
 
 
 /*
@@ -101,7 +100,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         mPager = view1?.findViewById<ViewPager>(R.id.activity_home_fragment_ImageSlider_ViewPager) as ViewPager
         mPager!!.adapter = ImageSliderAdapterClass()
         mindicator =view1?.findViewById<CircleIndicator>(R.id.activity_home_fragment_ImageSlider_Indicator)as CircleIndicator
-        mindicator?.setViewPager(mPager)
+        mindicator?.setViewPager(mPager!!)
 
         // Auto start of viewpager
         val handler = Handler()

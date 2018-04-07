@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"/>
-            <me.relex.circleindicator.CircleIndicator
+            <com.joveeinfotech.kinship.CircleIndicator
                 android:id="@+id/activity_home_fragment_ImageSlider_Indicator"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"

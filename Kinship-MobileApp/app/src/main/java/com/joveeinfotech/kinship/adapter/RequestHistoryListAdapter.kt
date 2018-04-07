@@ -8,17 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.kinship.R
-import com.joveeinfotech.kinship.R.id.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
-import com.joveeinfotech.kinship.helper.SharedPreferenceHelper
+import com.joveeinfotech.kinship.`object`.CommonKeys.image_url
 import com.joveeinfotech.kinship.model.requestInnerDetails
-import com.joveeinfotech.kinship.utils.Others
 import com.joveeinfotech.kinship.utils.Others.DLog
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.all_donars_inner_list.view.*
-import kotlinx.android.synthetic.main.all_donars_list.view.*
 import kotlinx.android.synthetic.main.all_requestor_inner_list.view.*
 import kotlinx.android.synthetic.main.all_requestor_list.view.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -32,9 +27,9 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        DLog("Shanmugam : ", "RequestHistory5")
-        DLog("Shanmugam : ", "RequestHistory6")
-        DLog("Shanmugam : ", "RequestHistory7 ${gh[position]} ${gh.size}")
+        DLog("Check : ", "RequestHistory5")
+        DLog("Check : ", "RequestHistory6")
+        DLog("Check : ", "RequestHistory7 ${gh[position]} ${gh.size}")
         holder.bind(getRequestResults,gh[position])
     }
 
@@ -120,11 +115,11 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
                     Log.e("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
 
-                    var url = "http://192.168.0.56/images/${requestInner.image_url}"
-                    Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
-                    var image_url= SharedPreferenceHelper.getStringPreference(rhContext, "image_url", "http://192.168.0.56/images/")
+                    //var url = "http://192.168.0.56/images/${requestInner.image_url}"
+                    //Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
+                    //var image_url= SharedPreferenceHelper.getStringPreference(rhContext, "image_url", "http://192.168.0.52/images/")
                     Picasso.with(rhContext).load("${image_url}${requestInner.image_url}").into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
-                    itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
+                    //itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
                     Log.e("InnerList : ",requestInner.image_url)
                     Log.e("InnerList : ",requestInner.name)
                     Log.e("InnerList : ",requestInner.district)

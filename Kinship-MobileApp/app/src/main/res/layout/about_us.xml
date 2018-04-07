@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/about_us_constraintLayout2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/about_us_constraintLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.joveeinfotech.kinship.CircleImageView
+                        android:id="@+id/about_us_organisationLogo_imageView"
+                        android:layout_width="500dp"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/jovee_infotech"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <com.joveeinfotech.kinship.CircleImageView
+                        android:id="@+id/about_us_constraintLayout1_imageView1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/index6"
+                        app:layout_constraintTop_toBottomOf="@+id/about_us_organisationLogo_imageView"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/about_us_constraintLayout1_imageView2"/>
+
+                    <com.joveeinfotech.kinship.CircleImageView
+                        android:id="@+id/about_us_constraintLayout1_imageView2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="50dp"
+                        android:src="@drawable/index4"
+                        app:layout_constraintTop_toBottomOf="@+id/about_us_organisationLogo_imageView"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/about_us_constraintLayout1_imageView1"/>
+
+                    <com.joveeinfotech.kinship.CircleImageView
+                        android:id="@+id/about_us_constraintLayout1_imageView3"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="84dp"
+                        android:src="@drawable/index1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/about_us_constraintLayout1_imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/about_us_constraintLayout1_imageView1"/>
+
+                    <com.joveeinfotech.kinship.CircleImageView
+                        android:id="@+id/about_us_constraintLayout1_imageView4"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="84dp"
+                        android:src="@drawable/index7"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/about_us_constraintLayout1_imageView3"
+                        app:layout_constraintTop_toBottomOf="@+id/about_us_constraintLayout1_imageView2"/>
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/about_us_constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_weight="0.8">
+
+        <TextView
+            android:id="@+id/activity_select_language_constraintLayout2_skip_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/right_black_24dp"
+            android:gravity="center"
+            android:text="@string/activity_select_language_constraintLayout2_skip_textView"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

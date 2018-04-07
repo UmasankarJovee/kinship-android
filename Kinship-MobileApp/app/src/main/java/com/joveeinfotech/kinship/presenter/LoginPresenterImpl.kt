@@ -55,7 +55,7 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
         if (session?.isFirstInstall()!!) {
             Log.e("qqqqqqqqqqqqqqqq","call inside if condition in isFirstinstall")
             session?.createFirstInstall()
-            val i = Intent(mContext, UserRegistration::class.java)
+            val i = Intent(mContext, AboutUS::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             mContext.startActivity(i)

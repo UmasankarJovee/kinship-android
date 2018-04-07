@@ -1,6 +1,8 @@
 package com.joveeinfotech.kinship
 
 import android.content.Context
+import com.joveeinfotech.kinship.`object`.CommonKeys.image_url
+import com.joveeinfotech.kinship.`object`.CommonKeys.ip_address
 import com.joveeinfotech.kinship.helper.SharedPreferenceHelper.getStringPreference
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -15,9 +17,9 @@ class APIClient {
     companion object {
 
         fun getClient(mcontext: Context): APIInterface? {
-            var ip = getStringPreference(mcontext,"ip","192.168.43.49")
+            //var ip = getStringPreference(mcontext,"ip","192.168.0.52")
             return  Retrofit.Builder()
-                    .baseUrl("http://192.168.0.56/")
+                    .baseUrl(ip_address)
                     //.baseUrl("http://${ip}/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())

@@ -78,7 +78,11 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
     override fun languageSettings() {
 
         Log.e("Message","after language settings")
+        /*val bundle = Bundle()
+        bundle.p(trans!!)
+        bundle.putString("mContext", mContext!!)*/
         val mydialog = LanguageListDialogFragment(trans!!,mContext)
+        //mydialog.arguments=bundle
         mydialog.setCancelable(true)
         mydialog.show(activity?.fragmentManager, "tag")
         /*mydialog.cancelButton?.setOnClickListener {

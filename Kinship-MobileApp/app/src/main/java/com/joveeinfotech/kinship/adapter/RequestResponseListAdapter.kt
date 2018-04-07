@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.joveeinfotech.kinship.R
+import com.joveeinfotech.kinship.`object`.CommonKeys.image_url
 import com.joveeinfotech.kinship.contract.KinshipContract.*
 import com.joveeinfotech.kinship.model.InnerRequestResponseResult
 import com.squareup.picasso.Picasso
@@ -41,7 +42,7 @@ class RequestResponseListAdapter(var responseResult:List<InnerRequestResponseRes
         fun bind(responseResult : InnerRequestResponseResult, colors : Array<String>, position: Int) {
 
 
-            var url = "http://192.168.0.56/images/${responseResult.image_url}"
+            var url = "${image_url}${responseResult.image_url}"
             Picasso.with(mcontext).load(url).into(itemView.all_request_response_profile_imageView)
 
 /*
