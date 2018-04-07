@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "925384792703",
-    "firebase_url": "https://kinship-665c2.firebaseio.com",
-    "project_id": "kinship-665c2",
-    "storage_bucket": "kinship-665c2.appspot.com"
+    "project_number": "1054380343057",
+    "firebase_url": "https://bloodex-3e475.firebaseio.com",
+    "project_id": "bloodex-3e475",
+    "storage_bucket": "bloodex-3e475.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:925384792703:android:4f39f1ae239e9ad1",
+        "mobilesdk_app_id": "1:1054380343057:android:2f074f8388248956",
         "android_client_info": {
-          "package_name": "com.joveeinfotech.kinship"
+          "package_name": "com.joveeinfotech.bloodex"
         }
       },
       "oauth_client": [
         {
-          "client_id": "925384792703-bfeh50p6tas7n1vnibrlonngub133ssq.apps.googleusercontent.com",
+          "client_id": "1054380343057-k57o6q33ih1un7dhk0f3h9mhsn4vof3f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.joveeinfotech.kinship",
+            "package_name": "com.joveeinfotech.bloodex",
             "certificate_hash": "1639f572950a73a64b6b9975023b3777c7f835e3"
           }
         },
         {
-          "client_id": "925384792703-d0rm9p661skoojmhqkvu2eqi1a0ggd47.apps.googleusercontent.com",
+          "client_id": "1054380343057-hssu540siuoqht8ren89kf0jkqnr55ci.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBOKwWc_jaVZevblwf4Uz2KwrBCt9lBMxo"
+          "current_key": "AIzaSyCoSmo2Plk4YmNM7o3nN47uHfjfd5Jpz6o"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "925384792703-d0rm9p661skoojmhqkvu2eqi1a0ggd47.apps.googleusercontent.com",
+              "client_id": "1054380343057-hssu540siuoqht8ren89kf0jkqnr55ci.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

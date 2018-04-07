@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.joveeinfotech.kinship.view.UserDetails">
+    tools:context="com.joveeinfotech.bloodex.view.UserDetails">
 
     <FrameLayout
         android:id="@+id/activity_user_details_frame_layout"

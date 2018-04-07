@@ -16,13 +16,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.joveeinfotech.kinship.view.Login">
+        tools:context="com.joveeinfotech.bloodex.view.Login">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/activity_user_registration"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_height="wrap_content">
 
 
             <ImageView

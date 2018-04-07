@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">Kinship</string>
+     <!--<string name="app_name">
+        <font color='red' style='impact'>B</font>
+        <font color='black' style='impact'>lood</font>
+        <font color='red' style='impact'>E</font>
+        <font color='black' style='impact'>x</font>
+    </string>-->
+
+    <string name="app_name">BloodEx</string>
+
+
 
     <!--navigation.xml-->
     <string name="navigation_home">Home</string>

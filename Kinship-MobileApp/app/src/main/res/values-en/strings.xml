@@ -7,6 +7,17 @@
     <string name="navigation_donors">Donors</string>
     <string name="navigation_top20">Top 20</string>
 
+
+   <!-- <string name="app_name">
+        <font color='red' style='impact'>B</font>
+        <font color='black' style='impact'>lood</font>
+        <font color='red' style='impact'>E</font>
+        <font color='black' style='impact'>x</font>
+    </string>-->
+    <string name="app_name">BloodEx</string>
+
+
+
     <!-- activity_login-->
     <string name="activity_login_phone_number_editText">Phone Number</string>
     <string name="activity_login_password_editText">Password</string>

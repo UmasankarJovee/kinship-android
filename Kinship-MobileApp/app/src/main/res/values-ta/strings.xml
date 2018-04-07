@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+     <!--<string name="app_name">
+        <font color='red' style='impact'>B</font>
+        <font color='black' style='impact'>lood</font>
+        <font color='red' style='impact'>E</font>
+        <font color='black' style='impact'>x</font>
+    </string>-->
+
+    <string name="app_name">BloodEx</string>
+
     <!--navigation.xml-->
     <string name="navigation_home">முகப்பு</string>
     <string name="navigation_blood_request">இரத்தக் கோரிக்கை</string>
