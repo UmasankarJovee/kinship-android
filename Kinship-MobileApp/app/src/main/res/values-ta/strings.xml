@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="app_name">BloodEx</string>
+
     <!--navigation.xml-->
     <string name="navigation_home">முகப்பு</string>
     <string name="navigation_blood_request">இரத்தக் கோரிக்கை</string>

@@ -24,7 +24,7 @@
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1" />
 
-        <com.joveeinfotech.kinship.CircleImageView
+        <com.joveeinfotech.bloodex.CircleImageView
             android:id="@+id/activity_user_profile_edit_constraintLayout_userProfile_imageView"
             android:layout_width="115dp"
             android:layout_height="115dp"

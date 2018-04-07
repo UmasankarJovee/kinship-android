@@ -6,13 +6,14 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.joveeinfotech.kinship"
+        applicationId "com.joveeinfotech.bloodex"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         release {
@@ -56,6 +57,7 @@ dependencies {
     //compile 'de.hdodenhof:circleimageview:2.0.0'
     //compile 'me.relex:circleindicator:1.2.2@aar'
     compile 'com.github.bumptech.glide:glide:3.8.0'
+
 
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.test:runner:1.0.1'

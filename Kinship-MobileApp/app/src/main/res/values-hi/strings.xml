@@ -107,6 +107,18 @@
     </string>
 
     <!-- settingsFragment-->
+=======
+
+    <!--<string name="app_name">
+        <font color='red' style='impact'>B</font>
+        <font color='black' style='impact'>lood</font>
+        <font color='red' style='impact'>E</font>
+        <font color='black' style='impact'>x</font>
+    </string>
+-->
+    <string name="app_name">BloodEx</string>
+
+>>>>>>> 53dbd824aba1c220f2fb36ff3d8be40a27af1d04
     <string name="settingsFragment_cardView1_textView">प्रोफाइल एडिट करें</string>
     <string name="settingsFragment_cardView2_textView">सूचनाएं</string>
     <string name="settingsFragment_cardView3_textView">भाषा</string>

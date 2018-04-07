@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    tools:context="com.joveeinfotech.kinship.view.UserRegistration">
+    tools:context="com.joveeinfotech.bloodex.view.UserRegistration">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_user_registration_scrollView_constraintLayout"
@@ -22,7 +22,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/BloodEx_logo" />
 
         <TextView
             android:id="@+id/activity_user_registration_scrollView_constraintLayout_title_textView"

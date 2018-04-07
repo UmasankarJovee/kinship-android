@@ -30,7 +30,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.joveeinfotech.kinship.CircleImageView
+    <com.joveeinfotech.bloodex.CircleImageView
         android:id="@+id/all_request_response_profile_imageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -73,19 +73,16 @@
         app:layout_constraintStart_toEndOf="@+id/all_request_response_profile_imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/all_request_response_call_textView"
+    <ImageView
+        android:id="@+id/all_request_response_call_imageView"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginRight="13dp"
         android:layout_marginTop="5dp"
-        android:drawableLeft="@mipmap/phone3"
-        android:text=""
-        android:textSize="17sp"
+        android:src="@mipmap/phone3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </android.support.constraint.ConstraintLayout>
 

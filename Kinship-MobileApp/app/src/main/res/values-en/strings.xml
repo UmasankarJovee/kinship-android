@@ -7,6 +7,8 @@
     <string name="navigation_donors">Donors</string>
     <string name="navigation_top20">Top 20</string>
 
+    <string name="app_name">BloodEx</string>
+
     <!-- activity_login-->
     <string name="activity_login_phone_number_editText">Phone Number</string>
     <string name="activity_login_password_editText">Password</string>

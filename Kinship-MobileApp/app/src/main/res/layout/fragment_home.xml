@@ -9,7 +9,7 @@
     android:fillViewport="true"
     android:scrollbars="none"
     android:background="#f5f5f5"
-    tools:context="com.joveeinfotech.kinship.Home">
+    tools:context="com.joveeinfotech.bloodex.Home">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activity_home_fragment_constraintlayout"
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"/>
-            <com.joveeinfotech.kinship.CircleIndicator
+            <com.joveeinfotech.bloodex.CircleIndicator
                 android:id="@+id/activity_home_fragment_ImageSlider_Indicator"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"

@@ -37,7 +37,7 @@
         android:layout_toEndOf="@+id/logo"
         />
 
-    <com.joveeinfotech.kinship.BoomMenuButton
+    <com.joveeinfotech.bloodex.BoomMenuButton
         android:id="@+id/action_bar_right_bmb"
         android:layout_width="56dp"
         android:layout_height="match_parent"

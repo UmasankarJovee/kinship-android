@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.joveeinfotech.kinship">
+    package="com.joveeinfotech.bloodex">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -16,61 +16,96 @@
     <application
         android:allowBackup="true"
         android:configChanges="locale"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/BloodEx_logo"
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
-            android:name=".SplashScreen"
+            android:name="com.joveeinfotech.bloodex.SplashScreen"
             android:theme="@style/Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.joveeinfotech.bloodex.view.Login"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name="com.joveeinfotech.bloodex.view.UserRegistration"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name="com.joveeinfotech.bloodex.Home"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/BloodEx_logo"
+            android:theme="@style/AppThemeActionBar">
 
         </activity>
         <activity
-            android:name=".view.Login"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".view.UserRegistration"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".Home"
-            android:configChanges="orientation|keyboardHidden"
-            android:icon="@drawable/logo"
-            android:theme="@style/AppThemeActionBar"/>
-        <activity
-            android:name=".view.UserDetails"
+            android:name="com.joveeinfotech.bloodex.view.UserDetails"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".view.ProfileDisplay"
+            android:name="com.joveeinfotech.bloodex.view.ProfileDisplay"
             android:theme="@style/AppThemeNoActionBar" />
 
         <service
-            android:name=".utils.LocationService"
+            android:name="com.joveeinfotech.bloodex.utils.LocationService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".SendingUserProfileEdit"
+            android:name="com.joveeinfotech.bloodex.SendingUserProfileEdit"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".notification.System_alert_notification"
+            android:name="com.joveeinfotech.bloodex.notification.SendingRequestResponse"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".notification.SendingRequestResponse"
+            android:name="com.joveeinfotech.bloodex.notification.SendingPostImageResponse"
             android:enabled="true"
             android:exported="true" />
-        <service android:name=".notification.FcmInstanceIdService">
+        <service
+            android:name="com.joveeinfotech.bloodex.notification.System_alert_Blood_Donation_Camp"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.joveeinfotech.bloodex.notification.System_alert_Blood_donation_Day"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.joveeinfotech.bloodex.notification.System_alert_Blood_Donor_Invite"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.joveeinfotech.bloodex.notification.System_alert_Get_Permission_of_Donor"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.joveeinfotech.bloodex.notification.System_alert_notification"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.joveeinfotech.bloodex.notification.System_alert_User_Information"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.joveeinfotech.bloodex.utils.SendLocation"
+            android:enabled="true"
+            android:exported="true" />
+        <service android:name="com.joveeinfotech.bloodex.notification.FcmInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".notification.FcmMessagingService">
+        <service android:name="com.joveeinfotech.bloodex.notification.FcmMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <receiver android:name=".view.NotificationReceiver">
+        <receiver android:name="com.joveeinfotech.bloodex.view.NotificationReceiver">
             <intent-filter>
                 <action android:name="YES_ACTION" />
                 <action android:name="NO_ACTION" />
@@ -78,36 +113,35 @@
         </receiver>
 
         <activity
-            android:name=".EmptyActivity"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:name="com.joveeinfotech.bloodex.EmptyActivity"
+            android:theme="@style/AppThemeNoActionBar">
+        </activity>
         <activity
-            android:name=".RequestHistory"
+            android:name="com.joveeinfotech.bloodex.RequestHistory"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppThemeNoActionBar" />
+
         <activity
-            android:name=".EmptyActivity1"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:name="com.joveeinfotech.bloodex.EmptyActivity1"
+            android:theme="@style/AppThemeNoActionBar">
+
+        </activity>
         <activity
-            android:name=".view.UserProfileEdit"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:name="com.joveeinfotech.bloodex.view.UserProfileEdit"
+            android:theme="@style/AppThemeNoActionBar"/>
         <activity
-            android:name=".view.RequestResponse"
-            android:theme="@style/AppThemeActionBar" />
+            android:name="com.joveeinfotech.bloodex.view.RequestResponse"
+            android:theme="@style/AppThemeActionBar">
+
+        </activity>
         <activity
-            android:name=".view.ProfileView"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".SelectLanguage"
+            android:name="com.joveeinfotech.bloodex.view.ProfileView"
             android:theme="@style/AppThemeNoActionBar">
         </activity>
         <activity android:name=".AboutUS"
-            android:theme="@style/AppThemeNoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppThemeNoActionBar"/>
+        <activity android:name=".SelectLanguage"
+            android:theme="@style/AppThemeNoActionBar"/>
     </application>
 
 </manifest>
