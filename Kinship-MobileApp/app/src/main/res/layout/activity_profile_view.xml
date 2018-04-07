@@ -41,7 +41,7 @@
                     android:layout_width="145dp"
                     android:layout_height="145dp"
                     android:layout_marginBottom="2dp"
-                    android:background="@drawable/new_circle"
+                    android:background="@drawable/border_circle"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"

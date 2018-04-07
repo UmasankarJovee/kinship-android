@@ -164,9 +164,9 @@ interface KinshipContract {
 
     // UserProfileEditFragment
     interface UserProfileEditFragmentView{
-        fun setCountries(dataAdapter: ArrayList<String>)
-        fun setStates(stateList: StateResult)
-        fun setDistricts(districtList: DistrictResult)
+        fun setCountries(countryList: ArrayList<String>)
+        fun setStates(stateList: ArrayList<String>)
+        fun setDistricts(districtList:ArrayList<String>)
         fun updateDateInView()
         fun call(field:String,value:String,field1:String,value1:String)
         fun setProfileDetails(image_url: String, name: String,date_of_birth: String,weight:String,address: String,phone_number: String,email: String)
@@ -175,9 +175,9 @@ interface KinshipContract {
         fun initPresenter()
         fun loadProfileDetails()
         fun loadCountries()
-        fun sendCountryReceiveState(country : String)
+        fun sendCountryReceiveState()
         fun userAddressDetails(country : String,state : String, district : String, city : String, locality : String, street : String)
-        fun sendStateReceiveDistrict(state: String)
+        fun sendStateReceiveDistrict()
         fun sendImageString(imageString:String)
     }
 
