@@ -3,14 +3,20 @@ package com.joveeinfotech.bloodex.presenter
 import android.content.Context
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
+import com.google.gson.Gson
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.model.UserHealthDetailsResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.view.UserAddressFragment
 import java.util.*
+import kotlin.collections.ArrayList
+import org.json.JSONArray
+import org.json.JSONObject
+
 
 class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFragmentPresenter {
 
@@ -35,11 +41,15 @@ class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFra
         networkCall = APICall(mContext)
     }
 
-    override fun sendHealthDetails(healthDetails: Array<Array<String>?>) {
+    override fun sendHealthDetails(healthDetails: JSONObject) {
         var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
         val queryParams = HashMap<String, String>()
         //queryParams.put("user_id", user_id!!)
-        queryParams.put("disease", Arrays.deepToString(healthDetails))
+        //val jsArray = JSONArray(healthDetails)
+        //val Gson=Gson()
+        queryParams.put("user_id","161")
+        queryParams.put("diseases", healthDetails.toString())
+        DLog("Result","${healthDetails.toString()}")
         Log.e("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/health", queryParams, UserHealthDetailsResult::class.java, this, 1, "Your Details are storing...")
     }

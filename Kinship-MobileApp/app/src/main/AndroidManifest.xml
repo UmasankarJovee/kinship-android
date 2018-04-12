@@ -16,17 +16,13 @@
     <application
         android:allowBackup="true"
         android:configChanges="locale"
-        android:icon="@drawable/BloodEx_logo"
+        android:icon="@drawable/bloodex_logo"
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
             android:name="com.joveeinfotech.bloodex.SplashScreen"
             android:theme="@style/Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.joveeinfotech.bloodex.view.Login"
@@ -37,14 +33,20 @@
         <activity
             android:name="com.joveeinfotech.bloodex.Home"
             android:configChanges="orientation|keyboardHidden"
-            android:icon="@drawable/BloodEx_logo"
+            android:icon="@drawable/bloodex_logo"
             android:theme="@style/AppThemeActionBar">
 
         </activity>
         <activity
             android:name="com.joveeinfotech.bloodex.view.UserDetails"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/AppThemeNoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.joveeinfotech.bloodex.view.ProfileDisplay"
             android:theme="@style/AppThemeNoActionBar" />

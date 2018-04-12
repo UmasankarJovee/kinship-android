@@ -56,13 +56,17 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
         //permissions()
         //proceedAfterPermission()
 
-        user_id = getStringPreference(this,"user_id","")
+        /*user_id = getStringPreference(this,"user_id","")
         userOption = getBooleanPreference(this,"userOption${user_id}",true)
         if(userOption!!) {
             displayDialog()
         }else{
             proceedAfterPermission()
-        }
+        }*/
+        val trans = supportFragmentManager.beginTransaction()
+        //userDetailsPresenter = UserDetailsPresenterImpl(trans,this,this)
+        trans?.replace(com.joveeinfotech.bloodex.R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
+        trans?.commit()
     }
 
     private fun displayDialog() {

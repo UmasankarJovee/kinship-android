@@ -5,6 +5,7 @@ import com.joveeinfotech.bloodex.adapter.CustomeAdapter
 import com.joveeinfotech.bloodex.adapter.LanguageListsAdapter
 import com.joveeinfotech.bloodex.adapter.Top20ListAdapter
 import com.joveeinfotech.bloodex.model.*
+import org.json.JSONObject
 
 /**
  * Created by shanmugarajjoveeinfo on 8/2/18.
@@ -195,7 +196,7 @@ interface BloodExContract {
     }
     interface UserHealthDetailsFragmentPresenter {
         fun initPresenter()
-        fun sendHealthDetails(healthDetails: Array<Array<String>?>)
+        fun sendHealthDetails(healthDetails: JSONObject)
     }
 
     //RequestHistoryActivity

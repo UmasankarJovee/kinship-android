@@ -164,14 +164,14 @@
     <!--fragment_user_health_details-->
     <string name="fragment_user_health_title_textView">If you attack any diseases on now or before, Please select following list</string>
     <string name="fragment_user_health_details_diabetic_checkBox1">Diabetic</string>
-    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmetic</string>
+    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmatic</string>
     <string name="fragment_user_health_details_heartPatient_checkBox3">Heart Patient</string>
-    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuber Closis</string>
+    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuberculosis</string>
     <string name="fragment_user_health_details_epilepsy_checkBox5">Epilepsy</string>
-    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typoid / Malaria</string>
-    <string name="fragment_user_health_details_joundice_checkBox7">Joundice</string>
+    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typhoid / Malaria</string>
+    <string name="fragment_user_health_details_joundice_checkBox7">Jaundice</string>
     <string name="fragment_user_health_details_majorSurgery_checkBox8">Major Surgery</string>
-    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tatto</string>
+    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tattoo</string>
     <string name="fragment_user_health_details_toothExtraction_checkBox10">Tooth Extraction</string>
     <string name="fragment_user_health_details_none_checkBox11">None</string>
     <string name="fragment_user_health_details_submit_button">SUBMIT</string>
