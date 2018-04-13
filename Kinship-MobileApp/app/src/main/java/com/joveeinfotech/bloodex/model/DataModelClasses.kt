@@ -157,3 +157,4 @@ data class FcmBloodDonationCamp(var status: Boolean,
 data class AppRegisterResult(var data : InnerAppRegisterResult)
 
 data class InnerAppRegisterResult(var status: Boolean,var client_id :String, var client_secret : String)
+

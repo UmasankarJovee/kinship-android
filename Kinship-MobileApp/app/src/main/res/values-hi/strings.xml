@@ -209,22 +209,23 @@
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
     <string name="todo">TODO</string>
 
-    <string name="successfully_stored">Successfully Stored</string>
-    <string name="phone_number_is_not_correct">Phone Number is Not Correct</string>
-    <string name="please_fill_two_fields">Please Fill Two Fields</string>
-    <string name="click_again_submit">Click Again Submit</string>
-    <string name="try_again">Try Again</string>
-    <string name="your_request_has_been_send">Your Request has been send</string>
-    <string name="fill_all_the_fields">Fill All the Fields</string>
-    <string name="go_to_permissions_to_grant_location">Go to Permissions to Grant Location</string>
-    <string name="unable_to_get_permissions">Unable to get Permission</string>
-    <string name="fill_the_otp">Fill the OTP</string>
-    <string name="fill_the_phonenumber">Fill the Phone Number</string>
-    <string name="both_passwords_are_must_be_equal">Both passwords must be equal</string>
-    <string name="select_any_one_option">Select Any one option</string>
-    <string name="must_select_atleast_one">Must select atleast one</string>
-    <string name="go_to_permissions_to_grant_phone">Go to Permissions to Grant Phone Call</string>
-    <string name="you_are_not_able_to_donate_blood">You not able to give your Blood</string>
+    <!--Validation-->
+    <string name="successfully_stored">सफलतापूर्वक संग्रहीत</string>
+    <string name="phone_number_is_not_correct">फोन नंबर सही नहीं है</string>
+    <string name="please_fill_two_fields">कृपया दो फ़ील्ड भरें</string>
+    <string name="click_again_submit">फिर से सबमिट सबमिट करें</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="your_request_has_been_send">आपका निवेदन भेज दिया गया है</string>
+    <string name="fill_all_the_fields">सभी फ़ील्ड भरें</string>
+    <string name="go_to_permissions_to_grant_location">अनुदान स्थान के लिए अनुमतियों पर जाएं</string>
+    <string name="unable_to_get_permissions">अनुमति प्राप्त करने में असमर्थ</string>
+    <string name="fill_the_otp">ओटीपी भरें</string>
+    <string name="fill_the_phonenumber">फोन नंबर भरें</string>
+    <string name="both_passwords_are_must_be_equal">दोनों पासवर्ड समान होने चाहिए</string>
+    <string name="select_any_one_option">कोई एक विकल्प चुनें</string>
+    <string name="must_select_atleast_one">कम से कम एक को चुनना होगा</string>
+    <string name="go_to_permissions_to_grant_phone">अनुदान फोन कॉल के लिए अनुमतियों पर जाएं</string>
+    <string name="you_are_not_able_to_donate_blood">आप अपने रक्त देने में सक्षम नहीं हैं</string>
 
     <!-- SelectLanguage-->
     <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">स्वागत हे</string>
