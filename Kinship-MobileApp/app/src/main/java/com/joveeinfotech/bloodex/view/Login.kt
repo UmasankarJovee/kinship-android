@@ -12,8 +12,9 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
 import android.view.LayoutInflater
 import android.widget.EditText
-import com.joveeinfotech.bloodex.*
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.Network_check
+import com.joveeinfotech.bloodex.R
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.LoginPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.LocationService

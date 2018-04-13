@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.DistrictResult
 import com.joveeinfotech.bloodex.model.SearchHospitalResult
 import com.joveeinfotech.bloodex.presenter.SomeOneRequestFragmentPresenterImpl

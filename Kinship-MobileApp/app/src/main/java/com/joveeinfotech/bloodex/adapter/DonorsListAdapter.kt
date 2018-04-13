@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.bloodex.R
+import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
 import com.joveeinfotech.bloodex.model.donationInnerDetails
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.view.ProfileView
@@ -115,8 +116,8 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
 
                     DLog("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
-                    //var image_url= SharedPreferenceHelper.getStringPreference(mcontext, "image_url", "http://192.168.0.56/images/")
-                    var url = "http://192.168.0.56/images/${donationInner.image_url}"
+                    //var image_url= SharedPreferenceHelper.getStringPreference(mcontext, "image_url", "http://192.168.0.52/images/")
+                    var url = "${image_url}${donationInner.image_url}"
                     Picasso.with(mcontext).load(url).into(itemView.all_donars_inner_list_user_profile)
                     DLog("InnerList : ",donationInner.image_url)
                     DLog("InnerList : ",donationInner.name)
@@ -128,7 +129,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
                             mSelectedItem = getAdapterPosition()
                             //Toast.makeText(mcontext,"${donationInner.name}",Toast.LENGTH_SHORT).show()
                             //SharedPreferenceHelper.setIntPreference(mContext, "checked", mSelectedItem)
-                            val intent=Intent(mcontext,ProfileView::class.java)
+                            val intent=Intent(mcontext, ProfileView::class.java)
                             intent.putExtra("person_id",donationInner.person_id)
                             mcontext.startActivity(intent)
                             DLog("Preference","After setIntPreference ${mSelectedItem}")

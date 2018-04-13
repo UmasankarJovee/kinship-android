@@ -11,8 +11,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import com.joveeinfotech.bloodex.*
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.R
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.RegisterPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog

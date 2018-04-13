@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
+import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
 import com.joveeinfotech.bloodex.model.requestInnerDetails
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.all_requestor_inner_list.view.*
 import kotlinx.android.synthetic.main.all_requestor_list.view.*
-import java.util.*
 
 /**
  * Created by shanmugarajjoveeinfo on 8/3/18.
@@ -26,9 +25,9 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        DLog("Shanmugam : ", "RequestHistory5")
-        DLog("Shanmugam : ", "RequestHistory6")
-        DLog("Shanmugam : ", "RequestHistory7 ${gh[position]} ${gh.size}")
+        DLog("Check : ", "RequestHistory5")
+        DLog("Check : ", "RequestHistory6")
+        DLog("Check : ", "RequestHistory7 ${gh[position]} ${gh.size}")
         holder.bind(getRequestResults,gh[position])
     }
 
@@ -114,14 +113,15 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
                     DLog("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
 
-                    var url = "http://192.168.0.56/images/${requestInner.image_url}"
-                    Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
-                    var image_url= SharedPreferenceHelper.getStringPreference(rhContext, "image_url", "http://192.168.0.56/images/")
+                    //var url = "http://192.168.0.56/images/${requestInner.image_url}"
+                    //Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
+                    //var image_url= SharedPreferenceHelper.getStringPreference(rhContext, "image_url", "http://192.168.0.52/images/")
                     Picasso.with(rhContext).load("${image_url}${requestInner.image_url}").into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
                     itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
                     DLog("InnerList : ",requestInner.image_url)
                     DLog("InnerList : ",requestInner.name)
                     DLog("InnerList : ",requestInner.district)
+                    //itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
                     itemView.all_requestor_inner_list_constraintLayout_requestorName_textView.text = requestInner.name
                     itemView.all_requestor_inner_list_constraintLayout_hospitalName_textView.text=requestInner.hospital_name
                     itemView.all_requestor_inner_list_constraintLayout_district_textView.text = requestInner.district

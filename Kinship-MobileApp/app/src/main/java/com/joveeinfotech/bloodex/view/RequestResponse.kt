@@ -15,7 +15,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.adapter.RequestResponseListAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference

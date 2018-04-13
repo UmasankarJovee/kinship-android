@@ -4,7 +4,8 @@ import android.content.Context
 import android.support.v4.app.FragmentTransaction
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.UserProfileDisplayResult
 import com.joveeinfotech.bloodex.utils.Others.DLog
@@ -54,9 +55,6 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
 
                     var name = "${result.first_name} ${result.last_name}"
                     var address = "${result.street_name},${result.locality},${result.city},${result.district},${result.state}"
-
-                    var image_url= getStringPreference(mContext, "image_url", "http://192.168.0.56/images/")
-                    //profileDisplayFragmentView.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
 
                     profileDisplayFragmentView.setProfileDetails("${image_url}${result.image_url}",name,result.total_donated,result.total_request,result.last_donated_date,result.email,
                             result.phone_number,result.blood_group,result.date_of_birth,address)

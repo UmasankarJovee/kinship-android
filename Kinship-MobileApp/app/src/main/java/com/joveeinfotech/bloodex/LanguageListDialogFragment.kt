@@ -10,17 +10,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.joveeinfotech.bloodex.contract.KinshipContract.LanguageListener
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.LocaleHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.bloodex.presenter.SettingsFragmentPresenterImpl
 import com.joveeinfotech.bloodex.utils.Others.DLog
-import kotlinx.android.synthetic.main.alert_language_settings.view.*
+import kotlinx.android.synthetic.main.alert_language_settings.*
 
 /**
  * Created by shanmugarajjoveeinfo on 20/2/18.
  */
-class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: Context) :DialogFragment(),LanguageListener {
+class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: Context) :DialogFragment(), LanguageListener {
 
     var cancelButton: Button? = null
     var okButton: Button? = null
@@ -29,6 +29,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     var settingsFragment: SettingsFragment? = null
     var getLanguage: Int = 0
     val language: String? = null
+    //val trans1:FragmentTransaction?=null
     /*var languageToLoad:String?=null
     lateinit var locale:Locale
     lateinit var config:Configuration
@@ -45,21 +46,21 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
         view1 = inflater.inflate(R.layout.alert_language_settings, null)
         dialog.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        //trans=fragmentManager?.beginTransaction()
         settingsFragmentPresenterImpl = SettingsFragmentPresenterImpl(mContext, this)
         settingsFragment = SettingsFragment()
         /*alert_language_settings_cardView_constraintLayout_spinner?.adapter=ArrayAdapter<String>(activity,R.layout.alert_language_settings,languages)as SpinnerAdapter?
 
         alert_language_settings_cardView_constraintLayout_spinner?.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 setLocale(languages_code.get(p2))
             }
         }*/
-        view1?.alert_language_settings_cardView_constraintLayout_listView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-        view1?.alert_language_settings_cardView_constraintLayout_listView?.adapter = settingsFragmentPresenterImpl?.getLanguagesData()
+        alert_language_settings_cardView_constraintLayout_listView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+        alert_language_settings_cardView_constraintLayout_listView?.adapter = settingsFragmentPresenterImpl?.getLanguagesData()
 
         /*cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
         okButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_okButton)
@@ -126,6 +127,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
             dismiss()
             call1().call2(trans)
+            activity.recreate()
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/
@@ -140,6 +142,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
             dismiss()
             call1().call2(trans)
+            activity.recreate()
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/
@@ -154,6 +157,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
             dismiss()
             call1().call2(trans)
+            activity.recreate()
             /*val mydialog = LanguageListDialogFragment(trans!!,mContext)
             mydialog.setCancelable(true)
             mydialog.show(activity?.fragmentManager, "tag")*/

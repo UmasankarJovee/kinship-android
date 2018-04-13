@@ -3,8 +3,9 @@ package com.joveeinfotech.bloodex.presenter
 import android.content.Context
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
+import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.profileview
 import com.joveeinfotech.bloodex.utils.Others
 import com.joveeinfotech.bloodex.utils.Others.DLog
@@ -13,7 +14,7 @@ import com.joveeinfotech.bloodex.view.ProfileView
 /**
  * Created by shanmugarajjoveeinfo on 27/3/18.
  */
-class ProfileViewPresenterImpl:APIListener,ProfileViewPresenter {
+class ProfileViewPresenterImpl: APIListener, ProfileViewPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 
@@ -24,7 +25,7 @@ class ProfileViewPresenterImpl:APIListener,ProfileViewPresenter {
     var networkCall : APICall? = null
     var blood_group:String?=null
     var person_id:String?=null
-    constructor(view:ProfileView,context: Context,person_id:String){
+    constructor(view: ProfileView, context: Context, person_id:String){
         profileViewActivity=view
         this.context=context
         this.person_id=person_id
@@ -62,7 +63,7 @@ class ProfileViewPresenterImpl:APIListener,ProfileViewPresenter {
                     else if(result.blood_group=="6")blood_group="AB-"
                     else if(result.blood_group=="7")blood_group="O+"
                     else blood_group="O-"
-                    profileViewActivity.setViewData(result.first_name,result.last_name,"http://192.168.0.56/images/${result.image}","${blood_group}",result.email,result.occupation,result.facebook_id,result.total_donated,result.total_request,result.last_donated_date)
+                    profileViewActivity.setViewData(result.first_name,result.last_name,"${image_url}${result.image}","${blood_group}",result.email,result.occupation,result.facebook_id,result.total_donated,result.total_request,result.last_donated_date)
                     //Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
                     //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
                 } else {

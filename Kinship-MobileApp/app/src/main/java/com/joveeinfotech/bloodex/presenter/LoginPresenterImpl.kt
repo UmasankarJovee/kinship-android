@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Build
 import android.provider.Settings
 import com.joveeinfotech.bloodex.*
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
@@ -63,7 +63,9 @@ class LoginPresenterImpl : APIListener, LoginPresenter {
                 loginView.showNetworkError()
             }*/
 
-            val i = Intent(mContext, AppRegister::class.java)
+
+            session?.createFirstInstall()
+            val i = Intent(mContext, AboutUS::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             mContext.startActivity(i)

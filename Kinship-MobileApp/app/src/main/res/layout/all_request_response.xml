@@ -28,10 +28,9 @@
 
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.joveeinfotech.bloodex.CircleImageView
         android:id="@+id/all_request_response_profile_imageView"
         android:layout_width="70dp"
         android:layout_height="70dp"

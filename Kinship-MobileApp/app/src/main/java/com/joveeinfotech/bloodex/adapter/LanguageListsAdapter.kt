@@ -1,7 +1,7 @@
 package com.joveeinfotech.bloodex.adapter
 
 import android.content.Context
-import com.joveeinfotech.bloodex.contract.KinshipContract.LanguageListener
+import com.joveeinfotech.bloodex.contract.BloodExContract.LanguageListener
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.Languages
 import com.joveeinfotech.bloodex.utils.Others.DLog

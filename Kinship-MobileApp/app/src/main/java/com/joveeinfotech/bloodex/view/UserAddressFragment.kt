@@ -17,7 +17,7 @@ import android.widget.ArrayAdapter
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserAddrssFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_user_address.*
 import kotlinx.android.synthetic.main.fragment_user_address.view.*

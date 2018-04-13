@@ -10,7 +10,7 @@ import android.view.*
 import android.widget.LinearLayout
 //import android.widget.Toast
 import com.joveeinfotech.bloodex.adapter.CustomeAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.LocaleHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.bloodex.model.Album
@@ -75,9 +75,12 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
     }
 
     override fun languageSettings() {
-
         DLog("Message","after language settings")
+        /*val bundle = Bundle()
+        bundle.p(trans!!)
+        bundle.putString("mContext", mContext!!)*/
         val mydialog = LanguageListDialogFragment(trans!!,mContext)
+        //mydialog.arguments=bundle
         mydialog.setCancelable(true)
         mydialog.show(activity?.fragmentManager, "tag")
         /*mydialog.cancelButton?.setOnClickListener {

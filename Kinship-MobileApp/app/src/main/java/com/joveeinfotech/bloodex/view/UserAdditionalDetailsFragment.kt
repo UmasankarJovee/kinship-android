@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserAdditionalDetailsFragmentPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
 import kotlinx.android.synthetic.main.fragment_user_additional_details.*

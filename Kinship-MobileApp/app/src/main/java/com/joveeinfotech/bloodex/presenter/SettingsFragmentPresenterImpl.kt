@@ -7,7 +7,7 @@ import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.R.string.*
 import com.joveeinfotech.bloodex.adapter.CustomeAdapter
 import com.joveeinfotech.bloodex.adapter.LanguageListsAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.Album
 import com.joveeinfotech.bloodex.model.Languages
 import com.joveeinfotech.bloodex.utils.Others.DLog

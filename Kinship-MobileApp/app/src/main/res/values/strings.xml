@@ -1,4 +1,5 @@
 <resources>
+
     <!--<string name="app_name">
         <font color='red' style='impact'>B</font>
         <font color='black' style='impact'>lood</font>
@@ -7,7 +8,6 @@
     </string>-->
 
     <string name="app_name">BloodEx</string>
-
 
     <!--navigation.xml-->
     <string name="navigation_home">Home</string>
@@ -100,18 +100,18 @@
         7. If there is any bleeding from the place from where blood is collected, apply pressure and raise the arm for a few minutes.\n\n
         Instructions to Blood Donors How much blood can be taken in your Body:\n\n
         1. Our body has 5.5 litre of blood of which only 350 ml - 450 ml of blood is taken depending upon weight of donor. \n
-        2. Majority of healthy adults can tolerate withdrawal of one unit of blood. \n
+        2. One unit of blood means 350 ml. \n
         3. The withdrawan blood volume is restored within 24 hours and the haemoglobin and cell components are restored in 2 months. \n
         4. Therefore it is safe to donate blood every three months.
     </string>
 
     <!-- alert_blood_requestor_instructions-->
     <string name="blood_requestor_instructions_textview">
-       Instructions to Blood Requester Before Blood Request:\n\n
+       Instructions to Before Blood Request:\n\n
         1. You must select correct blood request. \n
         2. You give correct unit of need of blood .Do not give additional units. \n
         3. If you play with this application then the action will be taken on you. \n\n
-        Instructions to Blood Requester After Blood Donation:\n\n
+        Instructions to After Blood Donation:\n\n
         1. You must like on social profile previous blood donor of your request.
     </string>
 
@@ -172,14 +172,14 @@
     <!--fragment_user_health_details-->
     <string name="fragment_user_health_title_textView">If you attack any diseases on now or before, Please select following list</string>
     <string name="fragment_user_health_details_diabetic_checkBox1">Diabetic</string>
-    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmetic</string>
+    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmatic</string>
     <string name="fragment_user_health_details_heartPatient_checkBox3">Heart Patient</string>
-    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuber Closis</string>
+    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuberculosis</string>
     <string name="fragment_user_health_details_epilepsy_checkBox5">Epilepsy</string>
-    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typoid / Malaria</string>
-    <string name="fragment_user_health_details_joundice_checkBox7">Joundice</string>
+    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typhoid / Malaria</string>
+    <string name="fragment_user_health_details_joundice_checkBox7">Jaundice</string>
     <string name="fragment_user_health_details_majorSurgery_checkBox8">Major Surgery</string>
-    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tatto</string>
+    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tattoo</string>
     <string name="fragment_user_health_details_toothExtraction_checkBox10">Tooth Extraction</string>
     <string name="fragment_user_health_details_none_checkBox11">None</string>
     <string name="fragment_user_health_details_submit_button">SUBMIT</string>
@@ -206,9 +206,7 @@
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
-
     <string name="blood_donated_confirm">Is %s donated blood?</string>
-
     <string name="todo">TODO</string>
 
     <string name="successfully_stored">Successfully Stored</string>
@@ -228,5 +226,11 @@
     <string name="go_to_permissions_to_grant_phone">Go to Permissions to Grant Phone Call</string>
     <string name="you_are_not_able_to_donate_blood">You not able to give your Blood</string>
 
+
+
+    <!-- SelectLanguage-->
+    <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">WELCOME</string>
+    <string name="activity_select_language_constraintLayout2_skip_textView">NEXT</string>
+    <string name="select_language">Select Language</string>
 
 </resources>

@@ -1,5 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--navigation.xml-->
+    <string name="navigation_home">होम</string>
+    <string name="navigation_blood_request">रक्त अनुरोध</string>
+    <string name="navigation_settings">सेटिंग्स</string>
+    <string name="navigation_donors">दाताओं</string>
+    <string name="navigation_top20">शीर्ष 20</string>
+
+    <!-- activity_login-->
+    <string name="activity_login_phone_number_editText">फ़ोन नंबर</string>
+    <string name="activity_login_password_editText">पारण शब्द</string>
+    <string name="activity_login_loginButton">लॉग इन करें</string>
+    <string name="activity_login_register_textView">"|  नया पंजीकरण करें"</string>
+    <string name="activity_login_forget_password_textView">"पासवर्ड भूल गए  "</string>
+
+    <!--fragment_home-->
+    <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">हाल ही में रक्त दान दिया व्यक्ति</string>
+    <string name="activity_home_fragment_updatedDetails_TextView">नवीनीकृत विवरण</string>
+    <string name="activity_home_fragment_hospitals_TextView">अस्पताल</string>
+    <string name="activity_home_fragment_users_TextView">उपयोगकर्ताओं</string>
+    <string name="activity_home_fragment_donator_TextView">दानी</string>
+    <string name="activity_home_fragment_bloodDonatorInstructions_textview">रक्त दान अनुदेश</string>
+    <string name="activity_home_fragment_bloodRequestInstructions_textview">रक्त अनुरोधकर्ता निर्देश</string>
+
+    <!--image_and_content_sliding-->
+    <string name="image_and_sliding_content_userNameLabel_textView">" नाम:"</string>
+    <string name="image_and_sliding_content_userName_textView">-</string>
+    <string name="image_and_sliding_content_bloodGroupLabel_textView">" रक्त समूह:"</string>
+    <string name="image_and_sliding_content_bloodGroup_textView">-</string>
+    <string name="image_and_sliding_content_districtLabel_textView">" जिला:"</string>
+    <string name="image_and_sliding_content_district_textView">-</string>
+
+    <!--fragment_user_profile_edit-->
+    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          आपकी रूपरेखा        </string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText">Vigneshkumar M</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView">9876543210</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText">9876543210</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText">vigneshkumar@gmail.com</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_dateOfBirth_textView">2000-01-01</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView">70</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText">70</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView">1/99,KK NAGAR,MADURAI-625020</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>
+
+    <!--activity_user_registration-->
+    <string name="activity_user_registration_scrollView_constraintLayout_phone_number_editText">फ़ोन नंबर</string>
+    <string name="activity_user_registration_scrollView_constraintLayout_registerButton">रजिस्टर</string>
+
+    <!--alert_otp_get-->
+    <string name="alert_otp_get_otp_EditText">प्राप्त किया हुआ संख्या दर्ज करो</string>
+    <string name="alert_otp_get_confirmOTPButton">की पुष्टि करें</string>
+
+    <!--alert_password_get-->
+    <string name="alert_password_get_password_editText">पारण शब्द</string>
+    <string name="alert_password_get_confirm_password_editText">पासवर्ड की पुष्टि कीजिये</string>
+    <string name="alert_password_get_confirmPasswordButton">जमा करें</string>
+
+    <!--alert-address_details-->
+    <string name="alert_address_details_scrollView_linearLayout1_city_editText">शहर</string>
+    <string name="alert_address_details_scrollView_linearLayout1_locality_editText">इलाका</string>
+    <string name="alert_address_details_scrollView_linearLayout1_street_editText">सड़क</string>
+    <string name="alert_address_details_scrollView_linearLayout1_linearLayout2_cancelButton">रद्द करना</string>
+    <string name="alert_address_details_scrollView_linearLayout1_linearLayout2_linearLayout3_okButton">ठीक</string>
+
+    <!--alert_user_details-->
+    <string name="alert_user_details_firstName_editText">पहला नाम</string>
+    <string name="alert_user_details_lastName_editText">अंतिम नाम</string>
+    <string name="alert_user_details_okButton">ठीक</string>
+
+    <!--alert_blood_donator_instructions-->
+    <string name="blood_donator_instructions_heading">रक्त दान अनुदेश</string>
+    <string name="blood_donator_instructions_textview">
+        रक्तदान करने से पहले रक्त दाताओं को निर्देश:\n\n
+        1. 2 घंटे के रक्त दान से पहले हल्के ताज़ा / भोजन लें. \n
+        2. महिलाओं को मासिक धर्म के रक्तस्राव के दौरान रक्तदान से बचना चाहिए. \n
+        3. जिस व्यक्ति ने शराब का सेवन किया है वह अगले 24 घंटों तक रक्त देने से बचना चाहिए. \n
+        4. जिस व्यक्ति को हाल ही में जंडिस, टायफायड, मलेरिया, रूबेला, आदि जैसे संक्रमण का दौरा पड़ा, उसे रक्त नहीं देना चाहिए. \n
+        5. जिस व्यक्ति ने बड़ी शल्य चिकित्सा की थी वह 6 महीने तक रक्त दान से बचना चाहिए. \n
+        6. गर्भावस्था, स्तनपान कराने वाली महिलाओं को रक्त दान से बचना चाहिए.\n\n
+        रक्तदान के बाद रक्त दानकर्ताओं को निर्देश:\n\n
+        1. पूरे दिन के लिए बहुत सारे तरल पदार्थों का सेवन करें. \n
+        2. अच्छी तरह से खाएं और भूख न रखें. \n
+        3. आधे घंटे तक धूम्रपान न करें. \n
+        4. उसी दिन कोई भी भारी व्यायाम न करें. \n
+        5. किसी भी वाहन को 1-2 घंटे के लिए मत करो. \n
+        6. रक्त दान के दिन खेल और खेल में भाग न लें. \n
+        7. अगर उस स्थान से कोई खून बह रहा हो जहां से रक्त इकट्ठा किया जाता है, तो दबाव डालें और कुछ मिनटों तक हाथ बढ़ाएं.\n\n
+        रक्त दाताओं के लिए निर्देश आपके शरीर में कितना रक्त लिया जा सकता है:\n\n
+        1. हमारे शरीर में 5.5 लीटर का रक्त है जिसमें से केवल 350 मिलीलीटर - दादर के वजन के आधार पर 450 मिलीलीटर रक्त लिया जाता है. \n
+        2. रक्त की एक इकाई का अर्थ है 350 मिलीग्राम. \n
+        3. रिएक्शन रक्त की मात्रा को 24 घंटों के भीतर बहाल किया जाता है और हीमोग्लोबिन और सेल घटकों को दो महीनों में बहाल किया जाता है. \n
+        4. इसलिए हर तीन महीने में रक्त दान करना सुरक्षित है.
+    </string>
+
+    <!-- alert_blood_requestor_instructions-->
+    <string name="blood_requestor_instructions_textview">
+        रक्त अनुरोध से पहले निर्देश:\n\n
+        1. आपको सही रक्त अनुरोध का चयन करना होगा. \n
+        2. आप खून की सही यूनिट देते हैं। अतिरिक्त यूनिट न दें. \n
+        3. यदि आप इस आवेदन के साथ खेलते हैं तो आप पर कार्रवाई की जाएगी. \n\n
+        रक्तदान के बाद निर्देश:\n\n
+        1. आपके अनुरोध के पिछले रक्त दाता को सामाजिक प्रोफ़ाइल पर करना चाहिए.
+    </string>
+
+    <!-- settingsFragment-->
 
     <!--<string name="app_name">
         <font color='red' style='impact'>B</font>
@@ -13,6 +120,93 @@
     <string name="settingsFragment_cardView1_textView">प्रोफाइल एडिट करें</string>
     <string name="settingsFragment_cardView2_textView">सूचनाएं</string>
     <string name="settingsFragment_cardView3_textView">भाषा</string>
+    <string name="settingsFragment_cardView4_textView">लोग आउट</string>
+
+    <!-- alert_language_settings-->
+    <string name="alert_language_settings_cardView_textView">भाषा सेटिंग</string>
+    <string name="alert_language_settings_cardView_constraintLayout_cancelButton">रद्द करना</string>
+    <string name="alert_language_settings_cardView_constraintLayout_okButton">ठीक</string>
+
+    <!--fragment_profile_display-->
+    <string name="total_donated">कुल दान</string>
+    <string name="total_request">कुल अनुरोध</string>
+    <string name="last_donated">अंतिम दान</string>
+
+    <!--fragment_user_address.xml-->
+    <string name="user_address_select_your_country">अपने देश का चयन करें</string>
+    <string name="user_address_select_your_state">अपना राज्य चुनें</string>
+    <string name="user_address_select_your_district">अपना जिला चुनें</string>
+    <string name="user_address_submit">जमा करें</string>
+    <string name="user_address_city">शहर</string>
+    <string name="user_address_locality">इलाका</string>
+    <string name="user_address_street">सड़क</string>
+    <string name="user_address_home_address">घर का पता</string>
+
+    <!--alert_one_day_diseases_get.xml-->
+    <string name="alert_one_day_diseases_get_Verify_following_details">निम्न विवरण सत्यापित करें</string>
+    <string name="alert_one_day_diseases_get_Are_you_Slept_well_yesterday">क्या आप कल अच्छी तरह से सो रहे हैं</string>
+    <string name="alert_one_day_diseases_get_Did_you_take_any_antibiotics_tablets">क्या आपने किसी भी एंटीबायोटिक दवाओं को ले लिया है?</string>
+    <string name="alert_one_day_diseases_get_Did_you_drink_Alcohol_yesterday">क्या आप कल शराब पी रहे थे</string>
+    <string name="alert_one_day_diseases_get_Did_you_face_any_side_effects_in_previous_donation">क्या आपको पिछले दान में कोई दुष्प्रभाव का सामना करना पड़ा?</string>
+    <string name="alert_one_day_diseases_get_Had_tooth_extraction_in_the_past_3_weeks">पिछले 3 हफ्तों में दांत निकालना था</string>
+    <string name="alert_one_day_diseases_get_SUBMIT">SUBMIT</string>
+
+    <!--fragment_some_one_request-->
+    <string name="fragment_some_one_request_name_editText">" नाम"</string>
+    <string name="fragment_some_one_request_phoneNumber_editText">" फ़ोन नंबर"</string>
+    <string name="fragment_some_one_request_units_editText">" इकाइयों"</string>
+    <string name="fragment_some_one_request_submit_button">जमा करें</string>
+
+    <!--fragment_user_additional_details-->
+    <string name="fragment_user_additional_details_additionalDetails_textView">अतिरिक्त जानकारिया</string>
+    <string name="fragment_user_additional_details_submit_button">जमा करें</string>
+    <string name="fragment_user_additional_details_occupation_textView">व्यवसाय</string>
+    <string name="fragment_user_additional_details_student_radioButton">छात्र</string>
+    <string name="fragment_user_additional_details_working_radioButton">काम कर रहे</string>
+    <string name="fragment_user_additional_details_others_radioButton">अन्य लोग</string>
+    <string name="fragment_user_additional_details_othersMentionHere_editText">यहाँ उल्लेख</string>
+    <string name="fragment_user_additional_details_phoneNumberOptional_editText">" फ़ोन नंबर (वैकल्पिक)"</string>
+    <string name="fragment_user_additional_details_emailOptional_editText">" ईमेल (वैकल्पिक)"</string>
+    <string name="fragment_user_additional_details_socialProfileOptional_editText">" सामाजिक प्रोफ़ाइल (वैकल्पिक)"</string>
+    <string name="fragment_user_additional_details_skip_textView">>>> छोड़ें</string>
+
+    <!--fragment_user_health_details-->
+    <string name="fragment_user_health_title_textView">यदि आप अब या पहले किसी भी बीमारी पर हमला करते हैं, तो कृपया निम्नलिखित सूची का चयन करें</string>
+    <string name="fragment_user_health_details_diabetic_checkBox1">मधुमेह</string>
+    <string name="fragment_user_health_details_asthmetic_checkBox2">दमे का रोगी</string>
+    <string name="fragment_user_health_details_heartPatient_checkBox3">हार्ट रोगी</string>
+    <string name="fragment_user_health_details_tuberClosis_checkBox4">यक्ष्मा</string>
+    <string name="fragment_user_health_details_epilepsy_checkBox5">मिरगी</string>
+    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">टायफायड / मलेरिया</string>
+    <string name="fragment_user_health_details_joundice_checkBox7">पीलिया</string>
+    <string name="fragment_user_health_details_majorSurgery_checkBox8">बड़ी सर्जरी</string>
+    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">रक्तस्राव / टैटू</string>
+    <string name="fragment_user_health_details_toothExtraction_checkBox10">दाँत निकालना</string>
+    <string name="fragment_user_health_details_none_checkBox11">कोई नहीं</string>
+    <string name="fragment_user_health_details_submit_button">जमा करें</string>
+
+
+    <!--fragment_user_profile-->
+    <string name="fragment_user_profile_constraintLayout_firstName_editText">" पहला नाम"</string>
+    <string name="fragment_user_profile_constraintLayout_lastName_editText">" अंतिम नाम"</string>
+    <string name="fragment_user_profile_constraintLayout_dateOfBirth_editText">" जन्म की तारीख"</string>
+    <string name="fragment_user_profile_constraintLayout_weight_editText">" वजन"</string>
+    <string name="fragment_user_profile_constraintLayout_submit_button">जमा करें</string>
+    <string name="fragment_user_profile_userProfile_textView">उपयोगकर्ता प्रोफ़ाइल</string>
+    <string name="fragment_user_profile_constraintLayout_relativeLayout_male_radioButton">नर</string>
+    <string name="fragment_user_profile_constraintLayout_relativeLayout_female_radioButton">महिला</string>
+    <string name="fragment_user_profile_constraintLayout_relativeLayout_gender_textView">लिंग</string>
+
+    <!--fragment_user_request-->
+    <string name="fragment_user_request_constraintLayout_units_editText">" इकाइयों"</string>
+    <string name="fragment_user_request_constraintLayout_submit_button">जमा करें</string>
+
+    <!--top20_donors_list-->
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_name_textView">"Ramakrishnan S"</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_district_textView">in Madurai</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
     <string name="todo">TODO</string>
 
     <string name="successfully_stored">Successfully Stored</string>
@@ -32,5 +226,8 @@
     <string name="go_to_permissions_to_grant_phone">Go to Permissions to Grant Phone Call</string>
     <string name="you_are_not_able_to_donate_blood">You not able to give your Blood</string>
 
-
+    <!-- SelectLanguage-->
+    <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">स्वागत हे</string>
+    <string name="activity_select_language_constraintLayout2_skip_textView">आगामी</string>
+    <string name="select_language">भाषा चुनिए</string>
 </resources>

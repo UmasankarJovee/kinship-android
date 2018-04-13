@@ -4,8 +4,8 @@ import android.content.Context
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.adapter.Top20ListAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.GetTop20Result
 import com.joveeinfotech.bloodex.model.detailsResult
 import com.joveeinfotech.bloodex.utils.Others.DLog

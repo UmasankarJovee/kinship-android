@@ -1,4 +1,4 @@
-package kinship.joveeinfotech.kinship
+package kinship.joveeinfotech.bloodex
 
 import android.Manifest
 import android.app.AlertDialog
@@ -18,8 +18,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import com.joveeinfotech.bloodex.CircleIndicator
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
@@ -28,9 +30,7 @@ import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
-import me.relex.circleindicator.CircleIndicator
 import java.util.*
-
 
 /*
 * HomeFragment It is the Home */
@@ -48,7 +48,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
     private val bloodGroupArrayList = ArrayList<String>()
     private val countryArrayList = ArrayList<String>()
     private var mPager: ViewPager? = null
-    var mindicator:CircleIndicator?=null
+    var mindicator: CircleIndicator?=null
     private var currentPage = 0
    /* private val imageArray = arrayOf<String>("https://www.um.edu.mt/__data/assets/image/0007/305296/varieties/banner.jpg",
             "https://cdn.arstechnica.net/wp-content/uploads/2013/05/donate_blood_rotator.jpg",
@@ -330,7 +330,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         mPager = view1?.findViewById<ViewPager>(R.id.activity_home_fragment_ImageSlider_ViewPager) as ViewPager
         mPager!!.adapter = ImageSliderAdapterClass()
         mindicator =view1?.findViewById<CircleIndicator>(R.id.activity_home_fragment_ImageSlider_Indicator)as CircleIndicator
-        mindicator?.setViewPager(mPager)
+        mindicator?.setViewPager(mPager!!)
 
         // Auto start of viewpager
         val handler = Handler()

@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentTransaction
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.*
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog

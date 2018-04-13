@@ -4,8 +4,8 @@ import android.content.Context
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.adapter.DonorsListAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.DonationHistoryResult
 import com.joveeinfotech.bloodex.model.donationDetails
 import com.joveeinfotech.bloodex.model.donationInnerDetails

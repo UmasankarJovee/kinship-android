@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.joveeinfotech.bloodex.adapter.RequestHistoryListAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.RequestHistoryPresenterImpl
 import kotlinx.android.synthetic.main.activity_request_history.*
 

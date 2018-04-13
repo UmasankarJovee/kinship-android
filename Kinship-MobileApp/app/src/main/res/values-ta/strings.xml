@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-     <!--<string name="app_name">
-        <font color='red' style='impact'>B</font>
-        <font color='black' style='impact'>lood</font>
-        <font color='red' style='impact'>E</font>
-        <font color='black' style='impact'>x</font>
-    </string>-->
-
     <string name="app_name">BloodEx</string>
 
     <!--navigation.xml-->
@@ -84,36 +77,36 @@
     <!--alert_blood_donator_instructions-->
     <string name="blood_donator_instructions_heading">இரத்த தான முகாமையாளர் அறிவுறுத்தல்கள்</string>
     <string name="blood_donator_instructions_textview">
-        <b><font color='#D14035'>இரத்த நன்கொடைக்கு முன் இரத்த நன்கொடையாளர்களுக்கு வழிமுறைகள்</font></b>\n\n
-        1. Take light refreshment/food before 2 hours of blood donation. \n
-        2. Women should avoid blood donation during their menstrual bleeding. \n
-        3. Person who has consumed alchocol should avoid giving blood for next 24 hours. \n
-        4. Person who had recent attack of infection like Jaundice, Typhoid, Malaria, Rubella, etc., should not give blood. \n
-        5. Person who had undergone major surgery should avoid blood donation for 6 months. \n
-        6. Pregnancy, lactating women should avoid blood donation.\n\n
-        <b><font color='#D14035'>இரத்த நன்கொடைக்கு பின்னர் இரத்த நன்கொடையாளர்களுக்கு அறிவுறுத்தல்கள்</font></b>\n\n
-        1. Drink plenty of liquids for the whole day. \n
-        2. Eat well and do not remain hungry. \n
-        3. Do not smoke for half an hour. \n
-        4. Do not do any heavy exercises on that day. \n
-        5. Do not do any vehicle for 1-2 hours. \n
-        6. Do not participate in sports and games on the day of blood donation. \n
-        7. If there is any bleeding from the place from where blood is collected, apply pressure and raise the arm for a few minutes.\n\n
-        <b><font color='#D14035'>இரத்தக் கொடுப்பவர்களுக்கு வழிமுறைகள் உங்கள் உடலில் எவ்வளவு இரத்தத்தை எடுத்துக் கொள்ளலாம்</font></b>\n\n
-        1. Our body has 5.5 litre of blood of which only 350 ml - 450 ml of blood is taken depending upon weight of donor. \n
-        2. Majority of healthy adults can tolerate withdrawal of one unit of blood. \n
-        3. The withdrawan blood volume is restored within 24 hours and the haemoglobin and cell components are restored in 2 months. \n
-        4. Therefore it is safe to donate blood every three months.
+        இரத்த தானத்திற்கு முன் இரத்த கொடையாளர்கள் மேற்க்கொள்ளும் வழிமுறைகள்:\n\n
+        1. இரத்த தானம் செய்யும் நபர் இரண்டு மணி நேரத்திற்கு முன்பு சிற்றுண்டி எடுத்துக் கொள்ளவும். \n
+        2. பெண்கள் தங்களது மாதவிடாய் இரத்தப்போக்கு போது இரத்த தானம் செய்வதை தவிர்க்க வேண்டும்.\n
+        3. மது அருந்தியவர் அடுத்த 24 மணி நேரத்திற்கு  இரத்த தானம் செய்வதை தவிர்க்க வேண்டும். \n
+        4. சமீபத்தில் மஞ்சள் காமாலை(3 வருடங்கள்)அல்லது டைப்பாய்டு மலேரியா(1 வருடம்) அல்லது ரூபெல்லா() போன்ற நோய்களால் பாதிக்கப்பட்டவர்கள் கொடுக்கப்பட்டுள்ள குறிப்பிட்ட காலத்திற்கு இரத்த தானம் செய்ய இயலாது.  \n
+        5. சமீபத்தில் அறுவைசிகிச்சை செய்தவர்கள்  6 மாதங்களுக்கு இரத்த தானம் செய்ய இயலாது. \n
+        6. கர்ப்பிணி மற்றும் பாலூட்டும் பெண்கள் இரத்த தானம் செய்ய இயலாது.\n\n
+        இரத்த தானத்திற்கு  பின்  இரத்த கொடையாளர்களுக்கு சில அறிவுறுத்தல்கள்:\n\n
+        1. ஒரு நாள் முழுவதும் தண்ணீர் ஆகாரங்கள் எடுத்துக்கொள்ள வேண்டும். \n
+        2. பசியாக இருக்கக்கூடாது,நன்கு சத்துள்ள உணவுகளை உண்ண வேண்டும். \n
+        3. அரை மணி நேரத்திற்கு புகை பிடிக்காதீர். \n
+        4. எந்த ஒரு உடற்பயிற்சியும்  மேற்க்கொள்ள வேண்டாம். \n
+        5. 1-2 மணி நேரத்திற்கு எந்த வாகனமும் பயன்படுத்த வேண்டாம். \n
+        6. விளையாட்டுப் போட்டிகளில் பங்கேற்பதை தவிர்க்க வேண்டும். \n
+        7. இரத்தம் எடுக்கப்பட்ட இடத்திலிருத்து இரத்தக் கசிவு இருந்தால் ஒரு சில நிமிடங்களுக்கு கையை மேலே உயர்த்தவும்.\n\n
+        இரத்தம் கொடுப்பவர்களது இருந்து உடலில் எவ்வளவு இரத்தத்தை எடுத்துக் கொள்ளலாம்:\n\n
+        1. தங்களது உடம்பில் 5.5 மிலி இரத்தம் உள்ளது. தங்களது எடைக்கு ஏற்ப 350 மிலி - 450 மிலி இரத்தம் எடுக்கப்படும். \n
+        2. 1 அலகு என்பது 350 மிலி இரத்தம் எனப்படும். \n
+        3. தானம் செய்தவர்கள் இரத்தம் 24 மணி நேரத்திற்குள் மற்றொருவர் செலுத்தப்படுகிறது அதிலுள்ள ஹீமோகுளோபின் மற்றும் செல் கூறுகள் 2 மாதங்களுக்கு மீட்டெடுக்கப்படுகின்றன. \n
+        4. அதனால்,மூன்று மாதங்களுக்கு ஒரு முறை இரத்த தானம் செய்வது பாதுகாப்பானது.
     </string>
 
     <!-- alert_blood_requestor_instructions-->
     <string name="blood_requestor_instructions_textview">
-       <b><font color='#D14035'>Instructions to Blood Requester Before Blood Request</font></b>\n\n
-        1. You must select correct blood request. \n
-        2. You give correct unit of need of blood.Do not give additional units. \n
-        3. If you play with this application then the action will be taken on you. \n\n
-        <b><font color='#D14035'>Instructions to Blood Requester After Blood Donation</font></b>\n\n
-        1. You must like on social profile previous blood donor of your request.
+        இரத்தம் கேட்பதற்கு முன் மேற்க்கொள்ளும்  வழிமுறைகள்:\n\n
+        1. சரியான இரத்த வகையை தேர்ந்தெடுக்க வேண்டும். \n
+        2. தேவையான அளவு இரத்த அலகுகளை கொடுக்க வேண்டும். \n
+        3. இந்த செயலியை தவறாக பயன்படுத்த முயற்சி செய்பவர்களுக்கு தக்க நடவடிக்கை எடுக்கப்படும். \n\n
+        இரத்தம் கேட்பதற்கு பின் மேற்க்கொள்ளும்  வழிமுறைகள்:\n\n
+        1. தங்களுக்கு இரத்த தானம் செய்தவர்களை உற்சாகப்படுத்துவதற்கு தங்களுடைய தனிப்பட்ட சமூக வலைதளத்தில் அவர்களது புகைப்படத்தை அவர்களது விருப்பத்திற்கேற்ப பதிவேற்றம் செய்யப்படும்.
     </string>
 
     <!-- settingsFragment-->
@@ -209,7 +202,6 @@
     <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
     <string name="todo">TODO</string>
 
-
     <string name="successfully_stored">Successfully Stored</string>
     <string name="phone_number_is_not_correct">Phone Number is Not Correct</string>
     <string name="please_fill_two_fields">Please Fill Two Fields</string>
@@ -227,5 +219,8 @@
     <string name="go_to_permissions_to_grant_phone">Go to Permissions to Grant Phone Call</string>
     <string name="you_are_not_able_to_donate_blood">You not able to give your Blood</string>
 
-
+    <!-- SelectLanguage-->
+    <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">வரவேற்பு</string>
+    <string name="activity_select_language_constraintLayout2_skip_textView">அடுத்த</string>
+    <string name="select_language">மொழியைத் தேர்ந்தெடுங்கள்</string>
 </resources>

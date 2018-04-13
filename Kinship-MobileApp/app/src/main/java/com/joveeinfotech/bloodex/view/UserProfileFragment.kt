@@ -16,7 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserProfileFragmentPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog
@@ -159,8 +159,9 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                 byteArray = byteArrayOutputStream.toByteArray()
                 imageString= Base64.encodeToString(byteArray, Base64.DEFAULT)
+
                 DLog("inside : ", imageString!!)
-                fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap)
+                fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap!!)
                 //upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
                 //userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
                 //val isr = resolver?.openInputStream(I.data!!)

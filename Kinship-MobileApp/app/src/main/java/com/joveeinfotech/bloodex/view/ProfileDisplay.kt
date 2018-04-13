@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso
 import java.net.URL
 import android.graphics.PorterDuffXfermode
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.ProfileDisplayPresenterImpl
 
 class ProfileDisplay : AppCompatActivity(), ProfileDisplayView {

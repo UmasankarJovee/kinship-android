@@ -18,7 +18,7 @@ import android.widget.EditText
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.SendingUserProfileEdit
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserProfileEditFragmentPresenterImpl
 import com.joveeinfotech.bloodex.utils.Others
 import android.widget.*
@@ -356,7 +356,7 @@ class UserProfileEdit : AppCompatActivity(), UserProfileEditFragmentView {
                     byteArray = byteArrayOutputStream.toByteArray()
                     val imageString = Base64.encodeToString(byteArray, Base64.DEFAULT)
                     Others.DLog("inside : ", imageString)
-                    activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
+                    activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap!!)
                     userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
                     //val isr = resolver?.openInputStream(I.data!!)
                     //uploadImage(getBytes(isr))

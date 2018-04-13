@@ -24,7 +24,7 @@
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.joveeinfotech.bloodex.CircleImageView
             android:id="@+id/fragment_user_profile_constraintLayout_profile_imageView"
             android:layout_width="166dp"
             android:layout_height="166dp"

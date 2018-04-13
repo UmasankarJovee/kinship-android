@@ -12,7 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.InnerRequestResponseResult
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.all_request_response.view.*
@@ -44,7 +45,7 @@ class RequestResponseListAdapter(var responseResult:List<InnerRequestResponseRes
         fun bind(responseResult : InnerRequestResponseResult, colors : Array<String>, position: Int) {
 
 
-            var url = "http://192.168.0.52/images/${responseResult.image_url}"
+            var url = "${image_url}${responseResult.image_url}"
             Picasso.with(mcontext).load(url).into(itemView.all_request_response_profile_imageView)
 
 /*

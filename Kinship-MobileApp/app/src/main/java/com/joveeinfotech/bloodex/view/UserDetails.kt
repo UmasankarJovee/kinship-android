@@ -15,7 +15,7 @@ import android.widget.RadioButton
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference

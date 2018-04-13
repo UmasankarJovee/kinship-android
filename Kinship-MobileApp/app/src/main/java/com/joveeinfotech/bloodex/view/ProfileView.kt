@@ -3,7 +3,7 @@ package com.joveeinfotech.bloodex.view
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.ProfileViewPresenterImpl
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.squareup.picasso.Picasso

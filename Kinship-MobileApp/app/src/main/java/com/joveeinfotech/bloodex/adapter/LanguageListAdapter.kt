@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setIntPreference

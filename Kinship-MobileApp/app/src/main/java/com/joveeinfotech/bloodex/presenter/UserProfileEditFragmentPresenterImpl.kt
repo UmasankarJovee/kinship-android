@@ -4,19 +4,18 @@ import android.content.Context
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.bloodex.model.*
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others
 import com.joveeinfotech.bloodex.utils.Others.DLog
-import java.util.HashMap
 
 /**
  * Created by shanmugarajjoveeinfo on 27/2/18.
  */
-class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentView, var context: Context):APIListener,UserProfileEditFragmentPresenter {
+class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView, var context: Context): APIListener,UserProfileEditFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 
@@ -165,8 +164,6 @@ class UserProfileEditFragmentPresenterImpl( var view: UserProfileEditFragmentVie
                 val result = response as UserProfileDisplayResult
                 DLog("API CALL : ", "inside UserProfileDisplayResult API CALL and onSuccess when")
                 if (true) {
-                    setStringPreference(context,"image_url","http://192.168.0.56/images/")
-                    var image_url= getStringPreference(context,"image_url","http://192.168.0.56/images/")
                     view.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
                     //CustomToast().normalToast(context,"${result.message}")
                     //val imageView : ImageView = ImageView(this)

@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.adapter.DonorsListAdapter
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.DonorsFragmentPresenterImpl
 import kotlinx.android.synthetic.main.fragment_donars.view.*
 

@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import com.joveeinfotech.bloodex.*
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.OTPResult
 import com.joveeinfotech.bloodex.model.PasswordResult
 import com.joveeinfotech.bloodex.model.RegisterResult

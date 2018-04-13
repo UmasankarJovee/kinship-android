@@ -24,9 +24,8 @@ import com.joveeinfotech.bloodex.utils.LocationService
 import com.joveeinfotech.bloodex.utils.SharedData
 import com.joveeinfotech.bloodex.view.*
 import com.joveeinfotech.bloodex.view.Top20Fragment
+import kinship.joveeinfotech.bloodex.HomeFragment
 
-
-import kinship.joveeinfotech.kinship.*
 
 //import javax.swing.text.StyleConstants.setIcon
 

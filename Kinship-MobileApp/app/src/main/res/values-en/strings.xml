@@ -7,16 +7,7 @@
     <string name="navigation_donors">Donors</string>
     <string name="navigation_top20">Top 20</string>
 
-
-   <!-- <string name="app_name">
-        <font color='red' style='impact'>B</font>
-        <font color='black' style='impact'>lood</font>
-        <font color='red' style='impact'>E</font>
-        <font color='black' style='impact'>x</font>
-    </string>-->
     <string name="app_name">BloodEx</string>
-
-
 
     <!-- activity_login-->
     <string name="activity_login_phone_number_editText">Phone Number</string>
@@ -24,7 +15,6 @@
     <string name="activity_login_loginButton">LOGIN</string>
     <string name="activity_login_register_textView">"|  Register in New"</string>
     <string name="activity_login_forget_password_textView">"Forget Password  "</string>
-
 
     <!--fragment_home-->
     <string name="activity_home_fragment_recentBloodDonatedPerson_TextView">RECENT BLOOD DONATED PERSON</string>
@@ -110,11 +100,11 @@
 
     <!-- alert_blood_requestor_instructions-->
     <string name="blood_requestor_instructions_textview">
-       Instructions to Blood Requester Before Blood Request:\n\n
+       Instructions to Before Blood Request:\n\n
         1. You must select correct blood request. \n
         2. You give correct unit of need of blood .Do not give additional units. \n
         3. If you play with this application then the action will be taken on you. \n\n
-        Instructions to Blood Requester After Blood Donation:\n\n
+        Instructions to After Blood Donation:\n\n
         1. You must like on social profile previous blood donor of your request.
     </string>
 
@@ -175,14 +165,14 @@
     <!--fragment_user_health_details-->
     <string name="fragment_user_health_title_textView">If you attack any diseases on now or before, Please select following list</string>
     <string name="fragment_user_health_details_diabetic_checkBox1">Diabetic</string>
-    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmetic</string>
+    <string name="fragment_user_health_details_asthmetic_checkBox2">Asthmatic</string>
     <string name="fragment_user_health_details_heartPatient_checkBox3">Heart Patient</string>
-    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuber Closis</string>
+    <string name="fragment_user_health_details_tuberClosis_checkBox4">Tuberculosis</string>
     <string name="fragment_user_health_details_epilepsy_checkBox5">Epilepsy</string>
-    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typoid / Malaria</string>
-    <string name="fragment_user_health_details_joundice_checkBox7">Joundice</string>
+    <string name="fragment_user_health_details_typoidOrMalaria_checkBox6">Typhoid / Malaria</string>
+    <string name="fragment_user_health_details_joundice_checkBox7">Jaundice</string>
     <string name="fragment_user_health_details_majorSurgery_checkBox8">Major Surgery</string>
-    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tatto</string>
+    <string name="fragment_user_health_details_transfusionOrTatto_checkBox9">Transfusion / Tattoo</string>
     <string name="fragment_user_health_details_toothExtraction_checkBox10">Tooth Extraction</string>
     <string name="fragment_user_health_details_none_checkBox11">None</string>
     <string name="fragment_user_health_details_submit_button">SUBMIT</string>
@@ -228,5 +218,9 @@
     <string name="go_to_permissions_to_grant_phone">Go to Permissions to Grant Phone Call</string>
     <string name="you_are_not_able_to_donate_blood">You not able to give your Blood</string>
 
+    <!-- SelectLanguage-->
+    <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">WELCOME</string>
+    <string name="activity_select_language_constraintLayout2_skip_textView">NEXT</string>
+    <string name="select_language">Select Language</string>
 
 </resources>

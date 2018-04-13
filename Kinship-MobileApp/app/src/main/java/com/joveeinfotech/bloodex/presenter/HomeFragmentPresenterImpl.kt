@@ -3,8 +3,8 @@ package com.joveeinfotech.bloodex.presenter
 import android.content.Context
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
-import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.UpdateDetailsResult
 import com.joveeinfotech.bloodex.utils.Others.DLog
 
