@@ -23,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <ImageView
                 android:id="@+id/activity_login_imageView"
                 android:layout_width="185dp"

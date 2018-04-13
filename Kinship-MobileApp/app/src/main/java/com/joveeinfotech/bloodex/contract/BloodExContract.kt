@@ -58,6 +58,7 @@ interface BloodExContract {
         fun closePasswordDialog()
         fun confirmOTP()
         fun confirmPassword()
+        fun setCountries(country: ArrayList<String>)
     }
     interface RegisterPresenter {
         fun initPresenter()

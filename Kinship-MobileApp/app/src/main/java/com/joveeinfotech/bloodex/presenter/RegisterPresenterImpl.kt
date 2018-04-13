@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.joveeinfotech.bloodex.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
+import com.joveeinfotech.bloodex.model.CountryResult
 import com.joveeinfotech.bloodex.model.OTPResult
 import com.joveeinfotech.bloodex.model.PasswordResult
 import com.joveeinfotech.bloodex.model.RegisterResult
@@ -38,6 +39,14 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         mContext=context
         initPresenter()
         session = SharedData(mContext)
+        loadCountries()
+    }
+
+    private fun loadCountries() {
+        val queryParams = HashMap<String, String>()
+        var client_id = getStringPreference(mContext,"client_id","")
+        queryParams.put("client_id",client_id!!)
+        networkCall?.APIRequest("api/v1/country", queryParams, OTPResult::class.java, this, 4, "Verifying Your OTP")
     }
 
     override fun initPresenter() {
@@ -87,6 +96,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         queryParams.put("client_id",client_id!!)
         queryParams.put("phone_number", phone_number!!)
         queryParams.put("blood_group", blood_group!!)
+
         DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/register", queryParams, RegisterResult::class.java, this, 1, "Registering...")
     }
@@ -128,6 +138,22 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
                     CustomToast().alertToast(mContext,mContext.getString(R.string.try_again))
                     //snackbar(this,)
                 }
+            }
+            4 -> { // Send Password
+                val registerResult = response as CountryResult
+                DLog("API CALL : ", "inside Main activity and onSuccess")
+                registerView.setCountries(registerResult.country)
+                //registerResult.country
+                /*if (registerResult.status) {
+                    registerView.closePasswordDialog()
+                    val i = Intent(mContext, Login::class.java)
+                    mContext.startActivity(i)
+                    registerView.closeActivity()
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
+                } else {
+                    CustomToast().alertToast(mContext,mContext.getString(R.string.try_again))
+                    //snackbar(this,)
+                }*/
             }
         }
     }

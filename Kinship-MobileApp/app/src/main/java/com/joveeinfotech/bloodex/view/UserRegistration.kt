@@ -17,6 +17,7 @@ import com.joveeinfotech.bloodex.presenter.RegisterPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import kotlinx.android.synthetic.main.activity_user_registration.*
+import kotlinx.android.synthetic.main.fragment_user_address.*
 
 
 class UserRegistration : AppCompatActivity(), RegisterView {
@@ -157,5 +158,12 @@ class UserRegistration : AppCompatActivity(), RegisterView {
     }
 
     override fun closeActivity() { finish() }
+
+    override fun setCountries(country: ArrayList<String>) {
+        var country_array = country.toTypedArray()
+        val dataAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, country_array)
+        activity_user_registration_scrollView_constraintLayout_country_auto_complete_textView?.threshold = 1
+        activity_user_registration_scrollView_constraintLayout_country_auto_complete_textView?.setAdapter<ArrayAdapter<String>>(dataAdapter)
+    }
 }
 

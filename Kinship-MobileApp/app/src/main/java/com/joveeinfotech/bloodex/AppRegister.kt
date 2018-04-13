@@ -55,7 +55,7 @@ class AppRegister : AppCompatActivity(), APIListener {
         queryParams.put("device_version",deviceVersion.toString())
         queryParams.put("device_model",deviceModel)
         queryParams.put("manufacturer",device_manufacturer)
-        networkCall?.APIRequest("api/v1/app", queryParams, AppRegisterResult::class.java, this, 1, "Setting your Password...",false)
+        networkCall?.APIRequest("api/v1/appRegister", queryParams, AppRegisterResult::class.java, this, 1, "Setting your Password...",false)
     }
 
 

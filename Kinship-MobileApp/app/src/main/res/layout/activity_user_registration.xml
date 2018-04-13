@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:layout_marginTop="63dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_logo_imageView"
@@ -66,10 +66,22 @@
             android:layout_height="45dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number" />
+
+        <AutoCompleteTextView
+            android:id="@+id/activity_user_registration_scrollView_constraintLayout_country_auto_complete_textView"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="20dp"
+            android:hint="Country"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_blood_group_spinner" />
 
 
         <Button
@@ -85,7 +97,7 @@
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_blood_group_spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_registration_scrollView_constraintLayout_country_auto_complete_textView" />
 
         <TextView
             android:id="@+id/textView4"
