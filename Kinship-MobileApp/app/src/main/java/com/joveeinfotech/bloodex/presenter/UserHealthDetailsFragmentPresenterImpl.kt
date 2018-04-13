@@ -2,27 +2,19 @@ package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
 import android.support.v4.app.FragmentTransaction
-import android.util.Log
-import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIClient
 import com.joveeinfotech.bloodex.APIListener
-import com.joveeinfotech.bloodex.R
+import com.joveeinfotech.bloodex.contract.BloodExContract
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.model.UserHealthDetailsResult
-import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog
-import com.joveeinfotech.bloodex.view.UserAddressFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import org.json.JSONException
-import java.util.*
-import org.json.JSONObject
 
 
-class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFragmentPresenter {
+class UserHealthDetailsFragmentPresenterImpl : APIListener,UserHealthDetailsFragmentPresenter {
 
     override fun onFailure(from: Int, t: Throwable) {}
 
@@ -48,6 +40,8 @@ class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFra
     override fun sendHealthDetails(healthDetails: JsonObject) {
         /*var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         //queryParams.put("user_id", user_id!!)
         //val jsArray = JSONArray(healthDetails)
         //val Gson=Gson()
@@ -98,14 +92,15 @@ class UserHealthDetailsFragmentPresenterImpl : APIListener, UserHealthDetailsFra
         when (from) {
             1 -> { // User profile
                 val result = response as UserHealthDetailsResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status){
-                    if(true){
+                    userHealthDetailsFragmentView?.navigateFragment()
+                    /*if(true){
                         trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()
-                    }
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    }*/
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
 
                 }

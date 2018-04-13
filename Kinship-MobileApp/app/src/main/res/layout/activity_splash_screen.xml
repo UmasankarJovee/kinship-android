@@ -12,6 +12,6 @@
         android:id="@+id/activity_splash_screen_logo"
         android:layout_width="200dp"
         android:layout_height="235dp"
-        android:background="@drawable/bloodex_logo" />
+        android:background="@drawable/bloodex_splash" />
 
 </LinearLayout>

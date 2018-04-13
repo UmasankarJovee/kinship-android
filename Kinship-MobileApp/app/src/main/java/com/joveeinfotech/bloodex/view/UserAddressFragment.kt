@@ -2,17 +2,20 @@ package com.joveeinfotech.bloodex.view
 
 import android.content.ContentResolver
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.joveeinfotech.bloodex.APICall
+import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserAddrssFragmentPresenterImpl
@@ -26,6 +29,8 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
     var country: String? = null
     var state: String? = null
     var district: String? = null
+    var trans : FragmentTransaction? = null
+    var userDetailActivity : UserDetails? = null
 
     var resolver: ContentResolver? = null
     lateinit var mContext: Context
@@ -40,6 +45,8 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         resolver = activity?.contentResolver
+        userDetailActivity = activity as UserDetails
+
         val trans = fragmentManager?.beginTransaction()
         userAddressFragmentPresenter = UserAddrssFragmentPresenterImpl(trans,this,mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_address, container, false)
@@ -172,6 +179,26 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
     }
+
+    override fun navigateFragment() {
+        if(!userDetailActivity?.getIsCompleteProfile()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteHealthDetails()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAdditionalDetails()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else{
+            mContext.startActivity(Intent(mContext, Home::class.java))
+            userDetailActivity!!.closeActivity()
+        }
+    }
+
 
 
 }

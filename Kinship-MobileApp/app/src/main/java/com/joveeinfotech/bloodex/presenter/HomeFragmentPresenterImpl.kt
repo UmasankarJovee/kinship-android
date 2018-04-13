@@ -1,11 +1,12 @@
 package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.UpdateDetailsResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 class HomeFragmentPresenterImpl : APIListener, HomeFragmentPresenter {
 
@@ -31,6 +32,8 @@ class HomeFragmentPresenterImpl : APIListener, HomeFragmentPresenter {
 
     override fun Click() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("nothing", "hello")
         //Log.e("MAIN ACTIVITY : ","inside button" )
         networkCall?.APIRequest("api/v0/updated_detail_of_home",queryParams, UpdateDetailsResult::class.java,this, 1, "Fetching...")
@@ -39,7 +42,7 @@ class HomeFragmentPresenterImpl : APIListener, HomeFragmentPresenter {
         when(from) {
             1 -> { // Home Page Contents
                 val result = response as UpdateDetailsResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
                     homeFragmentView.setViewData(result.count_of_hospitals,result.count_of_donors,result.count_of_users)
                     //Log.e("API CALL : ", "inside Main activity and onSucces and if condition")

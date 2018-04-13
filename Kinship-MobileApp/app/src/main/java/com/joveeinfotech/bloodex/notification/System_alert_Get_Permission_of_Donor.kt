@@ -10,17 +10,15 @@ import android.os.IBinder
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import com.joveeinfotech.bloodex.APICall
-import com.joveeinfotech.bloodex.EmptyActivity
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import kotlinx.android.synthetic.main.system_alert_get_permission_of_donor_get.view.*
 
 /**
@@ -44,14 +42,14 @@ class System_alert_Get_Permission_of_Donor : Service() {
         var isDisplay = SharedPreferenceHelper.getBooleanPreference(this, "isDisplay", false)
         Log.e("FcmMessagingService2 : ","${isDisplay}")*/
         //return super.onStartCommand(intent, flags, startId)
-        Log.e("SystemAlert : ", "onStartCommand1")
+        DLog("SystemAlert : ", "onStartCommand1")
         return START_STICKY
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        Log.e("SystemAlert : ", "onCreate1")
+        DLog("SystemAlert : ", "onCreate1")
         networkCall = APICall(this)
         objPlayer = MediaPlayer.create(this, R.raw.alert_tones)
 
@@ -106,9 +104,9 @@ class System_alert_Get_Permission_of_Donor : Service() {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
 
                 var isClickYes = getBooleanPreference(this@System_alert_Get_Permission_of_Donor, "isClickYes", false)
-                Log.e("SampleService : ", "Called in click ${isClickYes}")
+                DLog("SampleService : ", "Called in click ${isClickYes}")
                 if(isClickYes) {
-                    Log.e("SampleService : ", "inside if")
+                    DLog("SampleService : ", "inside if")
                     setBooleanPreference(this@System_alert_Get_Permission_of_Donor, "isClickNo", false)
                     myView.visibility = View.INVISIBLE
 
@@ -124,9 +122,9 @@ class System_alert_Get_Permission_of_Donor : Service() {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
 
                 var isClickNo = getBooleanPreference(this@System_alert_Get_Permission_of_Donor, "isClickNo", false)
-                Log.e("SampleService : ", "Called in click ${isClickNo}")
+                DLog("SampleService : ", "Called in click ${isClickNo}")
                 if(isClickNo) {
-                    Log.e("SampleService : ", "inside if")
+                    DLog("SampleService : ", "inside if")
                     setBooleanPreference(this@System_alert_Get_Permission_of_Donor, "isClickNo", false)
                     myView.visibility = View.INVISIBLE
 

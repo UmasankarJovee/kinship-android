@@ -2,12 +2,12 @@ package com.joveeinfotech.bloodex.notification
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.model.SendTokenResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 /**
@@ -24,28 +24,28 @@ class FcmInstanceIdService : FirebaseInstanceIdService(), APIListener {
         var spe : SharedPreferences.Editor = sp.edit()
         spe.putString("FCM_TOKEN",recent_token)
         spe.commit()
-        //sendTokenToServer(recent_token!!)
+        sendTokenToServer(recent_token!!)
     }
 
     private fun sendTokenToServer(recent_token : String) {
         networkCall = APICall(this)
         val queryParams = HashMap<String, String>()
         queryParams.put("id", recent_token)
-        Log.e("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/address", queryParams, SendTokenResult::class.java, this, 1, "Sending...")
+        DLog("MAIN ACTIVITY : ", "inside button")
+        networkCall?.APIRequest("api/v1/address", queryParams, SendTokenResult::class.java, this, 1, "Sending...",false)
     }
 
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Get Districts
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                DLog("API CALL : ", "inside Main activity and onSuccess when")
                 val result = response as SendTokenResult
                 if(result.status){
                     //Toast.makeText(applicationContext,"Stored", Toast.LENGTH_LONG).show()
-                    Log.e("FcmInstanceIdService","send token")
+                    DLog("FcmInstanceIdService","send token")
                 }else{
                     //Toast.makeText(applicationContext,"Not Stored", Toast.LENGTH_LONG).show()
-                    Log.e("FcmInstanceIdService","error on send token")
+                    DLog("FcmInstanceIdService","error on send token")
                 }
             }
         }

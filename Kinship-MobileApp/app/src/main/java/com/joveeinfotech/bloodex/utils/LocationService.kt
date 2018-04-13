@@ -11,9 +11,9 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.IBinder
 import android.support.v4.app.ActivityCompat
-import android.util.Log
 import com.joveeinfotech.bloodex.Network_check
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 class LocationService : Service(){
 
@@ -28,7 +28,7 @@ class LocationService : Service(){
         lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         //locationListener = MyLocationListener()
 
-        Log.e("qqqqqqqqqqqqqqqq","service call")
+        DLog("qqqqqqqqqqqqqqqq", "service call")
         //locationProcess1()
 
         network_enabled = lm?.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
@@ -38,14 +38,13 @@ class LocationService : Service(){
             if (ActivityCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     && ActivityCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-                Log.e("qqqqqqqqqqqqqqqq","inside if")
+                DLog("qqqqqqqqqqqqqqqq","inside if")
                 location = lm?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-                Log.e("Location1 : ","${location?.latitude},${location?.longitude}")
+                DLog("Location1 : ","${location?.latitude},${location?.longitude}")
                 setStringPreference(context!!,"latitude",location?.latitude.toString())
                 setStringPreference(context!!,"longitude",location?.longitude.toString())
             }
         }
-
         return super.onStartCommand(intent, flags, startId)
     }
 
@@ -74,12 +73,12 @@ class LocationService : Service(){
 
         override fun onProviderDisabled(arg0: String) {
 
-            Log.e("qqqqqqqqqqqqqqqq","onProviderDisabled")
+            DLog("qqqqqqqqqqqqqqqq","onProviderDisabled")
         }
 
         override fun onLocationChanged(location: android.location.Location?) {
             if (location != null) {
-                Log.e("qqqqqqqqqqqqqqqq","call inside location changed")
+                DLog("qqqqqqqqqqqqqqqq","call inside location changed")
 
                 //sendLocation()
                 /*mCompositeDisposable=mApiInterface?.sendLocation(location.latitude.toString(),location.longitude.toString())!!.observeOn(AndroidSchedulers.mainThread())
@@ -105,12 +104,12 @@ class LocationService : Service(){
         }
 
         override fun onStatusChanged(s: String, i: Int, bundle: Bundle) {
-            Log.e("qqqqqqqqqqqqqqqq","onStatusChanged")
+            DLog("qqqqqqqqqqqqqqqq","onStatusChanged")
         }
 
         override fun onProviderEnabled(arg0: String) {
 
-            Log.e("qqqqqqqqqqqqqqqq","onProviderEnabled")
+            DLog("qqqqqqqqqqqqqqqq","onProviderEnabled")
         }
     }
 

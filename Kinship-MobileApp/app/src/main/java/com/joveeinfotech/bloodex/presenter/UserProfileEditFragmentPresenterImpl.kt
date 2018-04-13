@@ -1,10 +1,9 @@
 package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
+import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
@@ -33,6 +32,8 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
     }
     override fun loadProfileDetails() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("phone_number", "8189922043")
         DLog("new","hello")
         networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 4, "Fetching...")
@@ -41,24 +42,30 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
         Others.DLog("Root", "2i1")
         addressNetworkCall= APICall(context)
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("input", "countries")
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, CountryResult::class.java, this, 1, "Fetching...")
     }
     override fun sendCountryReceiveState() {
         Others.DLog("Root", "2i3")
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("input", "states")
         //queryParams.put("subFieldName", country!!)
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, StateResult::class.java, this, 2, "Fetching...")
     }
     override fun sendStateReceiveDistrict() {
         Others.DLog("Root", "2i5")
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("input", "districts")
         //queryParams.put("subFieldName", state!!)
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         addressNetworkCall?.APIRequest("api/v1/address", queryParams, DistrictResult::class.java, this, 3, "Fetching...")
     }
     override fun userAddressDetails(country: String, state: String, district: String, city: String, locality: String, street: String) {
@@ -69,7 +76,9 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
             Toast.makeText(context,"Please fill the all the fields", Toast.LENGTH_LONG).show()
         }*/
         val queryParams = HashMap<String, String>()
-        var user_id = getStringPreference(context,"user_id","")
+        var access_token = getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
+        //var user_id = getStringPreference(context,"user_id","")
         queryParams.put("addressable_id","106")
         queryParams.put("countries", country)
         queryParams.put("states", state)
@@ -77,7 +86,7 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
         queryParams.put("city", city)
         queryParams.put("locality",locality)
         queryParams.put("street_name", street)
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v6/address", queryParams, SendAddressResult::class.java, this, 6, "Sending your address...")
     }
    /* private fun sendAddress(country: String, state: String, district: String, city: String, locality: String, street: String) {
@@ -108,6 +117,8 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
     override fun sendImageString(imageString: String) {
         val str:String="data:image/png;base64,"
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("field","image")
         queryParams.put("value", "${str}${imageString}")
         DLog("ImageString","${str}${imageString}")
@@ -135,26 +146,26 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
                     }
                 }*/
 
-                Log.e("API CALL : ", "inside CountryResult API CALL and onSuccess when")
+                DLog("API CALL : ", "inside CountryResult API CALL and onSuccess when")
                 val countryList = response as CountryResult
                 view.setCountries(countryList.country)
             }
             2 -> { // Get State
-                Log.e("API CALL : ", "inside StateResult API CALL and onSuccess when")
+                DLog("API CALL : ", "inside StateResult API CALL and onSuccess when")
                 val stateList = response as StateResult
                 view.setStates(stateList.state)
             }
             3 -> { // Get District
-                Log.e("API CALL : ", "inside DistrictResult API CALL and onSuccess when")
+                DLog("API CALL : ", "inside DistrictResult API CALL and onSuccess when")
                 val districtList = response as DistrictResult
                 view.setDistricts(districtList.districts)
             }
             4 -> {
                 val result = response as UserProfileDisplayResult
-                Log.e("API CALL : ", "inside UserProfileDisplayResult API CALL and onSuccess when")
+                DLog("API CALL : ", "inside UserProfileDisplayResult API CALL and onSuccess when")
                 if (true) {
                     view.setProfileDetails("${image_url}${result.image_url}", "${result.first_name} ${result.last_name}",result.date_of_birth,result.weight,"${result.street_name},${result.locality},${result.city},${result.district},${result.state},${result.country}",result.phone_number, result.email)
-                    CustomToast().normalToast(context,"${result.message}")
+                    //CustomToast().normalToast(context,"${result.message}")
                     //val imageView : ImageView = ImageView(this)
                     var imageUrl = result.image_url
                     //Picasso.with().load(imageUrl).into(fragment_profile_display_user_profile_image)
@@ -170,15 +181,15 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
                     //var address = "${result.street_name},${result.locality},${result.city},${result.district},${result.state}"
 
 
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 }
 
             }
             5 -> {
-                Log.e("API CALL : ", "inside sendImageString  API CALL and onSuccess when")
+                DLog("API CALL : ", "inside sendImageString  API CALL and onSuccess when")
             }
             6 -> { // Send Address
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                DLog("API CALL : ", "inside Main activity and onSuccess when")
                 val addressResult = response as SendAddressResult
                 if (addressResult.status) {
                     if(true){
@@ -186,7 +197,8 @@ class UserProfileEditFragmentPresenterImpl(var view: UserProfileEditFragmentView
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()*/
                     }
-                    Toast.makeText(context, "Successfully Stored", Toast.LENGTH_LONG).show()
+                    CustomToast().normalToast(context,context.getString(R.string.successfully_stored))
+                    //Toast.makeText(context, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)
                 }

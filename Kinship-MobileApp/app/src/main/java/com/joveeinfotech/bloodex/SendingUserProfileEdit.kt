@@ -6,12 +6,12 @@ import android.content.Intent
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.IBinder
-import android.util.Log
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 
-import android.widget.Toast
+//import android.widget.Toast
 
 import com.joveeinfotech.bloodex.model.SendingUserProfileEditResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import io.reactivex.disposables.Disposable
 import java.util.HashMap
 
@@ -40,7 +40,7 @@ class SendingUserProfileEdit : Service(), APIListener{
             queryParams.put("user_id", "161")
             queryParams.put("field", field!!)
             queryParams.put("value", value!!)
-            Log.e("MAIN ACTIVITY : ", "inside location true ${field}${value}")
+            DLog("MAIN ACTIVITY : ", "inside location true ${field}${value}")
             networkCall?.APIRequest("api/v1/profile1", queryParams, SendingUserProfileEditResult::class.java, this, 1, "Sending Location...",false)
         } else{
             val queryParams = HashMap<String, String>()
@@ -50,7 +50,7 @@ class SendingUserProfileEdit : Service(), APIListener{
             queryParams.put("value", value!!)
             queryParams.put("field1",field1!!)
             queryParams.put("value1",value1!!)
-            Log.e("MAIN ACTIVITY : ", "inside location${field1}${value1}")
+            DLog("MAIN ACTIVITY : ", "inside location${field1}${value1}")
             networkCall?.APIRequest("api/v1/profile1", queryParams, SendingUserProfileEditResult::class.java, this, 1, "Sending Location...",false)
         }
         //intent?.putExtra("key1","value1")
@@ -60,10 +60,10 @@ class SendingUserProfileEdit : Service(), APIListener{
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                DLog("API CALL : ", "inside Main activity and onSuccess when")
                 val sendingUserProfileEditResult = response as SendingUserProfileEditResult
                 if(sendingUserProfileEditResult.status){
-                    Toast.makeText(context,"${sendingUserProfileEditResult.status}",Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context,"${sendingUserProfileEditResult.status}",Toast.LENGTH_SHORT).show()
                 }
             }
         }

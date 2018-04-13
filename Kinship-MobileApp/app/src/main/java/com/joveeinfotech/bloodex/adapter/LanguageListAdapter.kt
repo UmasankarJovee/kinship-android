@@ -2,7 +2,6 @@ package com.joveeinfotech.bloodex.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getIntPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setIntPreference
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 /**
  * Created by shanmugarajjoveeinfo on 15/2/18.
@@ -45,7 +45,7 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
         var clickListener:View.OnClickListener?=null
 
         init {
-            Log.e("Message","1")
+            DLog("Message","1")
             language_list_item_languageNames_textView = inflate.findViewById(R.id.language_list_item_languageNames_textView)
             language_list_item_imageCheck_radioButton = inflate.findViewById(R.id.language_list_item_imageCheck_radioButton)
 
@@ -71,15 +71,15 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
             }*/
 
 
-            Log.e("Message","2")
-            Log.e("Preference","Before getIntPreference${mSelectedItem}")
+            DLog("Message","2")
+            DLog("Preference","Before getIntPreference${mSelectedItem}")
             mSelectedItems= getIntPreference(mContext,"checked",1)
-            Log.e("Preference","After getIntPreference${mSelectedItems}")
+            DLog("Preference","After getIntPreference${mSelectedItems}")
             var i:Int=0
             for (i in 0..counts-1) {
-                Log.e("Preference","i value ${i}")
+                DLog("Preference","i value ${i}")
                 if (i == mSelectedItems) {
-                    Log.e("Preference", "m if value ${i}")
+                    DLog("Preference", "m if value ${i}")
                     language_list_item_imageCheck_radioButton.performClick()
                     /*clickListener = object : View.OnClickListener{
                         override fun onClick(v: View) {
@@ -96,7 +96,7 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
                     //itemView.language_list_item_imageCheck_radioButton.isChecked=true
                 }
                 else{
-                    Log.e("Preference","m else value ${i}")
+                    DLog("Preference","m else value ${i}")
                    // itemView.language_list_item_imageCheck_radioButton.isChecked=false
                 }
             }
@@ -108,7 +108,7 @@ abstract class LanguageListAdapter<T>(private val mContext: Context, var languag
                     mSelectedItem = getAdapterPosition()
                     listener.onLanguageClick(mSelectedItem)
                     setIntPreference(mContext,"checked",mSelectedItem)
-                    Log.e("Preference","After setIntPreference ${mSelectedItem}")
+                    DLog("Preference","After setIntPreference ${mSelectedItem}")
                     //dismiss()
                     notifyDataSetChanged()
                 }

@@ -8,8 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.support.v4.app.ActivityCompat
-import android.util.Log
-import android.widget.Toast
+//import android.widget.Toast
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.model.ReplyBloodRequestResult
@@ -17,6 +16,8 @@ import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
 import com.joveeinfotech.bloodex.EmptyActivity
 import com.joveeinfotech.bloodex.model.NotComeForRequestResult
+import com.joveeinfotech.bloodex.utils.Others
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 class NotificationReceiver : BroadcastReceiver(), APIListener {
 
@@ -37,7 +38,7 @@ class NotificationReceiver : BroadcastReceiver(), APIListener {
             //DisplayDialog(context).onCreateDialog(0)
             getPhoneNumberOfRequestor()*/
         } else if ("NO_ACTION" == action) {
-            Toast.makeText(context, "STOP CALLED", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "STOP CALLED", Toast.LENGTH_SHORT).show()
             notCome()
         }
     }
@@ -45,14 +46,14 @@ class NotificationReceiver : BroadcastReceiver(), APIListener {
     fun getPhoneNumberOfRequestor() {
         val queryParams = HashMap<String, String>()
         queryParams.put("reply","yes")
-        Log.e("MAIN ACTIVITY : ","inside button" )
+        DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/replyRequest",queryParams, ReplyBloodRequestResult::class.java,this, 1, "Authenticating...")
     }
 
     fun notCome() {
         val queryParams = HashMap<String, String>()
         queryParams.put("reply","no")
-        Log.e("MAIN ACTIVITY : ","inside button" )
+        DLog("MAIN ACTIVITY : ","inside button" )
         networkCall?.APIRequest("api/v1/replyRequest",queryParams, NotComeForRequestResult::class.java,this, 2, "Authenticating...")
     }
 
@@ -60,7 +61,7 @@ class NotificationReceiver : BroadcastReceiver(), APIListener {
         when(from) {
             1 -> { // User Login
                 val result = response as ReplyBloodRequestResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
                     var phoneNumber = result.phoneNumber
                     if (ActivityCompat.checkSelfPermission(context!!, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
@@ -81,7 +82,7 @@ class NotificationReceiver : BroadcastReceiver(), APIListener {
             }
             2 -> { // User Login
                 val result = response as NotComeForRequestResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
 
                 } else {

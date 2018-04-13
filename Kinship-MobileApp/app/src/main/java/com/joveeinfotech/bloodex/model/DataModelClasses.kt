@@ -3,8 +3,9 @@ package com.joveeinfotech.bloodex.model
 import android.graphics.Bitmap
 
 data class LoginResult(var status: Boolean,
-                       var message: String,
-                       var user_id : String)
+                       var user_id : String,
+                       var access_token : String,
+                       var refresh_token : String)
 
 data class UserDetailResult(var isRegisterUserProfile : Boolean,
                             var isRegisterHomeAddress : Boolean,
@@ -153,4 +154,7 @@ data class FcmBloodDonationCamp(var status: Boolean,
                                 var time : String,
                                 var venue : String)
 
+data class AppRegisterResult(var data : InnerAppRegisterResult)
+
+data class InnerAppRegisterResult(var status: Boolean,var client_id :String, var client_secret : String)
 

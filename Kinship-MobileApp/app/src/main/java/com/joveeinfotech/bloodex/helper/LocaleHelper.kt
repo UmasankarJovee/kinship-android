@@ -1,7 +1,8 @@
 package com.joveeinfotech.bloodex.helper
 
 import android.content.Context
-import android.util.Log
+import com.joveeinfotech.bloodex.utils.Others
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.*
 
 /**
@@ -9,7 +10,7 @@ import java.util.*
  */
 object LocaleHelper {
     fun setLocale(context:Context,language: String):Context {
-        Log.e("Message","setLocale After")
+        DLog("Message", "setLocale After")
         val mylocale= Locale(language)
         val dm=context.resources.displayMetrics
         val conf=context.resources.configuration

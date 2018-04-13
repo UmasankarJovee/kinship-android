@@ -4,9 +4,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.SendingRequestResponseResult
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
@@ -25,8 +25,10 @@ class SendingRequestResponse : Service(), APIListener {
         var response = i?.getString("response")
 
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(this, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("response",response!!)
-        Log.e("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
+        DLog("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
         networkCall?.APIRequest("api/v1/requestresponse", queryParams, SendingRequestResponseResult::class.java, this, 1, "Sending Location...",false)
 
         //intent?.putExtra("key1","value1")
@@ -36,7 +38,7 @@ class SendingRequestResponse : Service(), APIListener {
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Sending Request Response and onSuccess when")
+                DLog("API CALL : ", "inside Sending Request Response and onSuccess when")
                 val sendingRequestResponseResult = response as SendingRequestResponseResult
                 if(sendingRequestResponseResult.status){
                     DLog("SendingRequestResponse :","Sending Response")

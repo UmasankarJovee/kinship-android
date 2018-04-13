@@ -10,16 +10,14 @@ import android.os.IBinder
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import com.joveeinfotech.bloodex.APICall
-import com.joveeinfotech.bloodex.EmptyActivity
 import com.joveeinfotech.bloodex.R
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import kotlinx.android.synthetic.main.system_alert_user_information_get.view.*
 
 /**
@@ -43,14 +41,14 @@ class System_alert_User_Information : Service() {
         var isDisplay = SharedPreferenceHelper.getBooleanPreference(this, "isDisplay", false)
         Log.e("FcmMessagingService2 : ","${isDisplay}")*/
         //return super.onStartCommand(intent, flags, startId)
-        Log.e("SystemAlert : ", "onStartCommand1")
+        DLog("SystemAlert : ", "onStartCommand1")
         return START_STICKY
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        Log.e("SystemAlert : ", "onCreate1")
+        DLog("SystemAlert : ", "onCreate1")
         networkCall = APICall(this)
         objPlayer = MediaPlayer.create(this, R.raw.alert_tones)
 

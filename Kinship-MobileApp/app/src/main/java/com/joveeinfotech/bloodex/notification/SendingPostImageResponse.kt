@@ -4,11 +4,11 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.SendingRequestResponseResult
-import com.joveeinfotech.bloodex.utils.Others
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 class SendingPostImageResponse : Service(), APIListener {
@@ -25,8 +25,10 @@ class SendingPostImageResponse : Service(), APIListener {
         var response = i?.getString("permission")
 
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(this, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("permission",response!!)
-        Log.e("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
+        DLog("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
         networkCall?.APIRequest("api/v1/permissionOfPostImage", queryParams, SendingRequestResponseResult::class.java, this, 1, "Sending Location...",false)
 
         //intent?.putExtra("key1","value1")
@@ -36,10 +38,10 @@ class SendingPostImageResponse : Service(), APIListener {
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Sending Request Response and onSuccess when")
+                DLog("API CALL : ", "inside Sending Request Response and onSuccess when")
                 val sendingRequestResponseResult = response as SendingRequestResponseResult
                 if(sendingRequestResponseResult.status){
-                    Others.DLog("SendingRequestResponse :", "Sending Response")
+                    DLog("SendingRequestResponse :", "Sending Response")
                     //Toast.makeText(context, "${sendingRequestResponseResult.status}", Toast.LENGTH_SHORT).show()
                 }
             }

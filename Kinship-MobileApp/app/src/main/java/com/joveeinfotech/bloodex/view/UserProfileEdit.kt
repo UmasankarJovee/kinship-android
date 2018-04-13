@@ -2,12 +2,10 @@ package com.joveeinfotech.bloodex.view
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.app.ProgressDialog
 import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-//import android.support.v4.app.FragmentTransaction
 import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -16,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.Toast
+//import android.widget.Toast
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.SendingUserProfileEdit
@@ -38,8 +36,6 @@ class UserProfileEdit : AppCompatActivity(), UserProfileEditFragmentView {
 
     var bitmap: Bitmap? = null
     var byteArray: ByteArray? = null
-    var progressDialog : ProgressDialog? = null
-    //var upefView: View?=null
     var networkCall: APICall? = null
 
     var country: String? = null
@@ -106,9 +102,9 @@ class UserProfileEdit : AppCompatActivity(), UserProfileEditFragmentView {
             last_name = dialogView?.findViewById(R.id.alert_user_details_lastName_editText)
             //country_spinner = dialogView?.findViewById<Spinner>(R.id.alert_address_details_scrollView_linearLayout1_country_spinner) as Spinner
             dialogView?.alert_user_details_okButton?.setOnClickListener {
-                Toast.makeText(this, "sorry doalogBuilder is error", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "sorry doalogBuilder is error", Toast.LENGTH_SHORT).show()
                 dialogView?.alert_user_details_okButton?.setOnClickListener {
-                    Toast.makeText(applicationContext, "sorry doalogBuilder is error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "sorry doalogBuilder is error", Toast.LENGTH_SHORT).show()
                     dialogbuilderCall.dismiss()
                 }
                 activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView?.visibility = View.GONE
@@ -179,7 +175,7 @@ class UserProfileEdit : AppCompatActivity(), UserProfileEditFragmentView {
             activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_checkIcon5_imageView?.setOnClickListener {
                 activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.setText(activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString())
                 call("email", activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(), "", "")
-                Toast.makeText(this, activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText.text.toString(), Toast.LENGTH_SHORT).show()
                 activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_textView?.visibility = View.VISIBLE
                 activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_editIcon5_imageView?.visibility = View.VISIBLE
                 activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_email_editText?.visibility = View.GONE

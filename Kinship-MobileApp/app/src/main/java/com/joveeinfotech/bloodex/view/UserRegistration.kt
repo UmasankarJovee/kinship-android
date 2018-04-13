@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -16,6 +15,7 @@ import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.RegisterPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import kotlinx.android.synthetic.main.activity_user_registration.*
 
 
@@ -69,7 +69,7 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         activity_user_registration_scrollView_constraintLayout_registerButton.setOnClickListener {
             var sp : SharedPreferences = applicationContext.getSharedPreferences("FCM_PREF", Context.MODE_PRIVATE)
             var token = sp.getString("FCM_TOKEN","")
-            Log.e("dg","$token")
+            DLog("dg", "$token")
             registerPresenter?.userPhoneNumberAndBloodGroup(activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString(), blood_group!!)
         }
     }
@@ -91,7 +91,7 @@ class UserRegistration : AppCompatActivity(), RegisterView {
             if(editTextotp!!.text.isNotEmpty()){
                 registerPresenter?.OtpContent(editTextotp?.text.toString())
             }else{
-                CustomToast().alertToast(this,"Fill the OTP")
+                CustomToast().alertToast(this,this.getString(R.string.fill_the_otp))
             }
         }
     }
@@ -116,10 +116,10 @@ class UserRegistration : AppCompatActivity(), RegisterView {
                 if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
                     registerPresenter?.passwordContent(editTextpassword?.text.toString(),activity_user_registration_scrollView_constraintLayout_phone_number_editText.text.toString())
                 }else{
-                    CustomToast().alertToast(this,"Both passwords must be equal")
+                    CustomToast().alertToast(this,this.getString(R.string.both_passwords_are_must_be_equal))
                 }
             }else{
-                CustomToast().alertToast(this,"Fill the all fields")
+                CustomToast().alertToast(this,this.getString(R.string.fill_all_the_fields))
             }
         }
     }

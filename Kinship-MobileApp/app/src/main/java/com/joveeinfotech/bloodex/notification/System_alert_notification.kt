@@ -7,7 +7,6 @@ import android.graphics.PixelFormat
 import android.os.Build
 import android.os.IBinder
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -22,6 +21,7 @@ import kotlinx.android.synthetic.main.system_alert_notification_get.view.*
 import android.media.MediaPlayer
 import android.os.VibrationEffect
 import android.os.Vibrator
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 
 /**
@@ -45,14 +45,14 @@ class System_alert_notification : Service() {
         var isDisplay = SharedPreferenceHelper.getBooleanPreference(this, "isDisplay", false)
         Log.e("FcmMessagingService2 : ","${isDisplay}")*/
         //return super.onStartCommand(intent, flags, startId)
-        Log.e("SystemAlert : ","onStartCommand1")
+        DLog("SystemAlert : ", "onStartCommand1")
         return Service.START_STICKY
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        Log.e("SystemAlert : ","onCreate1")
+        DLog("SystemAlert : ","onCreate1")
         networkCall = APICall(this)
         objPlayer = MediaPlayer.create(this,R.raw.alert_tones)
 
@@ -119,9 +119,9 @@ class System_alert_notification : Service() {
         myView.system_alert_notification_get_TextView_yes_option.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                 var isClickYes = getBooleanPreference(this@System_alert_notification, "isClickYes", false)
-                Log.e("SampleService : ", "Called in click ${isClickYes}")
+                DLog("SampleService : ", "Called in click ${isClickYes}")
                 if(isClickYes){
-                    Log.e("SampleService : ", "inside if")
+                    DLog("SampleService : ", "inside if")
                     setBooleanPreference(this@System_alert_notification, "isClickYes", false)
                     myView.visibility = View.INVISIBLE
 
@@ -144,19 +144,19 @@ class System_alert_notification : Service() {
         myView.system_alert_notification_get_TextView_no_option.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                 var isClickNo = getBooleanPreference(this@System_alert_notification, "isClickNo", false)
-                Log.e("SampleService : ", "Called in click ${isClickNo}")
+                DLog("SampleService : ", "Called in click ${isClickNo}")
                 if(isClickNo){
-                    Log.e("SampleService : ", "inside if1")
+                    DLog("SampleService : ", "inside if1")
                     setBooleanPreference(this@System_alert_notification, "isClickNo", false)
                     myView.visibility = View.INVISIBLE
 
-                    Log.e("SampleService : ", "inside if2")
+                    DLog("SampleService : ", "inside if2")
                     var intent= Intent(this@System_alert_notification, SendingRequestResponse::class.java)
-                    Log.e("SampleService : ", "inside if3")
+                    DLog("SampleService : ", "inside if3")
                     intent.putExtra("response","no")
-                    Log.e("SampleService : ", "inside if4")
+                    DLog("SampleService : ", "inside if4")
                     this@System_alert_notification.startService(intent)
-                    Log.e("SampleService : ", "inside if5")
+                    DLog("SampleService : ", "inside if5")
                     //sendNoResponse()
                 }
                 //layout.removeAllViewsInLayout()

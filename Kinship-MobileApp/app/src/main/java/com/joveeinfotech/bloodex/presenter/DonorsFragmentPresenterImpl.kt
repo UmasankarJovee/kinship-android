@@ -1,14 +1,15 @@
 package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.adapter.DonorsListAdapter
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.DonationHistoryResult
 import com.joveeinfotech.bloodex.model.donationDetails
 import com.joveeinfotech.bloodex.model.donationInnerDetails
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 /**
@@ -43,6 +44,8 @@ class DonorsFragmentPresenterImpl : APIListener, DonorsFragmentPresenter {
 
     override fun loadDonorsList() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext,"access_token","")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("getTop20", "getTop20")
         networkCall?.APIRequest("api/v1/donorList", queryParams, DonationHistoryResult::class.java, this, 1, "Sending your other details...")
     }
@@ -56,30 +59,30 @@ class DonorsFragmentPresenterImpl : APIListener, DonorsFragmentPresenter {
 
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                DLog("API CALL : ", "inside Main activity and onSuccess when")
                 val getTop20Result = response as DonationHistoryResult
                 var details: List<donationDetails> = getTop20Result.donorList
                 mdonorsArrayList = ArrayList(details)
 
                 var len = mdonorsArrayList!!.size
-                Log.e("DonorsFragmentPresent: ","$len")
+                DLog("DonorsFragmentPresent: ","$len")
                 var i=0
                 for(i in mdonorsArrayList!!){
                     if(i.date in mMap.keys){
                         var mList1: MutableList<donationInnerDetails>? = mMap[i.date]
                         //var df = donationInnerDetails(i.image_url,i.name,i.district)
                         //mList?.add(i.image_url,donorsResult.name,donorsResult.district)
-                        Log.e("DonorsList : ","inside if")
+                        DLog("DonorsList : ","inside if")
                         //mList1?.add(donationInnerDetails(i.image_url,i.name,i.district))
                         mMap[i.date]?.add(donationInnerDetails(i.person_id,i.image_url,i.name,i.district))
-                        Log.e("dgdgfs","${i.date} ${i.image_url} ${i.name} ${i.district}")
+                        DLog("dgdgfs","${i.date} ${i.image_url} ${i.name} ${i.district}")
                         //mMap.put(i.date,mList1!!)
                         //mMap.replace(i.date,mList1)
                     }else{
-                        Log.e("DonorsList : ","inside else")
+                        DLog("DonorsList : ","inside else")
                         var mList2 = mutableListOf<donationInnerDetails>()
                         mList2.add(donationInnerDetails(i.person_id,i.image_url,i.name,i.district))
-                        Log.e("dgdgfs","${i.date} ${i.image_url} ${i.name} ${i.district}")
+                        DLog("dgdgfs","${i.date} ${i.image_url} ${i.name} ${i.district}")
                         mMap.put(i.date,mList2)
                     }
                 }

@@ -39,6 +39,9 @@ interface BloodExContract {
         fun getOTP()
         fun resetPassword()
         fun closePasswordDialog()
+        fun showNetworkError()
+        fun setContentNothing()
+        fun setContentview()
     }
     interface LoginPresenter{
         fun initPresenter()
@@ -67,6 +70,7 @@ interface BloodExContract {
     //UserDetails
     interface UserDetailsView{
         fun setNavigationFragmentValues(isCompleteProfile: Boolean, isCompleteAddress: Boolean, isCompleteAdditionalDetails: Boolean, isCompleteHealthDetails: Boolean)
+        fun closeActivity()
     }
     interface UserDetailsPresenter{
         fun initPresenter()
@@ -74,7 +78,9 @@ interface BloodExContract {
     }
 
     // UserProfileFragment
-    interface UserProfileFragmentView{}
+    interface UserProfileFragmentView{
+        fun navigateFragment()
+    }
     interface UserProfileFragmentPresenter{
         fun initPresenter()
         fun userProfileDetails(imageString: String,first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int)
@@ -85,6 +91,7 @@ interface BloodExContract {
         fun setCountries(dataAdapter: ArrayList<String>)
         fun setStates(stateList: ArrayList<String>)
         fun setDistricts(districtList: ArrayList<String>)
+        fun navigateFragment()
     }
     interface UserAddressFragmentPresenter{
         fun initPresenter()
@@ -96,7 +103,9 @@ interface BloodExContract {
     }
 
     // UserAdditionalDetailsFragment
-    interface UserAdditionalDetailsFragmentView{}
+    interface UserAdditionalDetailsFragmentView{
+        fun navigateFragment()
+    }
     interface UserAdditionalDetailsFragmentPresenter{
         fun initPresenter()
         fun moveSkiptoHome()
@@ -194,6 +203,7 @@ interface BloodExContract {
 
     // UserHealthDetailsFragment
     interface UserHealthDetailsFragmentView{
+        fun navigateFragment()
     }
     interface UserHealthDetailsFragmentPresenter {
         fun initPresenter()

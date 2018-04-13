@@ -1,14 +1,17 @@
 package com.joveeinfotech.bloodex.view
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.bloodex.Home
 import android.widget.Toast
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -22,9 +25,6 @@ import java.util.*
 import org.json.JSONException
 import org.json.JSONObject
 import org.json.JSONArray
-
-
-
 
 
 class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
@@ -45,7 +45,11 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
     var transfusion_tatto:Array<String>?=null
     var tooth_extraction:Array<String>?=null
     var none:Array<String>?=null
+    var healthDetails:Array<Array<String>?>?=null
+
     var healthDetails:Array<Array<String>?>?=null*/
+    var trans : FragmentTransaction? = null
+    var userDetailActivity : UserDetails? = null
     var diabetic:Boolean=false
     var asthmatic:Boolean=false
     var heart_patient:Boolean=false
@@ -83,7 +87,9 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val trans = fragmentManager?.beginTransaction()
+        trans = fragmentManager?.beginTransaction()
+        userDetailActivity = activity as UserDetails
+
         userHealthDetailsFragmentPresenter = UserHealthDetailsFragmentPresenterImpl(trans, this, mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_health_details, container, false)
 
@@ -519,7 +525,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
                 userHealthDetailsFragmentPresenter?.sendHealthDetails(healthDetailsObj)
 
             }else{
-                CustomToast().alertToast(mContext,"Must select atleast one")
+                CustomToast().alertToast(mContext,mContext.getString(R.string.must_select_atleast_one))
             }
 
         }
@@ -569,5 +575,24 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
+    }
+
+    override fun navigateFragment() {
+        if(!userDetailActivity?.getIsCompleteProfile()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAddress()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAdditionalDetails()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else{
+            mContext.startActivity(Intent(mContext, Home::class.java))
+            userDetailActivity!!.closeActivity()
+        }
     }
 }

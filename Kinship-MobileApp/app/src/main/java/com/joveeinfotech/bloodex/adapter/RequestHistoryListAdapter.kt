@@ -3,7 +3,6 @@ package com.joveeinfotech.bloodex.adapter
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,7 +81,7 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
             //var setList: List<donationInnerDetails>? = mMap[donorsResult.date]?.toList()
             //var details: List<donationDetails> = getTop20Result.donorList
             requestHistoryInnerArrayList = ArrayList(RequestResults)
-            Log.e("RequestHtryListAdapt:","${requestHistoryInnerArrayList!!.size}")
+            DLog("RequestHtryListAdapt:","${requestHistoryInnerArrayList!!.size}")
             requestHistoryInnerListAdapter = RequestHistoryInnerListAdapter(requestHistoryInnerArrayList!!, rhContext!!)
             itemView.all_requestor_list_cardView_constraintLayout_cardView_recyclerView.adapter = requestHistoryInnerListAdapter
 
@@ -100,7 +99,7 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
 
             override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
                 val view = LayoutInflater.from(parent?.context).inflate(R.layout.all_requestor_inner_list, parent, false)
-                Log.e("size",getRequestResults.size.toString())
+                DLog("size",getRequestResults.size.toString())
                 return ViewHolder(view, rhContext)
             }
 
@@ -111,17 +110,18 @@ class RequestHistoryListAdapter(val getRequestResults: MutableMap<String, Mutabl
             class ViewHolder(view : View,var rhContext: Context) : RecyclerView.ViewHolder(view) {
 
                 fun bind(requestInner : requestInnerDetails,position: Int) {
-                    Log.e("DonorsInnerList : ", "inside bind")
+                    DLog("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
 
                     //var url = "http://192.168.0.56/images/${requestInner.image_url}"
                     //Picasso.with(rhContext).load(url).into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
                     //var image_url= SharedPreferenceHelper.getStringPreference(rhContext, "image_url", "http://192.168.0.52/images/")
                     Picasso.with(rhContext).load("${image_url}${requestInner.image_url}").into(itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView)
+                    itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
+                    DLog("InnerList : ",requestInner.image_url)
+                    DLog("InnerList : ",requestInner.name)
+                    DLog("InnerList : ",requestInner.district)
                     //itemView.all_requestor_inner_list_constraintLayout_requestorProfile_circleImageView
-                    Log.e("InnerList : ",requestInner.image_url)
-                    Log.e("InnerList : ",requestInner.name)
-                    Log.e("InnerList : ",requestInner.district)
                     itemView.all_requestor_inner_list_constraintLayout_requestorName_textView.text = requestInner.name
                     itemView.all_requestor_inner_list_constraintLayout_hospitalName_textView.text=requestInner.hospital_name
                     itemView.all_requestor_inner_list_constraintLayout_district_textView.text = requestInner.district

@@ -1,13 +1,14 @@
 package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.`object`.CommonKeys.image_url
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.model.profileview
 import com.joveeinfotech.bloodex.utils.Others
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.view.ProfileView
 
 /**
@@ -39,6 +40,8 @@ class ProfileViewPresenterImpl: APIListener, ProfileViewPresenter {
     override fun Click(person_id: String) {
         Others.DLog("message", "3")
         val queryParams = HashMap<String, String>()
+        var access_token = SharedPreferenceHelper.getStringPreference(context, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("person_id", person_id)
         //Log.e("MAIN ACTIVITY : ","inside button" )
         Others.DLog("message", "4")
@@ -48,7 +51,7 @@ class ProfileViewPresenterImpl: APIListener, ProfileViewPresenter {
         when(from) {
             1 -> { // Home Page Contents
                 val result = response as profileview
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
                     Others.DLog("message", "${result.first_name}${result.last_name}${result.image}")
 

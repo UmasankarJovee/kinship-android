@@ -175,7 +175,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
                         fragment_some_one_request_constraintLayout_time_to_arrive_editText.text.toString(),
                         time_in_string!!)
             }else{
-                CustomToast().alertToast(mContext!!,"Fill the all fields")
+                CustomToast().alertToast(mContext!!,mContext!!.getString(R.string.fill_all_the_fields))
             }
             //someOneRequestFragmentPresenter?.sendUserRequestToServer1()
         }

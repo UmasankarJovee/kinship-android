@@ -1,6 +1,7 @@
 package com.joveeinfotech.bloodex.view
 
 import android.app.*
+import android.support.v4.app.FragmentTransaction
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
@@ -10,15 +11,15 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserProfileFragmentPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
-import com.joveeinfotech.bloodex.utils.Others
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 import kotlinx.android.synthetic.main.fragment_user_profile.view.*
 import java.io.ByteArrayOutputStream
@@ -34,12 +35,14 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
     var cal = Calendar.getInstance()
     var gender: Int? = null
     var imageString : String? = null
+    var userDetailActivity : UserDetails? = null
 
     var progressDialog : ProgressDialog? = null
 
     lateinit var mContext: Context
 
     var resolver: ContentResolver? = null
+    var trans: FragmentTransaction? = null
 
     var userProfileFragmentPresenter : UserProfileFragmentPresenterImpl? = null
 
@@ -50,8 +53,10 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        userDetailActivity = activity as UserDetails
+
         resolver = activity?.contentResolver
-        val trans = fragmentManager?.beginTransaction()
+        trans = fragmentManager?.beginTransaction()
         userProfileFragmentPresenter = UserProfileFragmentPresenterImpl(trans,this,mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_profile, container, false)
         view.fragment_user_profile_constraintLayout_profile_imageView.setImageResource(R.drawable.profile_image)
@@ -94,11 +99,11 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                     && fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt() != null){
                 userProfileFragmentPresenter?.userProfileDetails(imageString!!,fragment_user_profile_constraintLayout_firstName_editText.text.toString(),fragment_user_profile_constraintLayout_lastName_editText.text.toString(), fragment_user_profile_constraintLayout_dateOfBirth_editText.text.toString(),fragment_user_profile_constraintLayout_weight_editText.text.toString().toInt(),gender!!)
             }else{
-                CustomToast().alertToast(mContext,"Fill the all fields")
+                CustomToast().alertToast(mContext,mContext.getString(R.string.fill_all_the_fields))
             }
         }
 
-        Log.e("inside create view : " ,byteArray.toString())
+        DLog("inside create view : ", byteArray.toString())
        /* if(savedInstanceState!=null){
             ba = savedInstanceState.getByteArray("myarray")
             view1?.editText_first_name?.setText(savedInstanceState.getString("first_name"))
@@ -154,7 +159,8 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
                 bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                 byteArray = byteArrayOutputStream.toByteArray()
                 imageString= Base64.encodeToString(byteArray, Base64.DEFAULT)
-                Others.DLog("inside : ", imageString!!)
+
+                DLog("inside : ", imageString!!)
                 fragment_user_profile_constraintLayout_profile_imageView.setImageBitmap(bitmap!!)
                 //upefView?.activity_user_profile_edit_constraintLayout_userProfile_imageView?.setImageBitmap(bitmap)
                 //userProfileEditFragmentPresenterImpl?.sendImageString(imageString)
@@ -244,6 +250,25 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
+    }
+
+    override fun navigateFragment() {
+        if(!userDetailActivity?.getIsCompleteHealthDetails()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAddress()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAdditionalDetails()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else{
+            mContext.startActivity(Intent(mContext, Home::class.java))
+            userDetailActivity?.closeActivity()
+        }
     }
 }
 

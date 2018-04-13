@@ -16,6 +16,7 @@ class APIClient {
         fun getClient(mcontext: Context): APIInterface? {
             //var ip = getStringPreference(mcontext,"ip","192.168.0.52")
             return  Retrofit.Builder()
+                    //.baseUrl("http://192.168.0.55/")
                     .baseUrl(ip_address)
                     //.baseUrl("http://${ip}/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
