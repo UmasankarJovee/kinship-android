@@ -2,12 +2,16 @@ package com.joveeinfotech.bloodex.view
 
 import android.content.Context
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserHealthDetailsFragmentPresenterImpl
@@ -53,7 +57,19 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
     var transfusion_tattoo:Boolean=false
     var tooth_extraction:Boolean=false
     var none:Boolean=false
-    val jsonArray = JSONArray()
+    val jsonArray = JsonArray()
+    val diabeticobj = JSONObject()
+    val asthmaticobj = JSONObject()
+    val heart_patientobj = JSONObject()
+    val tuberculosisobj = JSONObject()
+    val epilepsyobj = JSONObject()
+    val typhoid_malariaobj = JSONObject()
+    val jaundiceobj = JSONObject()
+    val major_surgeryobj = JSONObject()
+    val tooth_extractionobj = JSONObject()
+    val transfusion_tattooobj = JSONObject()
+    val noneobj = JSONObject()
+    var healthDetailsObj = JSONObject()
 
     var df:ArrayList<String>?=null
     var health_Details:ArrayList<ArrayList<String>> = ArrayList<ArrayList<String>>()
@@ -64,6 +80,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
         super.onAttach(context)
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val trans = fragmentManager?.beginTransaction()
@@ -85,7 +102,16 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Diabetic,")
             //diabetic= arrayOf("Diabetic")
-            diabetic=true
+            //diabetic = view.fragment_user_health_details_diabetic_checkBox1.isChecked == true
+
+            /*none=false
+            asthmatic=false
+            heart_patient=false
+            tuberculosis=false
+            epilepsy=false
+            typhoid_malaria=false
+            jaundice=false*/
+
         }
         view.fragment_user_health_details_asthmetic_checkBox2.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -102,7 +128,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Asthmetic,")
             //asthmetic= arrayOf("Asthmetic")
-            asthmatic=true
+            //asthmatic= view.fragment_user_health_details_asthmetic_checkBox2.isChecked == true
         }
         view.fragment_user_health_details_heartPatient_checkBox3.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -119,7 +145,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Heart_Patient,")
             //heart_patient= arrayOf("Heart_Patient")
-            heart_patient=true
+            //heart_patient= view.fragment_user_health_details_heartPatient_checkBox3.isChecked == true
         }
         view.fragment_user_health_details_tuberClosis_checkBox4.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -136,7 +162,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Tuber_closis,")
             //tuber_closis= arrayOf("Tuber_closis")
-            tuberculosis=true
+            //tuberculosis=view.fragment_user_health_details_tuberClosis_checkBox4.isChecked == true
         }
         view.fragment_user_health_details_epilepsy_checkBox5.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -153,7 +179,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Epilepsy,")
             //epilepsy= arrayOf("Epilepsy")
-            epilepsy=true
+            //epilepsy=view.fragment_user_health_details_epilepsy_checkBox5.isChecked == true
         }
         view.fragment_user_health_details_typoidOrMalaria_checkBox6.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -163,7 +189,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Typoid / Malaria,")
             //typoid_malaria= arrayOf("Typoid/Malaria","${view.fragment_user_health_details_typoidOrMalaria_year_EditText.text.toString()}-${ view.fragment_user_health_details_typoidOrMalaria_year_EditText.text.toString()}-01")
-            typhoid_malaria=true
+            //typhoid_malaria=view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked == true
         }
         view.fragment_user_health_details_joundice_checkBox7.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -173,7 +199,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Joundice,")
             //joundice= arrayOf("Joundice","${ view.fragment_user_health_details_joundice_year_EditText.text.toString()}-${ view.fragment_user_health_details_joundice_month_EditText.text.toString()}-01")
-            jaundice=true
+            //jaundice=view.fragment_user_health_details_joundice_checkBox7.isChecked == true
         }
         view.fragment_user_health_details_majorSurgery_checkBox8.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -183,7 +209,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Major_surgery,")
             //major_surgery= arrayOf("Major_surgery","${view.fragment_user_health_details_majorSurgery_year_EditText.text.toString()}-${view.fragment_user_health_details_majorSurgery_month_EditText.text.toString()}-01")
-            major_surgery=true
+            //major_surgery=view.fragment_user_health_details_majorSurgery_checkBox8.isChecked == true
         }
         view.fragment_user_health_details_transfusionOrTatto_checkBox9.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -193,7 +219,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Transfusion / Tatto,")
             //transfusion_tatto= arrayOf("Transfusion/Tatto","${view.fragment_user_health_details_transfusionOrTatto_year_EditText.text.toString()}-${view.fragment_user_health_details_transfusionOrTatto_month_EditText.text.toString()}-01")
-            transfusion_tattoo=true
+            //transfusion_tattoo= view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked == true
         }
         view.fragment_user_health_details_toothExtraction_checkBox10.setOnClickListener{
             view.fragment_user_health_details_none_checkBox11.isChecked = false
@@ -203,12 +229,22 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
             //healthDetails?.append("Tooth_extraction,")
             //tooth_extraction= arrayOf("Tooth_extraction","${view.fragment_user_health_details_toothExtraction_year_EditText.text.toString()}-${view.fragment_user_health_details_toothExtraction_month_EditText.text.toString()}-01")
-            tooth_extraction=true
+            //tooth_extraction=view.fragment_user_health_details_toothExtraction_checkBox10.isChecked == true
         }
         view.fragment_user_health_details_none_checkBox11.setOnClickListener{
             //healthDetails?.append("None")
             //none= arrayOf("None")
-            none=true
+            //none=view.fragment_user_health_details_none_checkBox11.isChecked == true
+            /*diabetic=false
+            asthmatic=false
+            heart_patient=false
+            tuberculosis=false
+            epilepsy=false
+            typhoid_malaria=false
+            jaundice=false
+            major_surgery=false
+            transfusion_tattoo=false
+            tooth_extraction=false*/
             view.fragment_user_health_details_diabetic_checkBox1.isChecked = false
             view.fragment_user_health_details_asthmetic_checkBox2.isChecked = false
             view.fragment_user_health_details_heartPatient_checkBox3.isChecked = false
@@ -234,183 +270,217 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
                     || view.fragment_user_health_details_none_checkBox11.isChecked){
 
 
-                if (diabetic==true){
+                /*diabeticobj.remove("disease_id")
+                diabeticobj.remove("disease_time")
+                diabeticobj.remove("status")*/
+                //jsonArray.remove(0)
+                /*var l = jsonArray.length()
+                DLog("Health : ",l.toString())
+                for(i in 0..l){
+                    DLog("Health inner : ",i.toString())
+                    jsonArray.remove(i)
+                }*/
+                /*var i = 0
+                var l = jsonArray.length()
+                DLog("Health : ",l.toString())
+                while (i < l) {
+                    i++
+                    DLog("Health inner : ",i.toString())
+                    jsonArray.remove(i)
+                }*/
+                val jsonArray = JsonArray()
+                /*jsonArray.remove(0)
+                jsonArray.remove(1)
+                jsonArray.remove(2)
+                jsonArray.remove(3)
+                jsonArray.remove(4)
+                jsonArray.remove(5)
+                jsonArray.remove(6)
+                jsonArray.remove(7)
+                jsonArray.remove(8)
+                jsonArray.remove(9)
+                jsonArray.remove(10)
+                jsonArray.remove(11)*/
+
+                if (view.fragment_user_health_details_diabetic_checkBox1.isChecked){
                     /*df= arrayListOf<String>("1","0000-00-00","0")
                     //health_Details= arrayListOf(df!!)
                     health_Details.add(df!!)
                     DLog("di","${health_Details.toString()}")*/
-                    val diabeticobj = JSONObject()
+                    val diabeticobj = JsonObject()
                     try {
-                        diabeticobj.put("disease_id", "1")
-                        diabeticobj.put("disease_time", "0000-00-00")
-                        diabeticobj.put("status", "0")
+                        diabeticobj.addProperty("disease_id", "1")
+                        diabeticobj.addProperty("disease_time", "2017-08-08")
+                        diabeticobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(diabeticobj)
+                    jsonArray.add(diabeticobj)
+                    //jsonArray.remove(0)
 
                 }
-                if(asthmatic==true){
+                if(view.fragment_user_health_details_asthmetic_checkBox2.isChecked){
                    /* df= arrayListOf<String>("2","0000-00-00","0")
                     health_Details.add(df!!)
                     DLog("as","${df!!}")
-*/                  val asthmaticobj = JSONObject()
+*/
+                    val asthmaticobj = JsonObject()
                     try {
-                        asthmaticobj.put("disease_id", "2")
-                        asthmaticobj.put("disease_time", "0000-00-00")
-                        asthmaticobj.put("status", "0")
+                        asthmaticobj.addProperty("disease_id", "2")
+                        asthmaticobj.addProperty("disease_time", "0000-00-00")
+                        asthmaticobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(asthmaticobj)
+                    jsonArray.add(asthmaticobj)
                 }
-                if (heart_patient==true){
+                if (view.fragment_user_health_details_heartPatient_checkBox3.isChecked){
                    /* df= arrayListOf<String>("3","0000-00-00","0")
                     health_Details.add(df!!)
                     DLog("he","${df!!}")*/
-                    val heart_patientobj = JSONObject()
+                    val heart_patientobj = JsonObject()
                     try {
-                        heart_patientobj.put("disease_id", "3")
-                        heart_patientobj.put("disease_time", "0000-00-00")
-                        heart_patientobj.put("status", "0")
+                        heart_patientobj.addProperty("disease_id", "3")
+                        heart_patientobj.addProperty("disease_time", "0000-00-00")
+                        heart_patientobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(heart_patientobj)
+                    jsonArray.add(heart_patientobj)
                 }
-                if (tuberculosis==true){
+                if (view.fragment_user_health_details_tuberClosis_checkBox4.isChecked){
                    /* df= arrayListOf<String>("4","0000-00-00","0")
                     health_Details.add(df!!)
                     DLog("tu","${df!!}")*/
-                    val tuberculosisobj = JSONObject()
+                    val tuberculosisobj = JsonObject()
                     try {
-                        tuberculosisobj.put("disease_id", "4")
-                        tuberculosisobj.put("disease_time", "0000-00-00")
-                        tuberculosisobj.put("status", "0")
+                        tuberculosisobj.addProperty("disease_id", "4")
+                        tuberculosisobj.addProperty("disease_time", "0000-00-00")
+                        tuberculosisobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(tuberculosisobj)
+                    jsonArray.add(tuberculosisobj)
                 }
-                if (epilepsy==true){
+                if (view.fragment_user_health_details_epilepsy_checkBox5.isChecked){
                     /*df= arrayListOf<String>("5","0000-00-00","0")
                     health_Details.add(df!!)
                     DLog("ep","${df!!}")*/
-                    val epilepsyobj = JSONObject()
+                    val epilepsyobj = JsonObject()
                     try {
-                        epilepsyobj.put("disease_id", "5")
-                        epilepsyobj.put("disease_time", "0000-00-00")
-                        epilepsyobj.put("status", "0")
+                        epilepsyobj.addProperty("disease_id", "5")
+                        epilepsyobj.addProperty("disease_time", "0000-00-00")
+                        epilepsyobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(epilepsyobj)
+                    jsonArray.add(epilepsyobj)
                 }
-                if (typhoid_malaria==true){
+                if (view.fragment_user_health_details_typoidOrMalaria_checkBox6.isChecked){
                     /*df= arrayListOf<String>("6","${view.fragment_user_health_details_typoidOrMalaria_year_EditText.text.toString()}-${ view.fragment_user_health_details_typoidOrMalaria_month_EditText.text.toString()}-01","0")
                     health_Details.add(df!!)
                     DLog("ty","${health_Details.toString()}")*/
-                    val typhoid_malariaobj = JSONObject()
+                    val typhoid_malariaobj = JsonObject()
                     try {
-                        typhoid_malariaobj.put("disease_id", "6")
-                        typhoid_malariaobj.put("disease_time", "${view.fragment_user_health_details_typoidOrMalaria_year_EditText.text.toString()}-${ view.fragment_user_health_details_typoidOrMalaria_month_EditText.text.toString()}-01")
-                        typhoid_malariaobj.put("status", "0")
+                        typhoid_malariaobj.addProperty("disease_id", "6")
+                        typhoid_malariaobj.addProperty("disease_time", "${view.fragment_user_health_details_typoidOrMalaria_year_EditText.text.toString()}-${ view.fragment_user_health_details_typoidOrMalaria_month_EditText.text.toString()}-01")
+                        typhoid_malariaobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(typhoid_malariaobj)
+                    jsonArray.add(typhoid_malariaobj)
                 }
-                if (jaundice==true){
+                if (view.fragment_user_health_details_joundice_checkBox7.isChecked){
                    /* df= arrayListOf<String>("7","${ view.fragment_user_health_details_joundice_year_EditText.text.toString()}-${ view.fragment_user_health_details_joundice_month_EditText.text.toString()}-01","0")
                     health_Details.add(df!!)
                     DLog("ja","${df!!}")*/
-                    val jaundiceobj = JSONObject()
+                    val jaundiceobj = JsonObject()
                     try {
-                        jaundiceobj.put("disease_id", "7")
-                        jaundiceobj.put("disease_time", "${ view.fragment_user_health_details_joundice_year_EditText.text.toString()}-${ view.fragment_user_health_details_joundice_month_EditText.text.toString()}-01")
-                        jaundiceobj.put("status", "0")
+                        jaundiceobj.addProperty("disease_id", "7")
+                        jaundiceobj.addProperty("disease_time", "${ view.fragment_user_health_details_joundice_year_EditText.text.toString()}-${ view.fragment_user_health_details_joundice_month_EditText.text.toString()}-01")
+                        jaundiceobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(jaundiceobj)
+                    jsonArray.add(jaundiceobj)
                 }
-                if (major_surgery==true){
+                if ( view.fragment_user_health_details_majorSurgery_checkBox8.isChecked){
                     /*df= arrayListOf<String>("8","${view.fragment_user_health_details_majorSurgery_year_EditText.text.toString()}-${view.fragment_user_health_details_majorSurgery_month_EditText.text.toString()}-01","0")
                     health_Details.add(df!!)
                     DLog("ma","${df!!}")*/
-                    val major_surgeryobj = JSONObject()
+                    val major_surgeryobj = JsonObject()
                     try {
-                        major_surgeryobj.put("disease_id", "8")
-                        major_surgeryobj.put("disease_time", "${view.fragment_user_health_details_majorSurgery_year_EditText.text.toString()}-${view.fragment_user_health_details_majorSurgery_month_EditText.text.toString()}-01")
-                        major_surgeryobj.put("status", "0")
+                        major_surgeryobj.addProperty("disease_id", "8")
+                        major_surgeryobj.addProperty("disease_time", "${view.fragment_user_health_details_majorSurgery_year_EditText.text.toString()}-${view.fragment_user_health_details_majorSurgery_month_EditText.text.toString()}-01")
+                        major_surgeryobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(major_surgeryobj)
+                    jsonArray.add(major_surgeryobj)
                 }
-                if (transfusion_tattoo==true){
+                if (view.fragment_user_health_details_transfusionOrTatto_checkBox9.isChecked){
                     /*df= arrayListOf<String>("9","${view.fragment_user_health_details_transfusionOrTatto_year_EditText.text.toString()}-${view.fragment_user_health_details_transfusionOrTatto_month_EditText.text.toString()}-01","0")
                     health_Details.add(df!!)
                     DLog("tr","${df!!}")*/
-                    val transfusion_tattooobj = JSONObject()
+                    val transfusion_tattooobj = JsonObject()
                     try {
-                        transfusion_tattooobj.put("disease_id", "9")
-                        transfusion_tattooobj.put("disease_time", "${view.fragment_user_health_details_transfusionOrTatto_year_EditText.text.toString()}-${view.fragment_user_health_details_transfusionOrTatto_month_EditText.text.toString()}-01")
-                        transfusion_tattooobj.put("status", "0")
+                        transfusion_tattooobj.addProperty("disease_id", "9")
+                        transfusion_tattooobj.addProperty("disease_time", "${view.fragment_user_health_details_transfusionOrTatto_year_EditText.text.toString()}-${view.fragment_user_health_details_transfusionOrTatto_month_EditText.text.toString()}-01")
+                        transfusion_tattooobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(transfusion_tattooobj)
+                    jsonArray.add(transfusion_tattooobj)
                 }
-                if (tooth_extraction==true){
+                if (view.fragment_user_health_details_toothExtraction_checkBox10.isChecked){
                    /* df= arrayListOf<String>("10","${view.fragment_user_health_details_toothExtraction_year_EditText.text.toString()}-${view.fragment_user_health_details_toothExtraction_month_EditText.text.toString()}-01","0")
                     health_Details.add(df!!)
                     DLog("to","${df!!}")*/
-                    val tooth_extractionobj = JSONObject()
+                    val tooth_extractionobj = JsonObject()
                     try {
-                        tooth_extractionobj.put("disease_id", "10")
-                        tooth_extractionobj.put("disease_time", "${view.fragment_user_health_details_toothExtraction_year_EditText.text.toString()}-${view.fragment_user_health_details_toothExtraction_month_EditText.text.toString()}-01")
-                        tooth_extractionobj.put("status", "0")
+                        tooth_extractionobj.addProperty("disease_id", "10")
+                        tooth_extractionobj.addProperty("disease_time", "${view.fragment_user_health_details_toothExtraction_year_EditText.text.toString()}-${view.fragment_user_health_details_toothExtraction_month_EditText.text.toString()}-01")
+                        tooth_extractionobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(tooth_extractionobj)
+                    jsonArray.add(tooth_extractionobj)
                 }
-                if (none==true){
+                if (view.fragment_user_health_details_none_checkBox11.isChecked){
                    /* df= arrayListOf<String>("11","0000-00-00","0")
                     health_Details.add(df!!)
                     DLog("no","${health_Details.toString()}")*/
-                    val noneobj = JSONObject()
+                    val noneobj = JsonObject()
                     try {
-                        noneobj.put("disease_id", "11")
-                        noneobj.put("disease_time", "0000-00-00")
-                        noneobj.put("status", "0")
+                        noneobj.addProperty("disease_id", "11")
+                        noneobj.addProperty("disease_time", "0000-00-00")
+                        noneobj.addProperty("status", "0")
 
                     } catch (e: JSONException) {
                         // TODO Auto-generated catch block
                         e.printStackTrace()
                     }
-                    jsonArray.put(noneobj)
+                    jsonArray.add(noneobj)
                 }
                 /*if(diabetic==false||asthmatic==false||heart_patient==false||tuberculosis==false||epilepsy==false||typhoid_malaria==false||jaundice==false||major_surgery==false||transfusion_tattoo==false||tooth_extraction==false||none==false){
                     Toast.makeText(mContext,"No Diseases please select the None Option",Toast.LENGTH_SHORT).show()
@@ -443,8 +513,9 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
 
 
-                val healthDetailsObj = JSONObject()
-                healthDetailsObj.put("diseases", jsonArray)
+                val healthDetailsObj = JsonObject()
+                //healthDetailsObj.remove("diseases")
+                healthDetailsObj.add("diseases", jsonArray)
                 userHealthDetailsFragmentPresenter?.sendHealthDetails(healthDetailsObj)
 
             }else{

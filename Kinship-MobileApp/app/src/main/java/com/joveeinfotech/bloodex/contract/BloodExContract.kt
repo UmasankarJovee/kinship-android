@@ -1,5 +1,6 @@
 package com.joveeinfotech.bloodex.contract
 
+import com.google.gson.JsonObject
 import com.joveeinfotech.bloodex.adapter.*
 import com.joveeinfotech.bloodex.adapter.CustomeAdapter
 import com.joveeinfotech.bloodex.adapter.LanguageListsAdapter
@@ -196,7 +197,7 @@ interface BloodExContract {
     }
     interface UserHealthDetailsFragmentPresenter {
         fun initPresenter()
-        fun sendHealthDetails(healthDetails: JSONObject)
+        fun sendHealthDetails(healthDetails: JsonObject)
     }
 
     //RequestHistoryActivity
