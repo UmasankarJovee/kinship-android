@@ -2,11 +2,14 @@ package com.joveeinfotech.bloodex.presenter
 
 import android.support.v4.app.FragmentTransaction
 import android.content.Context
-import android.util.Log
+import android.content.Intent
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
+import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.UserDetailResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.view.*
 import java.util.HashMap
 
@@ -41,8 +44,10 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
 
     override fun onLoad() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("fgf", "jhuy")
-        Log.e("MAIN ACTIVITY : ","inside button" )
+        DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/userdetail",queryParams, UserDetailResult::class.java,this, 1, "Authenticating...")
     }
 
@@ -50,7 +55,7 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
         when(from) {
             1 -> { // User Login
                 val userDetailResult = response as UserDetailResult
-                Log.e("API CALL : ", "inside UserDetails activity and onSuccess")
+                DLog("API CALL : ", "inside UserDetails activity and onSuccess")
 
                 userDetailsView.setNavigationFragmentValues(userDetailResult.isRegisterUserProfile,
                         userDetailResult.isRegisterHomeAddress,userDetailResult.isRegisterAdditionalDetails,
@@ -68,6 +73,9 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
                 }else if(!userDetailResult.isRegisterAdditionalDetails){
                     trans?.replace(com.joveeinfotech.bloodex.R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
                     trans?.commit()
+                }else{
+                    mContext.startActivity(Intent(mContext, Home::class.java))
+                    userDetailsView.closeActivity()
                 }
             }
         }

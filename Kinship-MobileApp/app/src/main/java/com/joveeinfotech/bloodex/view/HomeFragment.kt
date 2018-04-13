@@ -3,9 +3,7 @@ package kinship.joveeinfotech.kinship
 import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -15,19 +13,18 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.bloodex.presenter.*
+import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -195,7 +192,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
                     val uri = Uri.fromParts("package", activity!!.packageName, null)
                     intent.data = uri
                     startActivityForResult(intent, REQUEST_PERMISSION_SETTING)
-                    Toast.makeText(activity, "Go to Permissions to Grant Location", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(activity, "Go to Permissions to Grant Location", Toast.LENGTH_LONG).show()
+                    CustomToast().normalToast(mContext,mContext.getString(R.string.go_to_permissions_to_grant_location))
                 }
                 builder.setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
                 builder.show()
@@ -279,10 +277,10 @@ class HomeFragment : Fragment(), HomeFragmentView {
                 builder.setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
                 builder.show()
             } else {
-                Toast.makeText(activity, "Unable to get Permission", Toast.LENGTH_LONG).show()
+                //Toast.makeText(activity, "Unable to get Permission", Toast.LENGTH_LONG).show()
+                CustomToast().normalToast(mContext,mContext.getString(R.string.unable_to_get_permissions))
             }
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

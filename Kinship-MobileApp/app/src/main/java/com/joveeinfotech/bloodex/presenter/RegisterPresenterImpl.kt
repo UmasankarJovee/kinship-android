@@ -3,14 +3,14 @@ package com.joveeinfotech.bloodex.presenter
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.provider.Settings
-import android.util.Log
 import com.joveeinfotech.bloodex.*
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.OTPResult
 import com.joveeinfotech.bloodex.model.PasswordResult
 import com.joveeinfotech.bloodex.model.RegisterResult
 import com.joveeinfotech.bloodex.utils.CustomToast
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.utils.SharedData
 import com.joveeinfotech.bloodex.utils.Validation
 import com.joveeinfotech.bloodex.view.Login
@@ -45,30 +45,21 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
     }
 
     override fun OtpContent(otp: String) {
+
         val queryParams = HashMap<String, String>()
+        var client_id = getStringPreference(mContext,"client_id","")
+        queryParams.put("client_id",client_id!!)
         queryParams.put("otp", otp)
-        queryParams.put("client_id","56")
         networkCall?.APIRequest("api/v2/otp", queryParams, OTPResult::class.java, this, 2, "Verifying Your OTP")
     }
 
     override fun passwordContent(password: String, phone_number: String) {
 
-        var deviceId = Settings.Secure.getString(mContext.contentResolver,
-                Settings.Secure.ANDROID_ID)
-        var deviceModel= android.os.Build.MODEL
-        var deviceName= android.os.Build.MANUFACTURER
-        var deviceVersion= android.os.Build.VERSION.SDK_INT
-
         val queryParams = HashMap<String, String>()
+        var client_id = getStringPreference(mContext,"client_id","")
+        queryParams.put("client_id",client_id!!)
         queryParams.put("password", password)
         queryParams.put("phone_number", phone_number)
-
-        queryParams.put("app_id","com.joveeinfotech.kinship")
-        queryParams.put("android_id",deviceId)
-        queryParams.put("device_name",deviceName)
-        queryParams.put("device_version",deviceVersion.toString())
-        queryParams.put("device_model",deviceModel)
-        queryParams.put("client_id","56")
         networkCall?.APIRequest("api/v3/password", queryParams, PasswordResult::class.java, this, 3, "Setting your Password...")
     }
     override fun userPhoneNumberAndBloodGroup(phone_number: String, blood_group: String) {
@@ -78,24 +69,25 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
             if (Validation.isValidPhoneNumber(phone_number) && blood_group != "Select Blood Group") {
                 userRegister()
             } else {
-                CustomToast().alertToast(mContext,"Phone number is not Correct")
+                CustomToast().alertToast(mContext,mContext.getString(R.string.phone_number_is_not_correct))
             }
         }
         else {
             var sp : SharedPreferences = mContext.getSharedPreferences("FCM_PREF", Context.MODE_PRIVATE)
             var token = sp.getString("FCM_TOKEN","")
-            Log.e("dg","$token")
-            Log.e("dgdh","fcfc $token")
-            CustomToast().alertToast(mContext,"Please fill two fields")
+            DLog("dg", "$token")
+            DLog("dgdh","fcfc $token")
+            CustomToast().alertToast(mContext,mContext.getString(R.string.please_fill_two_fields))
         }
     }
 
     private fun userRegister() {
         val queryParams = HashMap<String, String>()
+        var client_id = getStringPreference(mContext,"client_id","")
+        queryParams.put("client_id",client_id!!)
         queryParams.put("phone_number", phone_number!!)
         queryParams.put("blood_group", blood_group!!)
-        queryParams.put("client_id","56")
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/register", queryParams, RegisterResult::class.java, this, 1, "Registering...")
     }
 
@@ -103,10 +95,10 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         when (from) {
             1 -> { // User Register
                 val registerResult = response as RegisterResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (registerResult.status) {
                     registerView.confirmOTP()
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                     //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
                 } else {
                     //snackbar(.findViewById(android.R.id.content), "Please wait some minutes")
@@ -114,26 +106,26 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
             }
             2 -> { // Send OTP
                 val registerResult = response as OTPResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (registerResult.status) {
                     registerView.confirmPassword()
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
-                    CustomToast().alertToast(mContext,"Click Resend")
+                    CustomToast().alertToast(mContext,mContext.getString(R.string.click_again_submit))
                     //snackbar(this,)
                 }
             }
             3 -> { // Send Password
                 val registerResult = response as PasswordResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (registerResult.status) {
                     registerView.closePasswordDialog()
                     val i = Intent(mContext, Login::class.java)
                     mContext.startActivity(i)
                     registerView.closeActivity()
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
-                    CustomToast().alertToast(mContext,"Try again")
+                    CustomToast().alertToast(mContext,mContext.getString(R.string.try_again))
                     //snackbar(this,)
                 }
             }

@@ -2,12 +2,12 @@ package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
 import android.support.v4.app.FragmentTransaction
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.UserProfileDisplayResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 /**
@@ -39,6 +39,8 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
 
     override fun loadProfileDetails() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("phone_number", "8189922043")
         networkCall?.APIRequest("api/v1/profile", queryParams, UserProfileDisplayResult::class.java, this, 1, "Setting your Password...")
     }
@@ -47,7 +49,7 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
         when (from) {
             1 -> { // User Register
                 val result = response as UserProfileDisplayResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
 
                     var name = "${result.first_name} ${result.last_name}"
@@ -74,7 +76,7 @@ class ProfileDisplayPresenterImpl : APIListener, ProfileDisplayPresenter {
                     //var address = "${result.street_name},${result.locality},${result.city},${result.district},${result.state}"
 
 
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                     //Toast.makeText(applicationContext, "You are Registered ${registerResult.status}", Toast.LENGTH_SHORT).show()
                 } else {
                     //snackbar(.findViewById(android.R.id.content), "Please wait some minutes")

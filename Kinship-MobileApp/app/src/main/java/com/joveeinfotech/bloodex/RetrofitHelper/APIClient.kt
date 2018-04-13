@@ -17,7 +17,7 @@ class APIClient {
         fun getClient(mcontext: Context): APIInterface? {
             var ip = getStringPreference(mcontext,"ip","192.168.43.49")
             return  Retrofit.Builder()
-                    .baseUrl("http://192.168.0.53/")
+                    .baseUrl("http://192.168.0.55/")
                     //.baseUrl("http://${ip}/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())

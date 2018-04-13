@@ -1,12 +1,15 @@
 package com.joveeinfotech.bloodex.view
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.presenter.UserHealthDetailsFragmentPresenterImpl
@@ -32,6 +35,9 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
     var tooth_extraction:Array<String>?=null
     var none:Array<String>?=null
     var healthDetails:Array<Array<String>?>?=null
+    var trans : FragmentTransaction? = null
+    var userDetailActivity : UserDetails? = null
+
     override fun onAttach(context: Context) {
         this.mContext = context
         super.onAttach(context)
@@ -39,7 +45,9 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val trans = fragmentManager?.beginTransaction()
+        trans = fragmentManager?.beginTransaction()
+        userDetailActivity = activity as UserDetails
+
         userHealthDetailsFragmentPresenter = UserHealthDetailsFragmentPresenterImpl(trans, this, mContext)
         var view : View = inflater.inflate(R.layout.fragment_user_health_details, container, false)
 
@@ -198,7 +206,7 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
                 userHealthDetailsFragmentPresenter?.sendHealthDetails(healthDetails!!)
 
             }else{
-                CustomToast().alertToast(mContext,"Must select atleast one")
+                CustomToast().alertToast(mContext,mContext.getString(R.string.must_select_atleast_one))
             }
 
         }
@@ -248,5 +256,24 @@ class UserHealthDetailsFragment : Fragment(), UserHealthDetailsFragmentView {
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
+    }
+
+    override fun navigateFragment() {
+        if(!userDetailActivity?.getIsCompleteProfile()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAddress()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAddressFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else if(!userDetailActivity?.getIsCompleteAdditionalDetails()!!){
+            trans?.replace(R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+            trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            trans?.commit()
+        }else{
+            mContext.startActivity(Intent(mContext, Home::class.java))
+            userDetailActivity!!.closeActivity()
+        }
     }
 }

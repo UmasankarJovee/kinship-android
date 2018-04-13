@@ -15,6 +15,7 @@ import com.joveeinfotech.bloodex.model.Album
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 
 /**
@@ -25,12 +26,12 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cards_layouts, parent, false)
-        Log.e("Message","Before call Before ViewHolder(view)" )
+        DLog("Message","Before call Before ViewHolder(view)" )
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: com.joveeinfotech.bloodex.adapter.CustomeAdapter.ViewHolder, position: Int) {
-        Log.e("Message","onBindViewHolder function" )
+        DLog("Message","onBindViewHolder function" )
 
         holder.bindItems(list[position], listener,mcontext)
     }
@@ -39,7 +40,7 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         fun bindItems(data:Album, listener: Listener,mcontext: Context){
             var i:Int= getIntPreference(mcontext,"startingIValue",0)
-            Log.e("Message","bindItems" )
+            DLog("Message","bindItems" )
             val toolsIcons:ImageView=itemView.findViewById(R.id.cards_layout_CardView_LinearLayout_ImageView)
             val toolsTitles:TextView=itemView.findViewById(R.id.cards_layout_CardView_LinearLayout_TextView)
             val toolsOnOff:Switch=itemView.findViewById(R.id.cards_layout_CardView_LinearLayout_Switch)
@@ -67,26 +68,26 @@ class CustomeAdapter(val list:List<Album>, val listener: Listener,val mcontext: 
                 toolsOnOff.isChecked=false
                 listener.displayResult(false)
             }
-            Log.e("Message","Before setOnClickListener" )
+            DLog("Message","Before setOnClickListener" )
             val card = itemView.findViewById<CardView>(R.id.cards_layout_CardView)
             card.setOnClickListener{
                 if (data.text == mcontext.getString(R.string.settingsFragment_cardView1_textView)){
                     listener.callEditProfile()
                 }
                 else if(data.text == mcontext.getString(R.string.settingsFragment_cardView3_textView)){
-                    Log.e("Message","Before listener.languageSettings()" )
+                    DLog("Message","Before listener.languageSettings()" )
                     listener.languageSettings()
                 }
                 else if(data.text == mcontext.getString(R.string.settingsFragment_cardView2_textView)){
                     //Log.e("Message","i value after getIntPreference ${i}" )
                     if (i==1){
-                        Log.e("Message","i value if condition ${i}" )
+                        DLog("Message","i value if condition ${i}" )
                         toolsOnOff.isChecked=true
                         listener.displayResult(true)
                         setIntPreference(mcontext,"startingIValue",0)
                     }
                     else{
-                        Log.e("Message","i value else ${i}" )
+                        DLog("Message","i value else ${i}" )
                         toolsOnOff.isChecked=false
                         listener.displayResult(false)
                         setIntPreference(mcontext,"startingIValue",1)

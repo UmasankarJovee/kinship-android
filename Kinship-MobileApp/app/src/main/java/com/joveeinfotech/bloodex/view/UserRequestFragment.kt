@@ -19,7 +19,6 @@ import com.joveeinfotech.bloodex.utils.SharedData
 import kotlinx.android.synthetic.main.fragment_user_request.*
 import kotlinx.android.synthetic.main.fragment_user_request.view.*
 
-
 class UserRequestFragment : Fragment(), UserRequestFragmentView {
 
     var view1 : View? = null
@@ -166,7 +165,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
                         fragment_user_request_constraintLayout_time_to_arrive_editText.text.toString(),
                         time_in_string!!)
             }else{
-                CustomToast().alertToast(mContext,"Fill the all fields")
+                CustomToast().alertToast(mContext,mContext.getString(R.string.fill_all_the_fields))
             }
 
             var fg = fragment_user_request_constraintLayout_districts_spinner.text

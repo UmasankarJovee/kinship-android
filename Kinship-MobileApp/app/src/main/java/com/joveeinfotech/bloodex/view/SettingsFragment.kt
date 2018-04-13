@@ -6,16 +6,17 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.*
 import android.widget.LinearLayout
-import android.widget.Toast
+//import android.widget.Toast
 import com.joveeinfotech.bloodex.adapter.CustomeAdapter
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.LocaleHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.bloodex.model.Album
 import com.joveeinfotech.bloodex.presenter.*
+import com.joveeinfotech.bloodex.utils.Others
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.utils.SharedData
 import com.joveeinfotech.bloodex.view.UserProfileEdit
 import kotlinx.android.synthetic.main.fragment_settings.view.*
@@ -48,25 +49,25 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
 
         view1=inflater.inflate(R.layout.fragment_settings,container,false)
         view1?.activity_settings_fragment_RecyclerView?.layoutManager=LinearLayoutManager(mContext,LinearLayout.VERTICAL,false)
-        Log.e("Message","Before SettingsFragmentImpl")
+        DLog("Message", "Before SettingsFragmentImpl")
         settingsFragmentPresenterImpl=SettingsFragmentPresenterImpl(this,mContext,this)
         return view1
     }
 
     override fun ReceiveCustomeAdapter(adapter: CustomeAdapter) {
-        Log.e("Message","ReceiveCustomeAdapter" )
+        DLog("Message","ReceiveCustomeAdapter" )
         view1?.activity_settings_fragment_RecyclerView?.adapter=adapter
     }
 
     override fun onItemClick(data: Album) {
-        Log.e("Message","onItemClick function" )
-        Toast.makeText(mContext, "${data.text} Clicked !", Toast.LENGTH_SHORT).show()
+        DLog("Message","onItemClick function" )
+        //Toast.makeText(mContext, "${data.text} Clicked !", Toast.LENGTH_SHORT).show()
     }
 
     override fun displayResult(result: Boolean) {
         setBooleanPreference(mContext,"notification",result)
-        if(result == true)Toast.makeText(mContext,"Notifications is On",Toast.LENGTH_SHORT).show()
-        else Toast.makeText(mContext,"Notifications is Off",Toast.LENGTH_SHORT).show()
+        //if(result == true)Toast.makeText(mContext,"Notifications is On",Toast.LENGTH_SHORT).show()
+        //else Toast.makeText(mContext,"Notifications is Off",Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +76,7 @@ class SettingsFragment : Fragment(),Listener,SettingsFragmentView{
 
     override fun languageSettings() {
 
-        Log.e("Message","after language settings")
+        DLog("Message","after language settings")
         val mydialog = LanguageListDialogFragment(trans!!,mContext)
         mydialog.setCancelable(true)
         mydialog.show(activity?.fragmentManager, "tag")

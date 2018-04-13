@@ -1,20 +1,13 @@
 package com.joveeinfotech.bloodex
 
-import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
-import android.content.DialogInterface
 import kotlinx.android.synthetic.main.activity_home.*
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -23,9 +16,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.RadioButton
-import android.widget.Toast
 import com.joveeinfotech.bloodex.`object`.BottomNavigationHelper
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
 
@@ -331,7 +322,7 @@ class Home : AppCompatActivity() {
         val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 10000, pendingIntent)
-        Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {

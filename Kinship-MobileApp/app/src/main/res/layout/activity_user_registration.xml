@@ -22,7 +22,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@mipmap/logo_mipmap" />
 
         <TextView
             android:id="@+id/activity_user_registration_scrollView_constraintLayout_title_textView"

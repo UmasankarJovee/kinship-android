@@ -2,7 +2,6 @@ package com.joveeinfotech.bloodex.presenter
 
 import android.content.Context
 import android.support.v4.app.FragmentTransaction
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.R
@@ -10,6 +9,7 @@ import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.UserProfileResult
 import com.joveeinfotech.bloodex.utils.CustomToast
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.view.UserHealthDetailsFragment
 import java.util.HashMap
 
@@ -46,21 +46,24 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
             sendUserProfile(imageString,first_name, last_name, date_of_birth, weight, gender)
         } else {
             //showDialog(2) // Please fill the all details
-            CustomToast().alertToast(mContext,"Fill the all fields")
+            CustomToast().alertToast(mContext,mContext.getString(R.string.fill_all_the_fields))
         }
     }
 
     private fun sendUserProfile(imageString: String, first_name: String, last_name: String, date_of_birth: String, weight: Int, gender: Int) {
-        var user_id = getStringPreference(mContext,"user_id","56")
+        //var user_id = getStringPreference(mContext,"user_id","56")
+
         val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", "168")
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
+        //queryParams.put("user_id", "168")
         queryParams.put("imageString",imageString)
         queryParams.put("first_name", first_name)
         queryParams.put("last_name", last_name)
         queryParams.put("date_of_birth", date_of_birth)
         queryParams.put("weight",weight.toString())
         queryParams.put("gender", gender.toString())
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/persons", queryParams, UserProfileResult::class.java, this, 1, "Your Details are storing...")
     }
 
@@ -68,14 +71,15 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
         when (from) {
             1 -> { // User profile
                 val result = response as UserProfileResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status){
-                    if(true){
+                    userProfileFragmentView.navigateFragment()
+                    /*if(true){
                         trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()
-                    }
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    }*/
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
 
                 }

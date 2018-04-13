@@ -3,12 +3,13 @@ package com.joveeinfotech.bloodex.presenter
 import android.R
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.adapter.RequestResponseListAdapter
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.*
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.utils.SharedData
 import org.jetbrains.anko.design.snackbar
 import java.util.HashMap
@@ -47,6 +48,8 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
 
     private fun loadList() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("user_id", "161")
         networkCall?.APIRequest("api/v1/donorList", queryParams, RequestResponseResult::class.java, this, 1, "Sending your other details...")
     }
@@ -57,18 +60,24 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
 
     override fun isDonated(person_id : String) {
         val queryParams = HashMap<String, String>()
-        queryParams.put("user_id", "161")
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
+        //queryParams.put("user_id", "161")
         networkCall?.APIRequest("api/v1/donorList", queryParams, SendIsDonatedResult::class.java, this, 2, "Sending your other details...")
     }
 
     override fun SendNoOneDonated() {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("district", "Madurai")
         networkCall?.APIRequest("api/v1/", queryParams, SendNoOneDonatedResult::class.java, this, 3, "Sending your other details...")
     }
 
     override fun clearRequestResponse(user_id: String?) {
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("user_id", user_id!!)
         networkCall?.APIRequest("api/v1/clearRequest", queryParams, ClearRequestResponseResult::class.java, this, 4, "Sending your other details...")
     }
@@ -77,7 +86,7 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
         when(from) {
             1 -> { // User Login
                 val result = response as RequestResponseResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
                     var details = result.donorList
                     //var details = result.donors
@@ -87,7 +96,7 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
                     requestResponseView?.setRequestResponse(requestResponseListAdapter)
 
                     //requestResponseView?.setRequestResponse(result.details)
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     //snackbar(this,)
                     snackbar((mContext as Activity).findViewById(R.id.content), "Please wait some minute")
@@ -97,11 +106,11 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
             }
             2 -> {
                 val result = response as SendIsDonatedResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
                     requestResponseView?.closeConfirmDialog()
 
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     //snackbar(this,)
                     snackbar((mContext as Activity).findViewById(R.id.content), "Please wait some minute")
@@ -111,11 +120,11 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
             }
             3 -> {
                 val result = response as SendNoOneDonatedResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
                     requestResponseView?.closeNotDonatedConfirmDialog()
 
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     //snackbar(this,)
                     snackbar((mContext as Activity).findViewById(R.id.content), "Please wait some minute")
@@ -125,11 +134,11 @@ class RequestResponsePresenterImpl : APIListener, RequestResponsePresenter {
             }
             4 -> {
                 val result = response as ClearRequestResponseResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (result.status) {
                     requestResponseView?.closeActivity()
 
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     //snackbar(this,)
                     snackbar((mContext as Activity).findViewById(R.id.content), "Please wait some minute")

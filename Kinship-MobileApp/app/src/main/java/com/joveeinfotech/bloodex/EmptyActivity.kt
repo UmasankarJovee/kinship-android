@@ -10,15 +10,13 @@ import android.provider.Settings
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.CheckBox
-import android.widget.Toast
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
 import com.joveeinfotech.bloodex.model.SendingRequestResponseResult
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.Others
-import com.joveeinfotech.bloodex.view.UserProfileFragment
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 class EmptyActivity : AppCompatActivity(), APIListener {
@@ -107,7 +105,8 @@ class EmptyActivity : AppCompatActivity(), APIListener {
                     val uri = Uri.fromParts("package", packageName, null)
                     intent.data = uri
                     startActivityForResult(intent, REQUEST_PERMISSION_SETTING)
-                    Toast.makeText(baseContext, "Go to Permissions to Grant Phone Call", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(baseContext, "Go to Permissions to Grant Phone Call", Toast.LENGTH_LONG).show()
+                    CustomToast().normalToast(this,this.getString(R.string.go_to_permissions_to_grant_phone))
                 }
                 builder.setNegativeButton("Cancel") {
                     dialog, which ->
@@ -162,7 +161,8 @@ class EmptyActivity : AppCompatActivity(), APIListener {
                     builder.show()
                 } else {
                     proceedAfterPermission()
-                    Toast.makeText(baseContext, "Unable to get Permission", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(baseContext, "Unable to get Permission", Toast.LENGTH_LONG).show()
+                    CustomToast().normalToast(this,this.getString(R.string.unable_to_get_permissions))
                 }
             }
         }
@@ -193,7 +193,7 @@ class EmptyActivity : AppCompatActivity(), APIListener {
         if(check1_sleep!!.isChecked || check2_antibiotics!!.isChecked
                 || check3_alcohol!!.isChecked || check4_reaction!!.isChecked
                 || check5_tooth_extraction!!.isChecked){
-            CustomToast().normalToast(this,"You not able to give your Blood")
+            CustomToast().normalToast(this,this.getString(R.string.you_are_not_able_to_donate_blood))
         }else{
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                 sendRequestResponse()
@@ -212,14 +212,14 @@ class EmptyActivity : AppCompatActivity(), APIListener {
     private fun sendRequestResponse() {
         val queryParams = HashMap<String, String>()
         queryParams.put("response",response!!)
-        Log.e("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
+        DLog("MAIN ACTIVITY : ", "inside onStartCommand ${response}")
         networkCall?.APIRequest("api/v1/putRequestresponse", queryParams, SendingRequestResponseResult::class.java, this, 1, "Sending Location...",false)
     }
 
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Sending Request Response and onSuccess when")
+                DLog("API CALL : ", "inside Sending Request Response and onSuccess when")
                 val sendingRequestResponseResult = response as SendingRequestResponseResult
                 if(sendingRequestResponseResult.status){
                     Others.DLog("SendingRequestResponse :", "Sending Response")

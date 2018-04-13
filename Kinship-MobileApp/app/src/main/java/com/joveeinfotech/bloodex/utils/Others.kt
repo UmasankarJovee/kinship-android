@@ -9,8 +9,4 @@ object Others {
     fun DLog(tag : String, message : String){
         Log.e(tag,message)
     }
-
-
-
-
 }

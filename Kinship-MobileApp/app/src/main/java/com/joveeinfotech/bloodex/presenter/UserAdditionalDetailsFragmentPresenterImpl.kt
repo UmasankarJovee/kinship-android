@@ -3,13 +3,13 @@ package com.joveeinfotech.bloodex.presenter
 import android.content.Context
 import android.content.Intent
 import android.support.v4.app.FragmentTransaction
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.contract.KinshipContract.*
-import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper
+import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.UserAdditionalDetailsResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 /**
@@ -62,24 +62,27 @@ class UserAdditionalDetailsFragmentPresenterImpl : APIListener, UserAdditionalDe
     }
     private fun sendAdditionalDetails() {
         val queryParams = HashMap<String, String>()
-        var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
-        queryParams.put("user_id","161")
+        //var user_id = SharedPreferenceHelper.getStringPreference(mContext, "user_id", "56")
+        var access_token = getStringPreference(mContext, "access_token", "")
+        queryParams.put("access_token", access_token!!)
+        //queryParams.put("user_id","161")
         queryParams.put("occupation", category_of_person!!)
         queryParams.put("phone_number", additionalPhoneNumber!!)
         queryParams.put("address", additionalEmail!!)
         queryParams.put("social_profile",socialProfile!!)
-        Log.e("MAIN ACTIVITY : ", "inside button")
+        DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/optional", queryParams, UserAdditionalDetailsResult::class.java, this, 1, "Sending your other details...")
     }
 
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> { // Send Additional Details
-                Log.e("API CALL : ", "inside Main activity and onSuccess when")
+                DLog("API CALL : ", "inside Main activity and onSuccess when")
                 val userAdditionalDetailsResult = response as UserAdditionalDetailsResult
                 if(userAdditionalDetailsResult.status){
-                    val i= Intent(mContext, Home::class.java)
-                    mContext.startActivity(i)
+                    userAdditionalDetailsFragmentView.navigateFragment()
+                    /*val i= Intent(mContext, Home::class.java)
+                    mContext.startActivity(i)*/
                 }
             }
         }

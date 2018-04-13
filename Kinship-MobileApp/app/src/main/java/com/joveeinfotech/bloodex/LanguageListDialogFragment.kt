@@ -6,7 +6,6 @@ import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -116,7 +115,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     }*/
     override fun onLanguageClick(data: Int) {
         //*settingsFragment?.onLanguageClicks(data)*//
-        Log.e("Message", "onItemClicks function")
+        DLog("Message", "onItemClicks function")
         if (data == 0) {
             Toast.makeText(activity, "Tamil Clicked !", Toast.LENGTH_SHORT).show()
             LocaleHelper.setLocale(mContext, "ta")

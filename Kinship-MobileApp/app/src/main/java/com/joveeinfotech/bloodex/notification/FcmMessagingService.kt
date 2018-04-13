@@ -1,7 +1,6 @@
 package com.joveeinfotech.bloodex.notification
 
 import android.content.Intent
-import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.joveeinfotech.bloodex.APICall
@@ -9,6 +8,7 @@ import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPreference
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.bloodex.model.*
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.utils.SharedData
 import org.json.JSONObject
 import java.util.HashMap
@@ -34,33 +34,33 @@ class FcmMessagingService : FirebaseMessagingService(), APIListener {
             var json = JSONObject(remoteMessage?.data.toString())
             //var data = json.getJSONObject("data")
 
-            Log.e("data  :","${json}")
+            DLog("data  :", "${json}")
             var data = json.getInt("data")
 
             if(data == 1){ // Get Blood Request // design and Code
                 val queryParams = HashMap<String, String>()
                 queryParams.put("input","bloodRequest")
                 queryParams.put("data",data.toString())
-                Log.e("MAIN ACTIVITY : ","inside get blood Request" )
+                DLog("MAIN ACTIVITY : ","inside get blood Request" )
                 networkCall?.APIRequest("api/v1/getRequest",queryParams, FcmRequestData::class.java,this, 1, "Authenticating...",false)
             }
             else if(data == 2){ // Get Permission of Post Image in donor //
                 val queryParams = HashMap<String, String>()
                 queryParams.put("input","permission")
-                Log.e("MAIN ACTIVITY : ","inside get permission of post image of donor" )
+                DLog("MAIN ACTIVITY : ","inside get permission of post image of donor" )
                 networkCall?.APIRequest("api/v1/getRequest",queryParams, FcmRequestData::class.java,this, 2, "Authenticating...",false)
             }
             else if(data == 3){
                 val queryParams = HashMap<String, String>()
                 queryParams.put("input","postImage")
                 queryParams.put("data",data.toString())
-                Log.e("MAIN ACTIVITY : ","inside button" )
+                DLog("MAIN ACTIVITY : ","inside button" )
                 networkCall?.APIRequest("api/v1/getRequest",queryParams, FcmRequestData::class.java,this, 3, "Authenticating...",false)
             }
             else if(data == 4){ // Display Information // design and code
                 val queryParams = HashMap<String, String>()
                 queryParams.put("info","info")
-                Log.e("MAIN ACTIVITY : ","inside display information" )
+                DLog("MAIN ACTIVITY : ","inside display information" )
                 networkCall?.APIRequest("api/v1/getInfo",queryParams, FcmDisplayInfoResult::class.java,this, 4, "Authenticating...",false)
             }
             else if(data == 5){ // user logout
@@ -69,7 +69,7 @@ class FcmMessagingService : FirebaseMessagingService(), APIListener {
             else if(data == 6){ // Birthday Notification
                 val queryParams = HashMap<String, String>()
                 queryParams.put("birthday","birthday")
-                Log.e("MAIN ACTIVITY : ","inside birthday notification" )
+                DLog("MAIN ACTIVITY : ","inside birthday notification" )
                 networkCall?.APIRequest("api/v1/getBirthdayNotification",queryParams, FcmDisplayInfoResult::class.java,this, 6, "Authenticating...",false)
             }
             else if(data == 7){ // Blood donation Day Notification // design
@@ -78,13 +78,13 @@ class FcmMessagingService : FirebaseMessagingService(), APIListener {
             else if(data == 8){ // Donor Invite // design
                 val queryParams = HashMap<String, String>()
                 queryParams.put("invite","invite")
-                Log.e("MAIN ACTIVITY : ","inside invite blood donor" )
+                DLog("MAIN ACTIVITY : ","inside invite blood donor" )
                 networkCall?.APIRequest("api/v1/getBirthdayNotification",queryParams, FcmBloodDonorInviteResult::class.java,this,8 , "Authenticating...",false)
             }
             else if(data == 9){ // Blood Donation Camp // design
                 val queryParams = HashMap<String, String>()
                 queryParams.put("camp","camp")
-                Log.e("MAIN ACTIVITY : ","inside invite blood donation Camp" )
+                DLog("MAIN ACTIVITY : ","inside invite blood donation Camp" )
                 networkCall?.APIRequest("api/v1/getBloodCamp",queryParams, FcmBloodDonationCamp::class.java,this,9 , "Authenticating...",false)
             }
 
@@ -194,7 +194,7 @@ class FcmMessagingService : FirebaseMessagingService(), APIListener {
         when(from) {
             1 -> { // User Login
                 val result = response as FcmRequestData
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
                     setStringPreference(this,"blood_group",result.blood_group)
                     setStringPreference(this,"units",result.units)
@@ -207,7 +207,7 @@ class FcmMessagingService : FirebaseMessagingService(), APIListener {
 
                     startService(Intent(this, System_alert_notification::class.java))
 
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                     //snackbar(this,)
                     //snackbar((this as Activity).findViewById(R.id.content), "Please wait some minute")
@@ -223,39 +223,39 @@ class FcmMessagingService : FirebaseMessagingService(), APIListener {
             }
             4 -> {
                 val result = response as FcmDisplayInfoResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
                     setStringPreference(this,"info",result.info)
                     startService(Intent(this, System_alert_User_Information::class.java))
 
                     startService(Intent(this, System_alert_User_Information::class.java))
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                 }
             }
             8 -> {
                 val result = response as FcmBloodDonorInviteResult
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
                     setStringPreference(this,"inviteDate",result.date)
                     setStringPreference(this,"inviteTime",result.time)
                     setStringPreference(this,"inviteVenue",result.venue)
 
                     startService(Intent(this, System_alert_Blood_Donor_Invite::class.java))
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                 }
             }
             9 -> {
                 val result = response as FcmBloodDonationCamp
-                Log.e("API CALL : ", "inside Main activity and onSuccess")
+                DLog("API CALL : ", "inside Main activity and onSuccess")
                 if (true) {
                     setStringPreference(this,"campDate",result.date)
                     setStringPreference(this,"campTime",result.time)
                     setStringPreference(this,"campVenue",result.venue)
 
                     startService(Intent(this, System_alert_Blood_Donation_Camp::class.java))
-                    Log.e("API CALL : ", "inside Main activity and onSucces and if condition")
+                    DLog("API CALL : ", "inside Main activity and onSucces and if condition")
                 } else {
                 }
             }

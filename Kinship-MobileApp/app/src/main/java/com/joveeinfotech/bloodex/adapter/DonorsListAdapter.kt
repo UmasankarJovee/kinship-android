@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.model.donationInnerDetails
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import com.joveeinfotech.bloodex.view.ProfileView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.all_donars_inner_list.view.*
@@ -45,7 +45,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
         return ViewHolder(view,mcontext)
     }
 
-    class ViewHolder(view : View, var mContext: Context) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(var view : View, var mContext: Context) : RecyclerView.ViewHolder(view) {
 
         var mMap = mutableMapOf<String,MutableList<donationInnerDetails>>()
         //var mList = listOf<String>()
@@ -83,7 +83,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
             //var setList: List<donationInnerDetails>? = mMap[donorsResult.date]?.toList()
             //var details: List<donationDetails> = getTop20Result.donorList
             mdonorsInnerArrayList = ArrayList(donorsResult)
-            Log.e("DonorsListAdapter : ","${mdonorsInnerArrayList!!.size}")
+            DLog("DonorsListAdapter : ","${mdonorsInnerArrayList!!.size}")
             donorsInnerListAdapter = DonorsInnerListAdapter(mdonorsInnerArrayList!!, mContext!!)
             itemView.all_donars_inner_list_RecyclerView.adapter = donorsInnerListAdapter
 
@@ -103,7 +103,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
 
             override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
                 val view = LayoutInflater.from(parent?.context).inflate(R.layout.all_donars_inner_list, parent, false)
-                Log.e("size",getTop20Result.size.toString())
+                DLog("size",getTop20Result.size.toString())
                 return ViewHolder(view,mcontext)
             }
 
@@ -113,14 +113,14 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
                 var mSelectedItem:Int=-1
                 fun bind(donationInner : donationInnerDetails, colors : Array<String>, position: Int) {
 
-                    Log.e("DonorsInnerList : ", "inside bind")
+                    DLog("DonorsInnerList : ", "inside bind")
                     //Log.e("DonorsInnerListAdapter : ",)
                     //var image_url= SharedPreferenceHelper.getStringPreference(mcontext, "image_url", "http://192.168.0.56/images/")
                     var url = "http://192.168.0.56/images/${donationInner.image_url}"
                     Picasso.with(mcontext).load(url).into(itemView.all_donars_inner_list_user_profile)
-                    Log.e("InnerList : ",donationInner.image_url)
-                    Log.e("InnerList : ",donationInner.name)
-                    Log.e("InnerList : ",donationInner.district)
+                    DLog("InnerList : ",donationInner.image_url)
+                    DLog("InnerList : ",donationInner.name)
+                    DLog("InnerList : ",donationInner.district)
                     itemView.all_donars_inner_list_user_name.text = donationInner.name
                     itemView.all_donars_inner_list_user_district.text = donationInner.district
                     clickListener = object : View.OnClickListener{
@@ -131,7 +131,7 @@ class DonorsListAdapter(val getTop20Result: MutableMap<String, MutableList<donat
                             val intent=Intent(mcontext,ProfileView::class.java)
                             intent.putExtra("person_id",donationInner.person_id)
                             mcontext.startActivity(intent)
-                            Log.e("Preference","After setIntPreference ${mSelectedItem}")
+                            DLog("Preference","After setIntPreference ${mSelectedItem}")
                             //dismiss()
                             //notifyDataSetChanged()
                         }

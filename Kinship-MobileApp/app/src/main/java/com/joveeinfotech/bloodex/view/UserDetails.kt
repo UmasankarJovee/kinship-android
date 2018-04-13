@@ -1,8 +1,6 @@
 package com.joveeinfotech.bloodex.view
 
 import android.Manifest
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -14,7 +12,6 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.RadioButton
-import android.widget.Toast
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
@@ -26,6 +23,7 @@ import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setBooleanPrefere
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.bloodex.presenter.UserDetailsPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
+import com.joveeinfotech.bloodex.utils.Others.DLog
 
 class UserDetails : AppCompatActivity(), UserDetailsView {
 
@@ -57,14 +55,17 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
 
         //permissions()
         //proceedAfterPermission()
+        val trans = supportFragmentManager.beginTransaction()
+        userDetailsPresenter = UserDetailsPresenterImpl(trans,this,this)
 
-        user_id = getStringPreference(this,"user_id","")
+        /*user_id = getStringPreference(this,"user_id","")
+        DLog("UserDetails : ", "UserDetails1 ${user_id}")
         userOption = getBooleanPreference(this,"userOption${user_id}",true)
         if(userOption!!) {
             displayDialog()
         }else{
             proceedAfterPermission()
-        }
+        }*/
     }
 
     private fun displayDialog() {
@@ -106,7 +107,7 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
                     proceedAfterPermission()
                 }
             }else{
-                CustomToast().alertToast(this,"Select Any one option")
+                CustomToast().alertToast(this,this.getString(R.string.select_any_one_option))
             }
             //alertDialogNotDonatedConfirm?.dismiss()
         }
@@ -143,7 +144,8 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
                     val uri = Uri.fromParts("package", packageName, null)
                     intent.data = uri
                     startActivityForResult(intent, REQUEST_PERMISSION_SETTING)
-                    Toast.makeText(baseContext, "Go to Permissions to Grant Location", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(baseContext, "Go to Permissions to Grant Location", Toast.LENGTH_LONG).show()
+                    CustomToast().normalToast(this,this.getString(R.string.go_to_permissions_to_grant_location))
                 }
                 builder.setNegativeButton("Cancel") {
                     dialog, which ->
@@ -198,7 +200,8 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
                     builder.show()
                 } else {
                     proceedAfterPermission()
-                    Toast.makeText(baseContext, "Unable to get Permission", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(baseContext, "Unable to get Permission", Toast.LENGTH_LONG).show()
+                    CustomToast().normalToast(this,this.getString(R.string.unable_to_get_permissions))
                 }
             }
         }
@@ -229,5 +232,21 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
         this.isCompleteAddress = isCompleteAddress
         this.isCompleteAdditionalDetails = isCompleteAdditionalDetails
         this.isCompleteHealthDetails = isCompleteHealthDetails
+    }
+
+    fun getIsCompleteProfile() : Boolean{
+        return isCompleteProfile!!
+    }
+    fun getIsCompleteAddress() : Boolean{
+        return isCompleteAddress!!
+    }
+    fun getIsCompleteAdditionalDetails() : Boolean{
+        return isCompleteAdditionalDetails!!
+    }
+    fun getIsCompleteHealthDetails() : Boolean{
+        return isCompleteHealthDetails!!
+    }
+    override fun closeActivity() {
+        finish()
     }
 }

@@ -4,11 +4,11 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import android.util.Log
 import com.joveeinfotech.bloodex.APICall
 import com.joveeinfotech.bloodex.APIListener
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.getStringPreference
 import com.joveeinfotech.bloodex.model.LocationResult
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import java.util.HashMap
 
 class SendLocation : Service(), APIListener{
@@ -21,15 +21,16 @@ class SendLocation : Service(), APIListener{
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-
         networkCall = APICall(context!!)
         latitude = getStringPreference(context!!,"latitude","")
         longitude = getStringPreference(context!!,"longitude","")
 
         val queryParams = HashMap<String, String>()
+        var access_token = getStringPreference(this, "access_token", "")
+        queryParams.put("access_token", access_token!!)
         queryParams.put("latitude", latitude!!)
         queryParams.put("longitude",longitude!!)
-        Log.e("MAIN ACTIVITY : ", "inside send location")
+        DLog("MAIN ACTIVITY : ", "inside send location")
         networkCall?.APIRequest("api/v1/search", queryParams, LocationResult::class.java, this, 1, "Fetching...")
 
         return super.onStartCommand(intent, flags, startId)
@@ -42,10 +43,10 @@ class SendLocation : Service(), APIListener{
     override fun onSuccess(from: Int, response: Any) {
         when (from) {
             1 -> {
-                Log.e("API CALL : ", "inside UserRequest and onSuccess when")
+                DLog("API CALL : ", "inside UserRequest and onSuccess when")
                 val result = response as LocationResult
                 if(result.status){
-                    Log.e("API CALL : ", "success")
+                    DLog("API CALL : ", "success")
                 }
             }
         }

@@ -1,14 +1,15 @@
 package com.joveeinfotech.bloodex.view
 
 import android.app.AlarmManager
+import android.app.Dialog
 import android.app.PendingIntent
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
 import com.joveeinfotech.bloodex.*
@@ -16,6 +17,8 @@ import com.joveeinfotech.bloodex.contract.KinshipContract.*
 import com.joveeinfotech.bloodex.presenter.LoginPresenterImpl
 import com.joveeinfotech.bloodex.utils.CustomToast
 import com.joveeinfotech.bloodex.utils.LocationService
+import com.joveeinfotech.bloodex.utils.Others.DLog
+import com.joveeinfotech.bloodex.utils.SendLocation
 import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : AppCompatActivity(), LoginView {
@@ -40,14 +43,14 @@ class Login : AppCompatActivity(), LoginView {
         setContentView(R.layout.activity_login)
 
         loginPresenter= LoginPresenterImpl(this,this)
-        Log.e("qqqqqqqqqqqqqqqq","call inside login")
+        DLog("qqqqqqqqqqqqqqqq", "call inside login")
 
         loginPresenter?.navigateActivity()
 
         activity_login_loginButton.setOnClickListener{
-            //loginPresenter?.userPhoneNumberAndPassword(activity_login_phone_number_editText.text.toString(),activity_login_password_editText.text.toString())
-            val i= Intent(applicationContext, UserDetails::class.java)
-            startActivity(i)
+            loginPresenter?.userPhoneNumberAndPassword(activity_login_phone_number_editText.text.toString(),activity_login_password_editText.text.toString())
+            /*val i= Intent(applicationContext, UserDetails::class.java)
+            startActivity(i)*/
         }
 
         activity_login_textView_register.setOnClickListener{
@@ -76,7 +79,7 @@ class Login : AppCompatActivity(), LoginView {
             if(editTextPhoneNumber!!.text.isNotEmpty()){
                 loginPresenter?.getPhoneNumber(editTextPhoneNumber?.text.toString())
             }else{
-                CustomToast().alertToast(this,"Fill the OTP")
+                CustomToast().alertToast(this,this.getString(R.string.fill_the_phonenumber))
             }
         }
     }
@@ -101,7 +104,7 @@ class Login : AppCompatActivity(), LoginView {
             if(editTextotp!!.text.isNotEmpty()){
                 loginPresenter?.sendOTP(editTextotp?.text.toString())
             }else{
-                CustomToast().alertToast(this,"Fill the OTP")
+                CustomToast().alertToast(this,this.getString(R.string.fill_the_otp))
             }
         }
     }
@@ -126,10 +129,10 @@ class Login : AppCompatActivity(), LoginView {
                 if (editTextpassword?.text.toString() == editTextConfirmPassword?.text.toString()) {
                     loginPresenter?.sendPassword(editTextpassword?.text.toString())
                 }else{
-                    CustomToast().alertToast(this,"Both passwords must be equal")
+                    CustomToast().alertToast(this,this.getString(R.string.both_passwords_are_must_be_equal))
                 }
             }else{
-                CustomToast().alertToast(this,"Fill the all fields")
+                CustomToast().alertToast(this,this.getString(R.string.fill_all_the_fields))
             }
         }
     }
@@ -138,13 +141,19 @@ class Login : AppCompatActivity(), LoginView {
         alertDialogGetPassword?.dismiss()
     }
 
-
-
-    private fun setAlarm() {
+    private fun setAlarmOfEveryTwoMinutes() {
         val intent = Intent(this, LocationService::class.java)
         val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 1000 ,pendingIntent)
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 5000 ,pendingIntent)
+        //Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setAlarmOfEveryOneHour() {
+        val intent = Intent(this, SendLocation::class.java)
+        val pendingIntent = PendingIntent.getService(this.applicationContext, 234324243, intent, 0)
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10 * 1000, 240 * 1000 ,pendingIntent)
         //Toast.makeText(this, "Alarm after 5 seconds", Toast.LENGTH_SHORT).show()
     }
 
@@ -180,7 +189,56 @@ class Login : AppCompatActivity(), LoginView {
 */
 
     override fun onBackPressed() {
-
         finishAffinity()
     }
+
+    override fun showNetworkError() {
+        showDialog(0)
+    }
+
+    override fun onCreateDialog(id: Int): Dialog? {
+        when (id) {
+            0 -> return AlertDialog.Builder(this)
+                    .setIcon(R.mipmap.home_logo)
+                    .setTitle("Enter your Register No. and Date of Birth")
+                    .setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, whichButton ->
+                                //System.exit(0);
+                                //finish();
+                                //int pid = android.os.Process.myPid();
+                                //android.os.Process.killProcess(pid);
+                                //System.exit(0);
+                                //Intent.FLAG_ACTIVITY_NEW_TASK;
+                                finishAffinity()
+
+                                //System.exit(0);
+                                //Toast.makeText(getBaseContext(),"OK clicked!", Toast.LENGTH_SHORT).show();
+                            }
+                    )
+                    .setNegativeButton("Retry",
+                            DialogInterface.OnClickListener { dialog, which ->
+                                if (Network_check.isNetworkAvailable(this)) {
+                                    dismissDialog(0)
+                                    loginPresenter?.navigateActivity()
+                                }
+                            }
+                    ).create()
+        }
+        return null
+    }
+
+   /* private fun setContent(){
+        setContentView(R.layout.activity_login)
+    }*/
+
+    override fun setContentNothing() {
+        setContentView(R.layout.display_network_error)
+    }
+
+    override fun setContentview() {
+        setAlarmOfEveryTwoMinutes()
+        setAlarmOfEveryOneHour()
+        setContentView(R.layout.activity_login)
+    }
+
 }

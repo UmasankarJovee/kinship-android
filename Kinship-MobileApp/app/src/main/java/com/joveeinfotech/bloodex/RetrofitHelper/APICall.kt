@@ -4,14 +4,14 @@ package com.joveeinfotech.bloodex
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.ResponseBody
-import org.jetbrains.anko.toast
+//import org.jetbrains.anko.toast
 import org.jetbrains.anko.design.snackbar
 import retrofit2.Response
 
@@ -48,14 +48,14 @@ class APICall(val mcontext: Context) {
             if(showProgressDialogue) {
                 createDialog(message)
             }
-            Log.e("API CALL : ","inside Apirequest" )
+            DLog("API CALL : ", "inside Apirequest")
             this.from=from
             this.responseListener=apiListener
 
             createRetrofitApiClient?.postRequest(url, queryParams)?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
                     ?.subscribe({ response ->
-                        Log.e("API CALL : ","inside Apirequest and response" )
+                        DLog("API CALL : ","inside Apirequest and response" )
                         if (response.isSuccessful) {
                             /*try {
                                 Log.e("API CALL : ","inside Apirequest isSuccessful" )
@@ -74,7 +74,7 @@ class APICall(val mcontext: Context) {
                             apiListener.onSuccess(from, Gson().fromJson(response.body()!!.string(), responseModel))
 
                         } else {
-                            Log.e("API CALL : ","inside Apirequest and response else error ${response.code()}" )
+                            DLog("API CALL : ","inside Apirequest and response else error ${response.code()}" )
                             //val errorMessage = JSONObject(response.code().toString())
                             //HelperClass.SOT(mContext, errorMessage.getString("error_message").toString())
                             //mcontext.toast(errorMessage.getString("error_message").toString())
@@ -92,13 +92,13 @@ class APICall(val mcontext: Context) {
                             }
                         }
                     }, { error ->
-                        Log.e("API CALL : ","inside Apirequest handle error" )
+                        DLog("API CALL : ","inside Apirequest handle error" )
                         //progressDialogLoader?.dismissProgressDialog(mcontext as Activity)
                         if(showProgressDialogue){
                             dismissDialog()
                         }
                         //responseListener?.onFailure(from, error)
-                        Log.e("response error", "${error.message.toString()}${error.localizedMessage}")
+                        DLog("response error", "${error.message.toString()}${error.localizedMessage}")
                     })
         } else {
             showNetworkError()
@@ -116,15 +116,15 @@ class APICall(val mcontext: Context) {
     }
 
     private fun handleError(error: Throwable) {
-        Log.e("API CALL : ","inside Apirequest handle error method" )
+        DLog("API CALL : ","inside Apirequest handle error method" )
         //progressDialogLoader?.dismissProgressDialog(mcontext as Activity)
         responseListener?.onFailure(from!!, error)
-        Log.e("response error", error.message.toString())
+        DLog("response error", error.message.toString())
         //mContext.toast("response error")
     }
 
     fun showNetworkError() {
         snackbar((mcontext as Activity).findViewById(android.R.id.content), "You are offline")
-        mcontext.toast("Check your Network Connection")
+        //mcontext.toast("Check your Network Connection")
     }
 }

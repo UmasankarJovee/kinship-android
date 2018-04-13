@@ -14,4 +14,23 @@
     <string name="settingsFragment_cardView2_textView">सूचनाएं</string>
     <string name="settingsFragment_cardView3_textView">भाषा</string>
     <string name="todo">TODO</string>
+
+    <string name="successfully_stored">Successfully Stored</string>
+    <string name="phone_number_is_not_correct">Phone Number is Not Correct</string>
+    <string name="please_fill_two_fields">Please Fill Two Fields</string>
+    <string name="click_again_submit">Click Again Submit</string>
+    <string name="try_again">Try Again</string>
+    <string name="your_request_has_been_send">Your Request has been send</string>
+    <string name="fill_all_the_fields">Fill All the Fields</string>
+    <string name="go_to_permissions_to_grant_location">Go to Permissions to Grant Location</string>
+    <string name="unable_to_get_permissions">Unable to get Permission</string>
+    <string name="fill_the_otp">Fill the OTP</string>
+    <string name="fill_the_phonenumber">Fill the Phone Number</string>
+    <string name="both_passwords_are_must_be_equal">Both passwords must be equal</string>
+    <string name="select_any_one_option">Select Any one option</string>
+    <string name="must_select_atleast_one">Must select atleast one</string>
+    <string name="go_to_permissions_to_grant_phone">Go to Permissions to Grant Phone Call</string>
+    <string name="you_are_not_able_to_donate_blood">You not able to give your Blood</string>
+
+
 </resources>
