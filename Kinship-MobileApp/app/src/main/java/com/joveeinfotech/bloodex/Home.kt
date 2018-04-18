@@ -55,9 +55,9 @@ class Home : AppCompatActivity() {
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_settings -> {
-                //select= SettingsFragment.newInstance()
-                //goToSelectFragment()
-                userOption()
+                select= SettingsFragment.newInstance()
+                goToSelectFragment()
+                //userOption()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_donors -> {

@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
+    android:scrollbars="none"
     tools:context=".view.UserDetails">
 
     <android.support.constraint.ConstraintLayout
@@ -16,7 +17,7 @@
             android:id="@+id/toolbar1"
             android:layout_width="0dp"
             android:layout_height="247dp"
-            android:background="#D14035"
+            android:background="@color/toolBarColor"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -40,8 +41,7 @@
             android:id="@+id/fragment_profile_display_user_profile_image"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile"
+            android:src="@drawable/profile_image"
             app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
             app:layout_constraintRight_toRightOf="@+id/toolbar1"
             app:layout_constraintTop_toTopOf="@+id/toolbar1"
@@ -51,7 +51,7 @@
             android:id="@+id/fragment_profile_display_TextView_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vigneshkumar M"
+            android:text=""
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/fragment_profile_display_user_profile_image"
             android:textSize="20sp"
@@ -116,9 +116,9 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="20"
-                        android:textColor="#D14035"
-                        android:textSize="18dp"
+                        android:text=""
+                        android:textColor="@color/toolBarColor"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -156,8 +156,8 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="34"
-                        android:textColor="#D14035"
+                        android:text=""
+                        android:textColor="@color/toolBarColor"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +182,7 @@
                         android:layout_marginTop="28dp"
                         android:gravity="center"
                         android:text="@string/last_donated"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -196,9 +196,9 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="16dp"
                         android:gravity="center"
-                        android:text="12/10/2017"
-                        android:textColor="#D14035"
-                        android:textSize="15dp"
+                        android:text=""
+                        android:textColor="@color/toolBarColor"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -238,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="vignesh@gmail.com"
+                    android:text=""
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -260,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="+919876543210"
+                    android:text=""
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -282,7 +282,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="AB+"
+                    android:text=""
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -304,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="12/10/1995"
+                    android:text=""
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -326,7 +326,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Krishna street, RS Nagar,\nVirudhunagar."
+                    android:text=""
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -338,8 +338,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:background="@drawable/btn"
-            android:text="EDIT PROFILE"
-            android:textColor="#ffffff"
+            android:text="@string/fragment_profile_display_goto_edit_profile_button"
+            android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ln" />

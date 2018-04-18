@@ -72,7 +72,7 @@ class AppRegister : AppCompatActivity(), APIListener {
 
                     DLog("qqqqqqqqqqqqqqqq", "call inside if condition in isFirstinstall")
                     session?.createFirstInstall()
-                    val i = Intent(applicationContext, UserRegistration::class.java)
+                    val i = Intent(applicationContext, AboutUS::class.java)
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(i)

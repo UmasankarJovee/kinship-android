@@ -12,6 +12,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.joveeinfotech.bloodex.helper.LocaleHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
+import com.joveeinfotech.bloodex.view.UserRegistration
 import kotlinx.android.synthetic.main.activity_select_language.*
 import java.util.ArrayList
 
@@ -65,7 +66,7 @@ class SelectLanguage : AppCompatActivity() {
         }
 
         activity_select_language_constraintLayout2_skip_textView.setOnClickListener {
-            startActivity(Intent(this@SelectLanguage, Home::class.java))
+            startActivity(Intent(this@SelectLanguage, UserRegistration::class.java))
         }
     }
     fun call(){

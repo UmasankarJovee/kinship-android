@@ -32,9 +32,9 @@
     <string name="image_and_sliding_content_district_textView">-</string>
 
     <!--fragment_user_profile_edit-->
-    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <!--<string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>-->
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          आपकी रूपरेखा        </string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <!--<string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView">9876543210</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText">9876543210</string>
@@ -44,7 +44,7 @@
     <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView">70</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText">70</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView">1/99,KK NAGAR,MADURAI-625020</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>-->
 
     <!--activity_user_registration-->
     <string name="activity_user_registration_scrollView_constraintLayout_phone_number_editText">फ़ोन नंबर</string>
@@ -131,6 +131,7 @@
     <string name="total_donated">कुल दान</string>
     <string name="total_request">कुल अनुरोध</string>
     <string name="last_donated">अंतिम दान</string>
+    <string name="fragment_profile_display_goto_edit_profile_button">प्रोफाइल एडिट करें</string>
 
     <!--fragment_user_address.xml-->
     <string name="user_address_select_your_country">अपने देश का चयन करें</string>
@@ -149,13 +150,15 @@
     <string name="alert_one_day_diseases_get_Did_you_drink_Alcohol_yesterday">क्या आप कल शराब पी रहे थे</string>
     <string name="alert_one_day_diseases_get_Did_you_face_any_side_effects_in_previous_donation">क्या आपको पिछले दान में कोई दुष्प्रभाव का सामना करना पड़ा?</string>
     <string name="alert_one_day_diseases_get_Had_tooth_extraction_in_the_past_3_weeks">पिछले 3 हफ्तों में दांत निकालना था</string>
-    <string name="alert_one_day_diseases_get_SUBMIT">SUBMIT</string>
+    <string name="alert_one_day_diseases_get_SUBMIT">जमा करें</string>
 
     <!--fragment_some_one_request-->
     <string name="fragment_some_one_request_name_editText">" नाम"</string>
     <string name="fragment_some_one_request_phoneNumber_editText">" फ़ोन नंबर"</string>
     <string name="fragment_some_one_request_units_editText">" इकाइयों"</string>
     <string name="fragment_some_one_request_submit_button">जमा करें</string>
+    <string name="fragment_some_one_request_constraintLayout_time_to_arrive_textview">आने का समय</string>
+    <string name="fragment_some_one_request_constraintLayout_time_to_arrive_editText">(उदाहरण: 4)</string>
 
     <!--fragment_user_additional_details-->
     <string name="fragment_user_additional_details_additionalDetails_textView">अतिरिक्त जानकारिया</string>
@@ -200,13 +203,18 @@
     <!--fragment_user_request-->
     <string name="fragment_user_request_constraintLayout_units_editText">" इकाइयों"</string>
     <string name="fragment_user_request_constraintLayout_submit_button">जमा करें</string>
+    <string name="fragment_user_request_constraintLayout_districts_spinner">जिला</string>
+    <string name="fragment_user_request_constraintLayout_hospitals_spinner">अस्पताल</string>
+    <string name="fragment_user_request_constraintLayout_time_to_arrive_textview">आने का समय</string>
+    <string name="fragment_user_request_constraintLayout_time_to_arrive_editText">(उदाहरण: 4)</string>
 
     <!--top20_donors_list-->
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_name_textView">"Ramakrishnan S"</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_district_textView">in Madurai</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_name_textView">"दाता का नाम"</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_district_textView">शहर</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">0</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">0</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">अंतिम दान तिथि</string>
+    <string name="blood_donated_confirm">% S ने रक्त दान किया है?</string>
     <string name="todo">TODO</string>
 
     <!--Validation-->
@@ -231,4 +239,33 @@
     <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">स्वागत हे</string>
     <string name="activity_select_language_constraintLayout2_skip_textView">आगामी</string>
     <string name="select_language">भाषा चुनिए</string>
+
+    <!-- activty_profile_view-->
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroupLabel_textView">रक्त समूह</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailLabel_textView">ईमेल</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationLabel_textView">व्यवसाय</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookLabel_textView">फेसबुक आईडी</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1_totalDonatedLabel_textView">कुल दान</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2_totalRequestLabel_textView">कुल अनुरोध</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3_lastDonatedDateLabel_textView">अंतिम दान तिथि</string>
+
+    <!-- alert_forgot_password-->
+    <string name="alert_forgot_password_EditText_phone_number">फोन नंबर दर्ज</string>
+    <string name="alert_forgot_password_Button_submit">जमा करें</string>
+
+    <!--alert_requestor_or_donor_options_get-->
+    <string name="alert_requestor_or_donor_options_get_title_textView">क्या आप ब्लड रिकस्टर या डोनर हैं?</string>
+    <string name="alert_requestor_or_donor_options_get_requestor_radio">ब्लड रिकस्टर</string>
+    <string name="alert_requestor_or_donor_options_get_donor_radio">दाता</string>
+    <string name="alert_requestor_or_donor_options_get_next_button">आगामी</string>
+
+    <!--alert_search_option_get-->
+    <string name="alert_search_option_get_title_textView">अपना खोज विकल्प चुनें</string>
+    <string name="radio_your_need">आपकी आवश्यकता (मित्र / संबंध से)</string>
+    <string name="radio_some_one_need">कुछ की जरूरत है (व्हाट्सएप / फेसबुक से)</string>
+    <string name="button_search_next">आगामी</string>
+
+    <!--fragment_offline-->
+    <string name="fragment_offline_alertMessage_textView">धीमा या कोई इंटरनेट कनेक्शन, \n अपने इंटरनेट सेटिंग्स की जांच करें</string>
+    <string name="fragment_offline_tryAgain_button">पुनः प्रयास करें</string>
 </resources>

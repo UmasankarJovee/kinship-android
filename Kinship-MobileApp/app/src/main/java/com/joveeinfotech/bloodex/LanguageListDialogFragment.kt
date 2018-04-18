@@ -3,6 +3,7 @@ package com.joveeinfotech.bloodex
 import android.app.DialogFragment
 import android.support.v4.app.FragmentTransaction
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -15,7 +16,7 @@ import com.joveeinfotech.bloodex.helper.LocaleHelper
 import com.joveeinfotech.bloodex.helper.SharedPreferenceHelper.setStringPreference
 import com.joveeinfotech.bloodex.presenter.SettingsFragmentPresenterImpl
 import com.joveeinfotech.bloodex.utils.Others.DLog
-import kotlinx.android.synthetic.main.alert_language_settings.*
+import kotlinx.android.synthetic.main.alert_language_settings.view.*
 
 /**
  * Created by shanmugarajjoveeinfo on 20/2/18.
@@ -45,7 +46,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1 = inflater.inflate(R.layout.alert_language_settings, null)
-        dialog.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         //trans=fragmentManager?.beginTransaction()
         settingsFragmentPresenterImpl = SettingsFragmentPresenterImpl(mContext, this)
         settingsFragment = SettingsFragment()
@@ -59,9 +60,8 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
                 setLocale(languages_code.get(p2))
             }
         }*/
-        alert_language_settings_cardView_constraintLayout_listView?.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-        alert_language_settings_cardView_constraintLayout_listView?.adapter = settingsFragmentPresenterImpl?.getLanguagesData()
-
+        view1!!.alert_language_settings_cardView_constraintLayout_listView.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+        view1!!.alert_language_settings_cardView_constraintLayout_listView.adapter = settingsFragmentPresenterImpl?.getLanguagesData()
         /*cancelButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_cancelButton)
         okButton=view1?.findViewById(R.id.alert_language_settings_cardView_constraintLayout_okButton)
         cancelButton?.setOnClickListener {
@@ -170,6 +170,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
     }
 }
+
 class call1 {
 
     fun call2(trans: FragmentTransaction) {
