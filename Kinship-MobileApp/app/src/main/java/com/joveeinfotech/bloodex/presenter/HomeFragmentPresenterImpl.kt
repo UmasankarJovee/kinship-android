@@ -36,7 +36,7 @@ class HomeFragmentPresenterImpl : APIListener, HomeFragmentPresenter {
         queryParams.put("access_token", access_token!!)
         queryParams.put("nothing", "hello")
         //Log.e("MAIN ACTIVITY : ","inside button" )
-        networkCall?.APIRequest("api/v0/updated_detail_of_home",queryParams, UpdateDetailsResult::class.java,this, 1, "Fetching...")
+        networkCall?.APIRequest("api/v1/home",queryParams, UpdateDetailsResult::class.java,this, 1, "Fetching...")
     }
     override fun onSuccess(from: Int, response: Any) {
         when(from) {

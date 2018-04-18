@@ -82,11 +82,11 @@ class SomeOneRequestFragmentPresenterImpl : APIListener, SomeOneRequestFragmentP
         queryParams.put("units",units)
         queryParams.put("district",district)
         queryParams.put("hospital",hospital)
-        queryParams.put("relationship",relationship)
+        queryParams.put("relationship","friend")
         queryParams.put("time_in_number",time_in_number)
         queryParams.put("time_in_string",time_in_string)
         DLog("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/search_blood_group", queryParams, SearchHospitalResult::class.java, this, 3, "Sending Your Request...")
+        networkCall?.APIRequest("api/v1/search", queryParams, SearchBloodInUserRequest::class.java, this, 3, "Sending Your Request...")
     }
 
 

@@ -46,7 +46,7 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
         val queryParams = HashMap<String, String>()
         var access_token = getStringPreference(mContext, "access_token", "")
         queryParams.put("access_token", access_token!!)
-        queryParams.put("fgf", "jhuy")
+        //queryParams.put("username","8189922043")
         DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/userdetail",queryParams, UserDetailResult::class.java,this, 1, "Authenticating...")
     }
@@ -60,6 +60,9 @@ class UserDetailsPresenterImpl : APIListener, UserDetailsPresenter {
                 userDetailsView.setNavigationFragmentValues(userDetailResult.isRegisterUserProfile,
                         userDetailResult.isRegisterHomeAddress,userDetailResult.isRegisterAdditionalDetails,
                         userDetailResult.isRegisterHealthDetails)
+
+                //trans?.replace(com.joveeinfotech.bloodex.R.id.activity_user_details_frame_layout, UserAdditionalDetailsFragment.newInstance())
+                //trans?.commit()
 
                 if(!userDetailResult.isRegisterUserProfile){
                     trans?.replace(com.joveeinfotech.bloodex.R.id.activity_user_details_frame_layout, UserProfileFragment.newInstance())

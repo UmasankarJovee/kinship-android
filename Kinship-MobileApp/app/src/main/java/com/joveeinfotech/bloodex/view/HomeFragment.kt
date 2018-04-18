@@ -100,7 +100,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
         //view.activity_home_fragment_ImageSlider_ViewPager.adapter=ImageSliderAdapterClass()
         init()
         blooddonatorinstructionsTextView?.setOnClickListener{
-            bloodDonatorInstructions()
+            //bloodDonatorInstructions()
+            CustomToast().normalToast(mContext,"Login Successfully")
         }
         bloodRequestorInstructionsTextView?.setOnClickListener{
             bloodRequestorInstructions()

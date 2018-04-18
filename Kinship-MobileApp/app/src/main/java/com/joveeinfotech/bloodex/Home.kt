@@ -55,9 +55,9 @@ class Home : AppCompatActivity() {
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_settings -> {
-                //select= SettingsFragment.newInstance()
-                //goToSelectFragment()
-                userOption()
+                select= SettingsFragment.newInstance()
+                goToSelectFragment()
+                //userOption()
                 //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_donors -> {
@@ -156,10 +156,10 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         BottomNavigationHelper.disableShiftMode(activity_login_navigation_bottomNavigationView)
-        /*supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setLogo(R.mipmap.home_logo)
         supportActionBar!!.setDisplayUseLogoEnabled(true)
-        supportActionBar!!.setTitle("Kinship")*/
+        supportActionBar!!.setTitle("BloodEx")
         //boomMenu()
         //startAlert()
 

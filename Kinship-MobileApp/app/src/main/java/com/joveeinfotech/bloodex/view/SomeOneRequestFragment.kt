@@ -100,7 +100,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
             }
         }
 
-        val dataAdapter_of_relation = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories_of_relation)
+        /*val dataAdapter_of_relation = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, categories_of_relation)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         view1?.spinner_some_one_relationship?.adapter = dataAdapter_of_relation
         view1?.spinner_some_one_relationship?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -111,7 +111,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
                 relationship = categories_of_relation.get(position).toString()
                 //Toast.makeText(applicationContext,blood_group,Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
        /* val district_dataAdapter = ArrayAdapter(mContext, android.R.layout.simple_spinner_item, district_categories)
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -161,7 +161,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
                     && fragment_some_one_request_units_editText.text.isNotEmpty()
                     && spinner_some_one_search_district.text.isNotEmpty()
                     && spinner_some_one_search_hospitals.text.isNotEmpty()
-                    && relationship!!.isNotEmpty()
+                    //&& relationship!!.isNotEmpty()
                     && fragment_some_one_request_constraintLayout_time_to_arrive_editText.text.isNotEmpty()
                     && time_in_string!!.isNotEmpty()) {
 
@@ -171,7 +171,7 @@ class SomeOneRequestFragment : Fragment(), SomeOneRequestFragmentView {
                         fragment_some_one_request_units_editText.text.toString(),
                         spinner_some_one_search_district.text.toString(),
                         spinner_some_one_search_hospitals.text.toString(),
-                        relationship!!,
+                        "friend",
                         fragment_some_one_request_constraintLayout_time_to_arrive_editText.text.toString(),
                         time_in_string!!)
             }else{

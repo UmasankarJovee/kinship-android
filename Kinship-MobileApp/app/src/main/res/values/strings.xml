@@ -212,7 +212,7 @@
     <!--Validation-->
     <string name="successfully_stored">Successfully Stored</string>
     <string name="phone_number_is_not_correct">Phone Number is Not Correct</string>
-    <string name="please_fill_two_fields">Please Fill Two Fields</string>
+    <string name="please_fill_two_fields">Please Fill three Fields</string>
     <string name="click_again_submit">Click Again Submit</string>
     <string name="try_again">Try Again</string>
     <string name="your_request_has_been_send">Your Request has been sent</string>

@@ -46,7 +46,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         val queryParams = HashMap<String, String>()
         var client_id = getStringPreference(mContext,"client_id","")
         queryParams.put("client_id",client_id!!)
-        networkCall?.APIRequest("api/v1/country", queryParams, OTPResult::class.java, this, 4, "Verifying Your OTP")
+        networkCall?.APIRequest("api/v1/country", queryParams, CountryResult::class.java, this, 4, "Verifying Your OTP")
     }
 
     override fun initPresenter() {
@@ -96,7 +96,7 @@ class RegisterPresenterImpl : APIListener, RegisterPresenter {
         queryParams.put("client_id",client_id!!)
         queryParams.put("phone_number", phone_number!!)
         queryParams.put("blood_group", blood_group!!)
-
+        queryParams.put("country","India")
         DLog("MAIN ACTIVITY : ", "inside button")
         networkCall?.APIRequest("api/v1/register", queryParams, RegisterResult::class.java, this, 1, "Registering...")
     }

@@ -66,6 +66,11 @@ class UserDetails : AppCompatActivity(), UserDetailsView {
         }else{
             proceedAfterPermission()
         }*/
+        //val trans = supportFragmentManager.beginTransaction()
+        //userDetailsPresenter = UserDetailsPresenterImpl(trans,this,this)
+       /* trans?.replace(com.joveeinfotech.bloodex.R.id.activity_user_details_frame_layout, UserProfileFragment.newInstance())
+        trans?.commit()*/
+
     }
 
     private fun displayDialog() {

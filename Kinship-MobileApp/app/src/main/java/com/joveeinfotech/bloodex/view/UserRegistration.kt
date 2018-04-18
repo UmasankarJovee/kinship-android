@@ -40,8 +40,6 @@ class UserRegistration : AppCompatActivity(), RegisterView {
         setContentView(R.layout.activity_user_registration)
         registerPresenter = RegisterPresenterImpl(this, this)
 
-
-
         var categories = ArrayList<String>()
         categories.add("Select Blood Group")
         categories.add("AB+")

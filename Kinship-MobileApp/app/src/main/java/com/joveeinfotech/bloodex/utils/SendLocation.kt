@@ -31,7 +31,7 @@ class SendLocation : Service(), APIListener{
         queryParams.put("latitude", latitude!!)
         queryParams.put("longitude",longitude!!)
         DLog("MAIN ACTIVITY : ", "inside send location")
-        networkCall?.APIRequest("api/v1/search", queryParams, LocationResult::class.java, this, 1, "Fetching...")
+        networkCall?.APIRequest("api/v1/search", queryParams, LocationResult::class.java, this, 1, "Fetching...",false)
 
         return super.onStartCommand(intent, flags, startId)
     }

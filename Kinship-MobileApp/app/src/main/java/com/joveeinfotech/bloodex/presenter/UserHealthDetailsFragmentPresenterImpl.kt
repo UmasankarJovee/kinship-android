@@ -78,6 +78,7 @@ class UserHealthDetailsFragmentPresenterImpl : APIListener,UserHealthDetailsFrag
                             //if(result.status)
                             DLog("Response Code : ",result.code().toString())
                             DLog("HealthPresenter :",result.errorBody()!!.string())
+                            userHealthDetailsFragmentView?.navigateFragment()
                            /* DLog("HealthPresenter :","success")
                             CustomToast().normalToast(mContext,"Uploaded Successfully")*/
                         },

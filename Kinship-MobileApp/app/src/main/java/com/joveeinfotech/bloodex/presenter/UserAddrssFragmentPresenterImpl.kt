@@ -169,7 +169,7 @@ class UserAddrssFragmentPresenterImpl : APIListener, UserAddressFragmentPresente
                         trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
                         trans?.commit()*/
                     }
-                    Toast.makeText(mContext, "Successfully Stored", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(mContext, "Successfully Stored", Toast.LENGTH_LONG).show()
                     //val i=Intent(applicationContext,UserAdditionalDetails::class.java)
                     //startActivity(i)
                 }

@@ -170,6 +170,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
 
             var fg = fragment_user_request_constraintLayout_districts_spinner.text
             //userRequestFragmentPresenter?.sendUserRequestToServer1()
+            //CustomToast().alertToast(mContext,"Your Request has been sent")
         }
 
         return view1
@@ -186,6 +187,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
     }
 
     override fun setDistricts(districtResult: DistrictResult) {
+        DLog("UesrRequest : ","inside setDistricts")
         var districtsArray: Array<String> = districtResult.districts.toTypedArray()
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, districtsArray)
         //dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -195,6 +197,7 @@ class UserRequestFragment : Fragment(), UserRequestFragmentView {
     }
 
     override fun setHospitals(hospitalsList: SearchHospitalResult) {
+        DLog("UesrRequest : ","inside setHospitals")
         var hospitalsArray : Array<String> = hospitalsList.hospitals.toTypedArray()
         val dataAdapter = ArrayAdapter(mContext, android.R.layout.select_dialog_item, hospitalsArray)
         view1?.fragment_user_request_constraintLayout_hospitals_spinner?.threshold = 1

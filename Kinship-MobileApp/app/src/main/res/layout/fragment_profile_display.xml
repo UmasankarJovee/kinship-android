@@ -35,12 +35,10 @@
             app:layout_constraintRight_toRightOf="@+id/toolbar1"
             app:layout_constraintTop_toTopOf="@+id/toolbar1" />
 
-
         <com.joveeinfotech.bloodex.CircleImageView
             android:id="@+id/fragment_profile_display_user_profile_image"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:scaleType="centerCrop"
             android:src="@drawable/profile"
             app:layout_constraintLeft_toLeftOf="@+id/toolbar1"
             app:layout_constraintRight_toRightOf="@+id/toolbar1"

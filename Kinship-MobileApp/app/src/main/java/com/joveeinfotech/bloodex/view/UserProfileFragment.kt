@@ -101,6 +101,7 @@ class UserProfileFragment : Fragment(), UserProfileFragmentView {
             }else{
                 CustomToast().alertToast(mContext,mContext.getString(R.string.fill_all_the_fields))
             }
+            //CustomToast().normalToast(mContext,"Your Details are Stored")
         }
 
         DLog("inside create view : ", byteArray.toString())

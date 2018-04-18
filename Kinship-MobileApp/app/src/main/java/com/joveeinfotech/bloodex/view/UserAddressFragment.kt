@@ -19,6 +19,7 @@ import com.joveeinfotech.bloodex.Home
 import com.joveeinfotech.bloodex.R
 import com.joveeinfotech.bloodex.contract.BloodExContract.*
 import com.joveeinfotech.bloodex.presenter.UserAddrssFragmentPresenterImpl
+import com.joveeinfotech.bloodex.utils.Others.DLog
 import kotlinx.android.synthetic.main.fragment_user_address.*
 import kotlinx.android.synthetic.main.fragment_user_address.view.*
 
@@ -181,6 +182,10 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
     }
 
     override fun navigateFragment() {
+        DLog("UserAddress : ",userDetailActivity?.getIsCompleteProfile().toString())
+        DLog("UserAddress : ",userDetailActivity?.getIsCompleteHealthDetails().toString())
+        DLog("UserAddress : ",userDetailActivity?.getIsCompleteAdditionalDetails().toString())
+        //DLog("UserAddress : ",userDetailActivity?.getIsCompleteProfile().toString())
         if(!userDetailActivity?.getIsCompleteProfile()!!){
             trans?.replace(R.id.activity_user_details_frame_layout, UserHealthDetailsFragment.newInstance())
             trans?.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
@@ -198,7 +203,4 @@ class UserAddressFragment : Fragment(), UserAddrssFragmentView {
             userDetailActivity!!.closeActivity()
         }
     }
-
-
-
 }

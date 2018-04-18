@@ -57,14 +57,14 @@ class UserProfileFragmentPresenterImpl : APIListener, UserProfileFragmentPresent
         var access_token = getStringPreference(mContext, "access_token", "")
         queryParams.put("access_token", access_token!!)
         //queryParams.put("user_id", "168")
-        queryParams.put("imageString",imageString)
+        queryParams.put("image",imageString)
         queryParams.put("first_name", first_name)
         queryParams.put("last_name", last_name)
         queryParams.put("date_of_birth", date_of_birth)
         queryParams.put("weight",weight.toString())
         queryParams.put("gender", gender.toString())
         DLog("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/persons", queryParams, UserProfileResult::class.java, this, 1, "Your Details are storing...")
+        networkCall?.APIRequest("api/v1/person", queryParams, UserProfileResult::class.java, this, 1, "Your Details are storing...")
     }
 
     override fun onSuccess(from: Int, response: Any) {

@@ -71,7 +71,7 @@ class UserAdditionalDetailsFragmentPresenterImpl : APIListener, UserAdditionalDe
         queryParams.put("address", additionalEmail!!)
         queryParams.put("social_profile",socialProfile!!)
         DLog("MAIN ACTIVITY : ", "inside button")
-        networkCall?.APIRequest("api/v1/optional", queryParams, UserAdditionalDetailsResult::class.java, this, 1, "Sending your other details...")
+        networkCall?.APIRequest("api/v1/contact", queryParams, UserAdditionalDetailsResult::class.java, this, 1, "Sending your other details...")
     }
 
     override fun onSuccess(from: Int, response: Any) {

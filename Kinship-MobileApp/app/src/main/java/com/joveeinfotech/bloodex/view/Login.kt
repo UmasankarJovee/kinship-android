@@ -52,6 +52,7 @@ class Login : AppCompatActivity(), LoginView {
             loginPresenter?.userPhoneNumberAndPassword(activity_login_phone_number_editText.text.toString(),activity_login_password_editText.text.toString())
             /*val i= Intent(applicationContext, UserDetails::class.java)
             startActivity(i)*/
+            //CustomToast().alertToast(this,"Given Both are Incorrect")
         }
 
         activity_login_textView_register.setOnClickListener{
