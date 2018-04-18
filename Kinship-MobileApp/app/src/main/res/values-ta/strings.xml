@@ -35,9 +35,9 @@
     <string name="image_and_sliding_content_district_textView">-</string>
 
     <!--fragment_user_profile_edit-->
-    <string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <!--<string name="activity_user_profile_edit_constraintLayout_userName_textView">Vigneshkumar M</string>-->
     <string name="activity_user_profile_edit_constraintLayout_yourProfile_button">          உங்கள் சுயவிவரம்         </string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
+    <!--<string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_textView">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_userName_editText">Vigneshkumar M</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phoneNumber_textView">9876543210</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView1_constraintLayout_phone_number_editText">9876543210</string>
@@ -47,7 +47,7 @@
     <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_textView">70</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_weight_editText">70</string>
     <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_textView">1/99,KK NAGAR,MADURAI-625020</string>
-    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>
+    <string name="activity_user_profile_edit_constraintLayout_cardView2_constraintLayout_address_editText">1/99,KK NAGAR,MADURAI-625020</string>-->
 
     <!--activity_user_registration-->
     <string name="activity_user_registration_scrollView_constraintLayout_phone_number_editText">தொலைபேசி எண்</string>
@@ -124,6 +124,7 @@
     <string name="total_donated">மொத்த நன்கொடை</string>
     <string name="total_request">மொத்த கோரிக்கை</string>
     <string name="last_donated">கடந்த நன்கொடை</string>
+    <string name="fragment_profile_display_goto_edit_profile_button">சுயவிவரத்தைத் திருத்தவும்</string>
 
     <!--fragment_user_address.xml-->
     <string name="user_address_select_your_country">உங்கள் நாட்டினை தேர்வு செய்யவும்</string>
@@ -149,6 +150,8 @@
     <string name="fragment_some_one_request_phoneNumber_editText">" தொலைபேசி எண்"</string>
     <string name="fragment_some_one_request_units_editText">" யூனிட்"</string>
     <string name="fragment_some_one_request_submit_button">சமர்ப்பிக்க</string>
+    <string name="fragment_some_one_request_constraintLayout_time_to_arrive_textview">வருவதற்கு நேரம்</string>
+    <string name="fragment_some_one_request_constraintLayout_time_to_arrive_editText">(உதாரணமாக : 4)</string>
 
     <!--fragment_user_additional_details-->
     <string name="fragment_user_additional_details_additionalDetails_textView">கூடுதல் விவரங்கள்</string>
@@ -193,13 +196,17 @@
     <!--fragment_user_request-->
     <string name="fragment_user_request_constraintLayout_units_editText">" யூனிட்"</string>
     <string name="fragment_user_request_constraintLayout_submit_button">சமர்ப்பிக்க</string>
+    <string name="fragment_user_request_constraintLayout_districts_spinner">மாவட்டம்</string>
+    <string name="fragment_user_request_constraintLayout_hospitals_spinner">மருத்துவமனை</string>
+    <string name="fragment_user_request_constraintLayout_time_to_arrive_textview">வருவதற்கு நேரம்</string>
+    <string name="fragment_user_request_constraintLayout_time_to_arrive_editText">(உதாரணமாக : 4)</string>
 
     <!--top20_donors_list-->
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_name_textView">"Ramakrishnan S"</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_district_textView">in Madurai</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">30</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">30</string>
-    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">3 days ago</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_name_textView">"நன்கொடையாளரின் பெயர்"</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_district_textView">நகரம்</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalLike_textView">0</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_totalCount_textView">0</string>
+    <string name="top20_donors_list_linearLayout_cardView_constraintLayout_lastDonation_textView">கடைசி நன்கொடை தேதி</string>
     <string name="todo">TODO</string>
 
     <!--Validation-->
@@ -224,4 +231,33 @@
     <string name="activity_select_language_constraintLayout1_welcomeLabel_textView">வரவேற்பு</string>
     <string name="activity_select_language_constraintLayout2_skip_textView">அடுத்த</string>
     <string name="select_language">மொழியைத் தேர்ந்தெடுங்கள்</string>
+
+    <!-- activty_profile_view-->
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_bloodGroupLabel_textView">இரத்த வகை</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_emailLabel_textView">மின்னஞ்சல்</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_occupationLabel_textView">தொழில்</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout2_facebookLabel_textView">பேஸ்புக் ஐடி</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout1_totalDonatedLabel_textView">மொத்த நன்கொடை</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout2_totalRequestLabel_textView">மொத்த கோரிக்கை</string>
+    <string name="activity_profile_view_constraintLayout_scrollView_constraintLayout_constraintLayout3_constraintLayout3_lastDonatedDateLabel_textView">கடைசி நன்கொடை தேதி</string>
+
+    <!-- alert_forgot_password-->
+    <string name="alert_forgot_password_EditText_phone_number">தொலைபேசி எண் உள்ளிடவும்</string>
+    <string name="alert_forgot_password_Button_submit">சமர்ப்பி</string>
+
+    <!--alert_requestor_or_donor_options_get-->
+    <string name="alert_requestor_or_donor_options_get_title_textView">நீங்கள் இரத்தம் கேட்பவரா அல்லது நன்கொடையாளரா?</string>
+    <string name="alert_requestor_or_donor_options_get_requestor_radio">இரத்தம் கேட்பவர்</string>
+    <string name="alert_requestor_or_donor_options_get_donor_radio">இரத்தக்கொடையாளர்</string>
+    <string name="alert_requestor_or_donor_options_get_next_button">அடுத்த</string>
+
+    <!--alert_search_option_get-->
+    <string name="alert_search_option_get_title_textView">உங்கள் தேடல் விருப்பத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="radio_your_need">உங்கள் தேவை (நண்பர் / உறவினரிடமிருந்து)</string>
+    <string name="radio_some_one_need">சிலர் தேவை (வாட்ஸ்ஆப் / பேஸ்புக்கில் இருந்து)</string>
+    <string name="button_search_next">அடுத்த</string>
+
+    <!--fragment_offline-->
+    <string name="fragment_offline_alertMessage_textView">மெதுவான அல்லது இணைய இணைப்பு இல்லை, \n உங்கள் இணைய அமைப்புகளைச் சரிபார்க்கவும்.</string>
+    <string name="fragment_offline_tryAgain_button">மீண்டும் முயற்சி செய்</string>
 </resources>

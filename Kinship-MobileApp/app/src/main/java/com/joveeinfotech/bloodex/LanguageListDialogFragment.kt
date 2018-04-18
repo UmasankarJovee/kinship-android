@@ -3,6 +3,7 @@ package com.joveeinfotech.bloodex
 import android.app.DialogFragment
 import android.support.v4.app.FragmentTransaction
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -46,7 +47,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1 = inflater.inflate(R.layout.alert_language_settings, null)
-        dialog.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         //trans=fragmentManager?.beginTransaction()
         settingsFragmentPresenterImpl = SettingsFragmentPresenterImpl(mContext, this)
         settingsFragment = SettingsFragment()
@@ -171,6 +172,7 @@ class LanguageListDialogFragment(var trans : FragmentTransaction,var mContext: C
 
     }
 }
+
 class call1 {
 
     fun call2(trans: FragmentTransaction) {
